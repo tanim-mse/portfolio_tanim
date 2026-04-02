@@ -1,0 +1,609 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Admin Panel — Tanim Portfolio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600&family=Syne:wght@600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="admin.css">
+<style>
+.setup-screen{position:fixed;inset:0;z-index:9999;display:flex;align-items:center;justify-content:center;padding:20px;background:#080810}
+.setup-card{background:rgba(12,12,24,.95);border:1px solid rgba(255,255,255,.12);border-radius:24px;padding:44px 40px;width:100%;max-width:460px;text-align:center}
+.setup-logo{width:58px;height:58px;border-radius:16px;background:linear-gradient(135deg,#7c3aed,#2563eb,#06b6d4);display:flex;align-items:center;justify-content:center;font-family:'Syne',sans-serif;font-size:1.3rem;font-weight:800;color:#fff;margin:0 auto 20px}
+.setup-title{font-family:'Syne',sans-serif;font-size:1.5rem;color:#f8fafc;margin-bottom:8px}
+.setup-sub{font-size:.88rem;color:#94a3b8;margin-bottom:28px;line-height:1.6}
+.setup-steps{text-align:left;background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.07);border-radius:14px;padding:20px;margin-bottom:24px}
+.setup-step{display:flex;gap:12px;align-items:flex-start;margin-bottom:12px;font-size:.85rem;color:#94a3b8;line-height:1.5}
+.setup-step:last-child{margin-bottom:0}
+.setup-step-num{width:22px;height:22px;border-radius:50%;background:rgba(124,58,237,.2);border:1px solid rgba(124,58,237,.4);color:#c4b5fd;font-size:.72rem;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:1px}
+.setup-step a{color:#67e8f9;text-decoration:underline}
+.setup-field{position:relative;margin-bottom:12px}
+.setup-field input{width:100%;padding:13px 16px;border-radius:12px;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);color:#f8fafc;font-size:.92rem;font-family:'DM Sans',sans-serif;transition:border-color .2s,box-shadow .2s;outline:none}
+.setup-field input:focus{border-color:#7c3aed;box-shadow:0 0 0 3px rgba(124,58,237,.15)}
+.setup-field input::placeholder{color:#475569}
+.setup-error{color:#f87171;font-size:.82rem;margin-bottom:10px;min-height:1.2em}
+.setup-btn{width:100%;padding:13px;border-radius:12px;background:linear-gradient(135deg,#7c3aed,#2563eb);color:#fff;font-weight:600;font-size:.95rem;font-family:'DM Sans',sans-serif;cursor:pointer;border:none;transition:all .3s;display:flex;align-items:center;justify-content:center;gap:8px}
+.setup-btn:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(124,58,237,.35)}
+.setup-note{font-size:.78rem;color:#475569;margin-top:14px;line-height:1.5}
+.setup-note a{color:#67e8f9}
+.publish-overlay{position:fixed;inset:0;z-index:99999;background:rgba(8,8,16,.92);backdrop-filter:blur(8px);display:none;flex-direction:column;align-items:center;justify-content:center;gap:20px}
+.publish-overlay.show{display:flex}
+.publish-spinner{width:52px;height:52px;border:3px solid rgba(124,58,237,.2);border-top-color:#7c3aed;border-radius:50%;animation:spin .8s linear infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
+.publish-msg{font-family:'Syne',sans-serif;font-size:1.15rem;color:#f8fafc}
+.publish-sub{font-size:.85rem;color:#94a3b8}
+.github-status{display:inline-flex;align-items:center;gap:6px;font-size:.75rem;padding:5px 12px;border-radius:20px;cursor:pointer;border:none;font-family:'DM Sans',sans-serif}
+.github-status.connected{background:rgba(16,185,129,.1);border:1px solid rgba(16,185,129,.25);color:#34d399}
+.github-status.disconnected{background:rgba(239,68,68,.1);border:1px solid rgba(239,68,68,.25);color:#f87171}
+.status-dot{width:7px;height:7px;border-radius:50%;flex-shrink:0}
+.connected .status-dot{background:#34d399}
+.disconnected .status-dot{background:#f87171}
+</style>
+</head>
+<body>
+
+<!-- SETUP SCREEN -->
+<div class="setup-screen" id="setupScreen" style="display:none">
+  <div class="setup-card">
+    <div class="setup-logo">TI</div>
+    <h1 class="setup-title">Connect to GitHub</h1>
+    <p class="setup-sub">One-time setup. Your token is saved privately in your browser only — never in your code or visible to anyone.</p>
+    <div class="setup-steps">
+      <div class="setup-step"><span class="setup-step-num">1</span><span>Go to <a href="https://github.com/settings/tokens" target="_blank">github.com/settings/tokens</a></span></div>
+      <div class="setup-step"><span class="setup-step-num">2</span><span>Click <strong style="color:#e2e8f0">Generate new token (classic)</strong></span></div>
+      <div class="setup-step"><span class="setup-step-num">3</span><span>Set expiration: <strong style="color:#e2e8f0">No expiration</strong> — check the <strong style="color:#e2e8f0">repo</strong> checkbox</span></div>
+      <div class="setup-step"><span class="setup-step-num">4</span><span>Click Generate, copy the token (starts with <strong style="color:#c4b5fd">ghp_</strong>), paste below</span></div>
+    </div>
+    <div class="setup-field">
+      <input type="password" id="tokenInput" placeholder="ghp_xxxxxxxxxxxxxxxxxxxx">
+    </div>
+    <p class="setup-error" id="setupError"></p>
+    <button class="setup-btn" onclick="saveToken()">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4"/><polyline points="10 17 15 12 10 7"/><line x1="15" y1="12" x2="3" y2="12"/></svg>
+      Connect & Save
+    </button>
+    <p class="setup-note">Token stored in browser localStorage only. <a href="https://github.com/settings/tokens" target="_blank">Manage on GitHub →</a></p>
+  </div>
+</div>
+
+<!-- LOGIN SCREEN -->
+<div class="login-screen" id="loginScreen">
+  <div class="login-bg">
+    <div class="login-orb login-orb-1"></div>
+    <div class="login-orb login-orb-2"></div>
+    <div class="login-orb login-orb-3"></div>
+  </div>
+  <div class="login-card">
+    <div class="login-logo">TI</div>
+    <h1 class="login-title">Admin Panel</h1>
+    <p class="login-sub">Enter your password to access the dashboard</p>
+    <div class="login-form">
+      <div class="login-field">
+        <svg class="login-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+        <input type="password" id="pwInput" placeholder="Password" autocomplete="current-password">
+        <button class="pw-toggle" type="button" onclick="togglePw()">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+        </button>
+      </div>
+      <p class="login-error" id="loginError"></p>
+      <button class="login-btn" onclick="attemptLogin()">
+        Unlock Dashboard
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+      </button>
+    </div>
+    <a href="index.html" class="login-back">← Back to Portfolio</a>
+  </div>
+</div>
+
+<!-- DASHBOARD -->
+<div class="dashboard" id="dashboard" style="display:none">
+  <aside class="sidebar" id="sidebar">
+    <div class="sidebar-head">
+      <div class="sidebar-logo">TI</div>
+      <div class="sidebar-title-wrap">
+        <span class="sidebar-title">Admin Panel</span>
+        <span class="sidebar-sub">Portfolio CMS</span>
+      </div>
+    </div>
+    <nav class="sidebar-nav">
+      <div class="nav-group-label">Content</div>
+      <button class="tab-btn active" data-tab="profile" onclick="switchTab('profile',this)">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+        <span>Profile</span>
+      </button>
+      <button class="tab-btn" data-tab="about" onclick="switchTab('about',this)">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+        <span>About</span>
+      </button>
+      <button class="tab-btn" data-tab="skills" onclick="switchTab('skills',this)">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+        <span>Skills</span>
+      </button>
+      <button class="tab-btn" data-tab="projects" onclick="switchTab('projects',this)">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+        <span>Projects</span>
+      </button>
+      <button class="tab-btn" data-tab="research" onclick="switchTab('research',this)">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
+        <span>Research</span>
+      </button>
+      <button class="tab-btn" data-tab="contact" onclick="switchTab('contact',this)">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+        <span>Contact</span>
+      </button>
+      <div class="nav-group-label" style="margin-top:16px">Settings</div>
+      <button class="tab-btn" data-tab="appearance" onclick="switchTab('appearance',this)">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14M4.93 4.93a10 10 0 0 0 0 14.14"/></svg>
+        <span>Appearance</span>
+      </button>
+      <button class="tab-btn" data-tab="security" onclick="switchTab('security',this)">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        <span>Security</span>
+      </button>
+    </nav>
+    <div class="sidebar-footer">
+      <div class="sidebar-user">
+        <div class="sidebar-avatar">TI</div>
+        <div>
+          <div class="sidebar-uname">Tanim</div>
+          <div class="sidebar-urole">Administrator</div>
+        </div>
+      </div>
+    </div>
+  </aside>
+
+  <main class="main-area">
+    <header class="topbar">
+      <button class="topbar-toggle" onclick="toggleSidebar()">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+      </button>
+      <div class="topbar-breadcrumb">
+        <span class="topbar-section" id="topbarSection">Profile</span>
+      </div>
+      <div class="topbar-actions">
+        <div class="unsaved-badge" id="unsavedBadge" style="display:none">Unsaved changes</div>
+        <button class="github-status connected" id="githubStatusBtn" onclick="showTokenSetup()" title="Click to update GitHub token">
+          <div class="status-dot"></div>
+          <span id="githubStatusText">GitHub Connected</span>
+        </button>
+        <button class="topbar-btn btn-save" onclick="saveAndPublish()">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z"/><polyline points="17 21 17 13 7 13 7 21"/><polyline points="7 3 7 8 15 8"/></svg>
+          Save & Publish Live
+        </button>
+        <button class="topbar-btn btn-reset" onclick="confirmReset()">Reset</button>
+        <a href="index.html" class="topbar-btn btn-exit">Exit</a>
+      </div>
+    </header>
+
+    <div class="content-area">
+
+      <!-- PROFILE -->
+      <div class="tab-pane active" id="tab-profile">
+        <div class="pane-header"><h2 class="pane-title">Profile</h2><p class="pane-desc">Edit your name, hero section, and CV link.</p></div>
+        <div class="fields-grid">
+          <div class="field-group full"><label class="field-label">Display Name</label><input type="text" class="field-input" id="f_name" oninput="markUnsaved()"></div>
+          <div class="field-group full"><label class="field-label">Hero Label <span class="field-hint">(above your name)</span></label><input type="text" class="field-input" id="f_heroLabel" oninput="markUnsaved()"></div>
+          <div class="field-group full"><label class="field-label">Subtitle</label><textarea class="field-textarea" id="f_subtitle" rows="2" oninput="markUnsaved()"></textarea></div>
+          <div class="field-group full"><label class="field-label">Typewriter Roles <span class="field-hint">one per line</span></label><textarea class="field-textarea" id="f_twWords" rows="5" oninput="markUnsaved()"></textarea></div>
+          <div class="field-group"><label class="field-label">Photo URL</label><input type="url" class="field-input" id="f_photoURL" placeholder="https://i.ibb.co/..." oninput="markUnsaved()"><p class="field-note">Upload to imgbb.com, paste the direct link</p></div>
+          <div class="field-group"><label class="field-label">CV / Resume Link</label><input type="url" class="field-input" id="f_cvLink" placeholder="https://..." oninput="markUnsaved()"></div>
+        </div>
+      </div>
+
+      <!-- ABOUT -->
+      <div class="tab-pane" id="tab-about">
+        <div class="pane-header"><h2 class="pane-title">About</h2><p class="pane-desc">Edit your bio and academic information.</p></div>
+        <div class="fields-grid">
+          <div class="field-group full"><label class="field-label">Bio</label><textarea class="field-textarea" id="f_bio" rows="5" oninput="markUnsaved()"></textarea></div>
+          <div class="field-group"><label class="field-label">University</label><input type="text" class="field-input" id="f_uni" oninput="markUnsaved()"></div>
+          <div class="field-group"><label class="field-label">Department</label><input type="text" class="field-input" id="f_dept" oninput="markUnsaved()"></div>
+          <div class="field-group"><label class="field-label">Year / Level</label><input type="text" class="field-input" id="f_year" oninput="markUnsaved()"></div>
+        </div>
+      </div>
+
+      <!-- SKILLS -->
+      <div class="tab-pane" id="tab-skills">
+        <div class="pane-header"><h2 class="pane-title">Skills</h2><p class="pane-desc">Manage skill categories and individual skills.</p></div>
+        <button class="add-card-btn" onclick="addSkillCategory()">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+          Add Category
+        </button>
+        <div id="skillsEditor"></div>
+      </div>
+
+      <!-- PROJECTS -->
+      <div class="tab-pane" id="tab-projects">
+        <div class="pane-header"><h2 class="pane-title">Projects</h2><p class="pane-desc">Add, edit, and remove portfolio projects.</p></div>
+        <button class="add-card-btn" onclick="addProject()">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+          Add Project
+        </button>
+        <div id="projectsEditor"></div>
+      </div>
+
+      <!-- RESEARCH -->
+      <div class="tab-pane" id="tab-research">
+        <div class="pane-header"><h2 class="pane-title">Research</h2><p class="pane-desc">Manage research interests and publications.</p></div>
+        <div class="two-col-editor">
+          <div>
+            <div class="editor-section-title">Research Interests</div>
+            <button class="add-card-btn mini" onclick="addResearchInterest()">+ Add Interest</button>
+            <div id="researchEditor"></div>
+          </div>
+          <div>
+            <div class="editor-section-title">Publications</div>
+            <button class="add-card-btn mini" onclick="addPublication()">+ Add Publication</button>
+            <div id="pubEditor"></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- CONTACT -->
+      <div class="tab-pane" id="tab-contact">
+        <div class="pane-header"><h2 class="pane-title">Contact</h2><p class="pane-desc">Update contact info and social links.</p></div>
+        <div class="fields-grid">
+          <div class="field-group full"><label class="field-label">Contact Message</label><textarea class="field-textarea" id="f_contactMsg" rows="3" oninput="markUnsaved()"></textarea></div>
+          <div class="field-group"><label class="field-label">Email</label><input type="email" class="field-input" id="f_email" oninput="markUnsaved()"></div>
+          <div class="field-group"><label class="field-label">GitHub URL</label><input type="url" class="field-input" id="f_github" oninput="markUnsaved()"></div>
+          <div class="field-group"><label class="field-label">LinkedIn URL</label><input type="url" class="field-input" id="f_linkedin" oninput="markUnsaved()"></div>
+          <div class="field-group"><label class="field-label">ResearchGate URL</label><input type="url" class="field-input" id="f_rg" oninput="markUnsaved()"></div>
+        </div>
+      </div>
+
+      <!-- APPEARANCE -->
+      <div class="tab-pane" id="tab-appearance">
+        <div class="pane-header"><h2 class="pane-title">Appearance</h2><p class="pane-desc">Customize the visual style.</p></div>
+        <div class="fields-grid">
+          <div class="field-group">
+            <label class="field-label">Accent Color</label>
+            <div class="color-picker-wrap">
+              <input type="color" class="color-input" id="f_accentColor" value="#7c3aed" oninput="markUnsaved();previewColor(this.value)">
+              <input type="text" class="field-input color-text" id="f_accentColorHex" value="#7c3aed" oninput="syncColorFromText()" placeholder="#7c3aed">
+            </div>
+            <div class="color-presets">
+              <span class="preset-label">Presets:</span>
+              <button class="color-preset" style="background:#7c3aed" onclick="setColor('#7c3aed')"></button>
+              <button class="color-preset" style="background:#2563eb" onclick="setColor('#2563eb')"></button>
+              <button class="color-preset" style="background:#06b6d4" onclick="setColor('#06b6d4')"></button>
+              <button class="color-preset" style="background:#10b981" onclick="setColor('#10b981')"></button>
+              <button class="color-preset" style="background:#f59e0b" onclick="setColor('#f59e0b')"></button>
+              <button class="color-preset" style="background:#ef4444" onclick="setColor('#ef4444')"></button>
+              <button class="color-preset" style="background:#ec4899" onclick="setColor('#ec4899')"></button>
+            </div>
+          </div>
+          <div class="field-group">
+            <label class="field-label">Font Size</label>
+            <select class="field-select" id="f_fontSize" onchange="markUnsaved()">
+              <option value="15px">Small (15px)</option>
+              <option value="16px">Medium (16px)</option>
+              <option value="17px" selected>Default (17px)</option>
+              <option value="18px">Large (18px)</option>
+              <option value="19px">Extra Large (19px)</option>
+            </select>
+          </div>
+        </div>
+        <div class="appearance-preview-box">
+          <div class="ap-label">Live Preview</div>
+          <div class="ap-demo">
+            <span class="ap-grad" id="apGrad">Tanim</span>
+            <div class="ap-btn" id="apBtn">Sample Button</div>
+            <div class="ap-chip" id="apChip">Tag</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- SECURITY -->
+      <div class="tab-pane" id="tab-security">
+        <div class="pane-header"><h2 class="pane-title">Security</h2><p class="pane-desc">Change your admin password.</p></div>
+        <div class="fields-grid" style="max-width:480px">
+          <div class="field-group full"><label class="field-label">Current Password</label><input type="password" class="field-input" id="f_curPw"></div>
+          <div class="field-group full"><label class="field-label">New Password</label><input type="password" class="field-input" id="f_newPw"></div>
+          <div class="field-group full"><label class="field-label">Confirm Password</label><input type="password" class="field-input" id="f_newPw2"></div>
+          <div class="field-group full"><button class="change-pw-btn" onclick="changePassword()">Update Password</button></div>
+          <div class="security-note full">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+            Password changes go live after clicking Save &amp; Publish. To update your GitHub token, click the green "GitHub Connected" button in the top bar.
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </main>
+</div>
+
+<!-- Publishing overlay -->
+<div class="publish-overlay" id="publishOverlay">
+  <div class="publish-spinner"></div>
+  <div class="publish-msg" id="publishMsg">Publishing to GitHub…</div>
+  <div class="publish-sub">Netlify will rebuild your site in ~30 seconds</div>
+</div>
+
+<!-- Toast -->
+<div class="admin-toast" id="adminToast"></div>
+
+<!-- Modal -->
+<div class="modal-overlay" id="modalOverlay" style="display:none">
+  <div class="modal-box">
+    <h3 class="modal-title" id="modalTitle">Confirm</h3>
+    <p class="modal-desc" id="modalDesc"></p>
+    <div class="modal-actions">
+      <button class="modal-cancel" onclick="closeModal()">Cancel</button>
+      <button class="modal-confirm" id="modalConfirm">Confirm</button>
+    </div>
+  </div>
+</div>
+
+<script src="data.js"></script>
+<script>
+/* ── GitHub config ── */
+const GITHUB_OWNER  = 'tanim-mse';
+const GITHUB_REPO   = 'portfolio_tanim';
+const GITHUB_FILE   = 'data.js';
+const GITHUB_BRANCH = 'main';
+
+let adminData = {}, currentTab = 'profile', hasUnsaved = false;
+
+/* ── Startup ── */
+function startup() {
+  const token = localStorage.getItem('gh_token');
+  if (!token) {
+    document.getElementById('loginScreen').style.display = 'none';
+    document.getElementById('setupScreen').style.display = 'flex';
+  }
+  // login screen already visible by default
+}
+startup();
+
+function showTokenSetup() {
+  document.getElementById('dashboard').style.display = 'none';
+  document.getElementById('loginScreen').style.display = 'none';
+  document.getElementById('setupScreen').style.display = 'flex';
+}
+
+async function saveToken() {
+  const token = document.getElementById('tokenInput').value.trim();
+  const err = document.getElementById('setupError');
+  if (!token) { err.textContent = 'Please paste your token.'; return; }
+  if (!token.startsWith('ghp_') && !token.startsWith('github_pat_')) {
+    err.textContent = 'Token should start with ghp_ — check and try again.'; return;
+  }
+  err.textContent = 'Verifying…';
+  try {
+    const res = await fetch(`https://api.github.com/repos/${GITHUB_OWNER}/${GITHUB_REPO}`, {
+      headers: { Authorization: `token ${token}`, 'User-Agent': 'PortfolioAdmin' }
+    });
+    if (!res.ok) { err.textContent = 'Token invalid or repo not found. Check and retry.'; return; }
+    localStorage.setItem('gh_token', token);
+    err.textContent = '';
+    document.getElementById('setupScreen').style.display = 'none';
+    document.getElementById('loginScreen').style.display = 'flex';
+    updateGithubStatus(true);
+    showToast('GitHub connected!', 'success');
+  } catch(e) { err.textContent = 'Network error. Check your connection.'; }
+}
+document.getElementById('tokenInput').addEventListener('keydown', e => { if(e.key==='Enter') saveToken(); });
+
+/* ── Login ── */
+function attemptLogin() {
+  const pw = document.getElementById('pwInput').value;
+  const D = getData();
+  if (pw === D.adminPassword) {
+    document.getElementById('loginScreen').style.display = 'none';
+    document.getElementById('dashboard').style.display = 'flex';
+    initDashboard();
+  } else {
+    const err = document.getElementById('loginError');
+    err.textContent = 'Incorrect password.';
+    document.getElementById('pwInput').classList.add('shake');
+    setTimeout(() => { document.getElementById('pwInput').classList.remove('shake'); err.textContent=''; }, 1500);
+  }
+}
+document.getElementById('pwInput').addEventListener('keydown', e => { if(e.key==='Enter') attemptLogin(); });
+function togglePw() { const i=document.getElementById('pwInput'); i.type=i.type==='password'?'text':'password'; }
+
+function updateGithubStatus(ok) {
+  const btn = document.getElementById('githubStatusBtn');
+  const txt = document.getElementById('githubStatusText');
+  if (!btn) return;
+  btn.className = 'github-status ' + (ok ? 'connected' : 'disconnected');
+  txt.textContent = ok ? 'GitHub Connected' : 'GitHub Not Connected';
+}
+
+/* ── Init ── */
+function initDashboard() {
+  adminData = getData();
+  updateGithubStatus(!!localStorage.getItem('gh_token'));
+  loadProfile(); loadAbout(); loadSkills();
+  loadProjects(); loadResearch(); loadContact(); loadAppearance();
+}
+
+/* ── Tabs ── */
+function switchTab(tab, btn) {
+  collectCurrentTab();
+  document.querySelectorAll('.tab-btn').forEach(b=>b.classList.remove('active'));
+  document.querySelectorAll('.tab-pane').forEach(p=>p.classList.remove('active'));
+  btn.classList.add('active');
+  document.getElementById('tab-'+tab).classList.add('active');
+  document.getElementById('topbarSection').textContent = btn.querySelector('span').textContent;
+  currentTab = tab;
+}
+function toggleSidebar() { document.getElementById('sidebar').classList.toggle('collapsed'); }
+function markUnsaved() { hasUnsaved=true; document.getElementById('unsavedBadge').style.display='flex'; }
+
+/* ── Loaders ── */
+function loadProfile() {
+  const D=adminData;
+  document.getElementById('f_name').value=D.name||'';
+  document.getElementById('f_heroLabel').value=D.heroLabel||'';
+  document.getElementById('f_subtitle').value=D.subtitle||'';
+  document.getElementById('f_twWords').value=(D.typewriterWords||[]).join('\n');
+  document.getElementById('f_photoURL').value=D.photoURL||'';
+  document.getElementById('f_cvLink').value=D.cvLink||'';
+}
+function loadAbout() {
+  const D=adminData;
+  document.getElementById('f_bio').value=D.bio||'';
+  document.getElementById('f_uni').value=D.university||'';
+  document.getElementById('f_dept').value=D.department||'';
+  document.getElementById('f_year').value=D.year||'';
+}
+function loadSkills() {
+  const se=document.getElementById('skillsEditor'); se.innerHTML='';
+  (adminData.skills||[]).forEach((cat,i)=>se.appendChild(buildSkillCard(cat,i)));
+}
+function buildSkillCard(cat,i) {
+  const card=document.createElement('div'); card.className='editor-card';
+  card.innerHTML=`<div class="editor-card-header"><input type="text" class="card-title-input" value="${esc(cat.title)}" oninput="markUnsaved()"><button class="card-delete-btn" onclick="deleteSkillCategory(${i})"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="3 6 5 6 21 6"/><path d="M19 6l-1 14H6L5 6"/><path d="M9 6V4h6v2"/></svg></button></div><div class="chip-editor" id="chipEditor_${i}">${cat.items.map((s,j)=>`<span class="admin-chip">${esc(s)}<button onclick="removeSkill(${i},${j})" class="chip-remove">×</button></span>`).join('')}</div><div class="chip-add-row"><input type="text" class="chip-add-input" id="chipInput_${i}" placeholder="Add skill…" onkeydown="if(event.key==='Enter')addSkill(${i})"><button class="chip-add-btn" onclick="addSkill(${i})">Add</button></div>`;
+  return card;
+}
+function addSkillCategory(){collectCurrentTab();adminData.skills.push({title:'New Category',items:[]});loadSkills();markUnsaved();}
+function deleteSkillCategory(i){showModal('Delete Category','Remove this category and all its skills?',()=>{adminData.skills.splice(i,1);loadSkills();markUnsaved();});}
+function addSkill(ci){const inp=document.getElementById('chipInput_'+ci);if(!inp.value.trim())return;collectCurrentTab();adminData.skills[ci].items.push(inp.value.trim());inp.value='';loadSkills();markUnsaved();}
+function removeSkill(ci,si){adminData.skills[ci].items.splice(si,1);loadSkills();markUnsaved();}
+
+function loadProjects() {
+  const pe=document.getElementById('projectsEditor'); pe.innerHTML='';
+  (adminData.projects||[]).forEach((p,i)=>pe.appendChild(buildProjectCard(p,i)));
+}
+function buildProjectCard(p,i) {
+  const card=document.createElement('div'); card.className='editor-card';
+  card.innerHTML=`<div class="editor-card-header"><span class="card-index">Project ${i+1}</span><button class="card-delete-btn" onclick="deleteProject(${i})"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="3 6 5 6 21 6"/><path d="M19 6l-1 14H6L5 6"/><path d="M9 6V4h6v2"/></svg></button></div><div class="fields-grid" style="padding:0;gap:12px"><div class="field-group full"><label class="field-label">Title</label><input type="text" class="field-input" id="pt_${i}" value="${esc(p.title)}" oninput="markUnsaved()"></div><div class="field-group full"><label class="field-label">Description</label><textarea class="field-textarea" id="pd_${i}" rows="2" oninput="markUnsaved()">${esc(p.desc)}</textarea></div><div class="field-group"><label class="field-label">Tags <span class="field-hint">comma-separated</span></label><input type="text" class="field-input" id="pg_${i}" value="${esc(p.tags)}" oninput="markUnsaved()"></div><div class="field-group"><label class="field-label">Link</label><input type="url" class="field-input" id="pl_${i}" value="${esc(p.link)}" oninput="markUnsaved()"></div></div>`;
+  return card;
+}
+function addProject(){collectCurrentTab();adminData.projects.push({title:'New Project',desc:'Description.',tags:'Tag1,Tag2',link:'#'});loadProjects();markUnsaved();}
+function deleteProject(i){showModal('Delete Project',`Delete "${adminData.projects[i].title}"?`,()=>{collectCurrentTab();adminData.projects.splice(i,1);loadProjects();markUnsaved();});}
+
+function loadResearch() {
+  const re=document.getElementById('researchEditor'); re.innerHTML='';
+  (adminData.researchInterests||[]).forEach((r,i)=>{const row=document.createElement('div');row.className='list-row';row.innerHTML=`<input type="text" class="field-input" id="ri_${i}" value="${esc(r)}" oninput="markUnsaved()" style="flex:1"><button class="row-delete-btn" onclick="deleteResearch(${i})">×</button>`;re.appendChild(row);});
+  const pe=document.getElementById('pubEditor'); pe.innerHTML='';
+  (adminData.publications||[]).forEach((p,i)=>{const row=document.createElement('div');row.className='list-row';row.innerHTML=`<textarea class="field-textarea" id="pub_${i}" rows="2" oninput="markUnsaved()" style="flex:1">${esc(p)}</textarea><button class="row-delete-btn" onclick="deletePublication(${i})">×</button>`;pe.appendChild(row);});
+}
+function addResearchInterest(){collectCurrentTab();adminData.researchInterests.push('New Research Interest');loadResearch();markUnsaved();}
+function deleteResearch(i){collectCurrentTab();adminData.researchInterests.splice(i,1);loadResearch();markUnsaved();}
+function addPublication(){collectCurrentTab();adminData.publications.push('Publication title. Journal, Year.');loadResearch();markUnsaved();}
+function deletePublication(i){collectCurrentTab();adminData.publications.splice(i,1);loadResearch();markUnsaved();}
+
+function loadContact() {
+  const D=adminData;
+  document.getElementById('f_contactMsg').value=D.contactMessage||'';
+  document.getElementById('f_email').value=D.email||'';
+  document.getElementById('f_github').value=D.github||'';
+  document.getElementById('f_linkedin').value=D.linkedin||'';
+  document.getElementById('f_rg').value=D.researchgate||'';
+}
+function loadAppearance() {
+  const A=adminData.appearance||{};
+  document.getElementById('f_accentColor').value=A.accentColor||'#7c3aed';
+  document.getElementById('f_accentColorHex').value=A.accentColor||'#7c3aed';
+  document.getElementById('f_fontSize').value=A.fontSize||'17px';
+  previewColor(A.accentColor||'#7c3aed');
+}
+function previewColor(hex){document.getElementById('f_accentColorHex').value=hex;document.getElementById('apGrad').style.cssText=`background:linear-gradient(135deg,${hex},#60a5fa);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text`;document.getElementById('apBtn').style.background=`linear-gradient(135deg,${hex},#2563eb)`;document.getElementById('apChip').style.cssText=`background:${hex}22;border-color:${hex}44;color:${hex}`;}
+function syncColorFromText(){const v=document.getElementById('f_accentColorHex').value;if(/^#[0-9A-Fa-f]{6}$/.test(v)){document.getElementById('f_accentColor').value=v;previewColor(v);}markUnsaved();}
+function setColor(hex){document.getElementById('f_accentColor').value=hex;document.getElementById('f_accentColorHex').value=hex;previewColor(hex);markUnsaved();}
+
+/* ── Collect ── */
+function collectCurrentTab() {
+  const g=id=>{const el=document.getElementById(id);return el?el.value:null;};
+  if(currentTab==='profile'){if(g('f_name')!==null){adminData.name=g('f_name');adminData.heroLabel=g('f_heroLabel');adminData.subtitle=g('f_subtitle');adminData.typewriterWords=(g('f_twWords')||'').split('\n').map(s=>s.trim()).filter(Boolean);adminData.photoURL=g('f_photoURL');adminData.cvLink=g('f_cvLink');}}
+  else if(currentTab==='about'){if(g('f_bio')!==null){adminData.bio=g('f_bio');adminData.university=g('f_uni');adminData.department=g('f_dept');adminData.year=g('f_year');}}
+  else if(currentTab==='skills'){document.querySelectorAll('#skillsEditor .editor-card').forEach((card,i)=>{const t=card.querySelector('.card-title-input');if(t&&adminData.skills[i])adminData.skills[i].title=t.value;});}
+  else if(currentTab==='projects'){(adminData.projects||[]).forEach((p,i)=>{if(g('pt_'+i)!==null){p.title=g('pt_'+i);p.desc=g('pd_'+i);p.tags=g('pg_'+i);p.link=g('pl_'+i);}});}
+  else if(currentTab==='research'){adminData.researchInterests=adminData.researchInterests.map((_,i)=>g('ri_'+i)??_);adminData.publications=adminData.publications.map((_,i)=>g('pub_'+i)??_);}
+  else if(currentTab==='contact'){if(g('f_email')!==null){adminData.contactMessage=g('f_contactMsg');adminData.email=g('f_email');adminData.github=g('f_github');adminData.linkedin=g('f_linkedin');adminData.researchgate=g('f_rg');}}
+  else if(currentTab==='appearance'){adminData.appearance=adminData.appearance||{};adminData.appearance.accentColor=g('f_accentColor');adminData.appearance.fontSize=g('f_fontSize');}
+}
+
+/* ── Save & Publish to GitHub ── */
+async function saveAndPublish() {
+  collectCurrentTab();
+  const token = localStorage.getItem('gh_token');
+  if (!token) { showToast('GitHub not connected — click the status button to set up.','error'); return; }
+
+  document.getElementById('publishOverlay').classList.add('show');
+  document.getElementById('publishMsg').textContent = 'Connecting to GitHub…';
+
+  try {
+    // Get current file SHA
+    const getRes = await fetch(
+      `https://api.github.com/repos/${GITHUB_OWNER}/${GITHUB_REPO}/contents/${GITHUB_FILE}?ref=${GITHUB_BRANCH}`,
+      { headers: { Authorization: `token ${token}`, 'User-Agent': 'PortfolioAdmin' } }
+    );
+    if (!getRes.ok) throw new Error('Could not reach GitHub. Check your token.');
+    const fileData = await getRes.json();
+
+    document.getElementById('publishMsg').textContent = 'Pushing changes…';
+
+    // Build and encode new data.js
+    const newContent = buildDataJS(adminData);
+    const encoded = btoa(unescape(encodeURIComponent(newContent)));
+
+    // Push to GitHub
+    const putRes = await fetch(
+      `https://api.github.com/repos/${GITHUB_OWNER}/${GITHUB_REPO}/contents/${GITHUB_FILE}`,
+      {
+        method: 'PUT',
+        headers: { Authorization: `token ${token}`, 'Content-Type': 'application/json', 'User-Agent': 'PortfolioAdmin' },
+        body: JSON.stringify({
+          message: 'Portfolio update via Admin Panel',
+          content: encoded,
+          sha: fileData.sha,
+          branch: GITHUB_BRANCH
+        })
+      }
+    );
+    if (!putRes.ok) { const e=await putRes.json(); throw new Error(e.message||'Push failed.'); }
+
+    document.getElementById('publishOverlay').classList.remove('show');
+    hasUnsaved = false;
+    document.getElementById('unsavedBadge').style.display = 'none';
+    saveData(adminData);
+    showToast('✓ Published! Live for everyone in ~30 seconds.', 'success');
+
+  } catch(err) {
+    document.getElementById('publishOverlay').classList.remove('show');
+    if (String(err.message).includes('401')) {
+      updateGithubStatus(false);
+      showToast('Token expired. Click the status button to update it.','error');
+    } else {
+      showToast('Publish failed: ' + err.message, 'error');
+    }
+  }
+}
+
+/* ── Build data.js ── */
+function buildDataJS(D) {
+  return `/* Auto-generated by Admin Panel */\n\nconst DEFAULT_DATA = ${JSON.stringify(D, null, 2)};\n\nfunction getData() {\n  try {\n    const saved = localStorage.getItem('portfolioData');\n    if (saved) { const parsed = JSON.parse(saved); return deepMerge(DEFAULT_DATA, parsed); }\n  } catch (e) {}\n  return JSON.parse(JSON.stringify(DEFAULT_DATA));\n}\n\nfunction saveData(data) {\n  try { localStorage.setItem('portfolioData', JSON.stringify(data)); return true; } catch(e) { return false; }\n}\n\nfunction resetData() {\n  localStorage.removeItem('portfolioData');\n  return JSON.parse(JSON.stringify(DEFAULT_DATA));\n}\n\nfunction deepMerge(target, source) {\n  const result = Object.assign({}, target);\n  for (const key of Object.keys(source)) {\n    if (source[key] !== null && typeof source[key] === 'object' && !Array.isArray(source[key])) {\n      result[key] = deepMerge(target[key] || {}, source[key]);\n    } else { result[key] = source[key]; }\n  }\n  return result;\n}\n`;
+}
+
+/* ── Reset ── */
+function confirmReset(){showModal('Reset All Data','Restore defaults and publish to GitHub? Cannot be undone.',()=>{adminData=getData();initDashboard();markUnsaved();showToast('Reset to defaults — click Save & Publish to go live.','warning');},'danger');}
+
+/* ── Password ── */
+function changePassword() {
+  const cur=document.getElementById('f_curPw').value, nw=document.getElementById('f_newPw').value, nw2=document.getElementById('f_newPw2').value;
+  if(cur!==adminData.adminPassword){showToast('Current password incorrect.','error');return;}
+  if(!nw||nw.length<4){showToast('Password must be at least 4 characters.','error');return;}
+  if(nw!==nw2){showToast('Passwords do not match.','error');return;}
+  adminData.adminPassword=nw; markUnsaved();
+  document.getElementById('f_curPw').value=''; document.getElementById('f_newPw').value=''; document.getElementById('f_newPw2').value='';
+  showToast('Password updated — click Save & Publish to go live.','success');
+}
+
+/* ── Modal ── */
+let modalCb=null;
+function showModal(title,desc,cb,type='normal'){document.getElementById('modalTitle').textContent=title;document.getElementById('modalDesc').textContent=desc;document.getElementById('modalOverlay').style.display='flex';const btn=document.getElementById('modalConfirm');btn.textContent=type==='danger'?'Yes, proceed':'Confirm';btn.className=type==='danger'?'modal-confirm danger':'modal-confirm';modalCb=cb;}
+function closeModal(){document.getElementById('modalOverlay').style.display='none';modalCb=null;}
+document.getElementById('modalConfirm').addEventListener('click',()=>{if(modalCb)modalCb();closeModal();});
+document.getElementById('modalOverlay').addEventListener('click',e=>{if(e.target===document.getElementById('modalOverlay'))closeModal();});
+
+/* ── Toast ── */
+function showToast(msg,type='success'){const t=document.getElementById('adminToast');t.textContent=msg;t.className='admin-toast show '+type;setTimeout(()=>t.className='admin-toast',4000);}
+function esc(str){return String(str||'').replace(/&/g,'&amp;').replace(/"/g,'&quot;').replace(/</g,'&lt;').replace(/>/g,'&gt;');}
+window.addEventListener('beforeunload',e=>{if(hasUnsaved){e.preventDefault();e.returnValue='';}});
+</script>
+</body>
+</html>
