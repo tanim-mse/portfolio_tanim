@@ -1,6 +1,6 @@
 backend:
   name: github
-  repo: YOUR-USERNAME/YOUR-REPO-NAME
+  repo: tanim-mse/portfolio_tanim
   branch: main
 
 media_folder: "images"
