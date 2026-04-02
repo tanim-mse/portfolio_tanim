@@ -389,7 +389,7 @@ document.getElementById('tokenInput').addEventListener('keydown', e => { if(e.ke
 function attemptLogin() {
   const pw = document.getElementById('pwInput').value;
   const D = getData();
-  if (pw === D.adminPassword) {
+  async function attemptLogin() {   const pw = document.getElementById('pwInput').value;   const buf = await crypto.subtle.digest('SHA-256', new TextEncoder().encode(pw));   const hash = Array.from(new Uint8Array(buf)).map(b => b.toString(16).padStart(2,'0')).join('');   const D = getData();   if (hash === D.adminPassword) {
     document.getElementById('loginScreen').style.display = 'none';
     document.getElementById('dashboard').style.display = 'flex';
     initDashboard();
