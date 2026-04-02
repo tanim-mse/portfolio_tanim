@@ -9,6 +9,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,400&family=Syne:wght@600;700;800&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css">
+  <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
 </head>
 <body>
 
@@ -523,5 +524,29 @@ function render() {
 
 render();
 </script>
+  <script>
+  if (window.netlifyIdentity) {
+    window.netlifyIdentity.on("init", user => {
+      if (!user) {
+        window.netlifyIdentity.on("login", () => {
+          document.location.href = "/admin/";
+        });
+      }
+    });
+  }
+</script>
+```
+
+Commit this change. **This fixes the invite link problem** — now when you click that email link, it'll show the password popup properly.
+
+---
+
+## Step 2 — Create the Admin folder
+
+In your GitHub repo, create a new file. Click **"Add file" → "Create new file"**.
+
+Type the filename as:
+```
+admin/index.html
 </body>
 </html>
