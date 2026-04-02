@@ -386,10 +386,12 @@ async function saveToken() {
 document.getElementById('tokenInput').addEventListener('keydown', e => { if(e.key==='Enter') saveToken(); });
 
 /* ── Login ── */
-function attemptLogin() {
+async function attemptLogin() {
   const pw = document.getElementById('pwInput').value;
+  const buf = await crypto.subtle.digest('SHA-256', new TextEncoder().encode(pw));
+  const hash = Array.from(new Uint8Array(buf)).map(b => b.toString(16).padStart(2,'0')).join('');
   const D = getData();
-  async function attemptLogin() {   const pw = document.getElementById('pwInput').value;   const buf = await crypto.subtle.digest('SHA-256', new TextEncoder().encode(pw));   const hash = Array.from(new Uint8Array(buf)).map(b => b.toString(16).padStart(2,'0')).join('');   const D = getData();   if (hash === D.adminPassword) {
+  if (hash === D.adminPassword) {
     document.getElementById('loginScreen').style.display = 'none';
     document.getElementById('dashboard').style.display = 'flex';
     initDashboard();
@@ -583,12 +585,18 @@ function buildDataJS(D) {
 function confirmReset(){showModal('Reset All Data','Restore defaults and publish to GitHub? Cannot be undone.',()=>{adminData=getData();initDashboard();markUnsaved();showToast('Reset to defaults — click Save & Publish to go live.','warning');},'danger');}
 
 /* ── Password ── */
-function changePassword() {
+async function changePassword() {
   const cur=document.getElementById('f_curPw').value, nw=document.getElementById('f_newPw').value, nw2=document.getElementById('f_newPw2').value;
-  if(cur!==adminData.adminPassword){showToast('Current password incorrect.','error');return;}
-  if(!nw||nw.length<4){showToast('Password must be at least 4 characters.','error');return;}
+  if(!cur){showToast('Enter your current password.','error');return;}
+  if(!nw||nw.length<4){showToast('New password must be at least 4 characters.','error');return;}
   if(nw!==nw2){showToast('Passwords do not match.','error');return;}
-  adminData.adminPassword=nw; markUnsaved();
+  // Hash current password and verify
+  const hashStr = async pw => { const buf=await crypto.subtle.digest('SHA-256',new TextEncoder().encode(pw)); return Array.from(new Uint8Array(buf)).map(b=>b.toString(16).padStart(2,'0')).join(''); };
+  const curHash = await hashStr(cur);
+  if(curHash !== adminData.adminPassword){showToast('Current password is incorrect.','error');return;}
+  // Hash and save new password
+  adminData.adminPassword = await hashStr(nw);
+  markUnsaved();
   document.getElementById('f_curPw').value=''; document.getElementById('f_newPw').value=''; document.getElementById('f_newPw2').value='';
   showToast('Password updated — click Save & Publish to go live.','success');
 }
