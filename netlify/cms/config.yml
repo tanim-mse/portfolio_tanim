@@ -1,0 +1,17 @@
+backend:
+  name: git-gateway
+  branch: main
+
+media_folder: "images"
+
+collections:
+  - name: "settings"
+    label: "Portfolio Settings"
+    files:
+      - label: "Site Data"
+        name: "data"
+        file: "data.js"
+        fields:
+          - { label: "Name", name: "name", widget: "string" }
+          - { label: "Bio", name: "bio", widget: "text" }
+          - { label: "Email", name: "email", widget: "string" }
