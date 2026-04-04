@@ -506,9 +506,36 @@ function updateGithubStatus(ok) {
 }
 
 /* ── Init ── */
-function initDashboard() {
-  adminData = getData();
-  updateGithubStatus(!!localStorage.getItem('gh_token'));
+async function initDashboard() {
+  // Always load from GitHub (the source of truth) so admin shows live data
+  const token = localStorage.getItem('gh_token');
+  document.getElementById('publishMsg') && (document.getElementById('publishMsg').textContent = 'Loading live data…');
+
+  if (token) {
+    try {
+      const res = await fetch(
+        `https://api.github.com/repos/${GITHUB_OWNER}/${GITHUB_REPO}/contents/${GITHUB_FILE}?ref=${GITHUB_BRANCH}&t=${Date.now()}`,
+        { headers: { Authorization: `token ${token}`, 'User-Agent': 'PortfolioAdmin' } }
+      );
+      if (res.ok) {
+        const fileData = await res.json();
+        const raw = decodeURIComponent(escape(atob(fileData.content.replace(/\n/g,''))));
+        // Extract DEFAULT_DATA from the JS file
+        const match = raw.match(/const DEFAULT_DATA\s*=\s*(\{[\s\S]*?\});\s*\n/);
+        if (match) {
+          try {
+            adminData = JSON.parse(match[1]);
+            // Also sync localStorage so getData() is consistent
+            saveData(adminData);
+          } catch(e) { adminData = getData(); }
+        } else { adminData = getData(); }
+      } else { adminData = getData(); }
+    } catch(e) { adminData = getData(); }
+  } else {
+    adminData = getData();
+  }
+
+  updateGithubStatus(!!token);
   loadProfile(); loadAbout(); loadSkills();
   loadProjects(); loadResearch(); loadContact(); loadAppearance();
 }
@@ -535,6 +562,7 @@ function loadProfile() {
   document.getElementById('f_twWords').value=(D.typewriterWords||[]).join('\n');
   document.getElementById('f_photoURL').value=D.photoURL||'';
   document.getElementById('f_cvLink').value=D.cvLink||'';
+  updatePhotoPreview(D.photoURL||'');
 }
 function loadAbout() {
   const D=adminData;
@@ -870,14 +898,6 @@ function updatePhotoPreview(src) {
     preview.innerHTML = 'TI';
   }
 }
-
-// Update loadProfile to also show the photo preview
-const _origLoadProfile = loadProfile;
-function loadProfile() {
-  _origLoadProfile();
-  const D = adminData;
-  updatePhotoPreview(D.photoURL || '');
-};
 </script>
 </body>
 </html>
