@@ -58,7 +58,7 @@ const DEFAULT_DATA = {
       "title": "Modified Structural Design of Pit Furnace for Foundry: Mathematical Optimization for enhanced Performance",
       "excerpt": "Exciting projects are on the way. Check back soon!",
       "featuredImage": "",
-      "tags": "Pit Furnace, Modified Design",
+      "tags": "Pit Furnace, Modified Design, Academics",
       "link": "#",
       "date": "Apr 2026",
       "status": "Ongoing",
@@ -142,6 +142,13 @@ const DEFAULT_DATA = {
           "type": "paragraph",
           "id": "mj82vbp071e",
           "content": "This cross-section illustrates the layered walls, crucible placement, sealed lid, burner inlet, recuperator, and integrated flue."
+        },
+        {
+          "type": "image",
+          "id": "m2ymva7gyk",
+          "src": "",
+          "caption": "",
+          "size": "full"
         }
       ]
     }
