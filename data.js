@@ -74,9 +74,74 @@ const DEFAULT_DATA = {
           "id": "u2u58ukuifj"
         },
         {
+          "type": "heading1",
+          "id": "yl2ohx19sw9",
+          "content": "Standard vs. Proposed Design:"
+        },
+        {
           "type": "paragraph",
           "id": "1qh77mqfbnq",
-          "content": "Standard vs. Proposed Design:\nStandard pit furnace (e.g., square/rectangular or basic cylindrical) often uses single-layer firebrick lining (A150mm), minimal insulation (for gas only), no heat recovery, and simple burner placement. This leads to too high a wall and exhaust losses (~90-97% of input energy)."
+          "content": "Standard pit furnace (e.g., square/rectangular or basic cylindrical) often uses single-layer firebrick lining (~150mm), minimal insulation (for gas only), no heat recovery, and simple burner placement. This leads to too high a wall and exhaust losses (~40-60% of input energy)."
+        },
+        {
+          "type": "heading1",
+          "id": "iuzchypy0wj",
+          "content": "Proposed Modified Design (Cylindrical Pit Furnace)"
+        },
+        {
+          "type": "heading2",
+          "id": "r6f58r4uojj",
+          "content": "Shape and Dimension: "
+        },
+        {
+          "type": "paragraph",
+          "id": "nx8vq3m76p",
+          "content": "Cylindrical (internal combustion chamber dia. ≈0.3 m, height ≈1.35 m) for reduced surface-to-volume ratio and uniform heating. Overall external diameter ≈0.4 m, total height ≈1.5 m (suitable for ~20% aluminum change, matching common foundry scales)."
+        },
+        {
+          "type": "heading2",
+          "id": "aumbeo7nr4",
+          "content": "Multi-layer Lining:"
+        },
+        {
+          "type": "paragraph",
+          "id": "1lmzrh36e7d",
+          "content": "i. Inner refractory (firebrick, 100 mm, high K ≈ 1.2 Wm.K for durability)\nii. Outer insulation (ceramic fiber 100 mm, low K ≈ 0.3 Wm.K for reduced conduction).\niii. Thin steel shell (2 mm)."
+        },
+        {
+          "type": "heading2",
+          "id": "pb840lurjvj",
+          "content": "Recuperator:"
+        },
+        {
+          "type": "paragraph",
+          "id": "7ik1iqnba69",
+          "content": "Counter-flow gas-to-air heat exchanger on the flue (effectiveness ε ≈ 0.6-0.7) to preheat combustion air."
+        },
+        {
+          "type": "heading2",
+          "id": "9qmvwoy9c1n",
+          "content": "Sealing and Burner:"
+        },
+        {
+          "type": "paragraph",
+          "id": "e5unbo7xno",
+          "content": "Improved lid seal (ceramic fiber gasket) to minimize leakage; optimized side burner inlet for better flame distribution and controlled excess air."
+        },
+        {
+          "type": "heading2",
+          "id": "hgcochw4q5k",
+          "content": "Others: "
+        },
+        {
+          "type": "paragraph",
+          "id": "rj169nxquq",
+          "content": "Bottom base reinforced; flue positioned for efficient exhaust flow."
+        },
+        {
+          "type": "paragraph",
+          "id": "mj82vbp071e",
+          "content": "This cross-section illustrates the layered walls, crucible placement, sealed lid, burner inlet, recuperator, and integrated flue."
         }
       ]
     }
