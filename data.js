@@ -149,6 +149,86 @@ const DEFAULT_DATA = {
           "type": "paragraph",
           "id": "mj82vbp071e",
           "content": "This cross-section illustrates the layered walls, crucible placement, sealed lid, burner inlet, recuperator, and integrated flue."
+        },
+        {
+          "type": "heading2",
+          "id": "ucjro1f4b4",
+          "content": "Mathematical Modeling of Key Variables"
+        },
+        {
+          "type": "heading3",
+          "id": "jzlanufldj",
+          "content": "Steady-state heat balance (energy conservation):"
+        },
+        {
+          "type": "formula",
+          "id": "x0l2mww4gjj",
+          "latex": " Q_{\\text{input}} = Q_{\\text{useful}} + Q_{\\text{wall}} + Q_{\\text{exhaust}} + Q_{\\text{other}} "
+        },
+        {
+          "type": "paragraph",
+          "id": "gh614br7jj",
+          "content": "Where "
+        },
+        {
+          "type": "formula",
+          "id": "22m4twffnnd",
+          "latex": " Q_{\\text{other}} = includes opening/radiation losses (minimized by sealing)"
+        },
+        {
+          "type": "heading3",
+          "id": "4hyeyniz6a",
+          "content": "Thermal Performance:"
+        },
+        {
+          "type": "paragraph",
+          "id": "zj331ar7d9",
+          "content": "Furnace efficiency, "
+        },
+        {
+          "type": "formula",
+          "id": "r0ps63fbitr",
+          "latex": " \\eta = \\frac{Q_{\\text{useful}}}{Q_{\\text{input}}} \\times 100\\% "
+        },
+        {
+          "type": "formula",
+          "id": "gw9a2sxdow",
+          "latex": " Q_{\\text{useful}} = M_{\\text{metal}} \\times (C_p \\Delta T + L_f) = 20.06 \\text{ MJ} "
+        },
+        {
+          "type": "formula",
+          "id": "63skm4kqjfy",
+          "latex": "M_{\\text{metal}} = 20 \\text{ kg}"
+        },
+        {
+          "type": "formula",
+          "id": "i8t70fpbt8",
+          "latex": "C_p \\approx 0.9 \\text{ J/kg.K} "
+        },
+        {
+          "type": "formula",
+          "id": "nhyozu98mi",
+          "latex": "\\Delta T = 670 \\text{ K}   "
+        },
+        {
+          "type": "formula",
+          "id": "xq1cjqtjngp",
+          "latex": " L_f = 400 \\text{ kJ/kg} "
+        },
+        {
+          "type": "paragraph",
+          "id": "4yhs5r9tojn",
+          "content": "Wall heat loss (cylindrical)"
+        },
+        {
+          "type": "formula",
+          "id": "w6mo6ex8mxi",
+          "latex": " Q_{\\text{wall}} = \\frac{\\Delta T}{R_{\\text{total}}} \\quad \\begin{cases} \\Delta T = 870 \\text{ K} \\\\ H = 1.35 \\text{ m} \\\\ h_0 = 15 \\text{ W/m}^2 \\text{ K} \\end{cases} "
+        },
+        {
+          "type": "heading1",
+          "id": "8l42swqu7rl",
+          "content": "Standard design (single layer):"
         }
       ]
     }
