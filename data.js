@@ -61,7 +61,7 @@ const DEFAULT_DATA = {
       "tags": "Raw Materials, Ceramics, Academics",
       "link": "#",
       "date": "Apr 2026",
-      "status": "Ongoing",
+      "status": "Completed",
       "blocks": [
         {
           "type": "heading1",
