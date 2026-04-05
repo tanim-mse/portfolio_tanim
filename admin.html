@@ -116,6 +116,17 @@
 .block-image-url-input:focus { border-color: #7c3aed; }
 .block-img-upload-btn { display: inline-flex; align-items: center; gap: 5px; padding: 6px 12px; border-radius: 8px; font-size: 0.78rem; font-weight: 600; background: rgba(124,58,237,0.15); border: 1px solid rgba(124,58,237,0.3); color: #c4b5fd; cursor: pointer; transition: all .2s; flex-shrink: 0; }
 .block-img-upload-btn:hover { background: rgba(124,58,237,0.25); }
+
+/* Upload spinner */
+.upload-spinner {
+  width: 28px; height: 28px;
+  border: 3px solid rgba(124,58,237,0.2);
+  border-top-color: #7c3aed;
+  border-radius: 50%;
+  animation: spin .7s linear infinite;
+  display: inline-block;
+}
+@keyframes spin { to { transform: rotate(360deg); } }
 .block-image-caption { width: 100%; background: transparent; border: none; outline: none; border-top: 1px solid rgba(255,255,255,0.06); color: #64748b; font-family: 'DM Sans', sans-serif; font-size: 0.82rem; font-style: italic; padding: 8px 12px; }
 .block-image-caption::placeholder { color: #1e293b; }
 .img-size-btns { display: flex; gap: 4px; }
@@ -1030,7 +1041,7 @@ function buildBlockContent(pi, bi, block) {
       <div class="block-image-controls">
         <label class="block-img-upload-btn">
           <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
-          Upload
+          Upload Image
           <input type="file" accept="image/*" style="display:none" onchange="handleBlockImage(${pi},${bi},this)">
         </label>
         <input type="url" class="block-image-url-input" placeholder="or paste image URL…" value="${esc(hasSrc && !block.src.startsWith('data:') ? block.src : '')}" oninput="handleBlockImageURL(${pi},${bi},this.value)">
@@ -1142,33 +1153,168 @@ function autoResize(ta) {
   ta.style.height = ta.scrollHeight + 'px';
 }
 
-function handleBlockImage(pi, bi, input) {
+/* ══════════════════════════════════════════════
+   CLOUDINARY IMAGE UPLOAD
+   Cloud: dr2b6pzux | Preset: portfolio_uploads
+══════════════════════════════════════════════ */
+const CLOUDINARY_CLOUD = 'dr2b6pzux';
+const CLOUDINARY_PRESET = 'portfolio_uploads';
+const CLOUDINARY_URL = 'https://api.cloudinary.com/v1_1/' + CLOUDINARY_CLOUD + '/image/upload';
+
+async function uploadToCloudinary(file, onProgress) {
+  return new Promise((resolve, reject) => {
+    const formData = new FormData();
+    formData.append('file', file);
+    formData.append('upload_preset', CLOUDINARY_PRESET);
+
+    const xhr = new XMLHttpRequest();
+    xhr.open('POST', CLOUDINARY_URL);
+
+    if (onProgress) {
+      xhr.upload.addEventListener('progress', e => {
+        if (e.lengthComputable) onProgress(Math.round((e.loaded / e.total) * 100));
+      });
+    }
+
+    xhr.onload = () => {
+      if (xhr.status === 200) {
+        const data = JSON.parse(xhr.responseText);
+        resolve(data.secure_url);
+      } else {
+        reject(new Error('Upload failed: ' + xhr.status));
+      }
+    };
+    xhr.onerror = () => reject(new Error('Network error during upload'));
+    xhr.send(formData);
+  });
+}
+
+/* ── Block image upload → Cloudinary ── */
+async function handleBlockImage(pi, bi, input) {
   const file = input.files[0];
   if (!file) return;
-  if (file.size > 2*1024*1024) { showToast('Keep images under 2MB for best performance.', 'error'); return; }
-  const reader = new FileReader();
-  reader.onload = e => {
+
+  const previewEl = document.getElementById('block_img_preview_' + pi + '_' + bi);
+  if (previewEl) previewEl.innerHTML = '<div style="padding:20px;text-align:center;color:#7c3aed"><div class="upload-spinner"></div><div style="margin-top:8px;font-size:0.8rem">Uploading to Cloudinary…<span id="up_prog_' + pi + '_' + bi + '">0%</span></div></div>';
+
+  try {
+    const url = await uploadToCloudinary(file, pct => {
+      const prog = document.getElementById('up_prog_' + pi + '_' + bi);
+      if (prog) prog.textContent = ' ' + pct + '%';
+    });
+
     collectBlocksFromDOM(pi);
-    projectBlocks[pi][bi].src = e.target.result;
-    const previewEl = document.getElementById(`block_img_preview_${pi}_${bi}`);
+    if (!projectBlocks[pi][bi]) return;
+    projectBlocks[pi][bi].src = url;
     const size = projectBlocks[pi][bi].size || 'medium';
-    if (previewEl) previewEl.innerHTML = `<img src="${e.target.result}" class="block-image-preview-el" style="max-width:${size==='small'?'40%':size==='full'?'100%':'70%'}">`;
+    const maxW = size === 'small' ? '40%' : size === 'full' ? '100%' : '70%';
+    if (previewEl) previewEl.innerHTML = '<img src="' + url + '" class="block-image-preview-el" style="max-width:' + maxW + '">';
+
+    // Also update URL input so it shows the URL
+    const urlInput = document.querySelector('#block_item_' + pi + '_' + bi + ' .block-image-url-input');
+    if (urlInput) urlInput.value = url;
+
     markUnsaved();
-    showToast('Image loaded ✓', 'success');
-  };
-  reader.readAsDataURL(file);
+    showToast('Image uploaded to Cloudinary ✓', 'success');
+  } catch (err) {
+    if (previewEl) previewEl.innerHTML = '<span style="color:#f87171;font-size:0.82rem">Upload failed — check your connection</span>';
+    showToast('Upload failed: ' + err.message, 'error');
+  }
 }
 
 function handleBlockImageURL(pi, bi, url) {
   collectBlocksFromDOM(pi);
   if (!projectBlocks[pi][bi]) return;
   projectBlocks[pi][bi].src = url;
-  const previewEl = document.getElementById(`block_img_preview_${pi}_${bi}`);
+  const previewEl = document.getElementById('block_img_preview_' + pi + '_' + bi);
   const size = projectBlocks[pi][bi].size || 'medium';
+  const maxW = size === 'small' ? '40%' : size === 'full' ? '100%' : '70%';
   if (previewEl && url.trim()) {
-    previewEl.innerHTML = `<img src="${url}" class="block-image-preview-el" style="max-width:${size==='small'?'40%':size==='full'?'100%':'70%'}" onerror="this.style.display='none'">`;
+    previewEl.innerHTML = '<img src="' + url + '" class="block-image-preview-el" style="max-width:' + maxW + '" onerror="this.style.opacity=0.3">';
   }
   markUnsaved();
+}
+
+/* ── Featured image upload → Cloudinary ── */
+async function handleFeaturedImage(i, input) {
+  const file = input.files[0];
+  if (!file) return;
+
+  const zone = document.getElementById('feat_img_zone_' + i);
+  if (zone) zone.innerHTML = '<div style="padding:24px;text-align:center;color:#7c3aed"><div class="upload-spinner"></div><div style="margin-top:8px;font-size:0.82rem">Uploading… <span id="feat_prog_' + i + '">0%</span></div></div>';
+
+  try {
+    const url = await uploadToCloudinary(file, pct => {
+      const prog = document.getElementById('feat_prog_' + i);
+      if (prog) prog.textContent = pct + '%';
+    });
+
+    adminData.projects[i].featuredImage = url;
+    if (zone) zone.innerHTML = '<img src="' + url + '" class="feat-img-preview" id="feat_img_preview_' + i + '">';
+
+    // Update URL input
+    const urlInp = document.getElementById('feat_img_url_' + i);
+    if (urlInp) urlInp.value = url;
+
+    markUnsaved();
+    showToast('Featured image uploaded ✓', 'success');
+  } catch (err) {
+    if (zone) zone.innerHTML = '<div style="color:#f87171;padding:12px;font-size:0.82rem">Upload failed — try again</div>';
+    showToast('Upload failed: ' + err.message, 'error');
+  }
+}
+
+function handleFeaturedImageURL(i, url) {
+  if (!url.trim()) return;
+  adminData.projects[i].featuredImage = url;
+  const zone = document.getElementById('feat_img_zone_' + i);
+  if (zone) zone.innerHTML = '<img src="' + url + '" class="feat-img-preview" onerror="this.style.opacity=0.3">';
+  markUnsaved();
+}
+
+function clearFeaturedImage(i) {
+  adminData.projects[i].featuredImage = '';
+  loadProjects();
+  markUnsaved();
+}
+
+/* ── Profile photo upload → Cloudinary ── */
+async function handlePhotoUpload(input) {
+  const file = input.files[0];
+  if (!file) return;
+
+  const preview = document.getElementById('photoPreview');
+  if (preview) preview.innerHTML = '<div class="upload-spinner" style="margin:auto"></div>';
+
+  try {
+    const url = await uploadToCloudinary(file);
+    document.getElementById('f_photoURL').value = url;
+    adminData.photoURL = url;
+    updatePhotoPreview(url);
+    markUnsaved();
+    showToast('Profile photo uploaded ✓', 'success');
+  } catch (err) {
+    updatePhotoPreview('');
+    showToast('Upload failed: ' + err.message, 'error');
+  }
+}
+
+function updatePhotoPreview(src) {
+  const p = document.getElementById('photoPreview'); if (!p) return;
+  p.innerHTML = src && src.length > 4 ? '<img src="' + src + '" style="width:100%;height:100%;object-fit:cover;border-radius:50%">' : 'TI';
+}
+
+/* ── Excerpt auto-generate helper ── */
+function autoExcerpt(blocks) {
+  if (!blocks || !blocks.length) return '';
+  // Find first paragraph or heading with content
+  for (const b of blocks) {
+    if ((b.type === 'paragraph' || b.type === 'heading1' || b.type === 'heading2' || b.type === 'heading3') && b.content && b.content.trim()) {
+      const text = b.content.trim();
+      return text.length > 130 ? text.slice(0, 127) + '…' : text;
+    }
+  }
+  return '';
 }
 
 function setImgSize(pi, bi, size, btnEl) {
@@ -1282,37 +1428,14 @@ function collectAllProjectBlocks() {
   (adminData.projects || []).forEach((p, i) => {
     collectBlocksFromDOM(i);
     if (projectBlocks[i]) p.blocks = projectBlocks[i];
+    // Auto-generate excerpt if blank
+    if (!p.excerpt || !p.excerpt.trim()) {
+      p.excerpt = autoExcerpt(p.blocks || []);
+    }
   });
 }
 
 /* ── Featured Image ── */
-function handleFeaturedImage(i, input) {
-  const file = input.files[0];
-  if (!file) return;
-  if (file.size > 2*1024*1024) { showToast('Featured image should be under 2MB.','error'); return; }
-  const reader = new FileReader();
-  reader.onload = e => {
-    adminData.projects[i].featuredImage = e.target.result;
-    const zone = document.getElementById(`feat_img_zone_${i}`);
-    if (zone) zone.innerHTML = `<img src="${e.target.result}" class="feat-img-preview" id="feat_img_preview_${i}">`;
-    markUnsaved();
-    showToast('Featured image loaded ✓', 'success');
-  };
-  reader.readAsDataURL(file);
-}
-function handleFeaturedImageURL(i, url) {
-  if (!url.trim()) return;
-  adminData.projects[i].featuredImage = url;
-  const zone = document.getElementById(`feat_img_zone_${i}`);
-  if (zone) zone.innerHTML = `<img src="${url}" class="feat-img-preview" onerror="this.style.opacity=0.3">`;
-  markUnsaved();
-}
-function clearFeaturedImage(i) {
-  adminData.projects[i].featuredImage = '';
-  loadProjects();
-  markUnsaved();
-}
-
 /* ── Project CRUD ── */
 function addProject() {
   collectAllProjectBlocks();
@@ -1393,13 +1516,20 @@ function collectProjectFields(i) {
   const g = id => { const el = document.getElementById(id); return el ? el.value : null; };
   const p = adminData.projects[i];
   if (!p) return;
-  if (g(`pt_${i}`) !== null) {
-    p.title   = g(`pt_${i}`) || p.title;
-    p.date    = g(`pdate_${i}`) || '';
-    p.status  = g(`pstatus_${i}`) || 'Ongoing';
-    p.excerpt = g(`pexcerpt_${i}`) || '';
-    p.tags    = g(`pg_${i}`) || '';
-    p.link    = g(`pl_${i}`) || '#';
+  if (g('pt_' + i) !== null) {
+    p.title  = g('pt_' + i) || p.title;
+    p.date   = g('pdate_' + i) || '';
+    p.status = g('pstatus_' + i) || 'Ongoing';
+    p.tags   = g('pg_' + i) || '';
+    p.link   = g('pl_' + i) || '#';
+    // Auto-generate excerpt from blocks if left blank
+    const typedExcerpt = g('pexcerpt_' + i) || '';
+    if (typedExcerpt.trim()) {
+      p.excerpt = typedExcerpt;
+    } else {
+      collectBlocksFromDOM(i);
+      p.excerpt = autoExcerpt(projectBlocks[i] || []);
+    }
   }
   collectBlocksFromDOM(i);
   if (projectBlocks[i]) p.blocks = projectBlocks[i];
@@ -1543,17 +1673,7 @@ function showToast(msg,type='success'){const t=document.getElementById('adminToa
 function esc(str){return String(str||'').replace(/&/g,'&amp;').replace(/"/g,'&quot;').replace(/</g,'&lt;').replace(/>/g,'&gt;');}
 window.addEventListener('beforeunload',e=>{if(hasUnsaved){e.preventDefault();e.returnValue='';}});
 
-function handlePhotoUpload(input) {
-  const file = input.files[0]; if (!file) return;
-  if (file.size > 3*1024*1024) { showToast('Image too large — please use a file under 3MB.','error'); return; }
-  const reader = new FileReader();
-  reader.onload = e => { const b=e.target.result; document.getElementById('f_photoURL').value=b; adminData.photoURL=b; updatePhotoPreview(b); markUnsaved(); showToast('Photo loaded — click Save & Publish to go live.','success'); };
-  reader.readAsDataURL(file);
-}
-function updatePhotoPreview(src) {
-  const p = document.getElementById('photoPreview'); if (!p) return;
-  p.innerHTML = src && src.length>4 ? `<img src="${src}" style="width:100%;height:100%;object-fit:cover;border-radius:50%">` : 'TI';
-}
+
 </script>
 </body>
 </html>
