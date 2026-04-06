@@ -450,14 +450,23 @@ function buildToC(blocks){
   var wrap=document.getElementById('projTocInline');
   var linksEl=document.getElementById('projTocLinks');
   if(hs.length<3){wrap.style.display='none';return;}
-  var content=document.getElementById('projContent');
-  content.querySelectorAll('h1,h2,h3').forEach(function(el,i){el.id='ph-'+i;});
-  linksEl.innerHTML=hs.map(function(b,i){
-    var cls=b.type==='heading2'?'toc-h2':b.type==='heading3'?'toc-h3':'';
-    return '<a class="toc-link '+cls+'" onclick="projScrollTo('ph-'+i+'');return false" href="#">'+(b.content||'')+'</a>';
-  }).join('');
+  var rc=document.getElementById('projContent');
+  rc.querySelectorAll('h1,h2,h3').forEach(function(el,i){el.id='ph-'+i;});
+  var html='';
+  for(var i=0;i<hs.length;i++){
+    var cls=hs[i].type==='heading2'?'toc-h2':hs[i].type==='heading3'?'toc-h3':'';
+    html+='<a class="toc-link '+cls+'" data-id="ph-'+i+'" href="#">'+(hs[i].content||'')+'</a>';
+  }
+  linksEl.innerHTML=html;
+  linksEl.querySelectorAll('a[data-id]').forEach(function(a){
+    a.addEventListener('click',function(e){
+      e.preventDefault();
+      projScrollTo(this.getAttribute('data-id'));
+    });
+  });
   wrap.style.display='block';
 }
+
 
 function projScrollTo(id){
   var s=document.getElementById('projPageScroll');
