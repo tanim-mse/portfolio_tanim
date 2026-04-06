@@ -620,22 +620,28 @@ h1,h2,h3,h4 { font-family: var(--font-head); font-weight: 700; line-height: 1.2;
   flex-direction: column;
   opacity: 0;
   pointer-events: none;
-  transform: translateX(30px);
-  transition: opacity .3s var(--ease), transform .3s var(--ease);
+  transform: translateY(16px);
+  transition: opacity .35s var(--ease), transform .35s var(--ease);
   visibility: hidden;
-  background: var(--bg);
+  /* No background — canvas renders behind this via z-index layering */
+}
+/* Dark overlay so text is readable over the canvas */
+.project-page::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background: rgba(8,8,16,0.82);
+  backdrop-filter: blur(2px);
+  -webkit-backdrop-filter: blur(2px);
+  z-index: -1;
+  pointer-events: none;
 }
 .project-page.open {
   display: flex;
   opacity: 1;
   pointer-events: auto;
-  transform: translateX(0);
+  transform: translateY(0);
   visibility: visible;
-  animation: projPageIn .3s var(--ease) forwards;
-}
-@keyframes projPageIn {
-  from { opacity:0; transform:translateX(30px); }
-  to   { opacity:1; transform:translateX(0); }
 }
 /* When project page is open, hide the main scroll but keep canvas */
 body.proj-page-open { overflow: hidden; }
@@ -736,16 +742,17 @@ body.proj-page-open { overflow: hidden; }
 /* Featured image banner */
 .proj-feat-img-wrap {
   width: 100%;
-  max-height: 360px;
+  max-height: 260px;
   overflow: hidden;
-  border-radius: 16px;
-  margin-bottom: 36px;
+  border-radius: 14px;
+  margin-bottom: 28px;
   position: relative;
+  box-shadow: 0 8px 40px rgba(0,0,0,0.5);
 }
 .proj-feat-img-wrap img {
-  width: 100%; height: 360px;
+  width: 100%; height: 260px;
   object-fit: cover; display: block;
-  border-radius: 16px;
+  border-radius: 14px;
 }
 .proj-feat-img-fade {
   position: absolute; bottom: 0; left: 0; right: 0;
@@ -758,11 +765,11 @@ body.proj-page-open { overflow: hidden; }
 .proj-page-badges { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 16px; }
 .proj-page-title {
   font-family: var(--font-head);
-  font-size: clamp(1.7rem, 4vw, 2.6rem);
+  font-size: clamp(1.4rem, 2.5vw, 2rem);
   color: var(--text-bright);
-  font-weight: 800;
-  line-height: 1.2;
-  margin-bottom: 18px;
+  font-weight: 700;
+  line-height: 1.3;
+  margin-bottom: 16px;
   letter-spacing: 0.01em;
 }
 .proj-page-tags { display: flex; flex-wrap: wrap; gap: 7px; margin-bottom: 12px; }
@@ -1025,8 +1032,8 @@ body.proj-page-open { overflow: hidden; }
   .proj-page-topbar { padding: 0 14px; }
   .proj-page-back span { display: none; }
   .proj-page-title { font-size: 1.4rem; }
-  .proj-feat-img-wrap { max-height: 220px; margin-bottom: 24px; }
-  .proj-feat-img-wrap img { height: 220px; }
+  .proj-feat-img-wrap { max-height: 180px; margin-bottom: 20px; }
+  .proj-feat-img-wrap img { height: 180px; }
   .proj-toc-inline { padding: 12px 14px; }
 }
 
