@@ -1783,151 +1783,166 @@ window.addEventListener('beforeunload',e=>{if(hasUnsaved){e.preventDefault();e.r
 async function importPDF(pi, input) {
   const file = input.files[0];
   if (!file) return;
-  input.value = ''; // reset so same file can be re-imported
+  input.value = '';
 
-  // Set up PDF.js worker
-  if (window.pdfjsLib) {
-    pdfjsLib.GlobalWorkerOptions.workerSrc =
-      'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js';
-  } else {
-    showToast('PDF.js not loaded — please refresh and try again.', 'error');
-    return;
+  if (!window.pdfjsLib) {
+    showToast('PDF.js not loaded — please refresh and try again.', 'error'); return;
   }
+  pdfjsLib.GlobalWorkerOptions.workerSrc =
+    'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js';
 
-  // Show progress overlay
+  // Progress overlay
   const overlay = document.createElement('div');
   overlay.className = 'pdf-progress-overlay';
-  overlay.innerHTML = `
-    <div class="pdf-progress-box">
-      <div class="pdf-progress-title">📄 Importing PDF</div>
-      <div class="pdf-progress-sub" id="pdf_prog_sub">Reading file…</div>
-      <div class="pdf-progress-bar-wrap">
-        <div class="pdf-progress-bar-fill" id="pdf_prog_bar" style="width:0%"></div>
-      </div>
-      <div class="pdf-progress-status" id="pdf_prog_status">Starting…</div>
-    </div>`;
+  overlay.innerHTML = `<div class="pdf-progress-box">
+    <div class="pdf-progress-title">📄 Importing PDF</div>
+    <div class="pdf-progress-sub" id="pdf_prog_sub">Reading file…</div>
+    <div class="pdf-progress-bar-wrap"><div class="pdf-progress-bar-fill" id="pdf_prog_bar" style="width:0%"></div></div>
+    <div class="pdf-progress-status" id="pdf_prog_status">Starting…</div>
+  </div>`;
   document.body.appendChild(overlay);
-
-  const setSub = t => { const el = document.getElementById('pdf_prog_sub'); if(el) el.textContent = t; };
-  const setBar = p => { const el = document.getElementById('pdf_prog_bar'); if(el) el.style.width = p + '%'; };
-  const setStatus = t => { const el = document.getElementById('pdf_prog_status'); if(el) el.textContent = t; };
+  const setSub = t => { const e=document.getElementById('pdf_prog_sub'); if(e) e.textContent=t; };
+  const setBar = p => { const e=document.getElementById('pdf_prog_bar'); if(e) e.style.width=p+'%'; };
+  const setStatus = t => { const e=document.getElementById('pdf_prog_status'); if(e) e.textContent=t; };
 
   try {
     const arrayBuffer = await file.arrayBuffer();
     const pdf = await pdfjsLib.getDocument({ data: arrayBuffer }).promise;
     const totalPages = pdf.numPages;
-    const newBlocks = [];
+    const allBlocks = [];
 
     for (let pageNum = 1; pageNum <= totalPages; pageNum++) {
       setSub(`Analysing page ${pageNum} of ${totalPages}…`);
-      setBar(Math.round((pageNum / totalPages) * 85));
+      setBar(Math.round((pageNum / totalPages) * 88));
       setStatus(`Page ${pageNum} / ${totalPages}`);
 
       const page = await pdf.getPage(pageNum);
       const textContent = await page.getTextContent();
       const viewport = page.getViewport({ scale: 1.0 });
-      const pageHeight = viewport.height;
+      const pageH = viewport.height;
 
-      // Group items by Y position (same line = same item)
-      const lines = [];
-      let currentLine = null;
-      const YTHRESH = 3; // px tolerance for same line
-
+      // ── Step 1: Collect all text items with their Y position and font size ──
+      const rawItems = [];
       for (const item of textContent.items) {
         if (!item.str || !item.str.trim()) continue;
-        const y = Math.round(pageHeight - item.transform[5]); // flip Y
-        const fontSize = Math.abs(item.transform[3]) || 12;
-        const text = item.str;
+        rawItems.push({
+          y: Math.round(pageH - item.transform[5]), // flip PDF Y axis
+          x: Math.round(item.transform[4]),
+          text: item.str,
+          fs: Math.abs(item.transform[3]) || 12
+        });
+      }
 
-        if (currentLine && Math.abs(currentLine.y - y) < YTHRESH) {
-          currentLine.text += ' ' + text;
-          currentLine.fontSize = Math.max(currentLine.fontSize, fontSize);
+      // ── Step 2: Group items that are on the same visual line (same Y ± 2px) ──
+      const lines = [];
+      for (const item of rawItems) {
+        const last = lines[lines.length - 1];
+        if (last && Math.abs(last.y - item.y) <= 2) {
+          // Same line — append text with space if needed
+          last.text += (last.text.endsWith('-') ? '' : ' ') + item.text;
+          last.fs = Math.max(last.fs, item.fs);
         } else {
-          if (currentLine) lines.push(currentLine);
-          currentLine = { y, text: text.trim(), fontSize };
+          lines.push({ y: item.y, x: item.x, text: item.text.trim(), fs: item.fs });
         }
       }
-      if (currentLine) lines.push(currentLine);
 
-      // Convert lines to blocks
-      let paraBuffer = '';
+      // ── Step 3: Classify lines and merge into semantic blocks ──
+      // Key insight: consecutive paragraph lines belong to ONE block
+      // New block boundary = heading appears OR blank gap between lines OR bullet
+
+      let paraLines = []; // accumulate paragraph lines here
+      let prevY = null;
+      const LINE_GAP_THRESHOLD = 18; // px gap that signals new paragraph
+
+      const flushPara = () => {
+        if (!paraLines.length) return;
+        const text = paraLines.join(' ').replace(/\s+/g, ' ').trim();
+        if (text) allBlocks.push({ type: 'paragraph', id: uid(), content: text });
+        paraLines = [];
+      };
+
       for (const line of lines) {
         const t = line.text.trim();
-        if (!t) continue;
-        const fs = line.fontSize;
+        if (!t) { flushPara(); prevY = null; continue; }
 
-        // Classify by font size
-        if (fs >= 18) {
-          // Flush paragraph buffer first
-          if (paraBuffer.trim()) {
-            newBlocks.push({ type: 'paragraph', id: uid(), content: paraBuffer.trim() });
-            paraBuffer = '';
-          }
-          newBlocks.push({ type: 'heading1', id: uid(), content: t });
-        } else if (fs >= 14) {
-          if (paraBuffer.trim()) {
-            newBlocks.push({ type: 'paragraph', id: uid(), content: paraBuffer.trim() });
-            paraBuffer = '';
-          }
-          newBlocks.push({ type: 'heading2', id: uid(), content: t });
-        } else if (fs >= 12.5) {
-          if (paraBuffer.trim()) {
-            newBlocks.push({ type: 'paragraph', id: uid(), content: paraBuffer.trim() });
-            paraBuffer = '';
-          }
-          newBlocks.push({ type: 'heading3', id: uid(), content: t });
+        const fs = line.fs;
+        // Detect bullet points: starts with •, -, *, numbers like "1."
+        const isBullet = /^[•\-\*]\s/.test(t) || /^\d+\.\s/.test(t);
+        // Detect large gap = paragraph break
+        const bigGap = prevY !== null && (line.y - prevY) > LINE_GAP_THRESHOLD;
+
+        if (fs >= 17) {
+          flushPara();
+          allBlocks.push({ type: 'heading1', id: uid(), content: t });
+        } else if (fs >= 13.5) {
+          flushPara();
+          allBlocks.push({ type: 'heading2', id: uid(), content: t });
+        } else if (fs >= 12) {
+          flushPara();
+          allBlocks.push({ type: 'heading3', id: uid(), content: t });
+        } else if (isBullet) {
+          // Each bullet is its own paragraph block (they're already separate ideas)
+          flushPara();
+          // Strip bullet char
+          const cleanText = t.replace(/^[•\-\*]\s+/, '').replace(/^\d+\.\s+/, '').trim();
+          allBlocks.push({ type: 'paragraph', id: uid(), content: '• ' + cleanText });
         } else {
-          // Detect possible formula: contains = with surrounding symbols, or Greek chars
-          const isFormula = /[=∫∑∏√αβγδεθλμπρσφψω±≤≥≠∞∂]/.test(t) && t.length < 200;
-          if (isFormula && !paraBuffer) {
-            newBlocks.push({ type: 'formula', id: uid(), latex: t, notes: '' });
+          // Formula detection: contains = with mathematical symbols
+          const isFormula = paraLines.length === 0 &&
+            /[=∫∑∏√±≤≥≠∞∂αβγδεθλμπρσφψω]/.test(t) && t.length < 160 &&
+            !/[a-z]{4,}/.test(t); // formulas don't have long lowercase words
+
+          if (isFormula) {
+            flushPara();
+            allBlocks.push({ type: 'formula', id: uid(), latex: t, notes: '' });
           } else {
-            // Accumulate paragraph (join consecutive normal lines)
-            if (paraBuffer) paraBuffer += ' ' + t;
-            else paraBuffer = t;
-            // Flush when line seems like end of paragraph (ends with . ! ?)
-            if (/[.!?]$/.test(t) && paraBuffer.length > 120) {
-              newBlocks.push({ type: 'paragraph', id: uid(), content: paraBuffer.trim() });
-              paraBuffer = '';
+            // Normal text — check if this starts a new paragraph
+            if (bigGap && paraLines.length > 0) flushPara();
+            // Fix hyphenation at end of line: "non-" + "metallic" → "non-metallic"
+            const lastLine = paraLines[paraLines.length - 1] || '';
+            if (lastLine.endsWith('-')) {
+              paraLines[paraLines.length - 1] = lastLine.slice(0, -1) + t;
+            } else {
+              paraLines.push(t);
             }
           }
         }
+        prevY = line.y;
       }
-      // Flush remaining paragraph
-      if (paraBuffer.trim()) {
-        newBlocks.push({ type: 'paragraph', id: uid(), content: paraBuffer.trim() });
-      }
+      flushPara(); // flush any remaining paragraph
     }
 
-    setSub('Finalising blocks…');
-    setBar(95);
+    setBar(96);
+    setSub('Finalising…');
 
-    if (!newBlocks.length) {
+    if (!allBlocks.length) {
       document.body.removeChild(overlay);
       showToast('No readable text found in this PDF.', 'error');
       return;
     }
 
-    // Save current blocks then append PDF blocks
+    // Insert blocks into project
     collectBlocksFromDOM(pi);
     const existing = projectBlocks[pi] || [];
-    // If the project only has one empty block, replace it; otherwise append
     const isEmpty = existing.length === 1 && existing[0].type === 'paragraph' && !existing[0].content;
-    projectBlocks[pi] = isEmpty ? newBlocks : [...existing, { type:'divider', id:uid() }, ...newBlocks];
+    projectBlocks[pi] = isEmpty
+      ? allBlocks
+      : [...existing, { type: 'divider', id: uid() }, ...allBlocks];
     adminData.projects[pi].blocks = projectBlocks[pi];
     renderBlockList(pi);
     markUnsaved();
 
     setBar(100);
-    setSub(`Done! ${newBlocks.length} blocks imported.`);
-    setStatus(`✓ ${totalPages} pages processed`);
+    const blockCount = allBlocks.length;
+    setSub(`Done! ${blockCount} blocks imported from ${totalPages} page${totalPages>1?'s':''}.`);
+    setStatus('✓ Review and edit as needed');
     setTimeout(() => {
       document.body.removeChild(overlay);
-      showToast(`✓ Imported ${newBlocks.length} blocks from ${totalPages} page${totalPages>1?'s':''}.`, 'success');
-    }, 1200);
+      showToast(`✓ Imported ${blockCount} blocks — review and clean up as needed.`, 'success');
+    }, 1400);
 
   } catch (err) {
-    document.body.removeChild(overlay);
+    if (document.body.contains(overlay)) document.body.removeChild(overlay);
     console.error('PDF import error:', err);
     showToast('Failed to read PDF: ' + (err.message || 'Unknown error'), 'error');
   }
