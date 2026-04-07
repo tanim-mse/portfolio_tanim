@@ -1791,160 +1791,183 @@ async function importPDF(pi, input) {
   pdfjsLib.GlobalWorkerOptions.workerSrc =
     'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js';
 
-  // Progress overlay
+  /* ── Progress overlay ── */
   const overlay = document.createElement('div');
   overlay.className = 'pdf-progress-overlay';
   overlay.innerHTML = `<div class="pdf-progress-box">
     <div class="pdf-progress-title">📄 Importing PDF</div>
-    <div class="pdf-progress-sub" id="pdf_prog_sub">Reading file…</div>
-    <div class="pdf-progress-bar-wrap"><div class="pdf-progress-bar-fill" id="pdf_prog_bar" style="width:0%"></div></div>
-    <div class="pdf-progress-status" id="pdf_prog_status">Starting…</div>
+    <div class="pdf-progress-sub" id="ppSub">Reading file…</div>
+    <div class="pdf-progress-bar-wrap"><div class="pdf-progress-bar-fill" id="ppBar" style="width:0%"></div></div>
+    <div class="pdf-progress-status" id="ppStatus">Starting…</div>
   </div>`;
   document.body.appendChild(overlay);
-  const setSub = t => { const e=document.getElementById('pdf_prog_sub'); if(e) e.textContent=t; };
-  const setBar = p => { const e=document.getElementById('pdf_prog_bar'); if(e) e.style.width=p+'%'; };
-  const setStatus = t => { const e=document.getElementById('pdf_prog_status'); if(e) e.textContent=t; };
+  const ppSub = t => { const e=document.getElementById('ppSub'); if(e) e.textContent=t; };
+  const ppBar = p => { const e=document.getElementById('ppBar'); if(e) e.style.width=p+'%'; };
+  const ppStatus = t => { const e=document.getElementById('ppStatus'); if(e) e.textContent=t; };
 
   try {
-    const arrayBuffer = await file.arrayBuffer();
-    const pdf = await pdfjsLib.getDocument({ data: arrayBuffer }).promise;
+    const buf = await file.arrayBuffer();
+    const pdf = await pdfjsLib.getDocument({ data: buf }).promise;
     const totalPages = pdf.numPages;
+
+    /* ═══ PASS 1: collect ALL text items across all pages to find body font size ═══ */
+    ppSub('Analysing font sizes…');
+    ppBar(5);
+    const allItems = [];
+    for (let pg = 1; pg <= totalPages; pg++) {
+      const page = await pdf.getPage(pg);
+      const tc = await page.getTextContent();
+      const vp = page.getViewport({ scale: 1.0 });
+      for (const item of tc.items) {
+        if (!item.str || !item.str.trim()) continue;
+        const fs = Math.round(Math.abs(item.transform[3]) * 10) / 10; // 1dp precision
+        allItems.push({ fs, text: item.str.trim(),
+          y: Math.round(vp.height - item.transform[5]),
+          x: Math.round(item.transform[4]),
+          pg });
+      }
+    }
+
+    /* Find modal (most common) font size = body text size */
+    const fsCounts = {};
+    for (const it of allItems) {
+      const k = Math.round(it.fs); // round to integer for grouping
+      fsCounts[k] = (fsCounts[k] || 0) + 1;
+    }
+    // Body size = most frequent font size
+    let bodyFS = 12;
+    let maxCount = 0;
+    for (const [k, v] of Object.entries(fsCounts)) {
+      if (v > maxCount) { maxCount = v; bodyFS = parseFloat(k); }
+    }
+    // Heading thresholds RELATIVE to body size
+    const H3_MIN = bodyFS * 1.05; // slightly larger than body
+    const H2_MIN = bodyFS * 1.20; // 20% larger
+    const H1_MIN = bodyFS * 1.45; // 45% larger
+
+    ppStatus(`Body font: ~${bodyFS}pt detected`);
+    ppBar(15);
+
+    /* ═══ PASS 2: extract and merge text page by page ═══ */
     const allBlocks = [];
 
-    for (let pageNum = 1; pageNum <= totalPages; pageNum++) {
-      setSub(`Analysing page ${pageNum} of ${totalPages}…`);
-      setBar(Math.round((pageNum / totalPages) * 88));
-      setStatus(`Page ${pageNum} / ${totalPages}`);
+    for (let pg = 1; pg <= totalPages; pg++) {
+      ppSub(`Processing page ${pg} of ${totalPages}…`);
+      ppBar(15 + Math.round((pg / totalPages) * 75));
+      ppStatus(`Page ${pg} / ${totalPages}`);
 
-      const page = await pdf.getPage(pageNum);
-      const textContent = await page.getTextContent();
-      const viewport = page.getViewport({ scale: 1.0 });
-      const pageH = viewport.height;
+      const page = await pdf.getPage(pg);
+      const tc = await page.getTextContent();
+      const vp = page.getViewport({ scale: 1.0 });
+      const pageH = vp.height;
 
-      // ── Step 1: Collect all text items with their Y position and font size ──
-      const rawItems = [];
-      for (const item of textContent.items) {
-        if (!item.str || !item.str.trim()) continue;
-        rawItems.push({
-          y: Math.round(pageH - item.transform[5]), // flip PDF Y axis
-          x: Math.round(item.transform[4]),
-          text: item.str,
-          fs: Math.abs(item.transform[3]) || 12
-        });
-      }
-
-      // ── Step 2: Group items that are on the same visual line (same Y ± 2px) ──
+      /* ── Group raw items into visual lines (same Y ± 3px) ── */
       const lines = [];
-      for (const item of rawItems) {
+      for (const item of tc.items) {
+        if (!item.str || !item.str.trim()) continue;
+        const y = Math.round(pageH - item.transform[5]);
+        const fs = Math.abs(item.transform[3]);
         const last = lines[lines.length - 1];
-        if (last && Math.abs(last.y - item.y) <= 2) {
-          // Same line — append text with space if needed
-          last.text += (last.text.endsWith('-') ? '' : ' ') + item.text;
-          last.fs = Math.max(last.fs, item.fs);
+        if (last && Math.abs(last.y - y) <= 3) {
+          const joiner = last.text.endsWith('-') ? '' : ' ';
+          last.text += joiner + item.str;
+          last.fs = Math.max(last.fs, fs);
         } else {
-          lines.push({ y: item.y, x: item.x, text: item.text.trim(), fs: item.fs });
+          lines.push({ y, text: item.str, fs });
         }
       }
 
-      // ── Step 3: Classify lines and merge into semantic blocks ──
-      // Key insight: consecutive paragraph lines belong to ONE block
-      // New block boundary = heading appears OR blank gap between lines OR bullet
-
-      let paraLines = []; // accumulate paragraph lines here
+      /* ── Classify lines → blocks ── */
+      let paraLines = [];
       let prevY = null;
-      const LINE_GAP_THRESHOLD = 18; // px gap that signals new paragraph
+      const PARA_GAP = Math.round(bodyFS * 1.8); // gap bigger than 1.8× line height = new para
 
       const flushPara = () => {
         if (!paraLines.length) return;
-        const text = paraLines.join(' ').replace(/\s+/g, ' ').trim();
-        if (text) allBlocks.push({ type: 'paragraph', id: uid(), content: text });
+        // Join lines, fix hyphenation artifacts from PDF line-wrap
+        let joined = '';
+        for (let i = 0; i < paraLines.length; i++) {
+          const l = paraLines[i];
+          if (i === 0) { joined = l; continue; }
+          joined = joined.endsWith('-') ? joined.slice(0, -1) + l : joined + ' ' + l;
+        }
+        joined = joined.replace(/\s+/g, ' ').trim();
+        if (joined.length > 2) allBlocks.push({ type:'paragraph', id:uid(), content:joined });
         paraLines = [];
       };
 
       for (const line of lines) {
-        const t = line.text.trim();
+        const t = line.text.replace(/\s+/g, ' ').trim();
         if (!t) { flushPara(); prevY = null; continue; }
 
         const fs = line.fs;
-        // Detect bullet points: starts with •, -, *, numbers like "1."
-        const isBullet = /^[•\-\*]\s/.test(t) || /^\d+\.\s/.test(t);
-        // Detect large gap = paragraph break
-        const bigGap = prevY !== null && (line.y - prevY) > LINE_GAP_THRESHOLD;
+        const gap = prevY !== null ? (line.y - prevY) : 0;
+        const bigGap = prevY !== null && gap > PARA_GAP;
 
-        if (fs >= 17) {
+        /* Bullet detection */
+        const bulletMatch = t.match(/^([•●▸▹\-–—]|\d{1,2}[\.\)])\s+(.+)/);
+
+        /* Formula detection — only if line is short AND has math symbols */
+        const hasMath = /[=∫∑∏√±≤≥≠∞∂αβγδεθλμπρσφψω²³]/.test(t);
+        const isFormula = hasMath && t.length < 180
+          && !/\b(the|and|that|this|with|from|for|are|was|were|have|been|which)\b/i.test(t);
+
+        if (fs >= H1_MIN) {
           flushPara();
-          allBlocks.push({ type: 'heading1', id: uid(), content: t });
-        } else if (fs >= 13.5) {
+          allBlocks.push({ type:'heading1', id:uid(), content:t });
+        } else if (fs >= H2_MIN) {
           flushPara();
-          allBlocks.push({ type: 'heading2', id: uid(), content: t });
-        } else if (fs >= 12) {
+          allBlocks.push({ type:'heading2', id:uid(), content:t });
+        } else if (fs >= H3_MIN) {
           flushPara();
-          allBlocks.push({ type: 'heading3', id: uid(), content: t });
-        } else if (isBullet) {
-          // Each bullet is its own paragraph block (they're already separate ideas)
+          allBlocks.push({ type:'heading3', id:uid(), content:t });
+        } else if (bulletMatch) {
           flushPara();
-          // Strip bullet char
-          const cleanText = t.replace(/^[•\-\*]\s+/, '').replace(/^\d+\.\s+/, '').trim();
-          allBlocks.push({ type: 'paragraph', id: uid(), content: '• ' + cleanText });
+          allBlocks.push({ type:'paragraph', id:uid(), content:'• ' + bulletMatch[2].trim() });
+        } else if (isFormula) {
+          flushPara();
+          allBlocks.push({ type:'formula', id:uid(), latex:t, notes:'' });
         } else {
-          // Formula detection: contains = with mathematical symbols
-          const isFormula = paraLines.length === 0 &&
-            /[=∫∑∏√±≤≥≠∞∂αβγδεθλμπρσφψω]/.test(t) && t.length < 160 &&
-            !/[a-z]{4,}/.test(t); // formulas don't have long lowercase words
-
-          if (isFormula) {
-            flushPara();
-            allBlocks.push({ type: 'formula', id: uid(), latex: t, notes: '' });
-          } else {
-            // Normal text — check if this starts a new paragraph
-            if (bigGap && paraLines.length > 0) flushPara();
-            // Fix hyphenation at end of line: "non-" + "metallic" → "non-metallic"
-            const lastLine = paraLines[paraLines.length - 1] || '';
-            if (lastLine.endsWith('-')) {
-              paraLines[paraLines.length - 1] = lastLine.slice(0, -1) + t;
-            } else {
-              paraLines.push(t);
-            }
-          }
+          /* Normal paragraph text — accumulate until gap or heading */
+          if (bigGap) flushPara();
+          paraLines.push(t);
         }
         prevY = line.y;
       }
-      flushPara(); // flush any remaining paragraph
+      flushPara();
     }
 
-    setBar(96);
-    setSub('Finalising…');
+    ppBar(95); ppSub('Inserting blocks…');
 
     if (!allBlocks.length) {
       document.body.removeChild(overlay);
-      showToast('No readable text found in this PDF.', 'error');
-      return;
+      showToast('No text found — is this a scanned PDF?', 'error'); return;
     }
 
-    // Insert blocks into project
+    /* Insert into project */
     collectBlocksFromDOM(pi);
     const existing = projectBlocks[pi] || [];
-    const isEmpty = existing.length === 1 && existing[0].type === 'paragraph' && !existing[0].content;
+    const isEmpty = existing.length === 1
+      && existing[0].type === 'paragraph' && !existing[0].content;
     projectBlocks[pi] = isEmpty
       ? allBlocks
-      : [...existing, { type: 'divider', id: uid() }, ...allBlocks];
+      : [...existing, { type:'divider', id:uid() }, ...allBlocks];
     adminData.projects[pi].blocks = projectBlocks[pi];
     renderBlockList(pi);
     markUnsaved();
 
-    setBar(100);
-    const blockCount = allBlocks.length;
-    setSub(`Done! ${blockCount} blocks imported from ${totalPages} page${totalPages>1?'s':''}.`);
-    setStatus('✓ Review and edit as needed');
+    ppBar(100);
+    ppSub(`✓ ${allBlocks.length} blocks from ${totalPages} page${totalPages>1?'s':''}`);
+    ppStatus('Review and edit as needed');
     setTimeout(() => {
       document.body.removeChild(overlay);
-      showToast(`✓ Imported ${blockCount} blocks — review and clean up as needed.`, 'success');
-    }, 1400);
+      showToast(`✓ Imported ${allBlocks.length} blocks — review and clean up as needed.`, 'success');
+    }, 1500);
 
   } catch (err) {
     if (document.body.contains(overlay)) document.body.removeChild(overlay);
-    console.error('PDF import error:', err);
-    showToast('Failed to read PDF: ' + (err.message || 'Unknown error'), 'error');
+    console.error('PDF import:', err);
+    showToast('PDF error: ' + (err.message || 'Unknown'), 'error');
   }
 }
 
