@@ -68,25 +68,25 @@ h1,h2,h3,h4 { font-family: var(--font-head); font-weight: 700; line-height: 1.2;
   will-change: transform;
 }
 .cursor-ring {
-  position: fixed; top: -20px; left: -20px;
-  width: 40px; height: 40px; border-radius: 50%;
-  border: 1.5px solid rgba(124,58,237,0.6);
+  position: fixed; top: -24px; left: -24px;
+  width: 48px; height: 48px; border-radius: 50%;
+  border: 1.5px solid rgba(124,58,237,0);
   z-index: 99998; pointer-events: none;
   will-change: transform;
-  transition: width .3s var(--ease), height .3s var(--ease),
-              top .3s var(--ease), left .3s var(--ease),
-              border-color .3s, background .3s;
+  transition: border-color .2s, background .2s, width .2s, height .2s, top .2s, left .2s;
 }
+/* Ring only appears when hovering interactive elements */
 .cursor-ring.expanded {
-  width: 60px; height: 60px;
-  top: -30px; left: -30px;
-  border-color: rgba(124,58,237,0.4);
-  background: rgba(124,58,237,0.06);
+  width: 56px; height: 56px;
+  top: -28px; left: -28px;
+  border-color: rgba(124,58,237,0.55);
+  background: rgba(124,58,237,0.07);
 }
 .cursor-ring.clicked {
-  width: 32px; height: 32px;
-  top: -16px; left: -16px;
-  background: rgba(124,58,237,0.15);
+  width: 36px; height: 36px;
+  top: -18px; left: -18px;
+  background: rgba(124,58,237,0.18);
+  border-color: rgba(124,58,237,0.7);
 }
 
 /* ══ CANVAS ══ */
@@ -1357,8 +1357,7 @@ body::after {
    CLIP-PATH SECTION TITLE REVEAL
 ══════════════════════════════════════════════════════ */
 .section-title {
-  clip-path: inset(0 100% 0 0);
-  /* GSAP will animate this */
+  /* clip-path set by GSAP dynamically - no CSS default */
 }
 
 /* ══════════════════════════════════════════════════════
