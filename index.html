@@ -329,18 +329,40 @@ const STAR_COUNT = isMob ? 180 : 380;
 let stars = [];
 const STAR_COLS = ['255,255,255','200,180,255','150,220,255','220,255,230'];
 
+/* ── Planets ── */
+let planets = [];
+const PLANET_DATA = [
+  { bx:0.82, by:0.18, r:38, col1:'7c3aed', col2:'4c1d95', ringCol:'a78bfa', hasRing:true,  speed:0.00012 },
+  { bx:0.12, by:0.72, r:24, col1:'0e7490', col2:'083344', ringCol:null,      hasRing:false, speed:0.00018 },
+  { bx:0.65, by:0.85, r:16, col1:'065f46', col2:'022c22', ringCol:null,      hasRing:false, speed:0.00025 },
+  { bx:0.92, by:0.58, r:10, col1:'1e3a5f', col2:'0a1628', ringCol:null,      hasRing:false, speed:0.00030 },
+];
+
+function buildPlanets() {
+  planets = PLANET_DATA.map(d => ({
+    ...d,
+    angle: Math.random() * Math.PI * 2,
+    orbitR: Math.min(W,H) * (0.04 + Math.random()*0.03),
+    pulsePhase: Math.random() * Math.PI * 2
+  }));
+}
+
 function buildStars() {
   stars = [];
   for (let i = 0; i < STAR_COUNT; i++) {
+    const speed = 0.008 + Math.random() * 0.018; // autonomous drift speed
+    const angle = Math.random() * Math.PI * 2;
     stars.push({
       x: Math.random() * W,
       y: Math.random() * H,
       r: Math.random() * 1.4 + 0.2,
       alpha: Math.random() * 0.7 + 0.15,
-      twinkleSpeed: Math.random() * 0.02 + 0.005,
+      twinkleSpeed: Math.random() * 0.022 + 0.006,
       twinklePhase: Math.random() * Math.PI * 2,
       col: STAR_COLS[Math.floor(Math.random() * (i % 7 === 0 ? 4 : 1))],
-      depth: Math.random() * 3 + 0.5   // parallax depth tier
+      depth: Math.random() * 3 + 0.5,
+      vx: Math.cos(angle) * speed,  // autonomous drift
+      vy: Math.sin(angle) * speed
     });
   }
 }
@@ -482,31 +504,95 @@ function spaceDraw(ts) {
     ctx.fillRect(0, 0, W, H);
   }
 
-  /* ── Stars ── */
+  /* ── Stars — autonomous drift + twinkle + parallax ── */
   stars.forEach(s => {
+    /* Autonomous drift */
+    s.x = (s.x + s.vx + W) % W;
+    s.y = (s.y + s.vy + H) % H;
+
     s.twinklePhase += s.twinkleSpeed;
     const tw = 0.5 + Math.sin(s.twinklePhase) * 0.5;
-    const a  = s.alpha * (0.4 + tw * 0.6);
+    const a  = s.alpha * (0.45 + tw * 0.55);
 
-    /* parallax: each star moves based on its depth tier */
-    const px = (mouseX / W - 0.5) * s.depth * 8;
-    const py = (mouseY / H - 0.5) * s.depth * 6;
-    const sy_off = (scrollY * s.depth * 0.12) % H;
+    /* Mouse parallax layered on top of drift */
+    const px = (mouseX / W - 0.5) * s.depth * 9;
+    const py = (mouseY / H - 0.5) * s.depth * 7;
+    const sy_off = (scrollY * s.depth * 0.1) % H;
 
     const sx = ((s.x + px + W) % W);
     const sy = ((s.y + py - sy_off + H * 2) % H);
 
-    /* draw star with subtle glow on brighter ones */
     if (s.r > 1.0) {
-      const glow = ctx.createRadialGradient(sx, sy, 0, sx, sy, s.r * 5);
-      glow.addColorStop(0, `rgba(${s.col},${a * 0.4})`);
+      const glow = ctx.createRadialGradient(sx,sy,0,sx,sy,s.r*5.5);
+      glow.addColorStop(0, `rgba(${s.col},${a*0.45})`);
       glow.addColorStop(1, 'rgba(0,0,0,0)');
       ctx.fillStyle = glow;
-      ctx.beginPath(); ctx.arc(sx, sy, s.r * 5, 0, Math.PI * 2); ctx.fill();
+      ctx.beginPath(); ctx.arc(sx,sy,s.r*5.5,0,Math.PI*2); ctx.fill();
     }
-    ctx.beginPath(); ctx.arc(sx, sy, s.r, 0, Math.PI * 2);
+    ctx.beginPath(); ctx.arc(sx,sy,s.r,0,Math.PI*2);
     ctx.fillStyle = `rgba(${s.col},${a})`;
     ctx.fill();
+  });
+
+  /* ── Planets ── */
+  planets.forEach((p, pi) => {
+    p.angle += p.speed;
+    p.pulsePhase += 0.008;
+
+    const cx  = W * p.bx + Math.cos(p.angle) * p.orbitR;
+    const cy  = H * p.by + Math.sin(p.angle * 0.7) * p.orbitR * 0.5;
+    const mpx = (mouseX / W - 0.5) * (20 + pi * 8);
+    const mpy = (mouseY / H - 0.5) * (15 + pi * 6);
+    const px  = cx + mpx;
+    const py  = cy + mpy - (scrollY * (0.03 + pi * 0.01)) % (H * 3);
+
+    /* Skip if off-screen */
+    if (py < -p.r*6 || py > H + p.r*6 || px < -p.r*6 || px > W + p.r*6) return;
+
+    const pulse = 0.95 + Math.sin(p.pulsePhase) * 0.05;
+    const pr    = p.r * pulse;
+
+    /* Atmosphere glow */
+    const atm = ctx.createRadialGradient(px,py,pr*0.6, px,py, pr*3.5);
+    atm.addColorStop(0,   `rgba(${parseInt(p.col1.slice(0,2),16)},${parseInt(p.col1.slice(2,4),16)},${parseInt(p.col1.slice(4,6),16)},0.18)`);
+    atm.addColorStop(0.5, `rgba(${parseInt(p.col1.slice(0,2),16)},${parseInt(p.col1.slice(2,4),16)},${parseInt(p.col1.slice(4,6),16)},0.06)`);
+    atm.addColorStop(1,   'rgba(0,0,0,0)');
+    ctx.fillStyle = atm;
+    ctx.beginPath(); ctx.arc(px,py,pr*3.5,0,Math.PI*2); ctx.fill();
+
+    /* Ring (Saturn-style) for first planet */
+    if (p.hasRing) {
+      ctx.save();
+      ctx.translate(px, py);
+      ctx.scale(1, 0.28);
+      const rg = ctx.createRadialGradient(0,0,pr*1.1, 0,0, pr*2.4);
+      rg.addColorStop(0,   'rgba(167,139,250,0)');
+      rg.addColorStop(0.2, 'rgba(167,139,250,0.35)');
+      rg.addColorStop(0.6, 'rgba(167,139,250,0.18)');
+      rg.addColorStop(1,   'rgba(167,139,250,0)');
+      ctx.strokeStyle = rg;
+      ctx.lineWidth   = pr * 1.3;
+      ctx.beginPath(); ctx.arc(0,0,pr*1.75,0,Math.PI*2);
+      ctx.stroke();
+      ctx.restore();
+    }
+
+    /* Planet body */
+    const bodyGrad = ctx.createRadialGradient(px-pr*.3,py-pr*.3,pr*.1, px,py, pr);
+    const r1 = parseInt(p.col1.slice(0,2),16), g1 = parseInt(p.col1.slice(2,4),16), b1 = parseInt(p.col1.slice(4,6),16);
+    const r2 = parseInt(p.col2.slice(0,2),16), g2 = parseInt(p.col2.slice(2,4),16), b2 = parseInt(p.col2.slice(4,6),16);
+    bodyGrad.addColorStop(0,   `rgba(${Math.min(r1+40,255)},${Math.min(g1+30,255)},${Math.min(b1+30,255)},0.95)`);
+    bodyGrad.addColorStop(0.5, `rgba(${r1},${g1},${b1},0.9)`);
+    bodyGrad.addColorStop(1,   `rgba(${r2},${g2},${b2},0.85)`);
+    ctx.fillStyle = bodyGrad;
+    ctx.beginPath(); ctx.arc(px,py,pr,0,Math.PI*2); ctx.fill();
+
+    /* Specular highlight */
+    const spec = ctx.createRadialGradient(px-pr*.35,py-pr*.35,0, px-pr*.35,py-pr*.35, pr*.6);
+    spec.addColorStop(0, 'rgba(255,255,255,0.25)');
+    spec.addColorStop(1, 'rgba(255,255,255,0)');
+    ctx.fillStyle = spec;
+    ctx.beginPath(); ctx.arc(px,py,pr,0,Math.PI*2); ctx.fill();
   });
 
   /* ── Shooting stars ── */
@@ -543,9 +629,9 @@ function spaceDraw(ts) {
 }
 
 /* ── Init ── */
-resizeCanvas(); buildStars();
+resizeCanvas(); buildStars(); buildPlanets();
 requestAnimationFrame(ts => { lastTime = ts; spaceDraw(ts); });
-window.addEventListener('resize', () => { resizeCanvas(); buildStars(); });
+window.addEventListener('resize', () => { resizeCanvas(); buildStars(); buildPlanets(); });
 window.addEventListener('scroll', () => {
   targetScrollY = window.scrollY;
   detectSection();
@@ -556,29 +642,36 @@ document.addEventListener('mousemove', e => { targetMX = e.clientX; targetMY = e
 /* ══════════════════════════════════════════════
    CUSTOM CURSOR
 ══════════════════════════════════════════════ */
-const dot = document.getElementById('cursorDot');
+const dot  = document.getElementById('cursorDot');
 const ring = document.getElementById('cursorRing');
-let cx = 0, cy = 0, rx = 0, ry = 0;
+let cx=0, cy=0, rx=0, ry=0, onLink=false;
 
 const isTouchDevice = window.matchMedia('(pointer: coarse)').matches;
 if (!isTouchDevice) {
   document.body.classList.add('has-custom-cursor');
-  document.addEventListener('mousemove', e => { cx = e.clientX; cy = e.clientY; });
 
-  (function animateCursor() {
+  document.addEventListener('mousemove', e => {
+    cx = e.clientX; cy = e.clientY;
+    /* Dot: instant */
     dot.style.transform = `translate(${cx}px,${cy}px)`;
-    rx += (cx - rx) * 0.12;
-    ry += (cy - ry) * 0.12;
+  });
+
+  /* Ring: snappier lerp — 0.28 instead of 0.12 */
+  (function animateRing() {
+    rx += (cx - rx) * 0.28;
+    ry += (cy - ry) * 0.28;
     ring.style.transform = `translate(${rx}px,${ry}px)`;
-    requestAnimationFrame(animateCursor);
+    requestAnimationFrame(animateRing);
   })();
 
-  document.querySelectorAll('[data-cursor="link"]').forEach(el => {
-    el.addEventListener('mouseenter', () => ring.classList.add('expanded'));
-    el.addEventListener('mouseleave', () => ring.classList.remove('expanded'));
+  /* Ring only visible on hover, hidden otherwise */
+  document.addEventListener('mouseover', e => {
+    const isLink = e.target.closest('[data-cursor="link"],[data-cursor="hover"],a,button');
+    if (isLink) { ring.classList.add('expanded'); onLink=true; }
+    else if (onLink) { ring.classList.remove('expanded'); onLink=false; }
   });
   document.addEventListener('mousedown', () => ring.classList.add('clicked'));
-  document.addEventListener('mouseup', () => ring.classList.remove('clicked'));
+  document.addEventListener('mouseup',   () => ring.classList.remove('clicked'));
 }
 
 /* ══════════════════════════════════════════════
@@ -618,10 +711,10 @@ function initProjectAnim() {
 
 // Timeline items
 function initTimelineAnim() {
-  gsap.from('.timeline-item', {
-    scrollTrigger: { trigger: '.timeline', start: 'top 80%' },
-    x: -40, opacity: 0, duration: 0.6, ease: 'power2.out',
-    stagger: 0.1
+  document.querySelectorAll('.timeline-item').forEach((el,i) => {
+    gsap.fromTo(el, { x:-40, autoAlpha:0 },
+      { x:0, autoAlpha:1, duration:0.6, ease:'power2.out', delay:i*0.1,
+        scrollTrigger:{ trigger:el, start:'top 95%', once:true } });
   });
 }
 
@@ -636,14 +729,15 @@ function initStatAnim() {
 
 // Contact items
 function initContactAnim() {
-  gsap.from('.contact-item', {
-    scrollTrigger: { trigger: '.contact-info', start: 'top 80%' },
-    x: -30, opacity: 0, duration: 0.6, ease: 'power2.out'
+  document.querySelectorAll('.contact-item').forEach((el,i) => {
+    gsap.fromTo(el, { x:-30, autoAlpha:0 },
+      { x:0, autoAlpha:1, duration:0.6, ease:'power2.out', delay:i*0.1,
+        scrollTrigger:{ trigger:el, start:'top 95%', once:true } });
   });
-  gsap.from('.social-btn', {
-    scrollTrigger: { trigger: '.social-row', start: 'top 85%' },
-    scale: 0, opacity: 0, duration: 0.5, ease: 'back.out(2)',
-    stagger: 0.08
+  document.querySelectorAll('.social-btn').forEach((el,i) => {
+    gsap.fromTo(el, { scale:0, autoAlpha:0 },
+      { scale:1, autoAlpha:1, duration:0.5, ease:'back.out(2)', delay:i*0.08,
+        scrollTrigger:{ trigger:el, start:'top 98%', once:true } });
   });
   gsap.from('.form-group', {
     scrollTrigger: { trigger: '.contact-form', start: 'top 80%' },
@@ -1027,11 +1121,12 @@ function splitHeroName() {
 ══════════════════════════════════════════════ */
 function initClipReveals() {
   document.querySelectorAll('.section-title').forEach(el => {
-    gsap.fromTo(el,
-      { clipPath: 'inset(0 100% 0 0)', opacity: 1 },
-      { clipPath: 'inset(0 0% 0 0)', duration: 0.85, ease: 'power3.inOut',
-        scrollTrigger: { trigger: el, start: 'top 88%', once: true } }
-    );
+    /* Set initial clip via GSAP (not CSS) so heading is never permanently clipped */
+    gsap.set(el, { clipPath: 'inset(0 100% 0 0)' });
+    gsap.to(el, {
+      clipPath: 'inset(0 0% 0 0)', duration: 0.85, ease: 'power3.inOut',
+      scrollTrigger: { trigger: el, start: 'top 90%', once: true }
+    });
   });
 }
 
