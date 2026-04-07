@@ -13,22 +13,26 @@
 </head>
 <body>
 
+<!-- Custom cursor -->
+<div class="cursor-dot" id="cursorDot"></div>
+<div class="cursor-ring" id="cursorRing"></div>
+
 <canvas id="bgCanvas"></canvas>
 
 <!-- Navbar -->
 <nav class="navbar" id="navbar">
   <div class="nav-container">
-    <a href="#home" class="nav-logo">TI</a>
+    <a href="#home" class="nav-logo" data-cursor="link">TI</a>
     <ul class="nav-links" id="navLinks">
-      <li><a href="#home" class="nav-link active">Home</a></li>
-      <li><a href="#about" class="nav-link">About</a></li>
-      <li><a href="#skills" class="nav-link">Skills</a></li>
-      <li><a href="#projects" class="nav-link">Projects</a></li>
-      <li><a href="#research" class="nav-link">Research</a></li>
-      <li><a href="#contact" class="nav-link">Contact</a></li>
+      <li><a href="#home"     class="nav-link active" data-cursor="link">Home</a></li>
+      <li><a href="#about"    class="nav-link"        data-cursor="link">About</a></li>
+      <li><a href="#skills"   class="nav-link"        data-cursor="link">Skills</a></li>
+      <li><a href="#projects" class="nav-link"        data-cursor="link">Projects</a></li>
+      <li><a href="#research" class="nav-link"        data-cursor="link">Research</a></li>
+      <li><a href="#contact"  class="nav-link"        data-cursor="link">Contact</a></li>
     </ul>
     <div class="nav-right">
-      <a href="admin.html" class="admin-btn">
+      <a href="admin.html" class="admin-btn" data-cursor="link">
         <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
         Admin
       </a>
@@ -41,32 +45,32 @@
 <div class="mobile-overlay" id="mobileOverlay"></div>
 <div class="mobile-menu" id="mobileMenu">
   <button class="mobile-close" id="mobileClose">✕</button>
-  <a href="#home" class="mobile-link">Home</a>
-  <a href="#about" class="mobile-link">About</a>
-  <a href="#skills" class="mobile-link">Skills</a>
+  <a href="#home"     class="mobile-link">Home</a>
+  <a href="#about"    class="mobile-link">About</a>
+  <a href="#skills"   class="mobile-link">Skills</a>
   <a href="#projects" class="mobile-link">Projects</a>
   <a href="#research" class="mobile-link">Research</a>
-  <a href="#contact" class="mobile-link">Contact</a>
+  <a href="#contact"  class="mobile-link">Contact</a>
   <a href="admin.html" class="mobile-link admin-mobile">🔒 Admin Panel</a>
 </div>
 
 <!-- Hero -->
 <section class="hero" id="home">
   <div class="hero-content">
-    <p class="hero-label" id="heroLabel">Materials Science & Engineering</p>
-    <h1 class="hero-name" id="heroName">Tanim</h1>
-    <div class="hero-typewriter">
+    <p class="hero-label hero-anim" id="heroLabel">Materials Science & Engineering</p>
+    <h1 class="hero-name hero-anim" id="heroName">Tanim</h1>
+    <div class="hero-typewriter hero-anim">
       <span class="tw-prefix">I am a </span>
       <span class="tw-text" id="twText"></span>
       <span class="tw-cursor">|</span>
     </div>
-    <p class="hero-sub" id="heroSub">B.Sc. Student at RUET · Passionate about advanced materials, nanotechnology & sustainable engineering</p>
-    <div class="hero-btns">
-      <a href="#" class="btn btn-primary" id="cvBtn">
+    <p class="hero-sub hero-anim" id="heroSub">B.Sc. Student at RUET · Passionate about advanced materials, nanotechnology &amp; sustainable engineering</p>
+    <div class="hero-btns hero-anim">
+      <a href="#" class="btn btn-primary" id="cvBtn" data-cursor="link">
         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
         Download CV
       </a>
-      <a href="#projects" class="btn btn-ghost">View My Work</a>
+      <a href="#projects" class="btn btn-ghost" data-cursor="link">View My Work</a>
     </div>
   </div>
   <div class="scroll-hint"><div class="scroll-line"></div><span>scroll</span></div>
@@ -75,21 +79,21 @@
 <!-- About -->
 <section class="section" id="about">
   <div class="container">
-    <div class="reveal">
+    <div class="split-reveal">
       <div class="section-tag">Get to Know Me</div>
       <h2 class="section-title">About <span class="grad">Me</span></h2>
     </div>
-    <div class="about-grid reveal">
-      <div class="avatar-wrap">
+    <div class="about-grid split-reveal">
+      <div class="avatar-wrap" data-cursor="hover">
         <div class="avatar-glow"></div>
         <img id="avatarImg" class="avatar-img" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Crect width='300' height='300' fill='%230f0f1a'/%3E%3Ctext x='50%25' y='50%25' dominant-baseline='central' text-anchor='middle' font-family='sans-serif' font-size='80' fill='%237c3aed'%3ETI%3C/text%3E%3C/svg%3E" alt="Tanim">
       </div>
       <div class="about-text">
-        <p id="aboutBio">I am Tanim, a Materials Science and Engineering student at RUET.</p>
+        <p id="aboutBio" class="about-bio">I am Tanim, a Materials Science and Engineering student at RUET.</p>
         <div class="about-stats">
-          <div class="stat-card"><div class="stat-label">University</div><div class="stat-val" id="statUni">RUET</div></div>
-          <div class="stat-card"><div class="stat-label">Department</div><div class="stat-val" id="statDept">MSE</div></div>
-          <div class="stat-card"><div class="stat-label">Year</div><div class="stat-val" id="statYear">Undergraduate</div></div>
+          <div class="stat-card glass"><div class="stat-label">University</div><div class="stat-val" id="statUni">RUET</div></div>
+          <div class="stat-card glass"><div class="stat-label">Department</div><div class="stat-val" id="statDept">MSE</div></div>
+          <div class="stat-card glass"><div class="stat-label">Year</div><div class="stat-val" id="statYear">Undergraduate</div></div>
         </div>
       </div>
     </div>
@@ -99,9 +103,9 @@
 <!-- Skills -->
 <section class="section section-alt" id="skills">
   <div class="container">
-    <div class="reveal">
+    <div class="split-reveal">
       <div class="section-tag">Expertise</div>
-      <h2 class="section-title">Skills & <span class="grad">Knowledge</span></h2>
+      <h2 class="section-title">Skills &amp; <span class="grad">Knowledge</span></h2>
       <p class="section-sub">A blend of engineering knowledge, research tools, and creative problem-solving.</p>
     </div>
     <div class="skills-grid" id="skillsGrid"></div>
@@ -111,15 +115,14 @@
 <!-- Projects -->
 <section class="section" id="projects">
   <div class="container">
-    <div class="reveal">
+    <div class="split-reveal">
       <div class="section-tag">Portfolio</div>
       <h2 class="section-title">Featured <span class="grad">Projects</span></h2>
       <p class="section-sub">Exploring the intersection of materials science, engineering, and innovation.</p>
     </div>
     <div class="projects-grid" id="projectsGrid"></div>
-    <!-- View All Drawer Trigger -->
     <div class="show-all-wrap" id="showAllWrap" style="display:none">
-      <button class="show-all-btn" id="showAllBtn" onclick="openProjectsDrawer()">
+      <button class="show-all-btn" id="showAllBtn" onclick="openProjectsDrawer()" data-cursor="link">
         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><line x1="8" y1="12" x2="16" y2="12"/><line x1="12" y1="8" x2="12" y2="16"/></svg>
         <span id="showAllLabel">View All Projects</span>
         <span id="showAllCount" class="show-all-count"></span>
@@ -131,11 +134,11 @@
 <!-- Research -->
 <section class="section section-alt" id="research">
   <div class="container">
-    <div class="reveal">
+    <div class="split-reveal">
       <div class="section-tag">Academic</div>
-      <h2 class="section-title">Research & <span class="grad">Publications</span></h2>
+      <h2 class="section-title">Research &amp; <span class="grad">Publications</span></h2>
     </div>
-    <div class="research-grid reveal">
+    <div class="research-grid split-reveal">
       <div>
         <h3 class="research-subtitle">Research Interests</h3>
         <div id="researchList" class="timeline"></div>
@@ -152,29 +155,44 @@
 <!-- Contact -->
 <section class="section" id="contact">
   <div class="container">
-    <div class="reveal">
+    <div class="split-reveal">
       <div class="section-tag">Get in Touch</div>
       <h2 class="section-title">Let's <span class="grad">Connect</span></h2>
       <p class="section-sub" id="contactMsg">Have a research idea, collaboration opportunity, or just want to talk materials science? I'd love to hear from you.</p>
     </div>
-    <div class="contact-grid reveal">
+    <div class="contact-grid split-reveal">
       <div class="contact-info">
-        <a href="#" class="contact-item" id="emailLink">
+        <a href="#" class="contact-item" id="emailLink" data-cursor="link">
           <div class="contact-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></div>
-          <div><div class="contact-label">Email</div><div class="contact-val" id="emailVal"><span class="__cf_email__" data-cfemail="592d38373034606e19292b362d363777343c">[email&#160;protected]</span></div></div>
+          <div><div class="contact-label">Email</div><div class="contact-val" id="emailVal">tanim97@proton.me</div></div>
         </a>
         <div class="social-row">
-          <a href="#" class="social-btn" id="githubLink" title="GitHub"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/></svg></a>
-          <a href="#" class="social-btn" id="linkedinLink" title="LinkedIn"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg></a>
-          <a href="#" class="social-btn" id="rgLink" title="ResearchGate"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M19.586 0c-.818 0-1.508.19-2.073.565-.563.377-.97.936-1.213 1.68a12.458 12.458 0 0 0-.35 2.797c0 1.078.138 2.047.412 2.907.274.86.68 1.525 1.218 2 .537.475 1.178.712 1.925.712.678 0 1.268-.19 1.77-.566.504-.378.882-.926 1.138-1.647.254-.72.382-1.56.382-2.518V5.4c0-.992-.13-1.856-.386-2.592C22.155.8 21.766.38 21.24.14 20.715-.1 20.162-.01 19.586 0z"/></svg></a>
+          <a href="#" class="social-btn" id="githubLink"   title="GitHub"      data-cursor="link"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/></svg></a>
+          <a href="#" class="social-btn" id="linkedinLink" title="LinkedIn"     data-cursor="link"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg></a>
+          <a href="#" class="social-btn" id="rgLink"       title="ResearchGate" data-cursor="link"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M19.586 0c-.818 0-1.508.19-2.073.565-.563.377-.97.936-1.213 1.68a12.458 12.458 0 0 0-.35 2.797c0 1.078.138 2.047.412 2.907.274.86.68 1.525 1.218 2 .537.475 1.178.712 1.925.712.678 0 1.268-.19 1.77-.566.504-.378.882-.926 1.138-1.647.254-.72.382-1.56.382-2.518V5.4c0-.992-.13-1.856-.386-2.592C22.155.8 21.766.38 21.24.14 20.715-.1 20.162-.01 19.586 0z"/></svg></a>
         </div>
       </div>
       <form class="contact-form" id="contactForm" action="https://formspree.io/f/xlgowqby" method="POST" onsubmit="handleFormSubmit(event)">
-        <div class="form-group"><input type="text" class="form-input" name="name" placeholder="Your Name" required></div>
-        <div class="form-group"><input type="email" class="form-input" name="email" placeholder="Your Email" required></div>
-        <div class="form-group"><input type="text" class="form-input" name="subject" placeholder="Subject"></div>
-        <div class="form-group"><textarea class="form-textarea" name="message" placeholder="Your Message" rows="5" required></textarea></div>
-        <button type="submit" class="btn btn-primary" style="width:100%;justify-content:center">Send Message <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg></button>
+        <div class="form-group float-label">
+          <input type="text" class="form-input" name="name" id="fName" placeholder=" " required>
+          <label for="fName">Your Name</label>
+        </div>
+        <div class="form-group float-label">
+          <input type="email" class="form-input" name="email" id="fEmail" placeholder=" " required>
+          <label for="fEmail">Your Email</label>
+        </div>
+        <div class="form-group float-label">
+          <input type="text" class="form-input" name="subject" id="fSubject" placeholder=" ">
+          <label for="fSubject">Subject</label>
+        </div>
+        <div class="form-group float-label">
+          <textarea class="form-textarea" name="message" id="fMsg" placeholder=" " rows="5" required></textarea>
+          <label for="fMsg">Your Message</label>
+        </div>
+        <button type="submit" class="btn btn-primary btn-send" data-cursor="link">
+          Send Message
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+        </button>
       </form>
     </div>
   </div>
@@ -182,77 +200,59 @@
 
 <!-- Footer -->
 <footer class="footer">
+  <div class="footer-glow-line"></div>
   <div class="container">
     <div class="footer-top">
-      <a href="#home" class="footer-logo">TI</a>
-      <p class="footer-tagline" id="footerTagline">Tanim · Materials Science & Engineering · RUET</p>
+      <a href="#home" class="footer-logo" data-cursor="link">TI</a>
+      <p class="footer-tagline" id="footerTagline">Tanim · Materials Science &amp; Engineering · RUET</p>
     </div>
     <div class="footer-divider"></div>
-    <p class="footer-copy">© <span id="footerYear"></span> Tanim. Built with passion & code.</p>
+    <p class="footer-copy">© <span id="footerYear"></span> Tanim. Built with passion &amp; code.</p>
   </div>
 </footer>
 
-<!-- Back to top -->
-<button class="back-top" id="backTop" aria-label="Back to top">
+<button class="back-top" id="backTop" aria-label="Back to top" data-cursor="link">
   <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="18 15 12 9 6 15"/></svg>
 </button>
 
-<!-- Toast -->
 <div class="toast" id="toast"></div>
 
-<!-- Full-Page Project View (same background as site) -->
+<!-- Full-Page Project View -->
 <div class="project-page" id="projectPage">
-  <!-- Scroll wrapper — contains progress + topbar + content -->
   <div class="proj-page-scroll" id="projPageScroll">
-  <!-- Reading progress bar at top -->
-  <div class="proj-page-progress" id="projPageProgress"></div>
-
-  <!-- Sticky top bar -->
-  <div class="proj-page-topbar" id="projPageTopbar">
-    <button class="proj-page-back" onclick="closeProjectModal()">
-      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
-      Back
-    </button>
-    <div class="proj-page-topbar-title" id="projTopbarTitle"></div>
-    <div class="proj-page-topbar-actions">
-      <button class="proj-page-copy-btn" id="projCopyBtn" onclick="copyProjectLink()">
-        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg>
-        Share
+    <div class="proj-page-progress" id="projPageProgress"></div>
+    <div class="proj-page-topbar" id="projPageTopbar">
+      <button class="proj-page-back" onclick="closeProjectModal()" data-cursor="link">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
+        Back
       </button>
-      <a href="#" class="proj-page-ext-btn" id="projExtLink" target="_blank" rel="noopener" style="display:none">
-        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg>
-        External
-      </a>
+      <div class="proj-page-topbar-title" id="projTopbarTitle"></div>
+      <div class="proj-page-topbar-actions">
+        <button class="proj-page-copy-btn" id="projCopyBtn" onclick="copyProjectLink()" data-cursor="link">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg>
+          Share
+        </button>
+        <a href="#" class="proj-page-ext-btn" id="projExtLink" target="_blank" rel="noopener" style="display:none" data-cursor="link">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg>
+          External
+        </a>
+      </div>
     </div>
-  </div>
-
-  <!-- Scrollable content inner -->
     <div class="proj-page-inner">
-      <!-- Featured image -->
       <div id="projFeaturedImage"></div>
-
-      <!-- Header -->
       <div class="proj-page-header">
         <div class="proj-page-badges" id="projBadges"></div>
         <h1 class="proj-page-title" id="projTitle"></h1>
         <div class="proj-page-tags" id="projTags"></div>
-        <div class="proj-page-meta">
-          <span class="proj-page-readtime" id="projReadTime"></span>
-        </div>
+        <div class="proj-page-meta"><span class="proj-page-readtime" id="projReadTime"></span></div>
       </div>
-
-      <!-- ToC (desktop inline, visible when ≥3 headings) -->
       <div class="proj-toc-inline" id="projTocInline" style="display:none">
         <div class="proj-toc-label">Contents</div>
         <div class="proj-toc-links" id="projTocLinks"></div>
       </div>
-
-      <!-- Main rich content -->
       <div class="project-rich-content proj-page-content" id="projContent"></div>
-
-      <!-- Footer nav -->
       <div class="proj-page-footer">
-        <button class="proj-page-back-bottom" onclick="closeProjectModal()">
+        <button class="proj-page-back-bottom" onclick="closeProjectModal()" data-cursor="link">
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
           Back to Projects
         </button>
@@ -278,289 +278,652 @@
   <div class="projects-drawer-list" id="projectsDrawerList"></div>
 </div>
 
+<!-- GSAP + ScrollTrigger -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.js"></script>
 <script src="data.js"></script>
 <script>
-/* Canvas Background */
-const canvas=document.getElementById('bgCanvas'),ctx=canvas.getContext('2d');
-let W,H,particles=[],animFrame;
-const COLORS=['rgba(124,58,237,','rgba(37,99,235,','rgba(6,182,212,','rgba(16,185,129,'];
-function resizeCanvas(){W=canvas.width=window.innerWidth;H=canvas.height=window.innerHeight;}
-function Particle(){this.x=Math.random()*W;this.y=Math.random()*H;this.vx=(Math.random()-.5)*.4;this.vy=(Math.random()-.5)*.4;this.r=Math.random()*2+.5;this.color=COLORS[Math.floor(Math.random()*COLORS.length)];this.alpha=Math.random()*.5+.2;this.pulse=Math.random()*Math.PI*2;this.pulseSpeed=Math.random()*.02+.005;}
-Particle.prototype.update=function(){this.x+=this.vx;this.y+=this.vy;this.pulse+=this.pulseSpeed;if(this.x<0||this.x>W)this.vx*=-1;if(this.y<0||this.y>H)this.vy*=-1;};
-Particle.prototype.draw=function(){const a=this.alpha+Math.sin(this.pulse)*.1;ctx.beginPath();ctx.arc(this.x,this.y,this.r,0,Math.PI*2);ctx.fillStyle=this.color+a+')';ctx.fill();};
-function initParticles(){const c=Math.floor((W*H)/12000);particles=Array.from({length:Math.min(c,120)},()=>new Particle());}
-function drawConnections(){for(let i=0;i<particles.length;i++){for(let j=i+1;j<particles.length;j++){const dx=particles[i].x-particles[j].x,dy=particles[i].y-particles[j].y,d=Math.sqrt(dx*dx+dy*dy);if(d<130){ctx.beginPath();ctx.moveTo(particles[i].x,particles[i].y);ctx.lineTo(particles[j].x,particles[j].y);ctx.strokeStyle=`rgba(124,58,237,${(1-d/130)*.15})`;ctx.lineWidth=.6;ctx.stroke();}}}}
-let aT=0;
-function drawAurora(){aT+=.003;const g1=ctx.createRadialGradient(W*(.3+Math.sin(aT)*.1),H*.3,0,W*(.3+Math.sin(aT)*.1),H*.3,W*.5);g1.addColorStop(0,'rgba(124,58,237,0.05)');g1.addColorStop(1,'transparent');ctx.fillStyle=g1;ctx.fillRect(0,0,W,H);const g2=ctx.createRadialGradient(W*(.7+Math.cos(aT*.7)*.1),H*.6,0,W*(.7+Math.cos(aT*.7)*.1),H*.6,W*.4);g2.addColorStop(0,'rgba(6,182,212,0.04)');g2.addColorStop(1,'transparent');ctx.fillStyle=g2;ctx.fillRect(0,0,W,H);}
-function animate(){ctx.clearRect(0,0,W,H);drawAurora();particles.forEach(p=>{p.update();p.draw();});drawConnections();animFrame=requestAnimationFrame(animate);}
-resizeCanvas();initParticles();animate();
-window.addEventListener('resize',()=>{resizeCanvas();initParticles();});
-document.addEventListener('mousemove',e=>{particles.forEach((p,i)=>{if(i%4===0){const dx=e.clientX-p.x,dy=e.clientY-p.y,d=Math.sqrt(dx*dx+dy*dy);if(d<100){p.vx-=dx*.0003;p.vy-=dy*.0003;}}});});
+/* ══════════════════════════════════════════════
+   CANVAS BACKGROUND
+══════════════════════════════════════════════ */
+const canvas = document.getElementById('bgCanvas');
+const ctx = canvas.getContext('2d');
+let W, H, particles = [];
+const COLORS = ['rgba(124,58,237,','rgba(37,99,235,','rgba(6,182,212,','rgba(16,185,129,'];
 
-/* Typewriter */
-let twWords=[],twIdx=0,twChar=0,twDeleting=false,twTimer;
-function typewrite(){if(!twWords.length)return;const w=twWords[twIdx];const el=document.getElementById('twText');if(!el)return;if(!twDeleting){el.textContent=w.slice(0,++twChar);if(twChar===w.length){twDeleting=true;twTimer=setTimeout(typewrite,1800);return;}}else{el.textContent=w.slice(0,--twChar);if(twChar===0){twDeleting=false;twIdx=(twIdx+1)%twWords.length;}}twTimer=setTimeout(typewrite,twDeleting?60:100);}
+function resizeCanvas() { W = canvas.width = window.innerWidth; H = canvas.height = window.innerHeight; }
 
-/* Scroll reveal */
-const revealObs=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');revealObs.unobserve(e.target);}});},{threshold:.08});
-function observeReveal(){document.querySelectorAll('.reveal:not(.visible)').forEach(el=>revealObs.observe(el));}
-observeReveal();
+function Particle() {
+  this.x = Math.random()*W; this.y = Math.random()*H;
+  this.vx = (Math.random()-.5)*.35; this.vy = (Math.random()-.5)*.35;
+  this.r = Math.random()*1.8+.4;
+  this.color = COLORS[Math.floor(Math.random()*COLORS.length)];
+  this.alpha = Math.random()*.4+.15;
+  this.pulse = Math.random()*Math.PI*2;
+  this.pulseSpeed = Math.random()*.015+.004;
+}
+Particle.prototype.update = function() {
+  this.x += this.vx; this.y += this.vy;
+  this.pulse += this.pulseSpeed;
+  if (this.x < 0 || this.x > W) this.vx *= -1;
+  if (this.y < 0 || this.y > H) this.vy *= -1;
+};
+Particle.prototype.draw = function() {
+  const a = this.alpha + Math.sin(this.pulse)*.08;
+  ctx.beginPath(); ctx.arc(this.x, this.y, this.r, 0, Math.PI*2);
+  ctx.fillStyle = this.color + a + ')'; ctx.fill();
+};
 
-/* Navbar */
-window.addEventListener('scroll',()=>{document.getElementById('navbar').classList.toggle('scrolled',window.scrollY>60);document.getElementById('backTop').classList.toggle('show',window.scrollY>400);const secs=['home','about','skills','projects','research','contact'];let cur='home';secs.forEach(id=>{const el=document.getElementById(id);if(el&&window.scrollY>=el.offsetTop-120)cur=id;});document.querySelectorAll('.nav-link').forEach(a=>{a.classList.toggle('active',a.getAttribute('href')==='#'+cur);});});
-
-/* Mobile menu */
-document.getElementById('hamburger').addEventListener('click',()=>{document.getElementById('mobileMenu').classList.add('open');document.getElementById('mobileOverlay').classList.add('open');});
-function closeMobile(){document.getElementById('mobileMenu').classList.remove('open');document.getElementById('mobileOverlay').classList.remove('open');}
-document.getElementById('mobileClose').addEventListener('click',closeMobile);
-document.getElementById('mobileOverlay').addEventListener('click',closeMobile);
-document.querySelectorAll('.mobile-link').forEach(a=>a.addEventListener('click',closeMobile));
-document.getElementById('backTop').addEventListener('click',()=>window.scrollTo({top:0,behavior:'smooth'}));
-
-/* Form */
-function handleFormSubmit(e){e.preventDefault();const form=e.target,btn=form.querySelector('button[type="submit"]');btn.textContent='Sending…';btn.disabled=true;fetch(form.action,{method:'POST',body:new FormData(form),headers:{'Accept':'application/json'}}).then(r=>{if(r.ok){showToast("Message sent! I'll get back to you soon.");form.reset();}else showToast('Something went wrong. Email me directly.');}).catch(()=>showToast('Something went wrong. Email me directly.')).finally(()=>{btn.innerHTML='Send Message';btn.disabled=false;});}
-function showToast(msg,dur=3500){const t=document.getElementById('toast');t.textContent=msg;t.classList.add('show');setTimeout(()=>t.classList.remove('show'),dur);}
-
-/* Helpers */
-function stripHtml(h){const d=document.createElement('div');d.innerHTML=h;return d.textContent||d.innerText||'';}
-function esc(s){return String(s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');}
-
-/* Smart excerpt — skips headings, uses first real paragraph */
-function smartExcerpt(p){
-  if(p.excerpt&&p.excerpt.trim())return p.excerpt.trim();
-  const blocks=p.blocks||[];
-  for(const b of blocks){if(b.type==='paragraph'&&b.content&&b.content.trim().length>20){const t=b.content.trim();return t.length>130?t.slice(0,127)+'…':t;}}
-  for(const b of blocks){if(b.type==='callout'&&b.content&&b.content.trim().length>20){const t=b.content.trim();return t.length>130?t.slice(0,127)+'…':t;}}
-  const raw=stripHtml(p.desc||'');return raw.length>130?raw.slice(0,127)+'…':raw;
+function initParticles() {
+  const c = Math.floor((W*H)/14000);
+  particles = Array.from({length: Math.min(c,100)}, () => new Particle());
 }
 
-/* Blocks renderer */
-function renderBlocksToHTML(blocks){
-  if(!blocks||!blocks.length)return '<p style="color:#475569">No content yet.</p>';
-  return blocks.map(b=>{
-    if(b.type==='paragraph')return `<p>${esc(b.content||'')}</p>`;
-    if(b.type==='heading1')return `<h1>${esc(b.content||'')}</h1>`;
-    if(b.type==='heading2')return `<h2>${esc(b.content||'')}</h2>`;
-    if(b.type==='heading3')return `<h3>${esc(b.content||'')}</h3>`;
-    if(b.type==='image'&&b.src){const w=b.size==='small'?'40%':b.size==='full'?'100%':'70%';return `<div style="text-align:center;margin:20px 0"><img src="${b.src}" style="max-width:${w};border-radius:10px;box-shadow:0 4px 20px rgba(0,0,0,0.4);display:inline-block">${b.caption?`<p style="font-size:0.8rem;color:#64748b;font-style:italic;margin-top:8px">${esc(b.caption)}</p>`:''}</div>`;}
-    if(b.type==='formula'){try{const r=window.katex?window.katex.renderToString(b.latex||'',{throwOnError:false,displayMode:true}):`<code>${esc(b.latex||'')}</code>`;const notes=b.notes?`<p class="formula-notes-text">${esc(b.notes)}</p>`:'';return `<div class="formula-block">${r}</div>${notes}`;}catch(e){return `<div class="formula-block"><code>${esc(b.latex||'')}</code></div>`;}}
-    if(b.type==='code')return `<div class="code-block-wrap">${b.language?`<div class="code-lang-label">${esc(b.language)}</div>`:''}<pre><code>${esc(b.content||'')}</code></pre></div>`;
-    if(b.type==='divider')return '<hr class="content-divider">';
-    if(b.type==='callout')return `<div class="callout-block">${b.icon||'💡'} ${esc(b.content||'')}</div>`;
-    if(b.type==='table'&&b.data){const tRows=b.data.map((r,ri)=>`<tr>${r.map(c=>ri===0?`<th>${esc(c)}</th>`:`<td>${esc(c)}</td>`).join('')}</tr>`).join('');return `<div class="table-wrap"><table>${tRows}</table></div>`;}
+let aT = 0, mouseX = W/2||400, mouseY = H/2||300;
+function drawAurora() {
+  aT += .002;
+  const g1 = ctx.createRadialGradient(W*(.3+Math.sin(aT)*.08),H*.3,0,W*(.3+Math.sin(aT)*.08),H*.3,W*.5);
+  g1.addColorStop(0,'rgba(124,58,237,0.04)'); g1.addColorStop(1,'transparent');
+  ctx.fillStyle = g1; ctx.fillRect(0,0,W,H);
+  const g2 = ctx.createRadialGradient(W*(.7+Math.cos(aT*.7)*.08),H*.65,0,W*(.7+Math.cos(aT*.7)*.08),H*.65,W*.4);
+  g2.addColorStop(0,'rgba(6,182,212,0.03)'); g2.addColorStop(1,'transparent');
+  ctx.fillStyle = g2; ctx.fillRect(0,0,W,H);
+  // Mouse aurora
+  const gm = ctx.createRadialGradient(mouseX,mouseY,0,mouseX,mouseY,200);
+  gm.addColorStop(0,'rgba(124,58,237,0.025)'); gm.addColorStop(1,'transparent');
+  ctx.fillStyle = gm; ctx.fillRect(0,0,W,H);
+}
+
+function drawConnections() {
+  for (let i = 0; i < particles.length; i++) {
+    for (let j = i+1; j < particles.length; j++) {
+      const dx = particles[i].x-particles[j].x, dy = particles[i].y-particles[j].y;
+      const d = Math.sqrt(dx*dx+dy*dy);
+      if (d < 120) {
+        ctx.beginPath(); ctx.moveTo(particles[i].x,particles[i].y); ctx.lineTo(particles[j].x,particles[j].y);
+        ctx.strokeStyle = `rgba(124,58,237,${(1-d/120)*.12})`; ctx.lineWidth = .5; ctx.stroke();
+      }
+    }
+  }
+}
+
+function animate() {
+  ctx.clearRect(0,0,W,H);
+  drawAurora();
+  particles.forEach(p => { p.update(); p.draw(); });
+  drawConnections();
+  requestAnimationFrame(animate);
+}
+resizeCanvas(); initParticles(); animate();
+window.addEventListener('resize', () => { resizeCanvas(); initParticles(); });
+document.addEventListener('mousemove', e => {
+  mouseX = e.clientX; mouseY = e.clientY;
+  particles.forEach((p,i) => {
+    if (i%5===0) {
+      const dx = e.clientX-p.x, dy = e.clientY-p.y, d = Math.sqrt(dx*dx+dy*dy);
+      if (d < 120) { p.vx -= dx*.00025; p.vy -= dy*.00025; }
+    }
+  });
+});
+
+/* ══════════════════════════════════════════════
+   CUSTOM CURSOR
+══════════════════════════════════════════════ */
+const dot = document.getElementById('cursorDot');
+const ring = document.getElementById('cursorRing');
+let cx = 0, cy = 0, rx = 0, ry = 0;
+
+const isTouchDevice = window.matchMedia('(pointer: coarse)').matches;
+if (!isTouchDevice) {
+  document.body.classList.add('has-custom-cursor');
+  document.addEventListener('mousemove', e => { cx = e.clientX; cy = e.clientY; });
+
+  (function animateCursor() {
+    dot.style.transform = `translate(${cx}px,${cy}px)`;
+    rx += (cx - rx) * 0.12;
+    ry += (cy - ry) * 0.12;
+    ring.style.transform = `translate(${rx}px,${ry}px)`;
+    requestAnimationFrame(animateCursor);
+  })();
+
+  document.querySelectorAll('[data-cursor="link"]').forEach(el => {
+    el.addEventListener('mouseenter', () => ring.classList.add('expanded'));
+    el.addEventListener('mouseleave', () => ring.classList.remove('expanded'));
+  });
+  document.addEventListener('mousedown', () => ring.classList.add('clicked'));
+  document.addEventListener('mouseup', () => ring.classList.remove('clicked'));
+}
+
+/* ══════════════════════════════════════════════
+   GSAP ANIMATIONS
+══════════════════════════════════════════════ */
+gsap.registerPlugin(ScrollTrigger);
+
+// Hero entrance
+gsap.from('.hero-anim', {
+  y: 40, opacity: 0, duration: 1, ease: 'power3.out',
+  stagger: 0.15, delay: 0.2
+});
+
+// Split-text reveal for section titles
+function initSplitReveals() {
+  document.querySelectorAll('.split-reveal').forEach(el => {
+    gsap.from(el, {
+      scrollTrigger: {
+        trigger: el,
+        start: 'top 85%',
+        toggleActions: 'play none none none'
+      },
+      y: 50, opacity: 0, duration: 0.9, ease: 'power3.out'
+    });
+  });
+}
+
+// Skill cards stagger
+function initSkillAnim() {
+  gsap.from('.skill-card', {
+    scrollTrigger: { trigger: '#skillsGrid', start: 'top 80%' },
+    y: 60, opacity: 0, duration: 0.7, ease: 'back.out(1.5)',
+    stagger: 0.1
+  });
+}
+
+// Project cards stagger
+function initProjectAnim() {
+  gsap.from('.project-card', {
+    scrollTrigger: { trigger: '#projectsGrid', start: 'top 80%' },
+    y: 80, opacity: 0, duration: 0.8, ease: 'power3.out',
+    stagger: 0.12
+  });
+}
+
+// Timeline items
+function initTimelineAnim() {
+  gsap.from('.timeline-item', {
+    scrollTrigger: { trigger: '.timeline', start: 'top 80%' },
+    x: -40, opacity: 0, duration: 0.6, ease: 'power2.out',
+    stagger: 0.1
+  });
+}
+
+// Stat cards
+function initStatAnim() {
+  gsap.from('.stat-card', {
+    scrollTrigger: { trigger: '.about-stats', start: 'top 85%' },
+    scale: 0.85, opacity: 0, duration: 0.6, ease: 'back.out(1.7)',
+    stagger: 0.1
+  });
+}
+
+// Contact items
+function initContactAnim() {
+  gsap.from('.contact-item', {
+    scrollTrigger: { trigger: '.contact-info', start: 'top 80%' },
+    x: -30, opacity: 0, duration: 0.6, ease: 'power2.out'
+  });
+  gsap.from('.social-btn', {
+    scrollTrigger: { trigger: '.social-row', start: 'top 85%' },
+    scale: 0, opacity: 0, duration: 0.5, ease: 'back.out(2)',
+    stagger: 0.08
+  });
+  gsap.from('.form-group', {
+    scrollTrigger: { trigger: '.contact-form', start: 'top 80%' },
+    y: 30, opacity: 0, duration: 0.5, ease: 'power2.out',
+    stagger: 0.1
+  });
+}
+
+// Footer glow line
+function initFooterAnim() {
+  gsap.from('.footer-glow-line', {
+    scrollTrigger: { trigger: '.footer', start: 'top 90%' },
+    scaleX: 0, duration: 1.2, ease: 'power3.out',
+    transformOrigin: 'left center'
+  });
+}
+
+// 3D card tilt on mouse
+function initCardTilt() {
+  if (isTouchDevice) return;
+  document.querySelectorAll('.project-card').forEach(card => {
+    card.addEventListener('mousemove', e => {
+      const r = card.getBoundingClientRect();
+      const x = ((e.clientX - r.left) / r.width - 0.5) * 18;
+      const y = ((e.clientY - r.top) / r.height - 0.5) * -18;
+      gsap.to(card, { rotateY: x, rotateX: y, duration: 0.4, ease: 'power2.out',
+        transformPerspective: 800, transformOrigin: 'center center' });
+    });
+    card.addEventListener('mouseleave', () => {
+      gsap.to(card, { rotateY: 0, rotateX: 0, duration: 0.6, ease: 'elastic.out(1, 0.5)' });
+    });
+  });
+}
+
+// Magnetic buttons
+function initMagnetic() {
+  if (isTouchDevice) return;
+  document.querySelectorAll('.btn-primary, .social-btn, .back-top').forEach(btn => {
+    btn.addEventListener('mousemove', e => {
+      const r = btn.getBoundingClientRect();
+      const x = (e.clientX - r.left - r.width/2) * 0.3;
+      const y = (e.clientY - r.top - r.height/2) * 0.3;
+      gsap.to(btn, { x, y, duration: 0.3, ease: 'power2.out' });
+    });
+    btn.addEventListener('mouseleave', () => {
+      gsap.to(btn, { x: 0, y: 0, duration: 0.5, ease: 'elastic.out(1, 0.4)' });
+    });
+  });
+}
+
+// Parallax on hero content
+function initParallax() {
+  window.addEventListener('scroll', () => {
+    const s = window.scrollY;
+    gsap.to('.hero-content', { y: s * 0.3, ease: 'none', duration: 0 });
+    gsap.to('#bgCanvas', { y: s * 0.1, ease: 'none', duration: 0 });
+  });
+}
+
+/* ══════════════════════════════════════════════
+   TYPEWRITER
+══════════════════════════════════════════════ */
+let twWords=[], twIdx=0, twChar=0, twDeleting=false, twTimer;
+function typewrite() {
+  if (!twWords.length) return;
+  const w = twWords[twIdx];
+  const el = document.getElementById('twText');
+  if (!el) return;
+  if (!twDeleting) {
+    el.textContent = w.slice(0, ++twChar);
+    if (twChar === w.length) { twDeleting = true; twTimer = setTimeout(typewrite, 1800); return; }
+  } else {
+    el.textContent = w.slice(0, --twChar);
+    if (twChar === 0) { twDeleting = false; twIdx = (twIdx+1) % twWords.length; }
+  }
+  twTimer = setTimeout(typewrite, twDeleting ? 60 : 100);
+}
+
+/* ══════════════════════════════════════════════
+   NAVBAR & SCROLL
+══════════════════════════════════════════════ */
+window.addEventListener('scroll', () => {
+  const s = window.scrollY;
+  document.getElementById('navbar').classList.toggle('scrolled', s > 60);
+  document.getElementById('backTop').classList.toggle('show', s > 400);
+  const secs = ['home','about','skills','projects','research','contact'];
+  let cur = 'home';
+  secs.forEach(id => { const el=document.getElementById(id); if(el && s >= el.offsetTop-120) cur=id; });
+  document.querySelectorAll('.nav-link').forEach(a => a.classList.toggle('active', a.getAttribute('href')==='#'+cur));
+});
+
+/* ══════════════════════════════════════════════
+   MOBILE MENU
+══════════════════════════════════════════════ */
+document.getElementById('hamburger').addEventListener('click', () => {
+  document.getElementById('mobileMenu').classList.add('open');
+  document.getElementById('mobileOverlay').classList.add('open');
+});
+function closeMobile() {
+  document.getElementById('mobileMenu').classList.remove('open');
+  document.getElementById('mobileOverlay').classList.remove('open');
+}
+document.getElementById('mobileClose').addEventListener('click', closeMobile);
+document.getElementById('mobileOverlay').addEventListener('click', closeMobile);
+document.querySelectorAll('.mobile-link').forEach(a => a.addEventListener('click', closeMobile));
+document.getElementById('backTop').addEventListener('click', () => window.scrollTo({top:0,behavior:'smooth'}));
+
+/* ══════════════════════════════════════════════
+   CONTACT FORM
+══════════════════════════════════════════════ */
+function handleFormSubmit(e) {
+  e.preventDefault();
+  const form = e.target, btn = form.querySelector('button[type="submit"]');
+  btn.textContent = 'Sending…'; btn.disabled = true;
+  fetch(form.action, {method:'POST', body: new FormData(form), headers:{'Accept':'application/json'}})
+    .then(r => { if(r.ok){showToast("Message sent! I'll get back to you soon.");form.reset();}else showToast('Something went wrong. Email me directly.'); })
+    .catch(() => showToast('Something went wrong. Email me directly.'))
+    .finally(() => { btn.innerHTML = 'Send Message <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>'; btn.disabled = false; });
+}
+function showToast(msg, dur=3500) {
+  const t = document.getElementById('toast'); t.textContent = msg; t.classList.add('show');
+  setTimeout(() => t.classList.remove('show'), dur);
+}
+
+/* ══════════════════════════════════════════════
+   HELPERS
+══════════════════════════════════════════════ */
+function stripHtml(h) { const d=document.createElement('div'); d.innerHTML=h; return d.textContent||d.innerText||''; }
+function esc(s) { return String(s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;'); }
+
+function smartExcerpt(p) {
+  if (p.excerpt && p.excerpt.trim()) return p.excerpt.trim();
+  const blocks = p.blocks || [];
+  for (const b of blocks) { if (b.type==='paragraph' && b.content && b.content.trim().length>20) { const t=b.content.trim(); return t.length>130?t.slice(0,127)+'…':t; } }
+  for (const b of blocks) { if (b.type==='callout' && b.content && b.content.trim().length>20) { const t=b.content.trim(); return t.length>130?t.slice(0,127)+'…':t; } }
+  const raw = stripHtml(p.desc||''); return raw.length>130?raw.slice(0,127)+'…':raw;
+}
+
+function renderBlocksToHTML(blocks) {
+  if (!blocks||!blocks.length) return '<p style="color:#475569">No content yet.</p>';
+  return blocks.map(b => {
+    if (b.type==='paragraph') return `<p>${esc(b.content||'')}</p>`;
+    if (b.type==='heading1') return `<h1>${esc(b.content||'')}</h1>`;
+    if (b.type==='heading2') return `<h2>${esc(b.content||'')}</h2>`;
+    if (b.type==='heading3') return `<h3>${esc(b.content||'')}</h3>`;
+    if (b.type==='image'&&b.src) { const w=b.size==='small'?'40%':b.size==='full'?'100%':'70%'; return `<div style="text-align:center;margin:20px 0"><img src="${b.src}" style="max-width:${w};border-radius:10px;box-shadow:0 4px 20px rgba(0,0,0,0.4);display:inline-block">${b.caption?`<p style="font-size:0.8rem;color:#64748b;font-style:italic;margin-top:8px">${esc(b.caption)}</p>`:''}</div>`; }
+    if (b.type==='formula') { try { const r=window.katex?window.katex.renderToString(b.latex||'',{throwOnError:false,displayMode:true}):`<code>${esc(b.latex||'')}</code>`; const notes=b.notes?`<p class="formula-notes-text">${esc(b.notes)}</p>`:''; return `<div class="formula-block">${r}</div>${notes}`; } catch(e){return`<div class="formula-block"><code>${esc(b.latex||'')}</code></div>`;} }
+    if (b.type==='code') return `<div class="code-block-wrap">${b.language?`<div class="code-lang-label">${esc(b.language)}</div>`:''}<pre><code>${esc(b.content||'')}</code></pre></div>`;
+    if (b.type==='divider') return '<hr class="content-divider">';
+    if (b.type==='callout') return `<div class="callout-block">${b.icon||'💡'} ${esc(b.content||'')}</div>`;
+    if (b.type==='table'&&b.data) { const tRows=b.data.map((r,ri)=>`<tr>${r.map(c=>ri===0?`<th>${esc(c)}</th>`:`<td>${esc(c)}</td>`).join('')}</tr>`).join(''); return `<div class="table-wrap"><table>${tRows}</table></div>`; }
     return '';
   }).join('\n');
 }
 
-/* ═══ PROJECT FULL-PAGE VIEW ═══ */
-var _allProjects=[],_currentModalIdx=null;
+/* ══════════════════════════════════════════════
+   PROJECT FULL-PAGE VIEW
+══════════════════════════════════════════════ */
+var _allProjects = [], _currentModalIdx = null;
 
-function countWords(blocks){
-  if(!blocks)return 0;
-  return blocks.reduce(function(acc,b){
-    if(b.content)return acc+b.content.trim().split(/\s+/).filter(Boolean).length;
-    if(b.data)return acc+b.data.flat().join(' ').split(/\s+/).filter(Boolean).length;
+function countWords(blocks) {
+  if (!blocks) return 0;
+  return blocks.reduce((acc,b) => {
+    if(b.content) return acc+b.content.trim().split(/\s+/).filter(Boolean).length;
+    if(b.data) return acc+b.data.flat().join(' ').split(/\s+/).filter(Boolean).length;
     return acc;
-  },0);
+  }, 0);
 }
 
-function openProjectModal(idx){
-  var p=_allProjects[idx];if(!p)return;
-  _currentModalIdx=idx;
+function openProjectModal(idx) {
+  const p = _allProjects[idx]; if (!p) return;
+  _currentModalIdx = idx;
 
-  // Badges
-  var sc={Ongoing:'status-ongoing',Completed:'status-completed',Paused:'status-paused'};
-  document.getElementById('projBadges').innerHTML=
-    (p.status?'<span class="project-status-badge '+( sc[p.status]||'status-ongoing')+'">'+p.status+'</span>':'')+
+  const sc = {Ongoing:'status-ongoing',Completed:'status-completed',Paused:'status-paused'};
+  document.getElementById('projBadges').innerHTML =
+    (p.status?'<span class="project-status-badge '+(sc[p.status]||'status-ongoing')+'">'+p.status+'</span>':'')+
     (p.date?'<span class="project-date-badge">'+p.date+'</span>':'');
+  document.getElementById('projTitle').textContent = p.title;
+  document.getElementById('projTopbarTitle').textContent = p.title;
 
-  // Title
-  document.getElementById('projTitle').textContent=p.title;
-  document.getElementById('projTopbarTitle').textContent=p.title;
+  const tags = p.tags ? p.tags.split(',').map(t=>t.trim()).filter(Boolean) : [];
+  document.getElementById('projTags').innerHTML = tags.map(t=>'<span class="project-tag">'+t+'</span>').join('');
 
-  // Tags
-  var tags=p.tags?p.tags.split(',').map(function(t){return t.trim();}).filter(Boolean):[];
-  document.getElementById('projTags').innerHTML=tags.map(function(t){return '<span class="project-tag">'+t+'</span>';}).join('');
+  const mins = Math.max(1, Math.round(countWords(p.blocks||[])/200));
+  document.getElementById('projReadTime').innerHTML = '<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg> '+mins+' min read';
 
-  // Read time
-  var mins=Math.max(1,Math.round(countWords(p.blocks||[])/200));
-  document.getElementById('projReadTime').innerHTML=
-    '<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg> '+mins+' min read';
+  const fi = document.getElementById('projFeaturedImage');
+  if (p.featuredImage) {
+    fi.innerHTML = '<div class="proj-feat-img-wrap"><img src="'+p.featuredImage+'" alt="'+p.title+'"><div class="proj-feat-img-fade"></div></div>';
+  } else fi.innerHTML = '';
 
-  // Featured image
-  var fi=document.getElementById('projFeaturedImage');
-  if(p.featuredImage){
-    fi.innerHTML='<div class="proj-feat-img-wrap"><img src="'+p.featuredImage+'" alt="'+p.title+'"><div class="proj-feat-img-fade"></div></div>';
-  } else fi.innerHTML='';
+  let html = '';
+  if (p.blocks&&p.blocks.length) html = renderBlocksToHTML(p.blocks);
+  else if (p.desc) html = p.desc;
+  else html = '<p style="color:#475569">No content yet.</p>';
+  document.getElementById('projContent').innerHTML = html;
 
-  // Content
-  var html='';
-  if(p.blocks&&p.blocks.length) html=renderBlocksToHTML(p.blocks);
-  else if(p.desc) html=p.desc;
-  else html='<p style="color:#475569">No content yet.</p>';
-  document.getElementById('projContent').innerHTML=html;
-
-  // Table of Contents
   buildToC(p.blocks||[]);
 
-  // External link
-  var el=document.getElementById('projExtLink');
-  if(p.link&&p.link!=='#'){el.href=p.link;el.style.display='inline-flex';}
-  else el.style.display='none';
+  const extLink = document.getElementById('projExtLink');
+  if (p.link&&p.link!=='#') { extLink.href=p.link; extLink.style.display='inline-flex'; }
+  else extLink.style.display = 'none';
 
-  // Show the full-page view
-  var page=document.getElementById('projectPage');
+  const page = document.getElementById('projectPage');
   page.classList.add('open');
   document.body.classList.add('proj-page-open');
 
-  // Reset scroll and progress
-  var scroll=document.getElementById('projPageScroll');
-  scroll.scrollTop=0;
-  document.getElementById('projPageProgress').style.width='0%';
+  const scroll = document.getElementById('projPageScroll');
+  scroll.scrollTop = 0;
+  document.getElementById('projPageProgress').style.width = '0%';
   scroll.removeEventListener('scroll', updateProgress);
   scroll.addEventListener('scroll', updateProgress);
-
-  // Compact topbar on scroll
   document.getElementById('projPageTopbar').classList.remove('compact');
 
-  // Deep link
-  if(history.pushState) history.pushState({projectIdx:idx},'','#project-'+idx);
+  // Animate project page content in
+  gsap.from('.proj-page-header', { y: 30, opacity: 0, duration: 0.7, ease: 'power3.out', delay: 0.1 });
+  gsap.from('.proj-toc-inline', { y: 20, opacity: 0, duration: 0.5, ease: 'power2.out', delay: 0.3 });
+  gsap.from('#projContent > *', { y: 20, opacity: 0, duration: 0.5, ease: 'power2.out', stagger: 0.06, delay: 0.25 });
+
+  if (history.pushState) history.pushState({projectIdx:idx}, '', '#project-'+idx);
 }
 
-function updateProgress(){
-  var s=document.getElementById('projPageScroll');
-  if(!s)return;
-  var pct=s.scrollHeight<=s.clientHeight?100:Math.round((s.scrollTop/(s.scrollHeight-s.clientHeight))*100);
-  document.getElementById('projPageProgress').style.width=pct+'%';
-  document.getElementById('projPageTopbar').classList.toggle('compact',s.scrollTop>80);
+function updateProgress() {
+  const s = document.getElementById('projPageScroll'); if (!s) return;
+  const pct = s.scrollHeight<=s.clientHeight ? 100 : Math.round((s.scrollTop/(s.scrollHeight-s.clientHeight))*100);
+  document.getElementById('projPageProgress').style.width = pct+'%';
+  document.getElementById('projPageTopbar').classList.toggle('compact', s.scrollTop>80);
 }
 
-function closeProjectModal(){
-  var page=document.getElementById('projectPage');
-  page.classList.remove('open');
-  document.body.classList.remove('proj-page-open');
-  _currentModalIdx=null;
-  if(history.replaceState) history.replaceState(null,'',window.location.pathname);
-}
-
-/* ToC — shown inline above content */
-function buildToC(blocks){
-  var hs=blocks.filter(function(b){return b.type==='heading1'||b.type==='heading2'||b.type==='heading3';});
-  var wrap=document.getElementById('projTocInline');
-  var linksEl=document.getElementById('projTocLinks');
-  if(hs.length<3){wrap.style.display='none';return;}
-  var rc=document.getElementById('projContent');
-  rc.querySelectorAll('h1,h2,h3').forEach(function(el,i){el.id='ph-'+i;});
-  var html='';
-  for(var i=0;i<hs.length;i++){
-    var cls=hs[i].type==='heading2'?'toc-h2':hs[i].type==='heading3'?'toc-h3':'';
-    html+='<a class="toc-link '+cls+'" data-id="ph-'+i+'" href="#">'+(hs[i].content||'')+'</a>';
-  }
-  linksEl.innerHTML=html;
-  linksEl.querySelectorAll('a[data-id]').forEach(function(a){
-    a.addEventListener('click',function(e){
-      e.preventDefault();
-      projScrollTo(this.getAttribute('data-id'));
-    });
-  });
-  wrap.style.display='block';
-}
-
-
-function projScrollTo(id){
-  var s=document.getElementById('projPageScroll');
-  var el=document.getElementById(id);
-  if(s&&el) s.scrollTo({top:el.offsetTop-80,behavior:'smooth'});
-}
-
-/* Copy link */
-function copyProjectLink(){
-  if(_currentModalIdx===null)return;
-  var url=window.location.origin+window.location.pathname+'#project-'+_currentModalIdx;
-  navigator.clipboard.writeText(url).then(function(){
-    var btn=document.getElementById('projCopyBtn');
-    var orig=btn.innerHTML;
-    btn.innerHTML='<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> Copied!';
-    btn.style.color='#6ee7b7';btn.style.borderColor='rgba(16,185,129,0.4)';
-    setTimeout(function(){btn.innerHTML=orig;btn.style.color='';btn.style.borderColor='';},2000);
-  }).catch(function(){showToast('Copy the URL from your browser address bar');});
-}
-
-/* Deep link */
-function checkDeepLink(){
-  var m=window.location.hash.match(/^#project-(\d+)$/);
-  if(m){var idx=parseInt(m[1]);if(_allProjects[idx])setTimeout(function(){openProjectModal(idx);},400);}
-}
-
-/* Browser back button */
-window.addEventListener('popstate',function(e){
-  if(document.getElementById('projectPage').classList.contains('open')){
-    document.getElementById('projectPage').classList.remove('open');
+function closeProjectModal() {
+  const page = document.getElementById('projectPage');
+  gsap.to(page, { opacity: 0, duration: 0.25, ease: 'power2.in', onComplete: () => {
+    page.classList.remove('open');
+    page.style.opacity = '';
     document.body.classList.remove('proj-page-open');
-    _currentModalIdx=null;
+    _currentModalIdx = null;
+    if (history.replaceState) history.replaceState(null, '', window.location.pathname);
+  }});
+}
+
+function buildToC(blocks) {
+  const hs = blocks.filter(b => b.type==='heading1'||b.type==='heading2'||b.type==='heading3');
+  const wrap = document.getElementById('projTocInline');
+  const linksEl = document.getElementById('projTocLinks');
+  if (hs.length < 3) { wrap.style.display='none'; return; }
+  const rc = document.getElementById('projContent');
+  rc.querySelectorAll('h1,h2,h3').forEach((el,i) => el.id='ph-'+i);
+  let html = '';
+  for (let i=0; i<hs.length; i++) {
+    const cls = hs[i].type==='heading2'?'toc-h2':hs[i].type==='heading3'?'toc-h3':'';
+    html += '<a class="toc-link '+cls+'" data-id="ph-'+i+'" href="#">'+(hs[i].content||'')+'</a>';
+  }
+  linksEl.innerHTML = html;
+  linksEl.querySelectorAll('a[data-id]').forEach(a => {
+    a.addEventListener('click', e => { e.preventDefault(); projScrollTo(a.getAttribute('data-id')); });
+  });
+  wrap.style.display = 'block';
+}
+
+function projScrollTo(id) {
+  const s = document.getElementById('projPageScroll'), el = document.getElementById(id);
+  if (s&&el) s.scrollTo({top:el.offsetTop-80, behavior:'smooth'});
+}
+
+function copyProjectLink() {
+  if (_currentModalIdx===null) return;
+  const url = window.location.origin+window.location.pathname+'#project-'+_currentModalIdx;
+  navigator.clipboard.writeText(url).then(() => {
+    const btn = document.getElementById('projCopyBtn'), orig = btn.innerHTML;
+    btn.innerHTML = '<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> Copied!';
+    btn.style.color='#6ee7b7'; btn.style.borderColor='rgba(16,185,129,0.4)';
+    setTimeout(() => { btn.innerHTML=orig; btn.style.color=''; btn.style.borderColor=''; }, 2000);
+  }).catch(() => showToast('Copy the URL from your browser address bar'));
+}
+
+function checkDeepLink() {
+  const m = window.location.hash.match(/^#project-(\d+)$/);
+  if (m) { const idx=parseInt(m[1]); if(_allProjects[idx]) setTimeout(()=>openProjectModal(idx),500); }
+}
+
+window.addEventListener('popstate', () => {
+  if (document.getElementById('projectPage').classList.contains('open')) {
+    document.getElementById('projectPage').classList.remove('open');
+    document.getElementById('projectPage').style.opacity = '';
+    document.body.classList.remove('proj-page-open');
+    _currentModalIdx = null;
   }
 });
 
-document.addEventListener('keydown',function(e){
-  if(e.key==='Escape'&&document.getElementById('projectPage').classList.contains('open')){
-    closeProjectModal();
-  }
-  if(e.key==='Escape') closeProjectsDrawer();
+document.addEventListener('keydown', e => {
+  if (e.key==='Escape'&&document.getElementById('projectPage').classList.contains('open')) closeProjectModal();
+  if (e.key==='Escape') closeProjectsDrawer();
 });
 
-/* ═══ PROJECTS DRAWER ═══ */
-let _activeTagFilter='';
-function openProjectsDrawer(){buildDrawer(_allProjects);document.getElementById('projectsDrawer').classList.add('open');document.getElementById('projectsDrawerOverlay').classList.add('open');document.body.style.overflow='hidden';}
-function closeProjectsDrawer(){document.getElementById('projectsDrawer').classList.remove('open');document.getElementById('projectsDrawerOverlay').classList.remove('open');document.body.style.overflow='';}
-function buildDrawer(projects){document.getElementById('drawerCount').textContent=projects.length+' project'+(projects.length!==1?'s':'');const allTags=new Set();projects.forEach(p=>{if(p.tags)p.tags.split(',').forEach(t=>allTags.add(t.trim()));});document.getElementById('drawerTagsFilter').innerHTML=['All',...allTags].map(tag=>`<button class="drawer-tag-btn ${(tag==='All'&&!_activeTagFilter)||tag===_activeTagFilter?'active':''}" onclick="setTagFilter('${tag==='All'?'':tag}')">${tag}</button>`).join('');filterDrawerProjects(document.getElementById('drawerSearch').value);}
-function setTagFilter(tag){_activeTagFilter=tag;buildDrawer(_allProjects);}
-function filterDrawerProjects(query){const q=query.toLowerCase();const filtered=_allProjects.filter(p=>{const mQ=!q||p.title.toLowerCase().includes(q)||(p.tags||'').toLowerCase().includes(q)||(p.excerpt||'').toLowerCase().includes(q);const mT=!_activeTagFilter||(p.tags||'').split(',').map(t=>t.trim()).includes(_activeTagFilter);return mQ&&mT;});const list=document.getElementById('projectsDrawerList');if(!filtered.length){list.innerHTML='<div style="text-align:center;padding:40px;color:#475569">No projects found</div>';return;}list.innerHTML=filtered.map(p=>{const ri=_allProjects.indexOf(p);const sc={Ongoing:'status-ongoing',Completed:'status-completed',Paused:'status-paused'};const tags=p.tags?p.tags.split(',').map(t=>t.trim()).filter(Boolean):[];const ex=smartExcerpt(p);return `<div class="drawer-project-row" onclick="closeProjectsDrawer();openProjectModal(${ri})"><div class="drawer-row-left">${p.featuredImage?`<img src="${p.featuredImage}" class="drawer-thumb" alt="">`:'<div class="drawer-thumb-placeholder">📄</div>'}</div><div class="drawer-row-body"><div class="drawer-row-top"><h3 class="drawer-row-title">${p.title}</h3><div style="display:flex;gap:6px;flex-shrink:0">${p.status?`<span class="project-status-badge ${sc[p.status]||'status-ongoing'}">${p.status}</span>`:''}${p.date?`<span class="project-date-badge">${p.date}</span>`:''}</div></div>${ex?`<p class="drawer-row-excerpt">${ex}</p>`:''}<div class="drawer-row-tags">${tags.slice(0,4).map(t=>`<span class="project-tag">${t}</span>`).join('')}</div></div><svg class="drawer-row-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></div>`;}).join('');}
-
-/* ═══ RENDER ═══ */
-const PROJECTS_INITIAL_SHOW=6;
-function render(){
-  const D=getData();
-  document.getElementById('heroName').textContent=D.name;
-  document.getElementById('heroSub').textContent=D.subtitle;
-  document.getElementById('heroLabel').textContent=D.heroLabel;
-  const cvBtn=document.getElementById('cvBtn');if(D.cvLink)cvBtn.href=D.cvLink;
-  twWords=D.typewriterWords||['Materials Engineer','Researcher','Innovator'];
-  clearTimeout(twTimer);twIdx=0;twChar=0;twDeleting=false;typewrite();
-  document.getElementById('aboutBio').textContent=D.bio;
-  document.getElementById('statUni').textContent=D.university;
-  document.getElementById('statDept').textContent=D.department;
-  document.getElementById('statYear').textContent=D.year;
-  if(D.photoURL)document.getElementById('avatarImg').src=D.photoURL;
-  document.getElementById('skillsGrid').innerHTML=D.skills.map((cat,i)=>`<div class="skill-card glass dyn-card" style="animation-delay:${i*.12}s"><div class="skill-icon">${['⚗️','💻','🔬','📊'][i%4]}</div><h3 class="skill-title">${cat.title}</h3><div class="chip-row">${cat.items.map(s=>`<span class="chip chip-${i%4}">${s}</span>`).join('')}</div></div>`).join('');
-  _allProjects=D.projects||[];
-  const shown=_allProjects.slice(0,PROJECTS_INITIAL_SHOW);
-  document.getElementById('projectsGrid').innerHTML=shown.map((p,i)=>{
-    const tags=p.tags?p.tags.split(',').map(t=>t.trim()).filter(Boolean):[];
-    const excerpt=smartExcerpt(p);
-    const sc={Ongoing:'status-ongoing',Completed:'status-completed',Paused:'status-paused'};
-    return `<div class="project-card dyn-card" style="animation-delay:${i*.08}s" onclick="openProjectModal(${i})" role="button" tabindex="0" onkeydown="if(event.key==='Enter')openProjectModal(${i})">${p.featuredImage?`<div class="project-card-feat-img"><img src="${p.featuredImage}" alt=""></div>`:''}<div class="project-card-top"><div class="project-num">${((_allProjects.length-i)<10?"0"+(_allProjects.length-i):(_allProjects.length-i))}</div><div class="project-meta-badges">${p.status?`<span class="project-status-badge ${sc[p.status]||'status-ongoing'}">${p.status}</span>`:''} ${p.date?`<span class="project-date-badge">${p.date}</span>`:''}</div></div><h3 class="project-title">${p.title}</h3><p class="project-excerpt">${excerpt}</p><div class="project-tags">${tags.map(t=>`<span class="project-tag">${t}</span>`).join('')}</div><div class="project-card-footer"><span class="project-view-btn">Read More <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></span>${p.link&&p.link!=='#'?`<a href="${p.link}" class="project-ext-link" target="_blank" rel="noopener" onclick="event.stopPropagation()"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg>External</a>`:''}</div></div>`;
+/* ══════════════════════════════════════════════
+   PROJECTS DRAWER
+══════════════════════════════════════════════ */
+let _activeTagFilter = '';
+function openProjectsDrawer() {
+  buildDrawer(_allProjects);
+  document.getElementById('projectsDrawer').classList.add('open');
+  document.getElementById('projectsDrawerOverlay').classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+function closeProjectsDrawer() {
+  document.getElementById('projectsDrawer').classList.remove('open');
+  document.getElementById('projectsDrawerOverlay').classList.remove('open');
+  document.body.style.overflow = '';
+}
+function buildDrawer(projects) {
+  document.getElementById('drawerCount').textContent = projects.length+' project'+(projects.length!==1?'s':'');
+  const allTags = new Set();
+  projects.forEach(p => { if(p.tags) p.tags.split(',').forEach(t => allTags.add(t.trim())); });
+  document.getElementById('drawerTagsFilter').innerHTML = ['All',...allTags].map(tag =>
+    `<button class="drawer-tag-btn ${(tag==='All'&&!_activeTagFilter)||tag===_activeTagFilter?'active':''}" onclick="setTagFilter('${tag==='All'?'':tag}')">${tag}</button>`
+  ).join('');
+  filterDrawerProjects(document.getElementById('drawerSearch').value);
+}
+function setTagFilter(tag) { _activeTagFilter=tag; buildDrawer(_allProjects); }
+function filterDrawerProjects(query) {
+  const q = query.toLowerCase();
+  const filtered = _allProjects.filter(p => {
+    const mQ = !q||p.title.toLowerCase().includes(q)||(p.tags||'').toLowerCase().includes(q)||(p.excerpt||'').toLowerCase().includes(q);
+    const mT = !_activeTagFilter||(p.tags||'').split(',').map(t=>t.trim()).includes(_activeTagFilter);
+    return mQ&&mT;
+  });
+  const list = document.getElementById('projectsDrawerList');
+  if (!filtered.length) { list.innerHTML='<div style="text-align:center;padding:40px;color:#475569">No projects found</div>'; return; }
+  list.innerHTML = filtered.map(p => {
+    const ri = _allProjects.indexOf(p);
+    const sc = {Ongoing:'status-ongoing',Completed:'status-completed',Paused:'status-paused'};
+    const tags = p.tags?p.tags.split(',').map(t=>t.trim()).filter(Boolean):[];
+    const ex = smartExcerpt(p);
+    return `<div class="drawer-project-row" onclick="closeProjectsDrawer();openProjectModal(${ri})">
+      <div class="drawer-row-left">${p.featuredImage?`<img src="${p.featuredImage}" class="drawer-thumb" alt="">`:' <div class="drawer-thumb-placeholder">📄</div>'}</div>
+      <div class="drawer-row-body">
+        <div class="drawer-row-top"><h3 class="drawer-row-title">${p.title}</h3>
+          <div style="display:flex;gap:6px;flex-shrink:0">${p.status?`<span class="project-status-badge ${sc[p.status]||'status-ongoing'}">${p.status}</span>`:''}${p.date?`<span class="project-date-badge">${p.date}</span>`:''}</div>
+        </div>
+        ${ex?`<p class="drawer-row-excerpt">${ex}</p>`:''}
+        <div class="drawer-row-tags">${tags.slice(0,4).map(t=>`<span class="project-tag">${t}</span>`).join('')}</div>
+      </div>
+      <svg class="drawer-row-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+    </div>`;
   }).join('');
-  const sw=document.getElementById('showAllWrap');
-  if(_allProjects.length>PROJECTS_INITIAL_SHOW){sw.style.display='flex';document.getElementById('showAllCount').textContent=`+${_allProjects.length-PROJECTS_INITIAL_SHOW} more`;}
-  else sw.style.display='none';
-  document.getElementById('researchList').innerHTML=D.researchInterests.map(r=>`<div class="timeline-item"><div class="timeline-dot"></div><p>${r}</p></div>`).join('');
-  const pl=document.getElementById('pubList'),cs=document.getElementById('pubComingSoon');
-  if(!D.publications||!D.publications.length){pl.innerHTML='';cs.style.display='flex';}
-  else{cs.style.display='none';pl.innerHTML=D.publications.map((p,i)=>`<div class="pub-item"><span class="pub-num">${i+1}</span><p>${p}</p></div>`).join('');}
-  document.getElementById('contactMsg').textContent=D.contactMessage;
-  document.getElementById('emailVal').textContent=D.email;
-  document.getElementById('emailLink').href='mailto:'+D.email;
-  document.getElementById('githubLink').href=D.github||'#';
-  document.getElementById('linkedinLink').href=D.linkedin||'#';
-  document.getElementById('rgLink').href=D.researchgate||'#';
-  document.getElementById('footerTagline').textContent=`${D.name} · ${D.department} · ${D.university}`;
-  document.getElementById('footerYear').textContent=new Date().getFullYear();
-  if(D.appearance){if(D.appearance.accentColor)document.documentElement.style.setProperty('--violet',D.appearance.accentColor);if(D.appearance.fontSize)document.documentElement.style.fontSize=D.appearance.fontSize;}
-  document.querySelectorAll('.dyn-card').forEach((el,i)=>{el.style.opacity='0';el.style.transform='translateY(20px)';setTimeout(()=>{el.style.transition='opacity .5s ease, transform .5s ease';el.style.opacity='1';el.style.transform='translateY(0)';},80+i*80);});
-  observeReveal();
+}
+
+/* ══════════════════════════════════════════════
+   MAIN RENDER
+══════════════════════════════════════════════ */
+const PROJECTS_INITIAL_SHOW = 6;
+
+function render() {
+  const D = getData();
+
+  document.getElementById('heroName').textContent = D.name;
+  document.getElementById('heroSub').textContent = D.subtitle;
+  document.getElementById('heroLabel').textContent = D.heroLabel;
+  const cvBtn = document.getElementById('cvBtn'); if(D.cvLink) cvBtn.href=D.cvLink;
+  twWords = D.typewriterWords || ['Materials Engineer','Researcher','Innovator'];
+  clearTimeout(twTimer); twIdx=0; twChar=0; twDeleting=false; typewrite();
+
+  document.getElementById('aboutBio').textContent = D.bio;
+  document.getElementById('statUni').textContent = D.university;
+  document.getElementById('statDept').textContent = D.department;
+  document.getElementById('statYear').textContent = D.year;
+  if (D.photoURL) document.getElementById('avatarImg').src = D.photoURL;
+
+  document.getElementById('skillsGrid').innerHTML = D.skills.map((cat,i) =>
+    `<div class="skill-card glass" data-cursor="hover">
+      <div class="skill-icon">${['⚗️','💻','🔬','📊'][i%4]}</div>
+      <h3 class="skill-title">${cat.title}</h3>
+      <div class="chip-row">${cat.items.map(s=>`<span class="chip chip-${i%4}">${s}</span>`).join('')}</div>
+    </div>`
+  ).join('');
+
+  _allProjects = D.projects || [];
+  const shown = _allProjects.slice(0, PROJECTS_INITIAL_SHOW);
+
+  document.getElementById('projectsGrid').innerHTML = shown.map((p,i) => {
+    const tags = p.tags?p.tags.split(',').map(t=>t.trim()).filter(Boolean):[];
+    const excerpt = smartExcerpt(p);
+    const sc = {Ongoing:'status-ongoing',Completed:'status-completed',Paused:'status-paused'};
+    const num = (_allProjects.length-i)<10 ? '0'+(_allProjects.length-i) : (_allProjects.length-i);
+    return `<div class="project-card" onclick="openProjectModal(${i})" role="button" tabindex="0"
+              onkeydown="if(event.key==='Enter')openProjectModal(${i})" data-cursor="hover">
+      ${p.featuredImage?`<div class="project-card-feat-img"><img src="${p.featuredImage}" alt="" loading="lazy"></div>`:''}
+      <div class="project-card-top">
+        <div class="project-num">${num}</div>
+        <div class="project-meta-badges">
+          ${p.status?`<span class="project-status-badge ${sc[p.status]||'status-ongoing'}">${p.status}</span>`:''}
+          ${p.date?`<span class="project-date-badge">${p.date}</span>`:''}
+        </div>
+      </div>
+      <h3 class="project-title">${p.title}</h3>
+      <p class="project-excerpt">${excerpt}</p>
+      <div class="project-tags">${tags.map(t=>`<span class="project-tag">${t}</span>`).join('')}</div>
+      <div class="project-card-footer">
+        <span class="project-view-btn">Read More
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+        </span>
+        ${p.link&&p.link!=='#'?`<a href="${p.link}" class="project-ext-link" target="_blank" rel="noopener" onclick="event.stopPropagation()">
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg>External</a>`:''}
+      </div>
+    </div>`;
+  }).join('');
+
+  const sw = document.getElementById('showAllWrap');
+  if (_allProjects.length > PROJECTS_INITIAL_SHOW) {
+    sw.style.display = 'flex';
+    document.getElementById('showAllCount').textContent = `+${_allProjects.length-PROJECTS_INITIAL_SHOW} more`;
+  } else sw.style.display = 'none';
+
+  document.getElementById('researchList').innerHTML = D.researchInterests.map(r =>
+    `<div class="timeline-item"><div class="timeline-dot"></div><p>${r}</p></div>`
+  ).join('');
+
+  const pl=document.getElementById('pubList'), cs=document.getElementById('pubComingSoon');
+  if (!D.publications||!D.publications.length) { pl.innerHTML=''; cs.style.display='flex'; }
+  else { cs.style.display='none'; pl.innerHTML=D.publications.map((p,i)=>`<div class="pub-item"><span class="pub-num">${i+1}</span><p>${p}</p></div>`).join(''); }
+
+  document.getElementById('contactMsg').textContent = D.contactMessage;
+  document.getElementById('emailVal').textContent = D.email;
+  document.getElementById('emailLink').href = 'mailto:'+D.email;
+  document.getElementById('githubLink').href = D.github||'#';
+  document.getElementById('linkedinLink').href = D.linkedin||'#';
+  document.getElementById('rgLink').href = D.researchgate||'#';
+  document.getElementById('footerTagline').textContent = `${D.name} · ${D.department} · ${D.university}`;
+  document.getElementById('footerYear').textContent = new Date().getFullYear();
+
+  if (D.appearance) {
+    if (D.appearance.accentColor) document.documentElement.style.setProperty('--violet', D.appearance.accentColor);
+    if (D.appearance.fontSize) document.documentElement.style.fontSize = D.appearance.fontSize;
+  }
+
+  // Kick off all GSAP animations after DOM is built
+  initSplitReveals();
+  initSkillAnim();
+  initProjectAnim();
+  initTimelineAnim();
+  initStatAnim();
+  initContactAnim();
+  initFooterAnim();
+  initCardTilt();
+  initMagnetic();
+  initParallax();
+
+  // Re-attach cursor hover for new elements
+  if (!isTouchDevice) {
+    document.querySelectorAll('[data-cursor="link"],[data-cursor="hover"]').forEach(el => {
+      el.addEventListener('mouseenter', () => ring.classList.add('expanded'));
+      el.addEventListener('mouseleave', () => ring.classList.remove('expanded'));
+    });
+  }
+
   checkDeepLink();
 }
+
 render();
 </script>
 </body>
