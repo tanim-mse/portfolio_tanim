@@ -57,7 +57,7 @@ const DEFAULT_DATA = {
     {
       "title": "Electrodeposition of Nickel on a Metal Substrate",
       "excerpt": "To deposit a uniform nickel (Ni) coating on a mild steel substrate using an aqueous nickel sulfate-based electrolyte (Watts bat…",
-      "featuredImage": "",
+      "featuredImage": "https://res.cloudinary.com/dr2b6pzux/image/upload/v1776159835/obgvoytrctaykbylaeel.jpg",
       "tags": "Surface, Microstructure, Roughness, Pb, Mild Steel, Anode, Cathode",
       "link": "#",
       "date": "April 2026",
@@ -424,42 +424,44 @@ const DEFAULT_DATA = {
               "  Cut -off Length (mm)"
             ],
             [
-              "",
-              "",
-              "",
-              "",
-              "",
-              ""
+              "Longitudinal",
+              "3.376",
+              "9.549",
+              "3.838",
+              "9.644",
+              "0.8"
             ],
             [
-              "",
-              "",
-              "",
-              "",
-              "",
+              "Transverse",
+              "3.097",
+              "8.758",
+              "3.862",
+              "8.845",
               ""
             ]
           ]
         },
         {
           "type": "paragraph",
-          "id": "vdbi7ps4d0imny8xpa4",
-          "content": " Longitudinal 3.376 9.549 3.838 9.644 0.8 Transverse 3.097 8.758 3.862 8.845"
+          "id": "hn98i82621mny8xpaa",
+          "content": "Where: \nRa = Arithmetic mean roughness, Rz = Mean peak-to-valley height, \nRq = Root mean square roughness, Rt = Maximum total height of profile."
         },
         {
-          "type": "paragraph",
-          "id": "hn98i82621mny8xpaa",
-          "content": "Where: R a = Arithmetic mean roughness, R z = Mean peak -to -valley height, R q = Root mean square roughness, R t = Maximum total height of profile."
+          "type": "heading3",
+          "id": "b0mjcjn0vk",
+          "content": "6.3 Microstructure Image "
         },
         {
           "type": "paragraph",
           "id": "e84mc22w3v5mny8xpaa",
-          "content": "6.3 Microstructure Image The following microstructure image was captured after deposition to observe the surface morphology and estimate the cross -sectional area of the nickel coating layer:"
+          "content": "The following microstructure image was captured after deposition to observe the surface morphology and estimate the cross -sectional area of the nickel coating layer:"
         },
         {
-          "type": "paragraph",
-          "id": "io3o4l8ywhomny8xpaa",
-          "content": "Figure 1: Microstructure of Ni -deposited mild steel substrate surface"
+          "type": "image",
+          "id": "ft7psn906td",
+          "src": "https://res.cloudinary.com/dr2b6pzux/image/upload/v1776159641/mdyekekiob61qblrzkne.jpg",
+          "caption": "Fig. 1: Microstructure of Ni-deposited mild steel substrate surface",
+          "size": "medium"
         },
         {
           "type": "heading2",
@@ -484,12 +486,7 @@ const DEFAULT_DATA = {
         {
           "type": "paragraph",
           "id": "yr3ggvu2xxlmny8xpaa",
-          "content": "The Positector 6000 (Model FN51) thickness gauge could not be used due to a machine malfunction. The analytical thickness calculation based on the weight gain and nickel density (8900 kg/m³) gave a value of ~1.51 × 10 ⁻ ³ mm (1.51 μm), which is in reasonable agreement with"
-        },
-        {
-          "type": "paragraph",
-          "id": "lukgbzgsoemny8xpai",
-          "content": "the observed field value of 1.451 × 10 ⁻ ³ mm. The slight difference arises from the assumption of uniform deposition across both faces, whereas in practice, the deposition may be slightly non uniform."
+          "content": "The Positector 6000 (Model FN51) thickness gauge could not be used due to a machine malfunction. The analytical thickness calculation based on the weight gain and nickel density (8900 kg/m³) gave a value of ~1.51 × 10 ⁻ ³ mm (1.51 μm), which is in reasonable agreement with the observed field value of 1.451 × 10 ⁻ ³ mm. The slight difference arises from the assumption of uniform deposition across both faces, whereas in practice, the deposition may be slightly non-uniform."
         },
         {
           "type": "paragraph",
@@ -519,22 +516,7 @@ const DEFAULT_DATA = {
         {
           "type": "paragraph",
           "id": "ha6vomi26wsmny8xpai",
-          "content": "• Schlesinger, M., & Paunovic, M. Modern Electroplating, Wiley."
-        },
-        {
-          "type": "paragraph",
-          "id": "bvjvueuvdrjmny8xpai",
-          "content": "• Lowenheim, F. A. Modern Electroplating Technology."
-        },
-        {
-          "type": "paragraph",
-          "id": "rplhewvhz8lmny8xpai",
-          "content": "• ASTM B689 – Standard Specification for Electroplated Engineering Nickel Coatings."
-        },
-        {
-          "type": "paragraph",
-          "id": "u9qhltjz3wmny8xpaj",
-          "content": "• Course Manual: MSE3132 Surface Engineering Sessional, Dept. of MSE, RUET."
+          "content": "• Schlesinger, M., & Paunovic, M. Modern Electroplating, Wiley.\n• Lowenheim, F. A. Modern Electroplating Technology.\n• ASTM B689 – Standard Specification for Electroplated Engineering Nickel Coatings.\n• Course Manual: MSE3132 Surface Engineering Sessional, Dept. of MSE, RUET."
         }
       ]
     },
