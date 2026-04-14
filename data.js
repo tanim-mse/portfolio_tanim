@@ -61,7 +61,7 @@ const DEFAULT_DATA = {
       "tags": "Surface, Microstructure, Roughness, Pb, Mild Steel, Anode, Cathode",
       "link": "#",
       "date": "April 2026",
-      "status": "Ongoing",
+      "status": "Completed",
       "orderNum": 3,
       "blocks": [
         {
