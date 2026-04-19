@@ -792,6 +792,101 @@ html.lenis, html.lenis body { height: auto; }
   .proj-row .arrow { font-size: 20px; }
 }
 
+/* ─── Year divider ─── */
+.proj-year-divider {
+  display: grid;
+  grid-template-columns: 80px minmax(0, 1fr);
+  gap: clamp(20px, 4vw, 60px);
+  align-items: center;
+  padding: 28px 0 8px;
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--paper-faint);
+}
+.proj-year-divider .y { color: var(--accent); }
+.proj-year-divider .ln {
+  display: block; height: 1px;
+  background: linear-gradient(90deg, var(--hairline-2), transparent);
+}
+.proj-year-divider:first-child { padding-top: 0; }
+@media (max-width: 700px) {
+  .proj-year-divider { grid-template-columns: 50px 1fr; }
+}
+
+/* ─── Overflow rows ─── */
+.projects-list .proj-overflow { display: none; }
+.projects-list.show-overflow .proj-overflow {
+  display: grid;
+  animation: projFadeIn 600ms cubic-bezier(0.2, 0.8, 0.2, 1) backwards;
+}
+@keyframes projFadeIn {
+  from { opacity: 0; transform: translateY(12px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.proj-toggle {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: center;
+  gap: 18px;
+  width: 100%;
+  margin-top: 36px;
+  padding: 14px 0;
+  background: none; border: 0; cursor: pointer;
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--paper-mute);
+  transition: color 200ms;
+}
+.proj-toggle:hover { color: var(--paper); }
+.proj-toggle .proj-toggle-line { height: 1px; background: var(--hairline); transition: background 200ms; }
+.proj-toggle:hover .proj-toggle-line { background: var(--hairline-2); }
+.proj-toggle .proj-toggle-label strong { color: var(--accent); font-weight: 500; margin: 0 4px; }
+.proj-toggle .proj-toggle-label em {
+  font-style: italic; font-family: var(--serif); font-weight: 400;
+  font-size: 13px; color: var(--paper-faint); letter-spacing: 0;
+  text-transform: none; margin-left: 6px;
+}
+
+/* ─── End-of-detail navigation ─── */
+.pd-end {
+  margin-top: 80px;
+  padding-top: 32px;
+  border-top: 1px solid var(--hairline);
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+}
+.pd-end button, .pd-end a {
+  display: flex; flex-direction: column; gap: 8px;
+  padding: 22px 0;
+  background: none; border: 0; text-align: left; cursor: pointer;
+  transition: padding 400ms cubic-bezier(0.65, 0, 0.35, 1);
+  font: inherit; color: inherit;
+}
+.pd-end button:hover, .pd-end a:hover { padding-left: 8px; }
+.pd-end .lab {
+  font-family: var(--mono);
+  font-size: 10px; letter-spacing: 0.25em;
+  text-transform: uppercase; color: var(--paper-faint);
+}
+.pd-end .val {
+  font-family: var(--serif); font-style: italic;
+  font-weight: 400; font-size: 22px; color: var(--paper);
+  transition: color 200ms;
+}
+.pd-end button:hover .val, .pd-end a:hover .val { color: var(--accent); }
+.pd-end .right { text-align: right; align-items: flex-end; }
+.pd-end .right:hover { padding-left: 0; padding-right: 8px; }
+@media (max-width: 600px) {
+  .pd-end { grid-template-columns: 1fr; gap: 4px; }
+  .pd-end .right { text-align: left; align-items: flex-start; }
+}
+
 /* ─── PROJECT DETAIL VIEW ─────────────────────────────────────── */
 .proj-detail {
   display: none;
@@ -1362,7 +1457,7 @@ html.lenis, html.lenis body { height: auto; }
 
   <!-- COLOPHON -->
   <footer class="colophon">
-    <div class="left">Designed &amp; built in Rajshahi.<br>Made of atoms, like everything else.</div>
+    <div class="left">A small site about a curious mind.<br>Made of atoms, like everything else.</div>
     <div>
       <div>© <span id="year"></span> · Tanim</div>
       <div style="margin-top:6px">Set in Fraunces &amp; Inter Tight</div>
@@ -1659,6 +1754,13 @@ function clearBonds() {
   bonds = [];
 }
 
+// Smooth fade-out: mark bonds as "leaving" so tick() eases them to opacity 0,
+// then removes them when fully faded. Avoids the hard clear that caused the
+// visible bond-pop during morph transitions.
+function fadeOutBonds() {
+  bonds.forEach(b => { b.leaving = true; });
+}
+
 function morphTo(structureFn) {
   if (!structureFn) return;
   const s = structureFn();
@@ -1672,30 +1774,34 @@ function morphTo(structureFn) {
       atoms[i].targetScale = 1;
       atoms[i].isActive = true;
     } else {
-      // shrink unused atoms toward center
       atoms[i].target.set(0, 0, 0);
       atoms[i].targetScale = 0;
       atoms[i].isActive = false;
     }
   }
 
-  // Rebuild bonds (after a slight delay so atoms are nearly in place)
-  setTimeout(() => {
-    clearBonds();
-    s.bonds.forEach(([i, j]) => {
-      if (i >= MAX_ATOMS || j >= MAX_ATOMS) return;
-      const geo = new THREE.BufferGeometry().setFromPoints([
-        atoms[i].target.clone(),
-        atoms[j].target.clone()
-      ]);
-      const mat = BOND_MAT.clone();
-      mat.opacity = 0;
-      const line = new THREE.Line(geo, mat);
-      latticeGroup.add(line);
-      bonds.push({ line, a: i, b: j });
-      gsap.to(mat, { opacity: 0.4, duration: 1.2, delay: Math.random() * 0.3 });
-    });
-  }, 600);
+  // Fade old bonds OUT immediately (marked for removal in tick loop)
+  fadeOutBonds();
+
+  // Build new bonds right away — they start at opacity 0 and ease in.
+  // Their geometry is driven by live atom positions (tick loop), so they
+  // travel WITH the atoms as they move to their new targets — no lag, no
+  // stringy crossing lines, no hard cut.
+  s.bonds.forEach(([i, j]) => {
+    if (i >= MAX_ATOMS || j >= MAX_ATOMS) return;
+    // Start bond at CURRENT atom positions (not target) so it doesn't appear
+    // pre-placed in the final structure.
+    const geo = new THREE.BufferGeometry().setFromPoints([
+      atoms[i].mesh.position.clone(),
+      atoms[j].mesh.position.clone()
+    ]);
+    const mat = BOND_MAT.clone();
+    mat.opacity = 0;
+    const line = new THREE.Line(geo, mat);
+    latticeGroup.add(line);
+    // targetOpacity drives a smooth ease in tick loop
+    bonds.push({ line, a: i, b: j, leaving: false, targetOpacity: 0.4, startDelay: 0.15 + Math.random() * 0.5 });
+  });
 
   // Update label
   const phase = $('#crystalPhase');
@@ -1728,8 +1834,12 @@ function tick(dt) {
     a.mesh.scale.setScalar(Math.max(0, a.mesh.scale.x + ds));
   }
 
-  // Update bond geometries to follow atom positions
-  for (const b of bonds) {
+  // Update bond geometries + ease opacity toward target.
+  // Bonds always track live atom positions (so they bend/flex with the morph,
+  // instead of snapping between old and new at the end). Each bond has its own
+  // targetOpacity and a small startDelay for a gentle staggered reveal.
+  for (let i = bonds.length - 1; i >= 0; i--) {
+    const b = bonds[i];
     if (atoms[b.a] && atoms[b.b]) {
       const pa = atoms[b.a].mesh.position;
       const pb = atoms[b.b].mesh.position;
@@ -1737,6 +1847,25 @@ function tick(dt) {
       arr[0] = pa.x; arr[1] = pa.y; arr[2] = pa.z;
       arr[3] = pb.x; arr[4] = pb.y; arr[5] = pb.z;
       b.line.geometry.attributes.position.needsUpdate = true;
+    }
+    // Opacity easing
+    if (b.leaving) {
+      // Fade out ~400ms
+      b.line.material.opacity += (0 - b.line.material.opacity) * 0.12;
+      if (b.line.material.opacity < 0.01) {
+        latticeGroup.remove(b.line);
+        b.line.geometry.dispose();
+        b.line.material.dispose();
+        bonds.splice(i, 1);
+      }
+    } else {
+      // Honor startDelay before easing toward targetOpacity
+      if (b.startDelay > 0) {
+        b.startDelay -= dt;
+      } else {
+        const target = b.targetOpacity != null ? b.targetOpacity : 0.4;
+        b.line.material.opacity += (target - b.line.material.opacity) * 0.06;
+      }
     }
   }
 
@@ -1994,6 +2123,15 @@ function renderSkills() {
 }
 
 // PROJECTS — list view
+// PROJECTS — list view, grouped by year, collapses after threshold
+const PROJ_INITIAL_VISIBLE = 6;
+
+function projectYear(p) {
+  if (!p.date) return null;
+  const m = String(p.date).match(/(19|20)\d{2}/);
+  return m ? m[0] : null;
+}
+
 function renderProjects() {
   const list = $('#projectsList');
   const projects = DATA.projects || [];
@@ -2001,12 +2139,35 @@ function renderProjects() {
     list.innerHTML = `<div style="padding: 40px 0; color: var(--paper-faint); font-style: italic; font-family: var(--serif);">No projects yet — coming soon.</div>`;
     return;
   }
-  list.innerHTML = projects.map((p, i) => {
+
+  const total = projects.length;
+  // Build flat sequence with year-divider markers (preserves newest-first order)
+  const items = [];
+  let lastYear = '__none__';
+  projects.forEach((p, i) => {
+    const y = projectYear(p) || '—';
+    if (y !== lastYear) { items.push({ kind: 'divider', year: y }); lastYear = y; }
+    items.push({ kind: 'project', project: p, idx: i });
+  });
+
+  let projCount = 0;
+  const html = items.map(it => {
+    if (it.kind === 'divider') {
+      const isOverflow = projCount >= PROJ_INITIAL_VISIBLE;
+      return `<div class="proj-year-divider${isOverflow ? ' proj-overflow' : ''}">
+        <span class="y">${esc(it.year)}</span><span class="ln"></span>
+      </div>`;
+    }
+    const p = it.project, i = it.idx;
+    const isOverflow = projCount >= PROJ_INITIAL_VISIBLE;
+    projCount++;
     const status = p.status || 'Ongoing';
     const statusClass = status === 'Completed' ? '' : status === 'Paused' ? 'paused' : 'ongoing';
+    // Newest (idx 0) gets highest number; oldest gets 01
+    const num = total - i;
     return `
-      <div class="proj-row" data-idx="${i}" onclick="openProject(${i})">
-        <div class="num">${String(i + 1).padStart(2, '0')} / ${String(projects.length).padStart(2, '0')}</div>
+      <div class="proj-row${isOverflow ? ' proj-overflow' : ''}" data-idx="${i}" onclick="openProject(${i})">
+        <div class="num">${String(num).padStart(2, '0')} / ${String(total).padStart(2, '0')}</div>
         <div class="body">
           <div class="title">${esc(p.title || 'Untitled')}</div>
           <div class="meta">
@@ -2019,7 +2180,29 @@ function renderProjects() {
       </div>
     `;
   }).join('');
+
+  const overflowCount = total - PROJ_INITIAL_VISIBLE;
+  const toggle = (overflowCount > 0)
+    ? `<button class="proj-toggle" id="projToggle" onclick="toggleProjOverflow()">
+         <span class="proj-toggle-line"></span>
+         <span class="proj-toggle-label">Show all <strong>${total}</strong> projects · <em>+${overflowCount} more</em></span>
+         <span class="proj-toggle-line"></span>
+       </button>` : '';
+  list.innerHTML = html + toggle;
 }
+
+function toggleProjOverflow() {
+  const btn = document.getElementById('projToggle');
+  const expanded = $('#projectsList').classList.toggle('show-overflow');
+  if (btn) {
+    const total = (DATA.projects || []).length;
+    const overflow = total - PROJ_INITIAL_VISIBLE;
+    btn.querySelector('.proj-toggle-label').innerHTML = expanded
+      ? `Show fewer projects · <em>collapse list</em>`
+      : `Show all <strong>${total}</strong> projects · <em>+${overflow} more</em>`;
+  }
+}
+window.toggleProjOverflow = toggleProjOverflow;
 
 // PROJECT DETAIL — same page, swap content
 let prevScrollY = 0;
@@ -2039,29 +2222,45 @@ function openProject(idx) {
     ? renderBlocksToHTML(p.blocks)
     : (p.desc || '<p>No content yet.</p>');
 
+  // Next project — wrap around when at end of list
+  const projects = DATA.projects || [];
+  const nextIdx = (idx + 1) % projects.length;
+  const hasNext = projects.length > 1;
+  const nextProj = hasNext ? projects[nextIdx] : null;
+
   $('#projDetailContent').innerHTML = `
     <div class="pd-meta">
       <span class="status ${statusClass}">${esc(status)}</span>
       ${p.date ? `<span>${esc(p.date)}</span>` : ''}
-      <span>Project ${String(idx + 1).padStart(2, '0')} of ${String(DATA.projects.length).padStart(2, '0')}</span>
+      <span>Project ${String(projects.length - idx).padStart(2, '0')} of ${String(projects.length).padStart(2, '0')}</span>
     </div>
     <h1 class="pd-title">${esc(p.title || 'Untitled')}</h1>
     <div class="pd-tags">${tags.map(t => `<span>${esc(t)}</span>`).join('')}</div>
     ${featHTML}
     <div class="pd-body">${bodyHTML}</div>
+    <div class="pd-end">
+      <button onclick="closeProject()">
+        <span class="lab">← Back</span>
+        <span class="val">All work</span>
+      </button>
+      ${hasNext ? `
+        <button class="right" onclick="openProject(${nextIdx})">
+          <span class="lab">Next project →</span>
+          <span class="val">${esc(nextProj.title || 'Untitled')}</span>
+        </button>
+      ` : ''}
+    </div>
   `;
 
   // Hide the projects list, show the detail
   $('#projects').style.display = 'none';
   $('#projDetail').classList.add('show');
-  // Scroll to the projects anchor
+  // Scroll to the top of the detail view (works for first-open and next-project wrap)
   if (lenis) lenis.scrollTo($('#projDetail'), { offset: -60, duration: 0.8 });
   else $('#projDetail').scrollIntoView({ behavior: 'smooth' });
-
-  // Re-render KaTeX if needed
-  if (window.katex) {
-    setTimeout(() => {}, 50);  // already rendered inline by renderBlocksToHTML
-  }
+  setTimeout(() => {
+    if (lenis) lenis.scrollTo($('#projDetail'), { offset: -60, duration: 0.6 });
+  }, 50);
 }
 
 function closeProject() {
