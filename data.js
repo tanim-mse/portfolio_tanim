@@ -142,434 +142,230 @@ const DEFAULT_DATA = {
           "content": "Table 1: Experimental Data and Calculated Parameters at 550°C and 650°C Initial Wt. of Wt. of Wt. Oxide"
         },
         {
-          "type": "formula",
-          "id": "08lbqekgd257mo4o5dss",
-          "latex": "Time Time Wt. of Δm/A (Δm/A)² Log k",
-          "notes": ""
+          "type": "table",
+          "id": "c6zmdsroted",
+          "rows": 11,
+          "cols": 11,
+          "data": [
+            [
+              "Time (min)",
+              "Time (S)",
+              "Wt. of Crucible (g)",
+              "Wt. of (C+S) (g)",
+              "Initial Wt. of Strip (g)",
+              "Wt. Gain (g)",
+              "Δm/A (g/cm²)",
+              "(Δm/A)² (g²/cm⁴)",
+              "Log (time)",
+              "K (g²cm⁻⁴s⁻¹)",
+              "Oxide Thickness (cm)"
+            ],
+            [
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              ""
+            ],
+            [
+              "0",
+              "0",
+              "73.484",
+              "75.325",
+              "1.841",
+              "0.000",
+              "0",
+              "0",
+              "",
+              "",
+              "0"
+            ],
+            [
+              "10",
+              "600",
+              "73.484",
+              "75.331",
+              "1.841",
+              "0.006",
+              "1.307×10⁻³",
+              "1.709×10⁻⁶",
+              "2.778",
+              "2.84×10⁻⁹",
+              "4.66×10⁻⁴"
+            ],
+            [
+              "20",
+              "1200",
+              "73.484",
+              "75.755",
+              "1.841",
+              "0.430",
+              "0.094",
+              "8.776×10⁻³ ",
+              "3.079",
+              "7.31×10⁻⁶",
+              "0.033"
+            ],
+            [
+              "30",
+              "1800",
+              "",
+              "75.846",
+              "",
+              "0.521",
+              "0.114",
+              "0.0129",
+              "3.255",
+              "7.167×10⁻⁶ ",
+              "0.04"
+            ],
+            [
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              ""
+            ],
+            [
+              "0",
+              "0",
+              "73.782",
+              "74.554",
+              "0.772",
+              "0.000",
+              "0",
+              "0",
+              "",
+              "",
+              "0"
+            ],
+            [
+              "10",
+              "600",
+              "",
+              "74.572",
+              "",
+              "0.018",
+              "4.904×10⁻³",
+              "2.405×10⁻⁵ ",
+              "2.778",
+              "4.01×10⁻⁸ ",
+              "1.56×10⁻³"
+            ],
+            [
+              "20",
+              "1200",
+              "",
+              "74.584",
+              "",
+              "0.030",
+              "8.174×10⁻³",
+              "6.682×10⁻⁵ ",
+              "3.079",
+              "7.31×10⁻⁶ ",
+              "0.03"
+            ],
+            [
+              "30",
+              "1800",
+              "",
+              "74.601",
+              "",
+              "0.047",
+              "0.0128",
+              "1.640×10⁻⁴ ",
+              "3.255",
+              "7.163×10⁻⁹ ",
+              "1.15×10⁻³"
+            ]
+          ]
+        },
+        {
+          "type": "heading2",
+          "id": "quvf2wg9gcf",
+          "content": "Calculations"
+        },
+        {
+          "type": "heading3",
+          "id": "wp40434mu18",
+          "content": "Surface Area Calculation"
+        },
+        {
+          "type": "heading3",
+          "id": "ix49j9b32l",
+          "content": "For 550°C:"
         },
         {
           "type": "paragraph",
-          "id": "fhyauuchtw8mo4o5dss",
-          "content": "Crucible (C+S) Gain Thickness"
+          "id": "783yb20136m",
+          "content": "For Sample 1:\nLength, L₁ = 27.34 mm,   Width, W₁ = 16.87 mm\n∴ A₁ = 27.34 × 16.87 = 461.22 mm² = 4.61 cm²\n\nFor Sample 2:\nLength, L₂ = 26.57 mm,   Width, W₂ = 17.26 mm\n∴ A₂ = 26.57 × 17.26 = 458.60 mm² = 4.58 cm²\n\nAverage Area, A = (4.61 + 4.58) / 2 = 4.59 cm²"
         },
         {
-          "type": "formula",
-          "id": "so342ohwsqmo4o5dss",
-          "latex": "(min) (s) Strip (g/cm²) (g²/cm⁴) (time) (g²cm⁻⁴s⁻¹)",
-          "notes": ""
-        },
-        {
-          "type": "paragraph",
-          "id": "gu47bc8va97mo4o5dss",
-          "content": "(g) (g) (g) (cm) (g)"
-        },
-        {
-          "type": "formula",
-          "id": "ijzdbmkgcgamo4o5dss",
-          "latex": "550°C (Surface Area, A = 4.59 cm²)",
-          "notes": ""
+          "type": "heading3",
+          "id": "su0m1o0oohb",
+          "content": "For 650°C:"
         },
         {
           "type": "paragraph",
-          "id": "cj96bdnm2wnmo4o5dss",
-          "content": "0 0 73.484 75.325 1.841 0.000 0 0 — — 0"
+          "id": "2lqhi7a275h",
+          "content": "For Sample 1:\nLength, L₁ = 23.48 mm, Width, W₁ = 14.76 mm\n∴ A₁ = 23.48 × 14.76 = 346.56 mm² = 3.46 cm²\n\nFor Sample 2:\nLength, L₂ = 25.31 mm, Width, W₂ = 15.35 mm\n∴ A₂ = 25.31 × 15.35 = 388.51 mm² = 3.88 cm²\n\nAverage Area, A = (3.46 + 3.88) / 2 = 3.67 cm²"
         },
         {
-          "type": "formula",
-          "id": "5xbgf9pzrztmo4o5dss",
-          "latex": "10 600 73.484 75.331 1.841 0.006 1.307×10⁻³ 1.709×10⁻⁶ 2.778 2.84×10⁻⁹ 4.66×10⁻⁴",
-          "notes": ""
-        },
-        {
-          "type": "formula",
-          "id": "bx3sx5r2cwmo4o5dss",
-          "latex": "20 1200 73.484 75.755 1.841 0.430 0.094 8.776×10⁻³ 3.079 7.31×10⁻⁶ 0.033",
-          "notes": ""
-        },
-        {
-          "type": "formula",
-          "id": "9yhc8glalmo4o5dss",
-          "latex": "30 1800 73.484 75.846 1.841 0.521 0.114 0.0129 3.255 7.167×10⁻⁶ 0.04",
-          "notes": ""
-        },
-        {
-          "type": "formula",
-          "id": "1zn7clhua20hmo4o5dss",
-          "latex": "650°C (Surface Area, A = 3.67 cm²)",
-          "notes": ""
+          "type": "heading3",
+          "id": "0iskj2gmo6vb",
+          "content": "Parabolic Rate Constant (k) at 550°C"
         },
         {
           "type": "paragraph",
-          "id": "kkpy5sgf45pmo4o5dss",
-          "content": "0 0 73.782 74.554 0.772 0.000 0 0 — — 0"
+          "id": "dlwykdw6fnj",
+          "content": "Using the parabolic rate law: (Δm/A)² = k × t\n\nAt t = 0 s: k = 0\n\nAt t = 600 s:\nk = (1.307×10⁻³)² / 600 = 2.84×10⁻⁹ g²/cm⁴\n\nAt t = 1200 s:\nk = (0.094)² / 1200 = 7.31×10⁻⁶ g²/cm⁴\n\nAt t = 1800 s:\nk = (0.114)² / 1800 = 7.167×10⁻⁶ g²/cm⁴"
         },
         {
-          "type": "formula",
-          "id": "n82bic59efmo4o5dss",
-          "latex": "10 600 73.782 74.572 0.772 0.018 4.904×10⁻³ 2.405×10⁻⁵ 2.778 4.01×10⁻⁸ 1.56×10⁻³",
-          "notes": ""
-        },
-        {
-          "type": "formula",
-          "id": "yu1c0ahhl1fmo4o5dss",
-          "latex": "20 1200 73.782 74.584 0.772 0.030 8.174×10⁻³ 6.682×10⁻⁵ 3.079 7.31×10⁻⁶ 0.03",
-          "notes": ""
-        },
-        {
-          "type": "formula",
-          "id": "7xuuuozmy7bmo4o5dss",
-          "latex": "30 1800 73.782 74.601 0.772 0.047 0.0128 1.640×10⁻⁴ 3.255 7.163×10⁻⁹ 1.15×10⁻³",
-          "notes": ""
+          "type": "heading3",
+          "id": "2kho9p49bbl",
+          "content": "Parabolic Rate Constant (k) at 650°C"
         },
         {
           "type": "paragraph",
-          "id": "yb201ctp1samo4o5dss",
-          "content": "• Calculations"
+          "id": "c1p6ll9hvn5",
+          "content": "Using the parabolic rate law: (Δm/A)² = k × t\n\nAt t = 0 s: k = 0\n\nAt t = 600 s:\nk = (4.904×10⁻³)² / 600 = 4.01×10⁻⁸ g²/cm⁴\n\nAt t = 1200 s:\nk = (8.174×10⁻³)² / 1200 = 7.31×10⁻⁶ g²/cm⁴\n\nAt t = 1800 s:\nk = (0.0128)² / 1800 = 7.163×10⁻⁹ g²/cm⁴"
+        },
+        {
+          "type": "heading3",
+          "id": "nm4f6nlcve",
+          "content": "Oxide Film Thickness at 550°C"
         },
         {
           "type": "paragraph",
-          "id": "nj8z547bcplmo4o5dss",
-          "content": "6.1 Surface Area Calculation For 550°C: For Sample 1:"
+          "id": "k6c1n3xo54f",
+          "content": "Given: density of Cu₂O, ρ = 6 g/cm³\nΔm = √(A × k × t), Thickness = Δm / ρ\n\nAt t = 0 s: Thickness = 0\n\nAt t = 600 s:\nΔm = √(4.59 × 2.84×10⁻⁹ × 600) = 2.796×10⁻³ g/cm²\nThickness = 2.796×10⁻³ / 6 = 4.66×10⁻⁴ cm\n\nAt t = 1200 s:\nΔm = √(4.59 × 7.31×10⁻⁶ × 1200) = 0.2 g/cm²\nThickness = 0.2 / 6 = 0.033 cm\n\nAt t = 1800 s:\nΔm = √(4.59 × 7.167×10⁻⁶ × 1800) = 0.24 g/cm²\nThickness = 0.24 / 6 = 0.04 cm"
         },
         {
-          "type": "formula",
-          "id": "9v87jq2cd4mo4o5dss",
-          "latex": "Length, L₁ = 27.34 mm, Width, W₁ = 16.87 mm",
-          "notes": ""
-        },
-        {
-          "type": "formula",
-          "id": "37604qe0wsjmo4o5dss",
-          "latex": "∴ A₁ = 27.34 × 16.87 = 461.22 mm² = 4.61 cm²",
-          "notes": ""
+          "type": "heading3",
+          "id": "lcj9d3iqkm9",
+          "content": "Oxide Film Thickness at 650°C"
         },
         {
           "type": "paragraph",
-          "id": "z97vi6hbgammo4o5dss",
-          "content": "For Sample 2:"
+          "id": "q1njk46dtc",
+          "content": "Given: density of Cu₂O, ρ = 6 g/cm³\nΔm = √(A × k × t), Thickness = Δm / ρ\n\nAt t = 0 s: Thickness = 0\n\nAt t = 600 s:\nΔm = √(3.67 × 4.01×10⁻⁸ × 600) = 9.4×10⁻³ g\nThickness = 9.4×10⁻³ / 6 = 1.56×10⁻³ cm\n\nAt t = 1200 s:\nΔm = √(3.67 × 7.31×10⁻⁶ × 1200) = 0.179 g\nThickness = 0.179 / 6 = 0.03 cm\n\nAt t = 1800 s:\nΔm = √(3.67 × 7.163×10⁻⁹ × 1800) = 6.88×10⁻³ g\nThickness = 6.88×10⁻³ / 6 = 1.15×10⁻³ cm"
         },
         {
-          "type": "formula",
-          "id": "u0ykxu06sznmo4o5dss",
-          "latex": "Length, L₂ = 26.57 mm, Width, W₂ = 17.26 mm",
-          "notes": ""
-        },
-        {
-          "type": "formula",
-          "id": "iop3udj1iwemo4o5dss",
-          "latex": "∴ A₂ = 26.57 × 17.26 = 458.60 mm² = 4.58 cm²",
-          "notes": ""
-        },
-        {
-          "type": "formula",
-          "id": "0pic895aw6umo4o5dss",
-          "latex": "Average Area, A = (4.61 + 4.58) / 2 = 4.59 cm²",
-          "notes": ""
-        },
-        {
-          "type": "paragraph",
-          "id": "7jhl7ifszv5mo4o5dss",
-          "content": "For 650°C: For Sample 1:"
-        },
-        {
-          "type": "formula",
-          "id": "wn1jlhjqi9mo4o5dss",
-          "latex": "Length, L₁ = 23.48 mm, Width, W₁ = 14.76 mm",
-          "notes": ""
-        },
-        {
-          "type": "formula",
-          "id": "hdpd39pz74vmo4o5dss",
-          "latex": "∴ A₁ = 23.48 × 14.76 = 346.56 mm² = 3.46 cm²",
-          "notes": ""
-        },
-        {
-          "type": "paragraph",
-          "id": "l5zd71vaqgcmo4o5dss",
-          "content": "For Sample 2:"
-        },
-        {
-          "type": "formula",
-          "id": "ifz9b1ozfpdmo4o5dss",
-          "latex": "Length, L₂ = 25.31 mm, Width, W₂ = 15.35 mm",
-          "notes": ""
-        },
-        {
-          "type": "formula",
-          "id": "ygj5q75oc1mo4o5dss",
-          "latex": "∴ A₂ = 25.31 × 15.35 = 388.51 mm² = 3.88 cm²",
-          "notes": ""
-        },
-        {
-          "type": "formula",
-          "id": "pcl8hgu25ycmo4o5dss",
-          "latex": "Average Area, A = (3.46 + 3.88) / 2 = 3.67 cm²",
-          "notes": ""
-        },
-        {
-          "type": "paragraph",
-          "id": "5d7j09g1kubmo4o5dss",
-          "content": "6.2 Parabolic Rate Constant (k) at 550°C"
-        },
-        {
-          "type": "formula",
-          "id": "kjdsv9l6wbgmo4o5dt0",
-          "latex": "Using the parabolic rate law: (Δm/A)² = k × t",
-          "notes": ""
-        },
-        {
-          "type": "formula",
-          "id": "mgi16molgp9mo4o5dt0",
-          "latex": "At t = 0 s: k = 0",
-          "notes": ""
-        },
-        {
-          "type": "formula",
-          "id": "i3anj1j271mo4o5dt0",
-          "latex": "At t = 600 s:",
-          "notes": ""
-        },
-        {
-          "type": "formula",
-          "id": "0abe39eclphmo4o5dt0",
-          "latex": "k = (1.307×10⁻³)² / 600 = 2.84×10⁻⁹ g²/cm⁴",
-          "notes": ""
-        },
-        {
-          "type": "formula",
-          "id": "2osrfy2s2chmo4o5dt0",
-          "latex": "At t = 1200 s:",
-          "notes": ""
-        },
-        {
-          "type": "formula",
-          "id": "zt1y4t0a2qlmo4o5dt0",
-          "latex": "k = (0.094)² / 1200 = 7.31×10⁻⁶ g²/cm⁴",
-          "notes": ""
-        },
-        {
-          "type": "formula",
-          "id": "64f45vobtotmo4o5dt0",
-          "latex": "At t = 1800 s:",
-          "notes": ""
-        },
-        {
-          "type": "formula",
-          "id": "qni8tm6hknmo4o5dt0",
-          "latex": "k = (0.114)² / 1800 = 7.167×10⁻⁶ g²/cm⁴",
-          "notes": ""
-        },
-        {
-          "type": "paragraph",
-          "id": "wizai7dg0pemo4o5dt0",
-          "content": "6.3 Parabolic Rate Constant (k) at 650°C"
-        },
-        {
-          "type": "formula",
-          "id": "qnbpgj5xoramo4o5dt0",
-          "latex": "Using the parabolic rate law: (Δm/A)² = k × t",
-          "notes": ""
-        },
-        {
-          "type": "formula",
-          "id": "kpo3n7v15qjmo4o5dt0",
-          "latex": "At t = 0 s: k = 0",
-          "notes": ""
-        },
-        {
-          "type": "formula",
-          "id": "rcb5zkg25cmo4o5dt0",
-          "latex": "At t = 600 s:",
-          "notes": ""
-        },
-        {
-          "type": "formula",
-          "id": "bolf2lwql7mo4o5dt0",
-          "latex": "k = (4.904×10⁻³)² / 600 = 4.01×10⁻⁸ g²/cm⁴",
-          "notes": ""
-        },
-        {
-          "type": "formula",
-          "id": "li2an4egd2mo4o5dt0",
-          "latex": "At t = 1200 s:",
-          "notes": ""
-        },
-        {
-          "type": "formula",
-          "id": "okcr5xeyxqmo4o5dt0",
-          "latex": "k = (8.174×10⁻³)² / 1200 = 7.31×10⁻⁶ g²/cm⁴",
-          "notes": ""
-        },
-        {
-          "type": "formula",
-          "id": "pzs5yun1ialmo4o5dt0",
-          "latex": "At t = 1800 s:",
-          "notes": ""
-        },
-        {
-          "type": "formula",
-          "id": "67rcsj3u0hvmo4o5dt0",
-          "latex": "k = (0.0128)² / 1800 = 7.163×10⁻⁹ g²/cm⁴",
-          "notes": ""
-        },
-        {
-          "type": "paragraph",
-          "id": "0q1f8wv68xbmo4o5dt0",
-          "content": "6.4 Oxide Film Thickness at 550°C"
-        },
-        {
-          "type": "formula",
-          "id": "6jw19rqinahmo4o5dt0",
-          "latex": "Given: density of Cu₂O, ρ = 6 g/cm³",
-          "notes": ""
-        },
-        {
-          "type": "formula",
-          "id": "v12y8f1roggmo4o5dt0",
-          "latex": "Δm = √(A × k × t), Thickness = Δm / ρ",
-          "notes": ""
-        },
-        {
-          "type": "formula",
-          "id": "d2jd63uj7csmo4o5dt0",
-          "latex": "At t = 0 s: Thickness = 0",
-          "notes": ""
-        },
-        {
-          "type": "formula",
-          "id": "olztyiaen0dmo4o5dt0",
-          "latex": "At t = 600 s:",
-          "notes": ""
-        },
-        {
-          "type": "formula",
-          "id": "ygy0198aal8mo4o5dt0",
-          "latex": "Δm = √(4.59 × 2.84×10⁻⁹ × 600) = 2.796×10⁻³ g/cm²",
-          "notes": ""
-        },
-        {
-          "type": "formula",
-          "id": "wdwc5ya6efemo4o5dt0",
-          "latex": "Thickness = 2.796×10⁻³ / 6 = 4.66×10⁻⁴ cm",
-          "notes": ""
-        },
-        {
-          "type": "formula",
-          "id": "dcoogg5vbxvmo4o5dt0",
-          "latex": "At t = 1200 s:",
-          "notes": ""
-        },
-        {
-          "type": "formula",
-          "id": "i50cc73g8hnmo4o5dt0",
-          "latex": "Δm = √(4.59 × 7.31×10⁻⁶ × 1200) = 0.2 g/cm²",
-          "notes": ""
-        },
-        {
-          "type": "formula",
-          "id": "94ls65mj6gcmo4o5dt0",
-          "latex": "Thickness = 0.2 / 6 = 0.033 cm",
-          "notes": ""
-        },
-        {
-          "type": "formula",
-          "id": "bknfewm7ukpmo4o5dt0",
-          "latex": "At t = 1800 s:",
-          "notes": ""
-        },
-        {
-          "type": "formula",
-          "id": "rgvr03kpuc9mo4o5dt0",
-          "latex": "Δm = √(4.59 × 7.167×10⁻⁶ × 1800) = 0.24 g/cm²",
-          "notes": ""
-        },
-        {
-          "type": "formula",
-          "id": "cstzfun3u9mo4o5dt0",
-          "latex": "Thickness = 0.24 / 6 = 0.04 cm",
-          "notes": ""
-        },
-        {
-          "type": "paragraph",
-          "id": "7y4o0p5e1b4mo4o5dt0",
-          "content": "6.5 Oxide Film Thickness at 650°C"
-        },
-        {
-          "type": "formula",
-          "id": "81lgmoww4nxmo4o5dt0",
-          "latex": "Given: density of Cu₂O, ρ = 6 g/cm³",
-          "notes": ""
-        },
-        {
-          "type": "formula",
-          "id": "4gpguot8ma4mo4o5dt0",
-          "latex": "Δm = √(A × k × t), Thickness = Δm / ρ",
-          "notes": ""
-        },
-        {
-          "type": "formula",
-          "id": "28vtmxug8msmo4o5dt0",
-          "latex": "At t = 0 s: Thickness = 0",
-          "notes": ""
-        },
-        {
-          "type": "formula",
-          "id": "7tsu1sa4dkemo4o5dt0",
-          "latex": "At t = 600 s:",
-          "notes": ""
-        },
-        {
-          "type": "formula",
-          "id": "89phowbk4y2mo4o5dt0",
-          "latex": "Δm = √(3.67 × 4.01×10⁻⁸ × 600) = 9.4×10⁻³ g",
-          "notes": ""
-        },
-        {
-          "type": "formula",
-          "id": "otej30kd1bfmo4o5dt0",
-          "latex": "Thickness = 9.4×10⁻³ / 6 = 1.56×10⁻³ cm",
-          "notes": ""
-        },
-        {
-          "type": "formula",
-          "id": "3iyb08gjzujmo4o5dt0",
-          "latex": "At t = 1200 s:",
-          "notes": ""
-        },
-        {
-          "type": "formula",
-          "id": "dbdc5zjc9kqmo4o5dt9",
-          "latex": "Δm = √(3.67 × 7.31×10⁻⁶ × 1200) = 0.179 g",
-          "notes": ""
-        },
-        {
-          "type": "formula",
-          "id": "uncimgu5iwmo4o5dt9",
-          "latex": "Thickness = 0.179 / 6 = 0.03 cm",
-          "notes": ""
-        },
-        {
-          "type": "formula",
-          "id": "7258apnny7omo4o5dt9",
-          "latex": "At t = 1800 s:",
-          "notes": ""
-        },
-        {
-          "type": "formula",
-          "id": "8vkqnc641f7mo4o5dt9",
-          "latex": "Δm = √(3.67 × 7.163×10⁻⁹ × 1800) = 6.88×10⁻³ g",
-          "notes": ""
-        },
-        {
-          "type": "formula",
-          "id": "0n6pnnlv114mo4o5dt9",
-          "latex": "Thickness = 6.88×10⁻³ / 6 = 1.15×10⁻³ cm",
-          "notes": ""
-        },
-        {
-          "type": "paragraph",
-          "id": "73zmcbbsm8mo4o5dt9",
-          "content": "• Graphs and Plots"
+          "type": "heading2",
+          "id": "qrtb2m0oqe",
+          "content": "Graphs and Plots"
         },
         {
           "type": "paragraph",
@@ -577,16 +373,9 @@ const DEFAULT_DATA = {
           "content": "The following plots were generated from the experimental data to visualize the oxidation behaviour at both temperatures and to verify the parabolic rate law."
         },
         {
-          "type": "formula",
-          "id": "1j3o0yrz3qbmo4o5dt9",
-          "latex": "Graph 1: Δm/A vs. Time (550°C)",
-          "notes": ""
-        },
-        {
-          "type": "formula",
-          "id": "jzbfu6ot6fpmo4o5dt9",
-          "latex": "[ Insert Graph: Δm/A vs. Time at 550°C ]",
-          "notes": ""
+          "type": "heading3",
+          "id": "p40gxomfuoj",
+          "content": "Graph 1: Δm/A  vs. Time (550°C)"
         },
         {
           "type": "paragraph",
@@ -700,34 +489,34 @@ const DEFAULT_DATA = {
           "content": "Graph 8: log(Δm/A) vs. 1/T (combined — all time periods) [ Insert Graph: log(Δm/A) vs. 1/T — combined plot for all time periods ] Figure 8: Combined log(Δm/A) vs. 1/T plot for all oxidation time periods. This combined Arrhenius plot for all time intervals reinforces the temperature -dependent nature of copper oxidation and allows a more comprehensive estimation of the apparent activation energy across the range of experimental conditions."
         },
         {
-          "type": "paragraph",
-          "id": "pe0onmsnn4emo4o5dtl",
-          "content": "• Discussion"
+          "type": "heading2",
+          "id": "822qbctolj",
+          "content": "Discussion"
         },
         {
           "type": "paragraph",
           "id": "1oq3q22slh9mo4o5dtl",
-          "content": "The experimental results confirm that the oxidation of copper follows parabolic kinetics at both temperatures, consistent with a diffusion -controlled mechanism. As the Cu₂O film thickens with time, the diffusion path for copper cations or oxygen anions bec omes progressively longer, reducing the net rate of oxidation — the defining feature of the parabolic rate law. The (Δm/A)² vs. time plots (Figures 2 and 4) yield approximately linear trends, confirming this behaviour. The log(Δm/A) vs. log(t) plots (Figur es 6 and 7) produce lines with slopes close to 0.5, further verifying the parabolic nature of the oxidation process. The Arrhenius -type plots (Figures 5 and 8) demonstrate the temperature dependence of the oxidation rate, and their slopes can be used to es timate the apparent activation energy for diffusion through the Cu₂O layer. The data at 650°C shows a lower absolute weight gain than at 550°C, which is partly attributable to the smaller specimen surface area at 650°C (3.67 cm² versus 4.59 cm²). In genera l,"
+          "content": "The experimental results confirm that the oxidation of copper follows parabolic kinetics at both temperatures, consistent with a diffusion-controlled mechanism. As the Cu₂O film thickens with time, the diffusion path for copper cations or oxygen anions becomes progressively longer, reducing the net rate of oxidation, the defining feature of the parabolic rate law. The (Δm/A)² vs. time plots (Figures 2 and 4) yield approximately linear trends, confirming this behaviour. The log(Δm/A) vs. log(t) plots (Figures 6 and 7) produce lines with slopes close to 0.5, further verifying the parabolic nature of the oxidation process. The Arrhenius -type plots (Figures 5 and 8) demonstrate the temperature dependence of the oxidation rate, and their slopes can be used to estimate the apparent activation energy for diffusion through the Cu₂O layer. The data at 650°C shows a lower absolute weight gain than at 550°C, which is partly attributable to the smaller specimen surface area at 650°C (3.67 cm² versus 4.59 cm²). In general, higher temperatures accelerate ionic diffusion and are expected to produce faster oxide growth, consistent with Wagner’s theory of high -temperature oxidation."
         },
         {
-          "type": "paragraph",
-          "id": "dvm2mh4dbpmo4o5dtq",
-          "content": "higher temperatures accelerate ionic diffusion and are expected to produce faster oxide growth, consistent with Wagner’s theory of high -temperature oxidation."
-        },
-        {
-          "type": "paragraph",
-          "id": "51klgplw1unmo4o5dtq",
-          "content": "• Conclusion"
+          "type": "heading2",
+          "id": "4sak91x8t2",
+          "content": "Conclusion"
         },
         {
           "type": "paragraph",
           "id": "dggkmotszrmo4o5dtq",
-          "content": "The experiment successfully demonstrated that the oxidation of copper at both 550°C and 650°C obeys the parabolic rate law, confirming a diffusion -controlled oxidation mechanism through the growing Cu₂O film. The parabolic rate constant and oxide film thic kness were determined at each time interval, and the graphical analysis — including (Δm/A)² vs. time and log -log plots — provided consistent verification of the kinetics. These findings underscore the practical significance of understanding oxidation kinet ics for predicting material degradation in high -temperature service environments and for guiding the development of oxidation -resistant materials and protective coatings."
+          "content": "The experiment successfully demonstrated that the oxidation of copper at both 550°C and 650°C obeys the parabolic rate law, confirming a diffusion -controlled oxidation mechanism through the growing Cu₂O film. The parabolic rate constant and oxide film thickness were determined at each time interval, and the graphical analysis, including (Δm/A)² vs. time and log -log plots, provided consistent verification of the kinetics. These findings underscore the practical significance of understanding oxidation kinetics for predicting material degradation in high -temperature service environments and for guiding the development of oxidation -resistant materials and protective coatings."
+        },
+        {
+          "type": "heading2",
+          "id": "n8ob7fnvd2",
+          "content": "References"
         },
         {
           "type": "paragraph",
           "id": "g3vph2rc81cmo4o5dtq",
-          "content": "References [1] N. Birks, G. H. Meier, and F. S. Pettit, Introduction to the High -Temperature Oxidation of Metals, 2nd ed. Cambridge University Press, 2006. [2] W. D. Callister Jr. and D. G. Rethwisch, Materials Science and Engineering: An Introduction, 10th ed. Wiley, 2018. [3] P. Kofstad, High Temperature Corrosion. Elsevier Applied Science, 1988."
+          "content": "[1] N. Birks, G. H. Meier, and F. S. Pettit, Introduction to the High -Temperature Oxidation of Metals, 2nd ed. Cambridge University Press, 2006. \n[2] W. D. Callister Jr. and D. G. Rethwisch, Materials Science and Engineering: An Introduction, 10th ed. Wiley, 2018. \n[3] P. Kofstad, High Temperature Corrosion. Elsevier Applied Science, 1988."
         }
       ]
     },
