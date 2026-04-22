@@ -55,13 +55,358 @@ const DEFAULT_DATA = {
   ],
   "projects": [
     {
+      "title": "Electrodeposition of Cu on a Metal Substrate",
+      "excerpt": "1. To understand the principles of electrodeposition.\n2. To coat a metal substrate with Cu using electroplating.\n3. To study th…",
+      "featuredImage": "",
+      "tags": "Cu, Metal substrate, Electrodepostion",
+      "link": "#",
+      "date": "Apr 2026",
+      "status": "Ongoing",
+      "orderNum": 6,
+      "blocks": [
+        {
+          "type": "heading1",
+          "id": "0stmdxlzm0dl",
+          "content": "Objectives"
+        },
+        {
+          "type": "paragraph",
+          "id": "tg75gaw1dxk",
+          "content": "1. To understand the principles of electrodeposition.\n2. To coat a metal substrate with Cu using electroplating.\n3. To study the effect of plating parameters on coating thickness.\n4. To analyze surface properties after deposition."
+        },
+        {
+          "type": "heading1",
+          "id": "0o4hnt3opkvn",
+          "content": "Theory"
+        },
+        {
+          "type": "paragraph",
+          "id": "jgwmdjl91j",
+          "content": "Electrodeposition is a surface engineering process where metal is deposited from a solution onto a conductive surface using electric current. In Cu electroplating, Cu in the solution is reduced and deposited on the cathode. \nFrom the standard EMF series:"
+        },
+        {
+          "type": "formula",
+          "id": "wgf6um0nf8l",
+          "latex": "",
+          "notes": ""
+        },
+        {
+          "type": "formula",
+          "id": "rkv3uq44kl",
+          "latex": "",
+          "notes": ""
+        },
+        {
+          "type": "formula",
+          "id": "q2wdjxvs6g",
+          "latex": " ∆G = -EnF",
+          "notes": "If ∆G is negative, the reaction will be spontaneous."
+        },
+        {
+          "type": "paragraph",
+          "id": "ib1p0osthir",
+          "content": "A mixture of CuSO4. 5H2O 200g/L and H2SO4 40-60 g/L were made, and the process was held at room temperature. \nThe thickness of the deposited Cu is calculated by this formula:"
+        },
+        {
+          "type": "formula",
+          "id": "qw99w105kve",
+          "latex": "t=m/(\\rho A)",
+          "notes": "Where, \nm = Weight of the deposited Cu\nρ = Density of Cu\nA = Area of the deposition"
+        },
+        {
+          "type": "paragraph",
+          "id": "bz3c47s1wir",
+          "content": "Surface roughness represents high-frequency irregularities on a material surface post-manufacturing. It dictates mechanical properties, including friction, wear resistance, and lubrication retention. Raw data filtered from Roughness and waviness."
+        },
+        {
+          "type": "heading3",
+          "id": "bn3kwvc3nds",
+          "content": "Filters"
+        },
+        {
+          "type": "paragraph",
+          "id": "vhqi0g5c18e",
+          "content": "Gauss, RC, and PC-RC are used to establish the mean line."
+        },
+        {
+          "type": "heading3",
+          "id": "135imrf91jio",
+          "content": "Traversing length"
+        },
+        {
+          "type": "paragraph",
+          "id": "3xb5y5rrnww",
+          "content": "The total distance, the stylus moves, including the evaluation length and pre-travel stabilization segment."
+        },
+        {
+          "type": "heading3",
+          "id": "336hrjysjpl",
+          "content": "Ra ( Arithmetic Mean)"
+        },
+        {
+          "type": "paragraph",
+          "id": "ayeue56w9y",
+          "content": "Average of absolute profile deviations from the mean line."
+        },
+        {
+          "type": "formula",
+          "id": "h6riik4s3b",
+          "latex": "",
+          "notes": ""
+        },
+        {
+          "type": "heading3",
+          "id": "rlhcclx5dj",
+          "content": "Rz (Ten-Point Height)"
+        },
+        {
+          "type": "paragraph",
+          "id": "jqufgs8x37s",
+          "content": "Average of the 5 highest peaks and 5 deepest peak valleys. "
+        },
+        {
+          "type": "formula",
+          "id": "11rwlqpsz0y8",
+          "latex": "",
+          "notes": ""
+        },
+        {
+          "type": "heading3",
+          "id": "j3yu1f1acy",
+          "content": "Rq ( RMS )"
+        },
+        {
+          "type": "paragraph",
+          "id": "p7pex5ccg2",
+          "content": "The root-mean square of the profile deviations, highly sensitive to exterme peak."
+        },
+        {
+          "type": "formula",
+          "id": "6sb7g1gfhna",
+          "latex": "",
+          "notes": ""
+        },
+        {
+          "type": "heading3",
+          "id": "yzwnjf7ewo",
+          "content": "Ri ( Total height )"
+        },
+        {
+          "type": "paragraph",
+          "id": "6mhdw881bws",
+          "content": "Maximum vertical distance from the highest peak to the lowest valley."
+        },
+        {
+          "type": "heading1",
+          "id": "ra65xd6i8an",
+          "content": "Required Apparatus"
+        },
+        {
+          "type": "paragraph",
+          "id": "14t76kpegsa",
+          "content": "1. Beaker\n2. CuSO4·5 H2O\n3. H2SO4\n4. Thermometer\n5. Roughness Test Machine\n6. Weight Machine\n7. Slide Calipers"
+        },
+        {
+          "type": "heading1",
+          "id": "mh1fdxyw5oo",
+          "content": "Working Procedure"
+        },
+        {
+          "type": "paragraph",
+          "id": "q3zfx8vxxg",
+          "content": "01. The sample surface was prepared for electroplating by removing oxide and contaminants using emery paper. \n02. The electroplating solution made for our group was 0.1 M.\n03. The experiment was done at room temperature.\n04. The immersion was done with the help of a thin rope.\n05. The immersion was about five minutes.\n06. The sample was raised, and the final weight was measured after the air-drying process.\n07. The surface roughness test was done by a roughness testing machine. "
+        },
+        {
+          "type": "heading1",
+          "id": "bgzoeg75775",
+          "content": "Data Table"
+        },
+        {
+          "type": "heading3",
+          "id": "mabd2zptwe",
+          "content": "Table 1: Table for the Immersion of Cu on Steel (Time Dependent)"
+        },
+        {
+          "type": "table",
+          "id": "z3yabccx7yh",
+          "rows": 5,
+          "cols": 4,
+          "data": [
+            [
+              "Concentration (M)",
+              "Initial Weight Before Immersion (gm)",
+              "Time (min)",
+              "Weight After Immersion (gm)"
+            ],
+            [
+              "0.1",
+              "0.2021",
+              "1",
+              "0.2031"
+            ],
+            [
+              "",
+              "",
+              "2",
+              "0.2029"
+            ],
+            [
+              "",
+              "",
+              "3",
+              "0.2029"
+            ],
+            [
+              "",
+              "",
+              "4",
+              "0.2029"
+            ]
+          ]
+        },
+        {
+          "type": "heading3",
+          "id": "sbmeapobjf",
+          "content": "Table 2: Table for the Immersion of Copper on Al ( Time Dependent )"
+        },
+        {
+          "type": "table",
+          "id": "bxt3ma4kf65",
+          "rows": 5,
+          "cols": 4,
+          "data": [
+            [
+              "Concentration (M)",
+              "Initial Weight Before Immersion (gm)",
+              "Time (min)",
+              "Weight After Immersion (gm)"
+            ],
+            [
+              "0.1",
+              "0.0939",
+              "1",
+              "0.0941"
+            ],
+            [
+              "",
+              "",
+              "2",
+              "0.0940"
+            ],
+            [
+              "",
+              "",
+              "3",
+              "0.0938"
+            ],
+            [
+              "",
+              "",
+              "4",
+              "0.0938"
+            ]
+          ]
+        },
+        {
+          "type": "heading3",
+          "id": "3nxzxk85eou",
+          "content": "Table 3: Table for the Immersion of Cu on Steel ( Time Dependent )"
+        },
+        {
+          "type": "table",
+          "id": "hwwsjucj3hc",
+          "rows": 5,
+          "cols": 4,
+          "data": [
+            [
+              "Time (min)",
+              "Temperature ( Celcius)",
+              "Initial Weight (gm)",
+              "Final Weight (gm)"
+            ],
+            [
+              "3",
+              "25",
+              "5.419",
+              "5.428"
+            ],
+            [
+              "",
+              "40",
+              "3.498",
+              "3.503"
+            ],
+            [
+              "",
+              "50",
+              "5.711",
+              "5.723"
+            ],
+            [
+              "",
+              "60",
+              "5.088",
+              "5.120"
+            ]
+          ]
+        },
+        {
+          "type": "heading3",
+          "id": "2dwqhfh8h0p",
+          "content": "Table 4: Table for the Roughness Test"
+        },
+        {
+          "type": "table",
+          "id": "ctj2cyaa9sj",
+          "rows": 3,
+          "cols": 6,
+          "data": [
+            [
+              "Direction",
+              "R_a (𝜇m)",
+              "R_z (𝜇m)",
+              "R_q (𝜇m)",
+              "R_t (𝜇m)",
+              "Cut Off Length (mm)"
+            ],
+            [
+              "Longitudinal",
+              "1.463",
+              "4.139",
+              "2.077",
+              "4.179",
+              "0.8"
+            ],
+            [
+              "Transverse",
+              "0.789",
+              "2.232",
+              "0.826",
+              "2.254",
+              ""
+            ]
+          ]
+        },
+        {
+          "type": "paragraph",
+          "id": "rnhq1bu5lb",
+          "content": "Sample width = 26.82 mm\nSample length = 35.57 mm"
+        },
+        {
+          "type": "heading1",
+          "id": "b16h0ty6ahi",
+          "content": "Calculation"
+        }
+      ]
+    },
+    {
       "title": "Study of the General Metallurgical Steps Involved in Metal Extraction",
-      "excerpt": "1. To understand the basic steps involved in the extraction of metals from their ores.\n2. To relate ore type and metal reactivi…",
+      "excerpt": "1. To understand the basic steps involved in the extraction of metals from their ores.2. To relate ore type and metal reactivi…",
       "featuredImage": "https://res.cloudinary.com/dr2b6pzux/image/upload/v1776826470/lwxhetn7yh4x6vv31jnf.jpg",
       "tags": "Study, Metallurgy, Metal Extraction",
       "link": "#",
       "date": "Jan 2026",
-      "status": "Ongoing",
+      "status": "Completed",
       "orderNum": 5,
       "blocks": [
         {
