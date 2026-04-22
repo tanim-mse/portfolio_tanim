@@ -56,7 +56,7 @@ const DEFAULT_DATA = {
   "projects": [
     {
       "title": "Electrodeposition of Cu on a Metal Substrate",
-      "excerpt": "1. To understand the principles of electrodeposition.\n2. To coat a metal substrate with Cu using electroplating.\n3. To study th…",
+      "excerpt": "1. To understand the principles of electrodeposition.2. To coat a metal substrate with Cu using electroplating.3. To study th…",
       "featuredImage": "",
       "tags": "Cu, Metal substrate, Electrodepostion",
       "link": "#",
@@ -85,16 +85,11 @@ const DEFAULT_DATA = {
           "content": "Electrodeposition is a surface engineering process where metal is deposited from a solution onto a conductive surface using electric current. In Cu electroplating, Cu in the solution is reduced and deposited on the cathode. \nFrom the standard EMF series:"
         },
         {
-          "type": "formula",
-          "id": "wgf6um0nf8l",
-          "latex": "",
-          "notes": ""
-        },
-        {
-          "type": "formula",
-          "id": "rkv3uq44kl",
-          "latex": "",
-          "notes": ""
+          "type": "image",
+          "id": "wmwguy8a1cc",
+          "src": "https://res.cloudinary.com/dr2b6pzux/image/upload/v1776850625/cxfqvbvi8nhyup5rullo.png",
+          "caption": "",
+          "size": "medium"
         },
         {
           "type": "formula",
@@ -110,7 +105,7 @@ const DEFAULT_DATA = {
         {
           "type": "formula",
           "id": "qw99w105kve",
-          "latex": "t=m/(\\rho A)",
+          "latex": "t=m/(\\rho  A)",
           "notes": "Where, \nm = Weight of the deposited Cu\nρ = Density of Cu\nA = Area of the deposition"
         },
         {
@@ -141,7 +136,7 @@ const DEFAULT_DATA = {
         {
           "type": "heading3",
           "id": "336hrjysjpl",
-          "content": "Ra ( Arithmetic Mean)"
+          "content": "𝑅𝑎 ( Arithmetic Mean)"
         },
         {
           "type": "paragraph",
@@ -149,15 +144,16 @@ const DEFAULT_DATA = {
           "content": "Average of absolute profile deviations from the mean line."
         },
         {
-          "type": "formula",
-          "id": "h6riik4s3b",
-          "latex": "",
-          "notes": ""
+          "type": "image",
+          "id": "1ja8jqyr3tt",
+          "src": "https://res.cloudinary.com/dr2b6pzux/image/upload/v1776851390/duztsb7yybzgsrez2vab.png",
+          "caption": "",
+          "size": "medium"
         },
         {
           "type": "heading3",
           "id": "rlhcclx5dj",
-          "content": "Rz (Ten-Point Height)"
+          "content": "𝑅𝑧 (Ten-Point Height)"
         },
         {
           "type": "paragraph",
@@ -165,15 +161,16 @@ const DEFAULT_DATA = {
           "content": "Average of the 5 highest peaks and 5 deepest peak valleys. "
         },
         {
-          "type": "formula",
-          "id": "11rwlqpsz0y8",
-          "latex": "",
-          "notes": ""
+          "type": "image",
+          "id": "rm12keks2kp",
+          "src": "https://res.cloudinary.com/dr2b6pzux/image/upload/v1776851423/fwcdaqtdyfruhbhtjfem.png",
+          "caption": "",
+          "size": "medium"
         },
         {
           "type": "heading3",
           "id": "j3yu1f1acy",
-          "content": "Rq ( RMS )"
+          "content": "𝑅𝑞 ( RMS )"
         },
         {
           "type": "paragraph",
@@ -181,15 +178,16 @@ const DEFAULT_DATA = {
           "content": "The root-mean square of the profile deviations, highly sensitive to exterme peak."
         },
         {
-          "type": "formula",
-          "id": "6sb7g1gfhna",
-          "latex": "",
-          "notes": ""
+          "type": "image",
+          "id": "1dahtnk5zgw",
+          "src": "https://res.cloudinary.com/dr2b6pzux/image/upload/v1776851438/xqmsoepqqpjusouy8u54.png",
+          "caption": "",
+          "size": "medium"
         },
         {
           "type": "heading3",
           "id": "yzwnjf7ewo",
-          "content": "Ri ( Total height )"
+          "content": "𝑅𝑡 ( Total height )"
         },
         {
           "type": "paragraph",
@@ -363,10 +361,10 @@ const DEFAULT_DATA = {
           "data": [
             [
               "Direction",
-              "R_a (𝜇m)",
-              "R_z (𝜇m)",
-              "R_q (𝜇m)",
-              "R_t (𝜇m)",
+              "𝑅𝑎 (𝜇m)",
+              "𝑅𝑧 (𝜇m)",
+              "𝑅𝑞 (𝜇m)",
+              "𝑅𝑡 (𝜇m)",
               "Cut Off Length (mm)"
             ],
             [
@@ -396,6 +394,170 @@ const DEFAULT_DATA = {
           "type": "heading1",
           "id": "b16h0ty6ahi",
           "content": "Calculation"
+        },
+        {
+          "type": "heading2",
+          "id": "o6sq4vdo2y",
+          "content": "In the longitudinal direction,"
+        },
+        {
+          "type": "heading3",
+          "id": "xgzyil35ud",
+          "content": "Arithmetic Average Roughness in total length,"
+        },
+        {
+          "type": "paragraph",
+          "id": "p17c54fyfn",
+          "content": "𝑅𝑎 = (𝑅𝑎 𝑣𝑎𝑙𝑢𝑒 𝑖𝑛 𝑐𝑢𝑡 𝑜𝑓𝑓 𝑙𝑒𝑛𝑔𝑡ℎ ×𝑡𝑜𝑡𝑎𝑙 𝑙𝑒𝑛𝑔𝑡ℎ) / 𝑐𝑢𝑡 𝑜𝑓𝑓 𝑙𝑒𝑛𝑔𝑡ℎ\n𝑅𝑎 = 1.463×35.57 /0.8"
+        },
+        {
+          "type": "heading3",
+          "id": "l6xjvjrryx8",
+          "content": "Average Maximum Height in total length,"
+        },
+        {
+          "type": "paragraph",
+          "id": "3gfxq77jxf3",
+          "content": "𝑅𝑧 = (𝑅𝑧 𝑣𝑎𝑙𝑢𝑒 𝑖𝑛 𝑐𝑢𝑡 𝑜𝑓𝑓 𝑙𝑒𝑛𝑔𝑡ℎ ×𝑡𝑜𝑡𝑎𝑙 𝑙𝑒𝑛𝑔𝑡ℎ) / 𝑐𝑢𝑡 𝑜𝑓𝑓 𝑙𝑒𝑛𝑔𝑡ℎ\n     = 4.139×35.57 / 0.8\nRz = 184.03 μm"
+        },
+        {
+          "type": "heading3",
+          "id": "6i04ro00o8q",
+          "content": "Root Mean Square Roughness in total length,"
+        },
+        {
+          "type": "paragraph",
+          "id": "pk685vygmca",
+          "content": "\n𝑅𝑞 = (𝑅𝑞 𝑣𝑎𝑙𝑢𝑒 𝑖𝑛 𝑐𝑢𝑡 𝑜𝑓𝑓 𝑙𝑒𝑛𝑔𝑡ℎ ×𝑡𝑜𝑡𝑎𝑙 𝑙𝑒𝑛𝑔𝑡ℎ ) / 𝑐𝑢𝑡 𝑜𝑓𝑓 𝑙𝑒𝑛𝑔𝑡ℎ\n     = 2.077×35.57 / 0.8\nRq = 92.35 μm"
+        },
+        {
+          "type": "heading3",
+          "id": "i077xi5r5yp",
+          "content": "Total Height of Profile in total length,"
+        },
+        {
+          "type": "paragraph",
+          "id": "68yh255263c",
+          "content": "𝑅𝑡 = ( 𝑅𝑡 𝑣𝑎𝑙𝑢𝑒 𝑖𝑛 𝑐𝑢𝑡 𝑜𝑓𝑓 𝑙𝑒𝑛𝑔𝑡ℎ ×𝑡𝑜𝑡𝑎𝑙 𝑙𝑒𝑛𝑔𝑡ℎ ) / 𝑐𝑢𝑡 𝑜𝑓𝑓 𝑙𝑒𝑛𝑔𝑡ℎ\n     = 4.179×35.57 / 0.8\nRt = 185.81 μm"
+        },
+        {
+          "type": "heading2",
+          "id": "85k12d0gty6",
+          "content": "In transverse direction,"
+        },
+        {
+          "type": "heading3",
+          "id": "gfwgqmxd8q",
+          "content": "Arithmetic Average Roughness in total width,"
+        },
+        {
+          "type": "paragraph",
+          "id": "6b6svff902u",
+          "content": "\n𝑅𝑎 = (𝑅𝑎 𝑣𝑎𝑙𝑢𝑒 𝑖𝑛 𝑐𝑢𝑡 𝑜𝑓𝑓 𝑙𝑒𝑛𝑔𝑡ℎ ×𝑡𝑜𝑡𝑎𝑙 𝑤𝑖𝑑𝑡ℎ) / 𝑐𝑢𝑡 𝑜𝑓𝑓 𝑙𝑒𝑛𝑔𝑡ℎ\n     = 0.789×26.82 / 0.8\nRa = 26.45 μm\n"
+        },
+        {
+          "type": "heading3",
+          "id": "cdevxcv47oe",
+          "content": "Average Maximum Height in total width,"
+        },
+        {
+          "type": "paragraph",
+          "id": "0vxj016gtw8o",
+          "content": "\n𝑅𝑧 = (𝑅𝑧 𝑣𝑎𝑙𝑢𝑒 𝑖𝑛 𝑐𝑢𝑡 𝑜𝑓𝑓 𝑙𝑒𝑛𝑔𝑡ℎ ×𝑡𝑜𝑡𝑎𝑙 𝑤𝑖𝑑𝑡ℎ) / 𝑐𝑢𝑡 𝑜𝑓𝑓 𝑙𝑒𝑛𝑔𝑡ℎ\n     = 2.232×26.82 / 0.8\nRz = 74.83 μm"
+        },
+        {
+          "type": "heading3",
+          "id": "xro74q4gdte",
+          "content": "Root Mean Square Roughness in total width,"
+        },
+        {
+          "type": "paragraph",
+          "id": "jao6x4u4hk",
+          "content": "𝑅𝑞 = (𝑅𝑞 𝑣𝑎𝑙𝑢𝑒 𝑖𝑛 𝑐𝑢𝑡 𝑜𝑓𝑓 𝑙𝑒𝑛𝑔𝑡ℎ ×𝑡𝑜𝑡𝑎𝑙 𝑤𝑖𝑑𝑡ℎ) / 𝑐𝑢𝑡 𝑜𝑓𝑓 𝑙𝑒𝑛𝑔𝑡ℎ\n     = 0.826×26.82 / 0.8\nRq = 27.70 μm"
+        },
+        {
+          "type": "heading3",
+          "id": "ukxte8x5u8k",
+          "content": "Total Height of Profile in total width,"
+        },
+        {
+          "type": "paragraph",
+          "id": "lzztz9kmi8",
+          "content": "𝑅𝑡 = ( 𝑅𝑡 𝑣𝑎𝑙𝑢𝑒 𝑖𝑛 𝑐𝑢𝑡 𝑜𝑓𝑓 𝑙𝑒𝑛𝑔𝑡ℎ ×𝑡𝑜𝑡𝑎𝑙 𝑤𝑖𝑑𝑡ℎ ) / 𝑐𝑢𝑡 𝑜𝑓𝑓 𝑙𝑒𝑛𝑔𝑡ℎ\n     = 2.254×26.82 / 0.8\nRt = 75.57 μm"
+        },
+        {
+          "type": "heading1",
+          "id": "tfybp4b38qj",
+          "content": "Graphs"
+        },
+        {
+          "type": "image",
+          "id": "hr8dhhzd65",
+          "src": "https://res.cloudinary.com/dr2b6pzux/image/upload/v1776849503/ciejw6nymyh69dodori2.png",
+          "caption": "",
+          "size": "medium"
+        },
+        {
+          "type": "image",
+          "id": "15u4wl8o7af",
+          "src": "https://res.cloudinary.com/dr2b6pzux/image/upload/v1776849510/l5esxzdeaisnjld8nbpj.png",
+          "caption": "",
+          "size": "medium"
+        },
+        {
+          "type": "image",
+          "id": "15eu2z55hq6",
+          "src": "https://res.cloudinary.com/dr2b6pzux/image/upload/v1776849518/vujukobwxersdy3kmm2l.png",
+          "caption": "",
+          "size": "medium"
+        },
+        {
+          "type": "image",
+          "id": "9epqcpdnevs",
+          "src": "https://res.cloudinary.com/dr2b6pzux/image/upload/v1776849533/cb76wz48huvndvx0qoon.png",
+          "caption": "",
+          "size": "medium"
+        },
+        {
+          "type": "image",
+          "id": "zjzw1roja8c",
+          "src": "https://res.cloudinary.com/dr2b6pzux/image/upload/v1776849545/fibiyvhhwocqwfyvdzi1.png",
+          "caption": "",
+          "size": "medium"
+        },
+        {
+          "type": "image",
+          "id": "gdvf8pppumc",
+          "src": "https://res.cloudinary.com/dr2b6pzux/image/upload/v1776849554/dqcxcqz4zqs9wpggiynm.png",
+          "caption": "",
+          "size": "medium"
+        },
+        {
+          "type": "image",
+          "id": "8wilrds0yi5",
+          "src": "https://res.cloudinary.com/dr2b6pzux/image/upload/v1776849563/bk6raohx2whhqmfmkdsz.png",
+          "caption": "",
+          "size": "medium"
+        },
+        {
+          "type": "heading1",
+          "id": "qqo5t93u99",
+          "content": "Discussion"
+        },
+        {
+          "type": "paragraph",
+          "id": "q6ex22knla",
+          "content": "Cu was successfully deposited onto steel and aluminum substrates via the electrochemical reduction of Cu^2+ ions at the cathode. Deposition weight varied with concentration; lower concentrations showed steady increases over time, while higher concentrations produced inconsistent results, likely due to surface saturation or partial re-dissolution."
+        },
+        {
+          "type": "heading1",
+          "id": "83tq7cx7l8p",
+          "content": "Conclusion"
+        },
+        {
+          "type": "paragraph",
+          "id": "0av8zid5yb5q",
+          "content": "This experiment confirmed that Cu can be effectively deposited onto metal substrate through electrodeposition. Concentration, temperature, and time all significantly influence coating quality and thickness. Moderate temperature and lower concentrations yielded the most consistent deposition. Surface roughenss analysis revealed directional variation in the deposited coating, highlighting the importance of process controll for achieveing uniform, functional copper films."
         }
       ]
     },
