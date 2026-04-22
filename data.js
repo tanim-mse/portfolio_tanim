@@ -10,7 +10,7 @@ const DEFAULT_DATA = {
   ],
   "subtitle": "B.Sc. Student at RUET · Passionate about advanced materials, nanotechnology & sustainable engineering",
   "cvLink": "#",
-  "photoURL": "",
+  "photoURL": "https://res.cloudinary.com/dr2b6pzux/image/upload/v1776824006/jwgta6utmxkamluc5piz.png",
   "bio": "I am Tanim, a Materials Science and Engineering student at RUET with a deep passion for exploring the intersection of advanced materials, nanotechnology, and sustainable engineering solutions. I thrive at the boundary of science and innovation, driven by curiosity and a commitment to meaningful research.",
   "university": "RUET",
   "department": "Materials Science & Eng.",
