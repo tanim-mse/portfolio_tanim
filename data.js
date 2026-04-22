@@ -58,7 +58,7 @@ const DEFAULT_DATA = {
       "title": "Kinetics of Oxidation of Copper",
       "excerpt": "To study the rate of oxidation of copper specimens at two elevated temperatures (550°C and 650°C) and to determine the effect o…",
       "featuredImage": "",
-      "tags": "",
+      "tags": "Cu, Kinetics, Oxidation, Graph",
       "link": "#",
       "date": "Apr 2026",
       "status": "Ongoing",
@@ -378,115 +378,135 @@ const DEFAULT_DATA = {
           "content": "Graph 1: Δm/A  vs. Time (550°C)"
         },
         {
+          "type": "image",
+          "id": "7iojnzyk9h4",
+          "src": "https://res.cloudinary.com/dr2b6pzux/image/upload/v1776821333/yqrcgerbyvgyq3viloby.png",
+          "caption": "Figure 1: Mass gain per unit area (Δm/A) as a function of oxidation time at 550°C. ",
+          "size": "medium"
+        },
+        {
           "type": "paragraph",
           "id": "y3h0gdoqw8imo4o5dt9",
-          "content": "Figure 1: Mass gain per unit area (Δm/A) as a function of oxidation time at 550°C. This curve shows the increasing weight gain per unit area with time. The rate of increase gradually slows down, indicating the transition from faster surface -controlled reaction to diffusion -controlled parabolic oxidation as the oxide film builds up."
+          "content": "This curve shows the increasing weight gain per unit area with time. The rate of increase gradually slows down, indicating the transition from faster surface -controlled reaction to diffusion -controlled parabolic oxidation as the oxide film builds up."
         },
         {
-          "type": "formula",
-          "id": "aqdxo7dzibmo4o5dt9",
-          "latex": "Graph 2: (Δm/A)² vs. Time (550°C)",
-          "notes": ""
+          "type": "heading3",
+          "id": "88ljfrtwipp",
+          "content": "Graph 2: (Δm/A)² vs. Time (550°C)"
         },
         {
-          "type": "formula",
-          "id": "h70hseyeovamo4o5dt9",
-          "latex": "[ Insert Graph: (Δm/A)² vs. Time at 550°C ]",
-          "notes": ""
+          "type": "image",
+          "id": "2fwqew8uojr",
+          "src": "https://res.cloudinary.com/dr2b6pzux/image/upload/v1776822073/vmylv9umebgh1szuulji.png",
+          "caption": "Figure 2: Square of mass gain per unit area (Δm/A)² as a function of oxidation time at 550°C.",
+          "size": "medium"
         },
         {
           "type": "paragraph",
           "id": "rsrvt7y8wumo4o5dt9",
-          "content": "Figure 2: Square of mass gain per unit area (Δm/A)² as a function of oxidation time at 550°C. According to the parabolic rate law, (Δm/A)² = k × t, this plot should be linear if oxidation strictly follows parabolic kinetics. The slope of the linear region gives the parabolic rate constant k. The curve confirms predominantly parabolic behaviour at 5 50°C."
+          "content": "According to the parabolic rate law, (Δm/A)² = k × t, this plot should be linear if oxidation strictly follows parabolic kinetics. The slope of the linear region gives the parabolic rate constant k. The curve confirms predominantly parabolic behaviour at 5 50°C."
         },
         {
-          "type": "formula",
-          "id": "yl07gwbk37bmo4o5dt9",
-          "latex": "Graph 3: Δm/A vs. Time (650°C)",
-          "notes": ""
+          "type": "heading3",
+          "id": "9ja2fiubr4r",
+          "content": "Graph 3: Δm/A vs. Time (650°C)"
         },
         {
-          "type": "formula",
-          "id": "gfkivt8o47imo4o5dt9",
-          "latex": "[ Insert Graph: Δm/A vs. Time at 650°C ]",
-          "notes": ""
+          "type": "image",
+          "id": "mw5e9n95zh",
+          "src": "https://res.cloudinary.com/dr2b6pzux/image/upload/v1776821899/bneahdp2zrwbx6wpcmgs.png",
+          "caption": "Figure 3: Mass gain per unit area (Δm/A) as a function of oxidation time at 650°C.",
+          "size": "medium"
         },
         {
           "type": "paragraph",
           "id": "b052ewhavi4mo4o5dt9",
-          "content": "Figure 3: Mass gain per unit area (Δm/A) as a function of oxidation time at 650°C. Similar to Figure 1, this plot shows the weight gain trend at 650°C. The overall magnitude of Δm/A is different from 550°C due to the different sample surface area (3.67 cm²) used for this temperature group."
+          "content": "Similar to Figure 1, this plot shows the weight gain trend at 650°C. The overall magnitude of Δm/A is different from 550°C due to the different sample surface area (3.67 cm²) used for this temperature group."
         },
         {
-          "type": "formula",
-          "id": "rgmjhs3rl9mo4o5dt9",
-          "latex": "Graph 4: (Δm/A)² vs. Time (650°C)",
-          "notes": ""
+          "type": "heading3",
+          "id": "mdxui0ixxy8",
+          "content": "Graph 4: (Δm/A)² vs. Time (650°C)"
         },
         {
-          "type": "formula",
-          "id": "5d01fx2hgpumo4o5dt9",
-          "latex": "[ Insert Graph: (Δm/A)² vs. Time at 650°C ]",
-          "notes": ""
+          "type": "image",
+          "id": "2bievnyddfl",
+          "src": "https://res.cloudinary.com/dr2b6pzux/image/upload/v1776822180/n1haa4fdkt8ezlaoguwp.png",
+          "caption": "Figure 4: Square of mass gain per unit area (Δm/A)² as a function of oxidation time at 650°C. ",
+          "size": "medium"
         },
         {
           "type": "paragraph",
           "id": "5pk95rppm57mo4o5dt9",
-          "content": "Figure 4: Square of mass gain per unit area (Δm/A)² as a function of oxidation time at 650°C. This plot for 650°C confirms the parabolic behaviour. The slope, which represents the rate constant k, can be compared with that at 550°C to study the effect of temperature on oxidation kinetics."
+          "content": "This plot for 650°C confirms the parabolic behaviour. The slope, which represents the rate constant k, can be compared with that at 550°C to study the effect of temperature on oxidation kinetics."
         },
         {
-          "type": "paragraph",
-          "id": "fkiga08tigamo4o5dt9",
+          "type": "heading3",
+          "id": "51xwpfjk4l8",
           "content": "Graph 5: log(Δm/A) vs. 1/T (at fixed oxidation periods)"
         },
         {
-          "type": "formula",
-          "id": "qgx7ww38jyrmo4o5dtl",
-          "latex": "[ Insert Graph: log(Δm/A) vs. 1/T ]",
-          "notes": ""
+          "type": "image",
+          "id": "qqi77ic7dw",
+          "src": "https://res.cloudinary.com/dr2b6pzux/image/upload/v1776822585/wjmnfzuyuyp0aulhsygf.png",
+          "caption": "Figure 5: log(Δm/A) versus reciprocal temperature (1/T) for fixed oxidation periods. ",
+          "size": "medium"
         },
         {
           "type": "paragraph",
           "id": "dgrrg7ijipmo4o5dtl",
-          "content": "Figure 5: log(Δm/A) versus reciprocal temperature (1/T) for fixed oxidation periods. This Arrhenius -type plot reveals the temperature dependence of the oxidation rate. A linear relationship between log(Δm/A) and 1/T indicates that the oxidation process follows an Arrhenius rate law, and the slope can be used to estimate the activation ener gy for the diffusion -controlled oxidation of copper."
+          "content": "This Arrhenius -type plot reveals the temperature dependence of the oxidation rate. A linear relationship between log(Δm/A) and 1/T indicates that the oxidation process follows an Arrhenius rate law, and the slope can be used to estimate the activation energy for the diffusion-controlled oxidation of copper."
         },
         {
-          "type": "formula",
-          "id": "mv5h6125yyamo4o5dtl",
-          "latex": "Graph 6: log(Δm/A) vs. log(t) (550°C)",
-          "notes": ""
+          "type": "heading3",
+          "id": "tu22eiv4wa",
+          "content": "Graph 6: log(Δm/A) vs. 1/T"
         },
         {
-          "type": "formula",
-          "id": "19o85fcit5lmo4o5dtl",
-          "latex": "[ Insert Graph: log(Δm/A) vs. log(t) at 550°C ]",
-          "notes": ""
+          "type": "image",
+          "id": "ih0e6exls3k",
+          "src": "https://res.cloudinary.com/dr2b6pzux/image/upload/v1776822731/szpzramw6fkwsd6hhm3n.png",
+          "caption": "Figure 6: Combined log(Δm/A) vs. 1/T plot for all oxidation time periods. ",
+          "size": "medium"
+        },
+        {
+          "type": "paragraph",
+          "id": "jt3dw6yhxyl",
+          "content": "This combined Arrhenius plot for all time intervals reinforces the temperature-dependent nature of copper oxidation. It enables a more comprehensive estimate of the apparent activation energy across the range of experimental conditions."
+        },
+        {
+          "type": "heading3",
+          "id": "lwbto8dobxm",
+          "content": "Graph 7: log(Δm/A) vs. log(t) (550°C)"
+        },
+        {
+          "type": "image",
+          "id": "n1iba7dhh8q",
+          "src": "https://res.cloudinary.com/dr2b6pzux/image/upload/v1776823047/h61a0kas2dixy5w41aux.png",
+          "caption": "Figure 6: log(Δm/A) versus log(time) at 550°C.",
+          "size": "medium"
         },
         {
           "type": "paragraph",
           "id": "mnxw4gsmfimo4o5dtl",
-          "content": "Figure 6: log(Δm/A) versus log(time) at 550°C. For a parabolic process, a plot of log(Δm/A) versus log(t) should yield a straight line with a slope of 0.5. This confirms that the exponent of time in the rate equation is ½, which is the mathematical signature of parabolic kinetics. Any deviation from 0. 5 would indicate mixed or non -parabolic oxidation behaviour."
+          "content": "For a parabolic process, a plot of log(Δm/A) versus log(t) should yield a straight line with a slope of 0.5. This confirms that the exponent of time in the rate equation is ½, which is the mathematical signature of parabolic kinetics. Any deviation from 0. 5 would indicate mixed or non-parabolic oxidation behaviour."
         },
         {
-          "type": "formula",
-          "id": "n4fxiqzvhnnmo4o5dtl",
-          "latex": "Graph 7: log(Δm/A) vs. log(t) (650°C)",
-          "notes": ""
+          "type": "heading3",
+          "id": "r9ybiejs1b8",
+          "content": "Graph 8: log(Δm/A) vs. log(t) (650°C)"
         },
         {
-          "type": "formula",
-          "id": "cdhazbp5cbemo4o5dtl",
-          "latex": "[ Insert Graph: log(Δm/A) vs. log(t) at 650°C ]",
-          "notes": ""
+          "type": "image",
+          "id": "s7encjj8ibb",
+          "src": "https://res.cloudinary.com/dr2b6pzux/image/upload/v1776823122/banhdprqzllxgfrhmcrj.png",
+          "caption": "Figure 7: log(Δm/A) versus log(time) at 650°C. ",
+          "size": "medium"
         },
         {
           "type": "paragraph",
           "id": "07pzo1unt9zgmo4o5dtl",
-          "content": "Figure 7: log(Δm/A) versus log(time) at 650°C. This plot at 650°C serves the same purpose as Figure 6. Comparing the slopes at both temperatures provides insight into whether the oxidation mechanism remains consistently parabolic across the temperature range studied."
-        },
-        {
-          "type": "paragraph",
-          "id": "m1ff60fmbkmo4o5dtl",
-          "content": "Graph 8: log(Δm/A) vs. 1/T (combined — all time periods) [ Insert Graph: log(Δm/A) vs. 1/T — combined plot for all time periods ] Figure 8: Combined log(Δm/A) vs. 1/T plot for all oxidation time periods. This combined Arrhenius plot for all time intervals reinforces the temperature -dependent nature of copper oxidation and allows a more comprehensive estimation of the apparent activation energy across the range of experimental conditions."
+          "content": "This plot at 650°C serves the same purpose as Figure 6. Comparing the slopes at both temperatures provides insight into whether the oxidation mechanism remains consistently parabolic across the temperature range studied."
         },
         {
           "type": "heading2",
@@ -506,7 +526,7 @@ const DEFAULT_DATA = {
         {
           "type": "paragraph",
           "id": "dggkmotszrmo4o5dtq",
-          "content": "The experiment successfully demonstrated that the oxidation of copper at both 550°C and 650°C obeys the parabolic rate law, confirming a diffusion -controlled oxidation mechanism through the growing Cu₂O film. The parabolic rate constant and oxide film thickness were determined at each time interval, and the graphical analysis, including (Δm/A)² vs. time and log -log plots, provided consistent verification of the kinetics. These findings underscore the practical significance of understanding oxidation kinetics for predicting material degradation in high -temperature service environments and for guiding the development of oxidation -resistant materials and protective coatings."
+          "content": "The experiment successfully demonstrated that the oxidation of copper at both 550°C and 650°C obeys the parabolic rate law, confirming a diffusion-controlled oxidation mechanism through the growing Cu₂O film. The parabolic rate constant and oxide film thickness were determined at each time interval, and the graphical analysis, including (Δm/A)² vs. time and log-log plots, provided consistent verification of the kinetics. These findings underscore the practical significance of understanding oxidation kinetics for predicting material degradation in high-temperature service environments and for guiding the development of oxidation-resistant materials and protective coatings."
         },
         {
           "type": "heading2",
