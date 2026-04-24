@@ -55,6 +55,216 @@ const DEFAULT_DATA = {
   ],
   "projects": [
     {
+      "title": "Determination of True Density, Bulk Density, and Porosity of the Refractory Material",
+      "excerpt": "i. To determine the bulk density of the refractory material.\nii. To determine the bulk density of the refractory material.\niii.…",
+      "featuredImage": "",
+      "tags": "True Density, Bulk Density, Porosity, Refractory, Academic",
+      "link": "#",
+      "date": "Apr 2026",
+      "status": "Ongoing",
+      "orderNum": 7,
+      "blocks": [
+        {
+          "type": "heading1",
+          "id": "udslxg4t60q",
+          "content": "Objectives"
+        },
+        {
+          "type": "paragraph",
+          "id": "7vbtq4k95to",
+          "content": "i. To determine the bulk density of the refractory material.\nii. To determine the bulk density of the refractory material.\niii. To determine the porosity of the refractory material."
+        },
+        {
+          "type": "heading1",
+          "id": "ji5c0revif",
+          "content": "Introduction"
+        },
+        {
+          "type": "paragraph",
+          "id": "vp01l7kidhn",
+          "content": "In the study of refractory materials, understanding the relationship between mass and volume is critical for predicting thermal performance and structural integrity. This experiment focuses on three fundamental physical properties."
+        },
+        {
+          "type": "heading2",
+          "id": "xlc2qmkpwa",
+          "content": "True Density:"
+        },
+        {
+          "type": "paragraph",
+          "id": "3811g1wbysa",
+          "content": "True density represents the pure density of the material's solid matter. It is calculated by taking the ratio of the sample's dry mass to its true volume, which is the volume occupied by the solid alone, excluding all internal pores and external cavities. To measure this accurately, the material is typically ground into a fine powder to eliminate any trapped air pocket beofre use a pycnometer and a reference liquid for displacement."
+        },
+        {
+          "type": "heading2",
+          "id": "0pse8hlitdg",
+          "content": "Bulk Density:"
+        },
+        {
+          "type": "paragraph",
+          "id": "xj5msjivw9d",
+          "content": "Unlike true density, bulk density considers the materials in its entirely. It is the ratio of material mass to its total bulk volume. \nThese volumes include:\n--> The solid material itself,\n--> Internal closed pores, \n--> Open surface pores, \n--> Inter-particle void space. Bulk density is a key indicator of how packed or dense the refractory brick or shape is in its final form."
+        },
+        {
+          "type": "heading2",
+          "id": "kzvf28krwu8",
+          "content": "Porosity"
+        },
+        {
+          "type": "paragraph",
+          "id": "fv6lvsihf8n",
+          "content": "Porosity is a measure of the emptiness within a material. It is defined as the fraction of the total bulk volume that consists of void spaces. In engineering, this is usually expressed as a percentage. Higher porosity generally improves thermal insulation but may reduce the mechanical strength and resistance to chemical corrosion of the refractory. "
+        },
+        {
+          "type": "heading1",
+          "id": "jxdmmjmt9k8",
+          "content": "Working Procedure"
+        },
+        {
+          "type": "paragraph",
+          "id": "da3nzdwd5bs",
+          "content": "i. The bulk volume V_0 of the refractory material and the bulk mass W_0 were measured.\nii. The refractory material was crushed, and it was ground into fine powder.\niii. An empty pycnometer bottle with a stopper as W1 was weighted.\niv. 10-15g refractory powder whose density is to be determined in the pycnometer bottle, and the bottle containing powder with a stopper as W2 was weighed.\nv. The bottle was filled with distilled water to its capacity, and the bottle containing refractory powder and water with a stopper, as W3 was weighed.\nvi. The suspension from the bottle was removed, the bottle was filled with distilled water again, and the bottle was weighed with a stopper as W4."
+        },
+        {
+          "type": "heading1",
+          "id": "qnplhzbh25",
+          "content": "Calculation"
+        },
+        {
+          "type": "heading2",
+          "id": "2hlkbu1gug2",
+          "content": "Chalk Measurements"
+        },
+        {
+          "type": "formula",
+          "id": "6gz3u64gu66",
+          "latex": "D_1 = 10.68 mm, D_2 = 10.24 mm",
+          "notes": ""
+        },
+        {
+          "type": "formula",
+          "id": "37u778tmauv",
+          "latex": "--> D = (10.68 + 10.24)/2  = 10.46 mm",
+          "notes": ""
+        },
+        {
+          "type": "formula",
+          "id": "eihik7aoq78",
+          "latex": "L_1 = 29.85 mm, L_2 = 29.80 mm",
+          "notes": ""
+        },
+        {
+          "type": "formula",
+          "id": "xoxo1ww1cg",
+          "latex": "--> L = (29.85+ 29.80)/2 = 29.825 mm",
+          "notes": ""
+        },
+        {
+          "type": "formula",
+          "id": "ssybdf999g",
+          "latex": "Sample- weight, W_0 = 1g",
+          "notes": ""
+        },
+        {
+          "type": "paragraph",
+          "id": "afdumctvp6i",
+          "content": "Bulk volume, "
+        },
+        {
+          "type": "formula",
+          "id": "v9scmbcbx5f",
+          "latex": "V_0 = ( \\pi D^2 h)/4 = ( \\pi (10.46)^2 * 29.825)/4 = 2562.918 mm^3 = 2.5629 cm^3",
+          "notes": ""
+        },
+        {
+          "type": "heading2",
+          "id": "9rx47ltrpob",
+          "content": "Readings of Pycnometer"
+        },
+        {
+          "type": "formula",
+          "id": "iqou63v591",
+          "latex": "Only -powder, W_0 =1g",
+          "notes": ""
+        },
+        {
+          "type": "formula",
+          "id": "kkkm66ol2ms",
+          "latex": "Bottle, W_1 =25.185g",
+          "notes": ""
+        },
+        {
+          "type": "formula",
+          "id": "lrtuck7cir",
+          "latex": "Bottle+ Powder, W_2 =26.797g",
+          "notes": ""
+        },
+        {
+          "type": "formula",
+          "id": "8ffbmc2c9q7",
+          "latex": "W_2 + water, W_3 =80.276g",
+          "notes": ""
+        },
+        {
+          "type": "formula",
+          "id": "l5oxag8lo8a",
+          "latex": "Bottle + water only, W_4 = 79.293g",
+          "notes": ""
+        },
+        {
+          "type": "formula",
+          "id": "tpn5v5p75m",
+          "latex": "T = 18 \\degree celcius, \\rho_f = 0.998",
+          "notes": ""
+        },
+        {
+          "type": "formula",
+          "id": "qbe6lddvk4d",
+          "latex": "Total -volume,V = (W_4 - W_1)/ \\rho_f = 54.216",
+          "notes": ""
+        },
+        {
+          "type": "formula",
+          "id": "hn14njxbaqb",
+          "latex": "True- density = (W_2 - W_1)* \\rho_f/ (W_4​−W_1​)*(W_3​−W_2​)  =2.5371 g/cc",
+          "notes": ""
+        },
+        {
+          "type": "formula",
+          "id": "9dim1bxlae",
+          "latex": "Bulk-density = W_0/V_0 = 1.6/(2562.918*10^-3 = 0.624g/cc",
+          "notes": ""
+        },
+        {
+          "type": "formula",
+          "id": "piqemtgjh1k",
+          "latex": "True-Volume = V- (W_3 - W_2)/ \\rho_f  = 0.6298cc",
+          "notes": ""
+        },
+        {
+          "type": "formula",
+          "id": "txicvj84ro",
+          "latex": "Porosity = (2.5629-0.6298)/2.5629 * 100 =75.43 (percent)",
+          "notes": ""
+        },
+        {
+          "type": "heading1",
+          "id": "nu9qzz2x1z",
+          "content": "Result"
+        },
+        {
+          "type": "callout",
+          "id": "4huudc34l6g",
+          "icon": "💡",
+          "content": "True density = 2.5371 g/cc\nBulk density = 0.624 g/cc\nPercentages of porosity = 75.43"
+        },
+        {
+          "type": "paragraph",
+          "id": "l9dc97q9y4",
+          "content": ""
+        }
+      ]
+    },
+    {
       "title": "Electrodeposition of Cu on a Metal Substrate",
       "excerpt": "1. To understand the principles of electrodeposition.2. To coat a metal substrate with Cu using electroplating.3. To study th…",
       "featuredImage": "",
