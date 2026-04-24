@@ -60,7 +60,7 @@ const DEFAULT_DATA = {
       "featuredImage": "",
       "tags": "True Density, Bulk Density, Porosity, Refractory, Academic",
       "link": "#",
-      "date": "Apr 2026",
+      "date": "Jan 2026",
       "status": "Completed",
       "orderNum": 7,
       "blocks": [
@@ -303,13 +303,19 @@ const DEFAULT_DATA = {
           "content": "Objectives"
         },
         {
-          "type": "paragraph",
-          "id": "tg75gaw1dxk",
-          "content": "1. To understand the principles of electrodeposition.\n2. To coat a metal substrate with Cu using electroplating.\n3. To study the effect of plating parameters on coating thickness.\n4. To analyze surface properties after deposition."
+          "type": "list",
+          "id": "ywyepi9ugg8",
+          "style": "number",
+          "items": [
+            "To understand the principles of electrodeposition.",
+            "To coat a metal substrate with Cu using electroplating.",
+            "To study the effect of plating parameters on coating thickness.",
+            "To analyze surface properties after deposition."
+          ]
         },
         {
           "type": "heading1",
-          "id": "0o4hnt3opkvn",
+          "id": "989b3hxmsn",
           "content": "Theory"
         },
         {
@@ -327,18 +333,25 @@ const DEFAULT_DATA = {
         {
           "type": "formula",
           "id": "q2wdjxvs6g",
-          "latex": " ∆G = -EnF",
+          "latex": "\\Delta G = -EnF",
           "notes": "If ∆G is negative, the reaction will be spontaneous."
+        },
+        {
+          "type": "formula",
+          "id": "dlg2fgxxbjj",
+          "latex": "\\text{ A mixture of  } CuSO_{4}. 5H_{2}O \\text{ 200g/L and }  H_{2}SO_{4} \\text{ 40-60 g/L were made, and the process was held at room temperature. }",
+          "notes": "",
+          "display": "block"
         },
         {
           "type": "paragraph",
           "id": "ib1p0osthir",
-          "content": "A mixture of CuSO4. 5H2O 200g/L and H2SO4 40-60 g/L were made, and the process was held at room temperature. \nThe thickness of the deposited Cu is calculated by this formula:"
+          "content": "The thickness of the deposited Cu is calculated by this formula:"
         },
         {
           "type": "formula",
           "id": "qw99w105kve",
-          "latex": "t=m/(\\rho  A)",
+          "latex": "t= \\frac{m}{\\rho A}",
           "notes": "Where, \nm = Weight of the deposited Cu\nρ = Density of Cu\nA = Area of the deposition"
         },
         {
@@ -443,9 +456,18 @@ const DEFAULT_DATA = {
           "content": "Working Procedure"
         },
         {
-          "type": "paragraph",
-          "id": "q3zfx8vxxg",
-          "content": "01. The sample surface was prepared for electroplating by removing oxide and contaminants using emery paper. \n02. The electroplating solution made for our group was 0.1 M.\n03. The experiment was done at room temperature.\n04. The immersion was done with the help of a thin rope.\n05. The immersion was about five minutes.\n06. The sample was raised, and the final weight was measured after the air-drying process.\n07. The surface roughness test was done by a roughness testing machine. "
+          "type": "list",
+          "id": "93oopqxl7f7",
+          "style": "number",
+          "items": [
+            "The sample surface was prepared for electroplating by removing oxide and contaminants using emery paper. ",
+            "The electroplating solution made for our group was 0.1 M.",
+            "The experiment was done at room temperature.",
+            "The immersion was done with the help of a thin rope.",
+            "The immersion was about five minutes.",
+            " The sample was raised, and the final weight was measured after the air-drying process.",
+            "The surface roughness test was done by a roughness testing machine. "
+          ]
         },
         {
           "type": "heading1",
