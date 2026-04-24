@@ -3,6 +3,9 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="referrer" content="strict-origin-when-cross-origin">
+<meta http-equiv="X-Content-Type-Options" content="nosniff">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com https://unpkg.com https://cdn.jsdelivr.net; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://unpkg.com https://cdn.jsdelivr.net; font-src 'self' https://fonts.gstatic.com https://unpkg.com https://cdn.jsdelivr.net data:; img-src 'self' https: data: blob:; connect-src 'self' https://formspree.io; frame-src https://www.youtube.com https://player.vimeo.com; object-src 'none'; base-uri 'self'; form-action https://formspree.io;">
 <title>Tanim MSE</title>
 <meta name="description" content="Tanim. Materials Science & Engineering at RUET. Research, projects, and the science of what things are made of.">
 <meta name="robots" content="index, follow">
@@ -1111,6 +1114,104 @@ html.lenis, html.lenis body { height: auto; }
   margin-top: 12px;
 }
 
+/* ─── New block styles: quote, list, video, button ──────── */
+.pd-body .quote-block {
+  margin: 36px 0;
+  padding: 6px 30px;
+  border-left: 3px solid var(--accent);
+}
+.pd-body .quote-block p {
+  font-family: var(--serif);
+  font-style: italic;
+  font-weight: 400;
+  font-size: 24px;
+  line-height: 1.45;
+  color: var(--paper);
+  letter-spacing: -0.015em;
+  margin: 0 0 12px;
+}
+.pd-body .quote-block p::before { content: "\201C "; color: var(--accent); }
+.pd-body .quote-block p::after  { content: "\201D"; color: var(--accent); }
+.pd-body .quote-block cite {
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--paper-mute);
+  font-style: normal;
+}
+
+.pd-body .list-block {
+  margin: 22px 0 22px 8px;
+  padding-left: 22px;
+}
+.pd-body .list-block li { margin-bottom: 8px; color: var(--paper-soft); }
+.pd-body .list-block li::marker { color: var(--accent); }
+.pd-body ul.list-block { list-style: disc; }
+.pd-body ol.list-block { list-style: decimal; }
+
+.pd-body .video-block { margin: 32px 0; }
+.pd-body .video-embed-wrap {
+  position: relative;
+  padding-bottom: 56.25%;
+  height: 0;
+  border-radius: 6px;
+  overflow: hidden;
+  border: 1px solid var(--hairline-2);
+  background: #000;
+}
+.pd-body .video-embed-wrap iframe {
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  border: 0;
+}
+
+.pd-body .button-block-wrap {
+  margin: 28px 0;
+  display: flex;
+  justify-content: flex-start;
+}
+.pd-body .btn-block {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  padding: 14px 28px;
+  border-radius: 999px;
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  font-weight: 500;
+  transition: all 300ms cubic-bezier(0.2, 0.8, 0.2, 1);
+  text-decoration: none;
+}
+.pd-body .btn-block.btn-primary {
+  background: var(--accent);
+  color: var(--ink);
+}
+.pd-body .btn-block.btn-primary:hover {
+  background: var(--paper);
+  transform: translateY(-1px);
+  box-shadow: 0 10px 30px rgba(183, 148, 246, 0.3);
+}
+.pd-body .btn-block.btn-ghost {
+  border: 1px solid var(--accent);
+  color: var(--accent);
+}
+.pd-body .btn-block.btn-ghost:hover {
+  background: var(--accent-faint);
+}
+.pd-body .btn-block.btn-link {
+  padding: 0;
+  color: var(--accent);
+  border-radius: 0;
+  border-bottom: 1px solid var(--accent);
+}
+.pd-body .btn-block.btn-link:hover { color: var(--paper); border-bottom-color: var(--paper); }
+.pd-body .btn-block .btn-arrow { transition: transform 300ms; }
+.pd-body .btn-block:hover .btn-arrow { transform: translateX(4px); }
+
 /* ─── RESEARCH ────────────────────────────────────────────────── */
 .research {
   padding-top: var(--sec);
@@ -1159,16 +1260,50 @@ html.lenis, html.lenis body { height: auto; }
   color: var(--paper-mute);
   margin-bottom: 24px;
 }
+.res-pubs-list { display: flex; flex-direction: column; }
 .res-pub {
-  padding: 22px 0;
+  display: grid;
+  grid-template-columns: 60px minmax(0, 1fr) auto;
+  gap: clamp(16px, 3vw, 40px);
+  align-items: start;
+  padding: 26px 0;
   border-top: 1px solid var(--hairline);
+  text-decoration: none;
+  color: inherit;
+  position: relative;
+  transition: padding 400ms cubic-bezier(0.65, 0, 0.35, 1);
 }
+.res-pub:last-child { border-bottom: 1px solid var(--hairline); }
+.res-pub.linked { cursor: pointer; }
+.res-pub.linked::after {
+  content: "";
+  position: absolute; left: 0; top: 0; height: 100%; width: 0;
+  background: var(--accent-faint);
+  transition: width 500ms cubic-bezier(0.65, 0, 0.35, 1);
+  z-index: -1;
+}
+.res-pub.linked:hover::after { width: 100%; }
+.res-pub.linked:hover { padding-left: 14px; padding-right: 14px; }
+.res-pub-num {
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: 0.2em;
+  color: var(--accent);
+  padding-top: 3px;
+}
+.res-pub-body { display: flex; flex-direction: column; gap: 6px; min-width: 0; }
 .res-pub .pt {
   font-family: var(--serif);
   font-weight: 400;
   font-size: 19px;
+  line-height: 1.35;
   color: var(--paper);
-  margin-bottom: 6px;
+  letter-spacing: -0.01em;
+}
+.res-pub-authors {
+  font-family: var(--sans);
+  font-size: 13px;
+  color: var(--paper-mute);
 }
 .res-pub .pv {
   font-family: var(--sans);
@@ -1176,6 +1311,30 @@ html.lenis, html.lenis body { height: auto; }
   color: var(--paper-mute);
   font-style: italic;
 }
+.res-pub-brief {
+  font-family: var(--serif);
+  font-size: 15px;
+  line-height: 1.55;
+  color: var(--paper-soft);
+  margin-top: 6px;
+  max-width: 68ch;
+}
+.res-pub-arrow {
+  font-family: var(--serif);
+  font-size: 22px;
+  color: var(--paper-faint);
+  padding-top: 2px;
+  transition: color 300ms, transform 400ms cubic-bezier(0.65, 0, 0.35, 1);
+}
+.res-pub.linked:hover .res-pub-arrow {
+  color: var(--accent);
+  transform: translate(4px, -4px);
+}
+@media (max-width: 600px) {
+  .res-pub { grid-template-columns: 40px 1fr; }
+  .res-pub-arrow { display: none; }
+}
+
 .res-pubs-empty {
   padding: 40px 24px;
   border: 1px dashed var(--hairline-2);
@@ -1211,81 +1370,204 @@ html.lenis, html.lenis body { height: auto; }
 .contact-stmt em { font-style: italic; color: var(--accent); font-weight: 300; }
 .contact-stmt .punct { color: var(--accent); }
 
-.contact-grid {
+/* ─── Formspree form (primary contact method) ─── */
+.contact-form {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-  gap: 0;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px 24px;
+  margin-bottom: 48px;
+  padding-top: 32px;
   border-top: 1px solid var(--hairline);
 }
-.contact-link {
-  display: flex; flex-direction: column; gap: 10px;
-  padding: 24px 0;
-  border-bottom: 1px solid var(--hairline);
-  border-right: 1px solid var(--hairline);
-  padding-right: 24px;
-  position: relative;
-  transition: padding 400ms cubic-bezier(0.65, 0, 0.35, 1);
-}
-.contact-link:hover { padding-left: 12px; }
-.contact-link:last-child { border-right: 0; }
-.contact-link .lab {
+.contact-form .field { display: flex; flex-direction: column; gap: 8px; }
+.contact-form .field.full { grid-column: 1 / -1; }
+.contact-form .field label {
   font-family: var(--mono);
-  font-size: 9px;
-  letter-spacing: 0.3em;
+  font-size: 10px;
+  letter-spacing: 0.25em;
   text-transform: uppercase;
   color: var(--paper-faint);
-  display: flex; justify-content: space-between; align-items: center;
 }
-.contact-link .lab::after {
-  content: "↗";
+.contact-form input,
+.contact-form textarea {
+  background: transparent;
+  border: 0;
+  border-bottom: 1px solid var(--hairline-2);
+  padding: 8px 0;
+  color: var(--paper);
   font-family: var(--serif);
   font-size: 18px;
-  color: var(--paper-faint);
-  transition: color 300ms, transform 400ms;
-}
-.contact-link:hover .lab::after {
-  color: var(--accent);
-  transform: translate(4px, -4px);
-}
-.contact-link .val {
-  font-family: var(--serif);
   font-weight: 400;
-  font-size: 22px;
-  color: var(--paper);
-  letter-spacing: -0.01em;
-  word-break: break-word;
+  letter-spacing: -0.005em;
+  resize: none;
+  transition: border-color 200ms;
+  outline: none;
 }
-.contact-link:hover .val { color: var(--accent); }
+.contact-form input:focus,
+.contact-form textarea:focus {
+  border-bottom-color: var(--accent);
+}
+.contact-form input::placeholder,
+.contact-form textarea::placeholder {
+  color: var(--paper-faint);
+  font-style: italic;
+  font-family: var(--serif);
+}
+.contact-form textarea { min-height: 100px; line-height: 1.5; }
+.contact-form .submit-row {
+  grid-column: 1 / -1;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  flex-wrap: wrap;
+  margin-top: 8px;
+}
+.contact-submit {
+  display: inline-flex;
+  align-items: center;
+  gap: 14px;
+  padding: 14px 28px;
+  background: var(--accent);
+  color: var(--ink);
+  border: 0;
+  border-radius: 999px;
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 250ms cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+.contact-submit:hover:not(:disabled) {
+  background: var(--paper);
+  transform: translateY(-1px);
+  box-shadow: 0 10px 30px rgba(183, 148, 246, 0.25);
+}
+.contact-submit:disabled { opacity: 0.5; cursor: wait; }
+.contact-submit .arrow {
+  transition: transform 250ms;
+}
+.contact-submit:hover:not(:disabled) .arrow { transform: translateX(4px); }
+.contact-form-note {
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 13px;
+  color: var(--paper-faint);
+}
+.contact-form-status {
+  grid-column: 1 / -1;
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  padding: 14px 18px;
+  border-radius: 8px;
+  display: none;
+}
+.contact-form-status.show { display: block; }
+.contact-form-status.success {
+  background: rgba(110, 231, 183, 0.08);
+  border: 1px solid rgba(110, 231, 183, 0.22);
+  color: var(--signal-on);
+}
+.contact-form-status.error {
+  background: rgba(251, 113, 133, 0.08);
+  border: 1px solid rgba(251, 113, 133, 0.22);
+  color: #fca5a5;
+}
 
-@media (max-width: 700px) {
-  .contact-link { border-right: 0; }
+@media (max-width: 600px) {
+  .contact-form { grid-template-columns: 1fr; }
 }
+
+/* ─── Social icons row (replaces the old link cards) ─── */
+.contact-socials {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+  padding-top: 28px;
+  border-top: 1px solid var(--hairline);
+}
+.contact-social {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  background: rgba(245, 241, 234, 0.04);
+  border: 1px solid var(--hairline-2);
+  color: var(--paper-mute);
+  transition: all 250ms cubic-bezier(0.2, 0.8, 0.2, 1);
+  position: relative;
+}
+.contact-social svg { width: 20px; height: 20px; }
+.contact-social:hover {
+  color: var(--accent);
+  border-color: var(--accent);
+  background: rgba(183, 148, 246, 0.08);
+  transform: translateY(-3px);
+}
+.contact-social::after {
+  content: attr(data-label);
+  position: absolute;
+  bottom: -26px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-family: var(--mono);
+  font-size: 9px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--paper-faint);
+  white-space: nowrap;
+  opacity: 0;
+  transition: opacity 200ms;
+  pointer-events: none;
+}
+.contact-social:hover::after { opacity: 1; }
 
 /* ─── COLOPHON ────────────────────────────────────────────────── */
 .colophon {
   margin-top: var(--sec);
   padding: 60px var(--gut) 40px;
   border-top: 1px solid var(--hairline);
-  display: flex; justify-content: space-between; align-items: end;
-  gap: 20px; flex-wrap: wrap;
-  font-family: var(--mono);
-  font-size: 10px;
-  letter-spacing: 0.2em;
-  text-transform: uppercase;
-  color: var(--paper-faint);
+  display: flex;
+  justify-content: space-between;
+  align-items: end;
+  gap: 20px;
+  flex-wrap: wrap;
   position: relative;
   z-index: 3;
+  /* Sit in the left half so it doesn't collide with the crystal label on the right */
+  max-width: min(900px, 58vw);
+}
+@media (max-width: 1100px) {
+  .colophon { max-width: 100%; }
 }
 .colophon .left {
   font-family: var(--serif);
   font-style: italic;
   font-weight: 400;
-  font-size: 24px;
+  font-size: 22px;
   letter-spacing: -0.02em;
   color: var(--paper-mute);
-  text-transform: none;
   max-width: 320px;
   line-height: 1.3;
+}
+.colophon .right {
+  text-align: right;
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--paper-faint);
+}
+.colophon .colophon-copy { color: var(--paper-mute); }
+.colophon .colophon-meta { margin-top: 6px; }
+@media (max-width: 600px) {
+  .colophon .right { text-align: left; }
 }
 
 /* ─── REVEAL ANIMATIONS (scroll-triggered) ────────────────────── */
@@ -1453,15 +1735,41 @@ html.lenis, html.lenis body { height: auto; }
       </div>
       <h2 class="contact-stmt" id="contactStmt"></h2>
     </div>
-    <div class="contact-grid reveal-stagger" id="contactGrid"></div>
+    <form class="contact-form reveal" id="contactForm" autocomplete="off">
+      <div class="field">
+        <label for="cf_name">Name</label>
+        <input type="text" id="cf_name" name="name" placeholder="Your name" required>
+      </div>
+      <div class="field">
+        <label for="cf_email">Email</label>
+        <input type="email" id="cf_email" name="email" placeholder="you@example.com" required>
+      </div>
+      <div class="field full">
+        <label for="cf_subject">Subject <span style="color:var(--paper-faint);font-size:9px;margin-left:4px">optional</span></label>
+        <input type="text" id="cf_subject" name="subject" placeholder="What's this about?">
+      </div>
+      <div class="field full">
+        <label for="cf_message">Message</label>
+        <textarea id="cf_message" name="message" placeholder="Write a few words…" required></textarea>
+      </div>
+      <div class="contact-form-status" id="contactFormStatus"></div>
+      <div class="submit-row">
+        <span class="contact-form-note">I'll reply from <span style="color:var(--paper-mute)" id="contactFormReplyEmail"></span></span>
+        <button type="submit" class="contact-submit" id="contactSubmitBtn">
+          Send message
+          <span class="arrow">→</span>
+        </button>
+      </div>
+    </form>
+    <div class="contact-socials reveal-stagger" id="contactSocials"></div>
   </section>
 
   <!-- COLOPHON -->
   <footer class="colophon">
     <div class="left">A small site about a curious mind.<br>Made of atoms, like everything else.</div>
-    <div>
-      <div>© <span id="year"></span> · Tanim</div>
-      <div style="margin-top:6px">Set in Fraunces &amp; Inter Tight</div>
+    <div class="right">
+      <div class="colophon-copy">© <span id="year"></span> Tanim · Rajshahi</div>
+      <div class="colophon-meta">Set in Fraunces &amp; Inter Tight</div>
     </div>
   </footer>
 </main>
@@ -1481,6 +1789,31 @@ function esc(s) {
   return String(s == null ? '' : s).replace(/[&<>"']/g, c => ({
     '&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'
   }[c]));
+}
+
+// Sanitize URLs from user data — reject dangerous schemes (javascript:, data:, vbscript:, file:)
+// Returns the URL if safe, or '#' otherwise. Relative URLs pass through.
+function safeURL(u) {
+  if (!u) return '';
+  const s = String(u).trim();
+  if (!s) return '';
+  // Allow relative, hash, protocol-relative, mailto, tel, http, https
+  const lower = s.toLowerCase();
+  if (lower.startsWith('javascript:') || lower.startsWith('vbscript:') || lower.startsWith('file:')) return '#';
+  // Allow data: only for image sources (handled separately); not for links
+  if (lower.startsWith('data:')) return '#';
+  return s;
+}
+
+// Sanitize image src — allow only http/https/data:image/
+function safeImageURL(u) {
+  if (!u) return '';
+  const s = String(u).trim();
+  if (!s) return '';
+  const lower = s.toLowerCase();
+  if (lower.startsWith('javascript:') || lower.startsWith('vbscript:') || lower.startsWith('file:')) return '';
+  if (lower.startsWith('data:') && !lower.startsWith('data:image/')) return '';
+  return s;
 }
 function stripHtml(s) {
   const d = document.createElement('div'); d.innerHTML = s || '';
@@ -2093,7 +2426,7 @@ function renderAbout() {
   // Photo
   const photo = $('#aboutPhoto');
   if (d.photoURL) {
-    photo.innerHTML = `<img src="${esc(d.photoURL)}" alt="${esc(d.name || 'Portrait')}">
+    photo.innerHTML = `<img src="${esc(safeImageURL(d.photoURL))}" alt="${esc(d.name || 'Portrait')}">
       <div class="about-photo-cap"><span>FIG. 01</span><span>${esc(d.name || 'Tanim')}</span></div>`;
   } else {
     photo.innerHTML = `<div class="about-photo-empty">${(d.name || 'T').charAt(0).toLowerCase()}</div>
@@ -2218,7 +2551,7 @@ function openProject(idx) {
   const statusClass = status === 'Completed' ? '' : status === 'Paused' ? 'paused' : 'ongoing';
 
   const featHTML = p.featuredImage
-    ? `<div class="pd-feat"><img src="${esc(p.featuredImage)}" alt=""></div>` : '';
+    ? `<div class="pd-feat"><img src="${esc(safeImageURL(p.featuredImage))}" alt=""></div>` : '';
   const bodyHTML = (p.blocks && p.blocks.length)
     ? renderBlocksToHTML(p.blocks)
     : (p.desc || '<p>No content yet.</p>');
@@ -2286,7 +2619,7 @@ function renderBlocksToHTML(blocks) {
     if (b.type === 'image' && b.src) {
       const w = b.size === 'small' ? '50%' : b.size === 'full' ? '100%' : '78%';
       return `<div class="fig-wrap">
-        <img src="${esc(b.src)}" style="max-width: ${w};">
+        <img src="${esc(safeImageURL(b.src))}" style="max-width: ${w};">
         ${b.caption ? `<div class="fig-cap">${esc(b.caption)}</div>` : ''}
       </div>`;
     }
@@ -2309,11 +2642,68 @@ function renderBlocksToHTML(blocks) {
     }
     if (b.type === 'divider') return '<hr class="content-divider">';
     if (b.type === 'callout') return `<div class="callout-block">${esc(b.icon || '◇')} ${esc(b.content || '')}</div>`;
+    if (b.type === 'quote') {
+      return `<blockquote class="quote-block">
+        <p>${esc(b.content || '')}</p>
+        ${b.attribution ? `<cite>${esc(b.attribution)}</cite>` : ''}
+      </blockquote>`;
+    }
+    if (b.type === 'list') {
+      const tag = b.style === 'number' ? 'ol' : 'ul';
+      const items = (b.items || []).filter(it => it && it.trim()).map(it => `<li>${esc(it)}</li>`).join('');
+      return items ? `<${tag} class="list-block">${items}</${tag}>` : '';
+    }
+    if (b.type === 'video') {
+      const url = (b.url || '').trim();
+      if (!url) return '';
+      // Same parser as admin
+      let embed = null;
+      let m = url.match(/(?:youtube\.com\/watch\?v=|youtu\.be\/|youtube\.com\/embed\/)([A-Za-z0-9_-]{11})/);
+      if (m) embed = `https://www.youtube.com/embed/${m[1]}`;
+      else { m = url.match(/vimeo\.com\/(\d+)/); if (m) embed = `https://player.vimeo.com/video/${m[1]}`; }
+      if (!embed) return '';
+      return `<div class="video-block">
+        <div class="video-embed-wrap">
+          <iframe src="${esc(embed)}" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        </div>
+        ${b.caption ? `<div class="fig-cap">${esc(b.caption)}</div>` : ''}
+      </div>`;
+    }
+    if (b.type === 'button') {
+      if (!b.url) return '';
+      const cls = `btn-block btn-${b.style || 'primary'}`;
+      return `<div class="button-block-wrap"><a class="${cls}" href="${esc(safeURL(b.url))}" target="_blank" rel="noopener noreferrer">${esc(b.label || 'Learn more')} <span class="btn-arrow">→</span></a></div>`;
+    }
     if (b.type === 'table' && b.data) {
-      const rows = b.data.map((r, ri) =>
-        `<tr>${r.map(c => ri === 0 ? `<th>${esc(c)}</th>` : `<td>${esc(c)}</td>`).join('')}</tr>`
-      ).join('');
-      return `<div class="table-wrap"><table>${rows}</table></div>`;
+      // Merge-aware rendering
+      const merges = Array.isArray(b.merges) ? b.merges : [];
+      const headerRow = b.headerRow !== false;
+      const headerCol = !!b.headerCol;
+      const covered = new Set();
+      merges.forEach(m => {
+        for (let r = m.r; r < m.r + m.rowspan; r++) {
+          for (let c = m.c; c < m.c + m.colspan; c++) {
+            if (r === m.r && c === m.c) continue;
+            covered.add(`${r}:${c}`);
+          }
+        }
+      });
+      let tableHTML = '';
+      for (let ri = 0; ri < b.data.length; ri++) {
+        tableHTML += '<tr>';
+        for (let ci = 0; ci < b.data[ri].length; ci++) {
+          if (covered.has(`${ri}:${ci}`)) continue;
+          const isHeader = (headerRow && ri === 0) || (headerCol && ci === 0);
+          const tag = isHeader ? 'th' : 'td';
+          const merge = merges.find(m => m.r === ri && m.c === ci);
+          const spanAttrs = merge
+            ? `${merge.rowspan > 1 ? ` rowspan="${merge.rowspan}"` : ''}${merge.colspan > 1 ? ` colspan="${merge.colspan}"` : ''}`
+            : '';
+          tableHTML += `<${tag}${spanAttrs}>${esc(b.data[ri][ci] || '')}</${tag}>`;
+        }
+        tableHTML += '</tr>';
+      }
+      return `<div class="table-wrap"><table>${tableHTML}</table></div>`;
     }
     return '';
   }).join('\n');
@@ -2335,12 +2725,25 @@ function renderResearch() {
   if (pubs.length) {
     pubsWrap.innerHTML = `
       <h4>Publications</h4>
-      ${pubs.map(p => `
-        <div class="res-pub">
-          <div class="pt">${esc(p.title || '')}</div>
-          <div class="pv">${esc(p.venue || '')}${p.year ? ' · ' + esc(p.year) : ''}</div>
-        </div>
-      `).join('')}
+      <div class="res-pubs-list">
+      ${pubs.map((p, i) => {
+        const hasLink = p.link && p.link.trim();
+        const tag = hasLink ? 'a' : 'div';
+        const attrs = hasLink ? `href="${esc(safeURL(p.link))}" target="_blank" rel="noopener noreferrer"` : '';
+        return `
+        <${tag} class="res-pub${hasLink ? ' linked' : ''}" ${attrs}>
+          <div class="res-pub-num">${String(i + 1).padStart(2, '0')}</div>
+          <div class="res-pub-body">
+            <div class="pt">${esc(p.title || '')}</div>
+            ${p.authors ? `<div class="res-pub-authors">${esc(p.authors)}</div>` : ''}
+            <div class="pv">${esc(p.venue || '')}${p.year ? ' · ' + esc(p.year) : ''}</div>
+            ${p.brief ? `<div class="res-pub-brief">${esc(p.brief)}</div>` : ''}
+          </div>
+          ${hasLink ? '<div class="res-pub-arrow">↗</div>' : ''}
+        </${tag}>
+        `;
+      }).join('')}
+      </div>
     `;
   } else {
     pubsWrap.innerHTML = `
@@ -2351,12 +2754,22 @@ function renderResearch() {
 }
 
 // CONTACT
+const SOCIAL_ICONS = {
+  github: `<svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg>`,
+  linkedin: `<svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.063 2.063 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>`,
+  email: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>`,
+  researchgate: `<svg viewBox="0 0 24 24" fill="currentColor"><path d="M19.586 0c-.818 0-1.508.19-2.073.565-.563.377-.97.936-1.213 1.68a3.193 3.193 0 0 0-.112.437 8.365 8.365 0 0 0-.078.53 9 9 0 0 0-.05.727c-.01.282-.013.621-.013 1.016a31.19 31.19 0 0 0 .014 1.017 9 9 0 0 0 .05.727 7.946 7.946 0 0 0 .077.53 3.17 3.17 0 0 0 .113.437c.245.743.65 1.303 1.214 1.68.565.376 1.256.564 2.075.564.81 0 1.5-.19 2.074-.57.573-.379.985-.933 1.24-1.662a3.45 3.45 0 0 0 .111-.405c.03-.144.056-.315.076-.513a8.7 8.7 0 0 0 .05-.715c.012-.28.017-.693.017-1.1 0-.407-.005-.82-.017-1.1a8.7 8.7 0 0 0-.05-.715 4.93 4.93 0 0 0-.076-.513 3.7 3.7 0 0 0-.111-.405c-.255-.729-.667-1.283-1.24-1.662-.573-.38-1.264-.57-2.074-.57zm0 1.108c.54 0 .984.127 1.33.382.347.254.592.621.727 1.1.04.138.074.32.1.544.028.226.05.508.067.847.017.34.024.761.024 1.264 0 .502-.007.924-.024 1.263a8.11 8.11 0 0 1-.067.848 3.17 3.17 0 0 1-.1.543c-.135.48-.38.847-.727 1.102-.346.254-.79.381-1.33.381-.54 0-.983-.127-1.33-.381-.347-.255-.591-.622-.726-1.101a3.17 3.17 0 0 1-.1-.544 8.11 8.11 0 0 1-.067-.848 25.73 25.73 0 0 1-.025-1.263c0-.503.008-.925.025-1.264.017-.339.039-.621.067-.847.026-.224.06-.406.1-.543.135-.48.379-.847.726-1.101.347-.255.79-.382 1.33-.382zM5.27 1.047c-.787 0-1.498.079-2.133.236-.636.157-1.21.376-1.725.656l.47 1.056a6.32 6.32 0 0 1 1.51-.58 7.12 7.12 0 0 1 1.753-.204c.585 0 1.108.078 1.568.234.46.156.847.382 1.163.676.316.295.557.655.723 1.08.166.425.249.906.249 1.443v.54a7.495 7.495 0 0 0-.884-.202 6.666 6.666 0 0 0-1.074-.085c-.867 0-1.637.118-2.31.354a4.93 4.93 0 0 0-1.713 1c-.462.432-.812.953-1.052 1.563a5.375 5.375 0 0 0-.36 2.007c0 .753.12 1.426.36 2.022.24.595.574 1.1.998 1.513.425.414.927.727 1.507.941a5.29 5.29 0 0 0 1.886.32 5.097 5.097 0 0 0 2.058-.417 3.982 3.982 0 0 0 1.585-1.209c.054.358.16.678.318.961.158.284.363.525.615.723.252.199.549.35.891.454.342.103.718.155 1.128.155.374 0 .735-.033 1.084-.1.348-.066.662-.16.94-.281l-.22-1.014a3.936 3.936 0 0 1-.721.215c-.255.05-.503.075-.743.075-.465 0-.832-.08-1.1-.24-.269-.16-.403-.433-.403-.822v-5.46c0-.82-.137-1.53-.411-2.134-.274-.603-.66-1.105-1.158-1.505a5.01 5.01 0 0 0-1.784-.9 8.3 8.3 0 0 0-2.264-.296zm.196 5.9c.42 0 .803.032 1.148.094.346.063.659.145.941.246v4.392a3.06 3.06 0 0 1-.42.68 3.016 3.016 0 0 1-.648.577 3.326 3.326 0 0 1-.882.4 3.736 3.736 0 0 1-1.113.15c-.402 0-.771-.07-1.108-.21a2.586 2.586 0 0 1-.868-.592 2.696 2.696 0 0 1-.569-.924 3.404 3.404 0 0 1-.202-1.202c0-.492.074-.935.221-1.326.148-.392.365-.724.652-.994.287-.271.639-.48 1.055-.624.415-.144.894-.215 1.435-.215z"/></svg>`,
+  cv: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="12" y1="18" x2="12" y2="12"/><polyline points="9 15 12 18 15 15"/></svg>`,
+  twitter: `<svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>`,
+  orcid: `<svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.372 0 0 5.372 0 12s5.372 12 12 12 12-5.372 12-12S18.628 0 12 0zM7.369 4.378c.525 0 .947.431.947.947 0 .525-.422.947-.947.947-.525 0-.946-.422-.946-.947 0-.525.421-.947.946-.947zm-.722 3.038h1.444v10.041H6.647V7.416zm3.562 0h3.9c3.712 0 5.344 2.653 5.344 5.025 0 2.578-2.016 5.025-5.325 5.025h-3.919V7.416zm1.444 1.303v7.444h2.297c3.272 0 4.022-2.484 4.022-3.722 0-2.016-1.284-3.722-4.097-3.722h-2.222z"/></svg>`,
+  scholar: `<svg viewBox="0 0 24 24" fill="currentColor"><path d="M5.242 13.769L0 9.5 12 0l12 9.5-5.242 4.269C17.548 11.249 14.978 9.5 12 9.5c-2.977 0-5.548 1.748-6.758 4.269zM12 10a7 7 0 1 0 0 14 7 7 0 0 0 0-14z"/></svg>`,
+  website: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>`
+};
+
 function renderContact() {
   const d = DATA;
   const msg = d.contactMessage || "Have a research idea, collaboration, or just want to talk materials science?";
-  // Add emphasis to the last line
   const stmt = $('#contactStmt');
-  // Try to italicize the last meaningful word/phrase
   const words = msg.split(/\s+/);
   if (words.length > 4) {
     const last = words.slice(-2).join(' ');
@@ -2366,20 +2779,92 @@ function renderContact() {
     stmt.innerHTML = `${esc(msg)}<span class="punct">.</span>`;
   }
 
-  const grid = $('#contactGrid');
-  const links = [];
-  if (d.email) links.push({ label: 'Email', value: d.email, href: `mailto:${d.email}` });
-  if (d.github) links.push({ label: 'GitHub', value: d.github.replace(/^https?:\/\//, ''), href: d.github });
-  if (d.linkedin) links.push({ label: 'LinkedIn', value: d.linkedin.replace(/^https?:\/\//, ''), href: d.linkedin });
-  if (d.researchgate) links.push({ label: 'ResearchGate', value: d.researchgate.replace(/^https?:\/\//, ''), href: d.researchgate });
-  if (d.cvLink && d.cvLink !== '#') links.push({ label: 'CV · Résumé', value: 'Download', href: d.cvLink });
+  // Reply email hint in form
+  const reply = $('#contactFormReplyEmail');
+  if (reply) reply.textContent = d.email || '';
 
-  grid.innerHTML = links.map(l => `
-    <a class="contact-link" href="${esc(l.href)}" target="_blank" rel="noopener">
-      <span class="lab">${esc(l.label)}</span>
-      <span class="val">${esc(l.value)}</span>
-    </a>
-  `).join('');
+  // Social icons row
+  const socials = $('#contactSocials');
+  if (socials) {
+    const items = [];
+    if (d.email)        items.push({ label: 'Email',         href: `mailto:${d.email}`,               icon: 'email' });
+    if (d.github)       items.push({ label: 'GitHub',        href: d.github,                          icon: 'github' });
+    if (d.linkedin)     items.push({ label: 'LinkedIn',      href: d.linkedin,                        icon: 'linkedin' });
+    if (d.researchgate) items.push({ label: 'ResearchGate',  href: d.researchgate,                    icon: 'researchgate' });
+    if (d.orcid)        items.push({ label: 'ORCID',         href: d.orcid,                           icon: 'orcid' });
+    if (d.scholar)      items.push({ label: 'Google Scholar',href: d.scholar,                         icon: 'scholar' });
+    if (d.twitter)      items.push({ label: 'Twitter / X',   href: d.twitter,                         icon: 'twitter' });
+    if (d.website)      items.push({ label: 'Website',       href: d.website,                         icon: 'website' });
+    if (d.cvLink && d.cvLink !== '#') items.push({ label: 'CV · Résumé', href: d.cvLink, icon: 'cv' });
+    socials.innerHTML = items.map(it => `
+      <a class="contact-social" href="${esc(safeURL(it.href))}" target="_blank" rel="noopener noreferrer" data-label="${esc(it.label)}" aria-label="${esc(it.label)}">
+        ${SOCIAL_ICONS[it.icon] || ''}
+      </a>
+    `).join('');
+  }
+}
+
+/* ── Formspree contact form ─────────────────────────────────── */
+function setupContactForm() {
+  const form = document.getElementById('contactForm');
+  if (!form) return;
+  const status = document.getElementById('contactFormStatus');
+  const btn = document.getElementById('contactSubmitBtn');
+
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    // Honeypot (bot guard)
+    if (form.querySelector('input[name="_gotcha"]')?.value) return;
+
+    const formspreeID = (DATA.formspreeID || '').trim();
+    if (!formspreeID) {
+      showFormStatus('Contact form not configured — please email directly.', 'error');
+      return;
+    }
+
+    btn.disabled = true;
+    const originalText = btn.innerHTML;
+    btn.innerHTML = 'Sending… <span class="arrow">→</span>';
+    status.classList.remove('show', 'success', 'error');
+
+    try {
+      const data = new FormData(form);
+      const res = await fetch(`https://formspree.io/f/${encodeURIComponent(formspreeID)}`, {
+        method: 'POST',
+        body: data,
+        headers: { Accept: 'application/json' }
+      });
+      if (res.ok) {
+        showFormStatus('✓ Message sent. I\'ll get back to you soon.', 'success');
+        form.reset();
+      } else {
+        const j = await res.json().catch(() => ({}));
+        const err = (j.errors && j.errors[0] && j.errors[0].message) || 'Something went wrong. Please try again.';
+        showFormStatus(err, 'error');
+      }
+    } catch (err) {
+      showFormStatus('Network error. Please try again or email directly.', 'error');
+    } finally {
+      btn.disabled = false;
+      btn.innerHTML = originalText;
+    }
+  });
+
+  // Add honeypot field (visible only to bots)
+  if (!form.querySelector('input[name="_gotcha"]')) {
+    const hp = document.createElement('input');
+    hp.type = 'text'; hp.name = '_gotcha';
+    hp.style.cssText = 'position:absolute;left:-9999px;width:1px;height:1px;opacity:0;';
+    hp.tabIndex = -1; hp.setAttribute('aria-hidden', 'true');
+    hp.autocomplete = 'off';
+    form.appendChild(hp);
+  }
+
+  function showFormStatus(msg, kind) {
+    status.textContent = msg;
+    status.classList.remove('success', 'error');
+    status.classList.add('show', kind);
+  }
 }
 
 // Year
@@ -2395,6 +2880,7 @@ function renderAll() {
   renderProjects();
   renderResearch();
   renderContact();
+  setupContactForm();
 }
 renderAll();
 
