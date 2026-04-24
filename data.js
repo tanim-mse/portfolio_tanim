@@ -2553,7 +2553,12 @@ const DEFAULT_DATA = {
     "accentColor": "#7c3aed",
     "fontSize": "17px"
   },
-  "adminPassword": "275056c26a6b4fb1f5e49cd8a8e0f69f5c29b84055a6d3875be68edc820c6c75"
+  "adminPassword": "275056c26a6b4fb1f5e49cd8a8e0f69f5c29b84055a6d3875be68edc820c6c75",
+  "orcid": "",
+  "scholar": "",
+  "twitter": "",
+  "website": "",
+  "formspreeID": "xlgowqby"
 };
 
 function getData() {
