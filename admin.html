@@ -466,6 +466,13 @@
           <div class="field-group"><label class="field-label">Twitter / X URL <span class="field-hint">optional</span></label><input type="url" class="field-input" id="f_twitter" placeholder="https://x.com/..." oninput="markUnsaved()"></div>
           <div class="field-group"><label class="field-label">Personal Website <span class="field-hint">optional</span></label><input type="url" class="field-input" id="f_website" placeholder="https://..." oninput="markUnsaved()"></div>
         </div>
+
+        <!-- Custom contact links -->
+        <div style="margin-top:28px">
+          <div class="editor-section-title" style="margin-bottom:10px">Custom Links <span class="field-hint">— add any extra link with a label and icon</span></div>
+          <button class="add-card-btn mini" onclick="addContactLink()">+ Add Custom Link</button>
+          <div id="contactLinksEditor" style="margin-top:14px;display:flex;flex-direction:column;gap:10px"></div>
+        </div>
       </div>
 
       <!-- APPEARANCE -->
@@ -704,8 +711,10 @@ async function initDashboard() {
   } else { adminData = getData(); }
 
   updateGithubStatus(!!token);
+  _loading = true;
   loadProfile(); loadAbout(); loadSkills();
   loadProjects(); loadResearch(); loadContact(); loadAppearance();
+  _loading = false;
 }
 
 /* ══ Tabs ══ */
@@ -719,7 +728,12 @@ function switchTab(tab, btn) {
   currentTab = tab;
 }
 function toggleSidebar() { document.getElementById('sidebar').classList.toggle('collapsed'); }
-function markUnsaved() { hasUnsaved=true; document.getElementById('unsavedBadge').style.display='flex'; }
+let _loading = false;
+function markUnsaved() {
+  if (_loading) return;
+  hasUnsaved = true;
+  document.getElementById('unsavedBadge').style.display = 'flex';
+}
 
 /* ══ Loaders ══ */
 function loadProfile() {
@@ -1395,7 +1409,7 @@ function buildBlockContent(pi, bi, block) {
       <label><input type="checkbox" ${block.headerRow?'checked':''} onchange="toggleTableHeader(${pi},${bi},'row',this.checked)"> Header row</label>
       <label><input type="checkbox" ${block.headerCol?'checked':''} onchange="toggleTableHeader(${pi},${bi},'col',this.checked)"> Header column</label>
       <div class="block-table-cell-actions">
-        <button onclick="mergeSelectedCells(${pi},${bi})" id="tbl_merge_btn_${pi}_${bi}" disabled title="Select a cell range first">Merge cells</button>
+        <button onclick="mergeSelectedCells(${pi},${bi})" id="tbl_merge_btn_${pi}_${bi}" disabled title="Click a cell to select it, then Shift+Click another cell to extend the range, then click this button">Merge cells</button>
         <button onclick="unmergeSelectedCell(${pi},${bi})" title="Split the merged cell at your selection">Unmerge</button>
       </div>`;
 
@@ -1873,7 +1887,7 @@ function buildTableEl(pi, bi, block) {
   const headerRow = block.headerRow !== false;
   const headerCol = !!block.headerCol;
 
-  // Build a "covered" map — cells hidden because a merged cell spans them
+  // Build a "covered" map
   const covered = new Set();
   merges.forEach(m => {
     for (let r = m.r; r < m.r + m.rowspan; r++) {
@@ -1897,7 +1911,6 @@ function buildTableEl(pi, bi, block) {
       const cell = isHeader ? document.createElement('th') : document.createElement('td');
       cell.dataset.r = r;
       cell.dataset.c = c;
-      // Apply merge spans
       const merge = merges.find(m => m.r === r && m.c === c);
       if (merge) {
         if (merge.rowspan > 1) cell.rowSpan = merge.rowspan;
@@ -1907,17 +1920,19 @@ function buildTableEl(pi, bi, block) {
       inp.type = 'text';
       inp.value = (data[r] && data[r][c]) || '';
       inp.oninput = () => markUnsaved();
-      // Cell selection on click (for merge)
-      cell.onmousedown = (e) => {
-        if (e.target === inp) return;
-        e.preventDefault();
-        tableStartSelect(pi, bi, r, c);
-      };
-      cell.onmouseenter = (e) => {
-        if (e.buttons === 1 && window._tblSelStart && window._tblSelStart.pi === pi && window._tblSelStart.bi === bi) {
-          tableUpdateSelect(pi, bi, r, c);
+      // Click on the input: if Shift held, extend selection; otherwise normal typing
+      inp.addEventListener('click', (e) => {
+        if (e.shiftKey) {
+          e.preventDefault();
+          inp.blur();
+          tableExtendSelect(pi, bi, r, c);
+        } else {
+          // First click with no shift — start a fresh selection anchor
+          window._tblSelStart = { pi, bi, r, c };
+          window._tblSelEnd   = { pi, bi, r, c };
+          updateTableSelection(pi, bi);
         }
-      };
+      });
       cell.appendChild(inp);
       tr.appendChild(cell);
     }
@@ -1926,21 +1941,17 @@ function buildTableEl(pi, bi, block) {
   return table;
 }
 
-/* ── Table cell selection state ─────────────────────────────── */
+/* ── Table cell selection (Shift+Click model) ──────────────────── */
 window._tblSelStart = null;
-window._tblSelEnd = null;
+window._tblSelEnd   = null;
 
-function tableStartSelect(pi, bi, r, c) {
-  window._tblSelStart = { pi, bi, r, c };
+function tableExtendSelect(pi, bi, r, c) {
+  if (!window._tblSelStart || window._tblSelStart.pi !== pi || window._tblSelStart.bi !== bi) {
+    window._tblSelStart = { pi, bi, r, c };
+  }
   window._tblSelEnd = { pi, bi, r, c };
   updateTableSelection(pi, bi);
 }
-function tableUpdateSelect(pi, bi, r, c) {
-  if (!window._tblSelStart) return;
-  window._tblSelEnd = { pi, bi, r, c };
-  updateTableSelection(pi, bi);
-}
-document.addEventListener('mouseup', () => { /* selection persists until another cell click */ });
 
 function updateTableSelection(pi, bi) {
   const table = document.querySelector(`#block_item_${pi}_${bi} .block-table-el`);
@@ -1999,6 +2010,8 @@ function toggleTableHeader(pi, bi, which, val) {
   markUnsaved();
 }
 window.toggleTableHeader = toggleTableHeader;
+window.addContactLink    = addContactLink;
+window.removeContactLink = removeContactLink;
 window.mergeSelectedCells = mergeSelectedCells;
 window.unmergeSelectedCell = unmergeSelectedCell;
 
@@ -2426,9 +2439,77 @@ function loadContact() {
   const D=adminData;
   document.getElementById('f_contactMsg').value=D.contactMessage||'';
   document.getElementById('f_email').value=D.email||'';
+  document.getElementById('f_formspree').value=D.formspreeID||'';
   document.getElementById('f_github').value=D.github||'';
   document.getElementById('f_linkedin').value=D.linkedin||'';
   document.getElementById('f_rg').value=D.researchgate||'';
+  if(document.getElementById('f_orcid'))   document.getElementById('f_orcid').value=D.orcid||'';
+  if(document.getElementById('f_scholar')) document.getElementById('f_scholar').value=D.scholar||'';
+  if(document.getElementById('f_twitter')) document.getElementById('f_twitter').value=D.twitter||'';
+  if(document.getElementById('f_website')) document.getElementById('f_website').value=D.website||'';
+  loadContactLinks();
+}
+
+// ── Custom contact links ──────────────────────────────────────
+const CONTACT_ICON_OPTIONS = [
+  { value:'link',         label:'🔗 Generic link' },
+  { value:'email',        label:'✉️ Email' },
+  { value:'github',       label:'GitHub' },
+  { value:'linkedin',     label:'LinkedIn' },
+  { value:'researchgate', label:'ResearchGate' },
+  { value:'orcid',        label:'ORCID' },
+  { value:'scholar',      label:'Google Scholar' },
+  { value:'twitter',      label:'Twitter / X' },
+  { value:'cv',           label:'📄 CV / Resume' },
+  { value:'website',      label:'🌐 Website' },
+  { value:'youtube',      label:'▶ YouTube' },
+  { value:'instagram',    label:'Instagram' },
+];
+
+function loadContactLinks() {
+  const wrap = document.getElementById('contactLinksEditor');
+  if (!wrap) return;
+  wrap.innerHTML = '';
+  (adminData.contactLinks || []).forEach((lnk, i) => {
+    const row = document.createElement('div');
+    row.className = 'contact-link-row';
+    row.id = `clrow_${i}`;
+    const iconOptions = CONTACT_ICON_OPTIONS.map(o =>
+      `<option value="${o.value}" ${lnk.icon===o.value?'selected':''}>${o.label}</option>`
+    ).join('');
+    row.innerHTML = `
+      <select class="field-select cl-icon" id="cl_icon_${i}" oninput="markUnsaved()" style="flex:0 0 170px">
+        ${iconOptions}
+      </select>
+      <input type="text" class="field-input cl-label" id="cl_label_${i}" value="${esc(lnk.label||'')}" placeholder="Label (e.g. My GitHub)" oninput="markUnsaved()">
+      <input type="url" class="field-input cl-url" id="cl_url_${i}" value="${esc(lnk.url||'')}" placeholder="https://..." oninput="markUnsaved()">
+      <button class="row-delete-btn" onclick="removeContactLink(${i})" title="Remove">×</button>`;
+    wrap.appendChild(row);
+  });
+}
+
+function addContactLink() {
+  if (!Array.isArray(adminData.contactLinks)) adminData.contactLinks = [];
+  collectContactLinks();
+  adminData.contactLinks.push({ icon: 'link', label: '', url: '' });
+  loadContactLinks();
+  markUnsaved();
+}
+
+function removeContactLink(i) {
+  collectContactLinks();
+  adminData.contactLinks.splice(i, 1);
+  loadContactLinks();
+  markUnsaved();
+}
+
+function collectContactLinks() {
+  if (!Array.isArray(adminData.contactLinks)) adminData.contactLinks = [];
+  adminData.contactLinks = adminData.contactLinks.map((_, i) => ({
+    icon:  document.getElementById(`cl_icon_${i}`)?.value  || 'link',
+    label: document.getElementById(`cl_label_${i}`)?.value || '',
+    url:   document.getElementById(`cl_url_${i}`)?.value   || '',
+  }));
 }
 function loadAppearance() {
   const A=adminData.appearance||{};
@@ -2472,6 +2553,7 @@ function collectCurrentTab() {
       if(g('f_twitter')!==null) adminData.twitter=g('f_twitter');
       if(g('f_website')!==null) adminData.website=g('f_website');
       if(g('f_formspree')!==null) adminData.formspreeID=g('f_formspree');
+      collectContactLinks();
     }
   }
   else if(currentTab==='appearance'){adminData.appearance=adminData.appearance||{};adminData.appearance.accentColor=g('f_accentColor');adminData.appearance.fontSize=g('f_fontSize');}
