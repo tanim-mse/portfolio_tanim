@@ -14,8 +14,8 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght,SOFT@9..144,300..900,0..100&family=Inter+Tight:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/[email protected]/dist/katex.min.css">
-<script src="https://cdn.jsdelivr.net/npm/[email protected]/dist/katex.min.js" defer></script>
+<link rel="stylesheet" href="https://unpkg.com/katex@0.16.9/dist/katex.min.css">
+<script src="https://unpkg.com/katex@0.16.9/dist/katex.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
 <script src="https://cdn.jsdelivr.net/gh/studio-freight/[email protected]/bundled/lenis.min.js"></script>
@@ -2783,7 +2783,7 @@ function renderContact() {
   const reply = $('#contactFormReplyEmail');
   if (reply) reply.textContent = d.email || '';
 
-  // Social icons row
+  // Social icons row — fixed socials + custom links
   const socials = $('#contactSocials');
   if (socials) {
     const items = [];
@@ -2796,9 +2796,13 @@ function renderContact() {
     if (d.twitter)      items.push({ label: 'Twitter / X',   href: d.twitter,                         icon: 'twitter' });
     if (d.website)      items.push({ label: 'Website',       href: d.website,                         icon: 'website' });
     if (d.cvLink && d.cvLink !== '#') items.push({ label: 'CV · Résumé', href: d.cvLink, icon: 'cv' });
-    socials.innerHTML = items.map(it => `
+    // Custom links added via admin
+    (d.contactLinks || []).forEach(lnk => {
+      if (lnk.url && lnk.label) items.push({ label: lnk.label, href: lnk.url, icon: lnk.icon || 'link' });
+    });
+    socials.innerHTML = items.filter(it => it.href).map(it => `
       <a class="contact-social" href="${esc(safeURL(it.href))}" target="_blank" rel="noopener noreferrer" data-label="${esc(it.label)}" aria-label="${esc(it.label)}">
-        ${SOCIAL_ICONS[it.icon] || ''}
+        ${SOCIAL_ICONS[it.icon] || SOCIAL_ICONS['website'] || ''}
       </a>
     `).join('');
   }
