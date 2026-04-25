@@ -105,7 +105,7 @@ const DEFAULT_DATA = {
         {
           "type": "formula",
           "id": "qw99w105kve",
-          "latex": "t=m/(\\rho  A)",
+          "latex": "t=\\frac{m}{\\rho  A}",
           "notes": "Where, \nm = Weight of the deposited Cu\nρ = Density of Cu\nA = Area of the deposition"
         },
         {
@@ -260,7 +260,10 @@ const DEFAULT_DATA = {
               "4",
               "0.2029"
             ]
-          ]
+          ],
+          "merges": [],
+          "headerRow": true,
+          "headerCol": false
         },
         {
           "type": "heading3",
@@ -303,7 +306,10 @@ const DEFAULT_DATA = {
               "4",
               "0.0938"
             ]
-          ]
+          ],
+          "merges": [],
+          "headerRow": true,
+          "headerCol": false
         },
         {
           "type": "heading3",
@@ -346,7 +352,10 @@ const DEFAULT_DATA = {
               "5.088",
               "5.120"
             ]
-          ]
+          ],
+          "merges": [],
+          "headerRow": true,
+          "headerCol": false
         },
         {
           "type": "heading3",
@@ -383,7 +392,10 @@ const DEFAULT_DATA = {
               "2.254",
               ""
             ]
-          ]
+          ],
+          "merges": [],
+          "headerRow": true,
+          "headerCol": false
         },
         {
           "type": "paragraph",
@@ -884,7 +896,10 @@ const DEFAULT_DATA = {
               "7.163×10⁻⁹ ",
               "1.15×10⁻³"
             ]
-          ]
+          ],
+          "merges": [],
+          "headerRow": true,
+          "headerCol": false
         },
         {
           "type": "heading2",
@@ -1482,7 +1497,10 @@ const DEFAULT_DATA = {
               "10",
               "minutes"
             ]
-          ]
+          ],
+          "merges": [],
+          "headerRow": true,
+          "headerCol": false
         },
         {
           "type": "heading3",
@@ -1519,7 +1537,10 @@ const DEFAULT_DATA = {
               "8.845",
               ""
             ]
-          ]
+          ],
+          "merges": [],
+          "headerRow": true,
+          "headerCol": false
         },
         {
           "type": "paragraph",
@@ -1695,7 +1716,10 @@ const DEFAULT_DATA = {
               "3.61",
               "0.12"
             ]
-          ]
+          ],
+          "merges": [],
+          "headerRow": true,
+          "headerCol": false
         },
         {
           "type": "paragraph",
@@ -1802,7 +1826,10 @@ const DEFAULT_DATA = {
               "3.83",
               "0.40"
             ]
-          ]
+          ],
+          "merges": [],
+          "headerRow": true,
+          "headerCol": false
         },
         {
           "type": "paragraph",
