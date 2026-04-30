@@ -167,7 +167,7 @@ const DEFAULT_DATA = {
         {
           "type": "formula",
           "id": "u11opr8sivbmolg6hcp",
-          "latex": "A = d² / (2 sin 22°) = d² / (2 × 0.3746) = d² / 0.7492 ≈ 1.3544 d² / 2 (4)",
+          "latex": "A = \\frac{d²}{2 sin 22°} = \\frac{d²}{2 \\times   0.3746} = \\frac{d²}{0.7492} ≈ \\frac{1.3544d^{2}}{2} \\text{ \\text{ \\text{ }}}\\to  (4)",
           "notes": ""
         },
         {
@@ -178,13 +178,13 @@ const DEFAULT_DATA = {
         {
           "type": "formula",
           "id": "eaixttwtmmomolg6hcp",
-          "latex": "A = d² / (2 sin ₂ (68°)) ≈ d² / 1.7544 (5)",
+          "latex": "A = \\frac{ d²}{2 sin₂ (68°)}  ≈  \\frac{ d²}{1.7544} \\text{ \\text{ \\text{ \\text{ \\text{ }}}}} \\to  (5)",
           "notes": ""
         },
         {
           "type": "paragraph",
           "id": "gi6sp9q7kocmolg6hcp",
-          "content": "The Vickers Hardness Number is then defined as the load divided by the contact area. When F is in newtons and d is in millimetres, the dimensioned form gives units of N/mm² (= MPa). In the historical kgf/mm² convention the leading coefficient evaluates to 1.854; the standard formula is written:"
+          "content": "The Vickers Hardness Number is then defined as the load divided by the contact area. When F is in newtons and d is in millimetres, the dimensioned form gives units of N/mm² (= MPa). In the historical kgf/mm² convention, the leading coefficient evaluates to 1.854; the standard formula is written: "
         },
         {
           "type": "formula",
