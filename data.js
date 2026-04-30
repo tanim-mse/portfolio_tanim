@@ -61,7 +61,7 @@ const DEFAULT_DATA = {
       "tags": "",
       "link": "#",
       "date": "Apr 2026",
-      "status": "Ongoing",
+      "status": "Completed",
       "orderNum": 8,
       "blocks": [
         {
@@ -529,24 +529,54 @@ const DEFAULT_DATA = {
         {
           "type": "paragraph",
           "id": "1bezu1tmts7molg6hd7",
-          "content": "Table 4. Summary of calculated and instrument -reported hardness values. Quantity Value Uncertainty Source Mean diagonal, d 61.99 μm ± 0.5 μm Measurement"
+          "content": "Table 4. Summary of calculated and instrument-reported hardness values."
         },
         {
-          "type": "formula",
-          "id": "eat2upi63odmolg6hd7",
-          "latex": "HV (calculated) 473 ± 8 Eq. (6)",
-          "notes": ""
-        },
-        {
-          "type": "paragraph",
-          "id": "zlhbfwor7vimolg6hd7",
-          "content": "HV (instrument) 482 ± 8 Duramin display HRC (instrument) 47.8 — Duramin conversion"
-        },
-        {
-          "type": "formula",
-          "id": "t7bu1q583yfmolg6hd7",
-          "latex": "Hardness (MPa) 4,727 MPa ± 78 MPa HV × 9.807",
-          "notes": ""
+          "type": "table",
+          "id": "qgqe4c468ds",
+          "rows": 6,
+          "cols": 4,
+          "data": [
+            [
+              "Quantity",
+              "Value",
+              "Uncertainty",
+              "Source"
+            ],
+            [
+              "Mean diagonal, d",
+              "61.99 μm",
+              "± 0.5 μm",
+              "Measurement"
+            ],
+            [
+              "HV (calculated)",
+              "473",
+              "± 8 ",
+              "Eq. (6)"
+            ],
+            [
+              "HV (instrument)",
+              "482",
+              "± 8 ",
+              "Duramin display"
+            ],
+            [
+              "HRC (instrument)",
+              "47.8",
+              "-",
+              "Duramin conversion"
+            ],
+            [
+              "Hardness (MPa)",
+              "4,727 MPa",
+              "± 78 MPa",
+              "HV × 9.807"
+            ]
+          ],
+          "merges": [],
+          "headerRow": true,
+          "headerCol": true
         },
         {
           "type": "heading2",
@@ -573,7 +603,7 @@ const DEFAULT_DATA = {
         {
           "type": "paragraph",
           "id": "wkkf6drhu8molg6hdg",
-          "content": "A percent error of 3.6% is well within the expected experimental variability for a single -point microhardness test and falls comfortably inside the published range. The measured HV of 482 is consistent with soda-lime glass in a normal annealing state. The instrument -computed HRC value of 47.8 is a conversion provided by Duramin’s internal lookup table; Rockwell C is not a standard scale for glass and is reported here only for reference, as the HV scale is the physically meaningful quantity for this material class."
+          "content": "A percent error of 3.6% is well within the expected experimental variability for a single-point microhardness test and falls comfortably inside the published range. The measured HV of 482 is consistent with soda-lime glass in a normal annealing state. The instrument-computed HRC value of 47.8 is a conversion provided by Duramin’s internal lookup table; Rockwell C is not a standard scale for glass and is reported here only for reference, as the HV scale is the physically meaningful quantity for this material class."
         },
         {
           "type": "heading2",
@@ -591,8 +621,8 @@ const DEFAULT_DATA = {
           "content": "10. Sources of Error and Limitations"
         },
         {
-          "type": "heading2",
-          "id": "mqmow7vez7s",
+          "type": "paragraph",
+          "id": "eawssztoi7",
           "content": "Table 5. Identified sources of error, their effects, and suggested remediation. "
         },
         {
@@ -602,78 +632,87 @@ const DEFAULT_DATA = {
           "cols": 5,
           "data": [
             [
-              "",
-              "",
-              "",
-              "",
-              ""
+              "Type",
+              "Source",
+              "Mechanism",
+              "Direction of Effect",
+              "Remediation"
+            ],
+            [
+              "Systematic",
+              "Instrument calibration",
+              "The Duramin's diagonal measurement system may have a zero offset if not calibrated against a reference block",
+              "Overestimate or underestimate of equally for all readings",
+              "Regular calibration against certified reference blocks (ASTM E92)."
             ],
             [
               "",
-              "",
-              "",
-              "",
-              ""
+              "Surface roghness / preparation",
+              "Residual surface micro-roughness blurs the indentation edges, making diagonal measurement imprecise.",
+              "Generally overestimates d, thus underestimates HV.",
+              "Polish specimen to mirror finish (P1200 grit or finer); validate with optical profilometry"
+            ],
+            [
+              "Random",
+              "Operator parallax in reading diagonals",
+              "Misalignment of the cross-wire with the impression vertex during optical measurement.",
+              "Random scatter in d; symmetrical about true value.",
+              "Perform multiple indentations (minimum 5) and report the mean and standard deviation."
             ],
             [
               "",
-              "",
-              "",
-              "",
-              ""
+              "Vibration during indentation",
+              "Mechanical vibration during load application causes the indenter to skid, producing an asymmetric impression.",
+              "d₁ ≠ d₂; inflates the larger diagonal and thus the mean d.",
+              "Mount instrument on vibration- isolation table; ensure building HVAC is not running."
+            ],
+            [
+              "Methodological ",
+              "Single-point measurement",
+              "A single indentation cannot capture spatial variability (e.g., compositional inhomogeneity, surface defects)",
+              "Cannot determine magnitude, may be high or low relative to bulk average.",
+              "Perform ≥5 indentations across different surface areas; report mean ± standard deviation"
             ],
             [
               "",
-              "",
-              "",
-              "",
-              ""
-            ],
-            [
-              "",
-              "",
-              "",
-              "",
-              ""
-            ],
-            [
-              "",
-              "",
-              "",
-              "",
-              ""
-            ],
-            [
-              "",
-              "",
-              "",
-              "",
-              ""
+              "Cracking in glass",
+              "Glass may exhibit radial or median cracking during indentation, altering the impression geometry.",
+              "ends to overestimate the impression size if cracks extend the apparent diagonal.",
+              "nspect impressions for cracks before accepting measurements; reduce load if cracking is observed."
             ]
           ],
-          "merges": [],
+          "merges": [
+            {
+              "r": 1,
+              "c": 0,
+              "rowspan": 2,
+              "colspan": 1
+            },
+            {
+              "r": 3,
+              "c": 0,
+              "rowspan": 2,
+              "colspan": 1
+            },
+            {
+              "r": 5,
+              "c": 0,
+              "rowspan": 2,
+              "colspan": 1
+            }
+          ],
           "headerRow": true,
           "headerCol": false
         },
         {
-          "type": "paragraph",
-          "id": "ywstf7agrklmolg6hdg",
-          "content": "Type Source Mechanism Direction of Remediation Effect Systematic Instrument The Duramin’s Overestimate Regular calibration diagonal or calibration measurement system underestimate against certified may have a zero d equally for all reference blocks offset if not calibrated readings (ASTM E92). against a reference block. Systematic Surface Residual surface Generally Polish specimen roughness / micro -roughness overestimates to mirror finish preparation blurs the indentation d, thus (P1200 grit or edges, making underestimates finer); validate diagonal HV. with optical measurement profilometry. imprecise."
-        },
-        {
-          "type": "paragraph",
-          "id": "g0d2fxmhvlumolg6hdo",
-          "content": "Random Operator Misalignment of the Random Perform multiple parallax in cross -wire with the scatter in d; indentations reading impression vertex symmetrical (minimum 5) and diagonals during optical about true report the mean measurement. value. and standard deviation. Random Vibration during Mechanical vibration d ₁ ≠ d ₂ ; inflates Mount instrument indentation during load the larger on vibration application causes diagonal and isolation table; the indenter to skid, thus the mean ensure building producing an d. HVAC is not asymmetric running. impression. Methodological Single -point A single indentation Cannot Perform ≥5 measurement cannot capture determine indentations spatial variability magnitude — across different (e.g., compositional may be high or surface areas; inhomogeneity, low relative to report mean ± surface defects). bulk average. standard deviation. Methodological Cracking in Glass may exhibit Tends to Inspect glass radial or median overestimate impressions for cracking during the impression cracks before indentation, altering size if cracks accepting the impression extend the measurements; geometry. apparent reduce load if diagonal. cracking is observed."
-        },
-        {
-          "type": "heading2",
-          "id": "82eusthfd3qmolg6hdo",
+          "type": "heading1",
+          "id": "2qvk849mgi9",
           "content": "11. Conclusion"
         },
         {
           "type": "paragraph",
           "id": "k6eh16v2tflmolg6hdo",
-          "content": "The objective of this experiment was to determine the Vickers Hardness Number of a soda -lime glass specimen under a 1 kgf applied load using the Struers Duramin microhardness tester. The experiment successfully achieved this objective. Both indentation dia gonals were measured to be 61.99 μm, yielding an instrument -reported hardness of HV = 482 ± 8. Manual verification using Eq. (6) gave HV ≈ 473, in close agreement with the instrument value. The measured hardness falls within the published range for soda -li me glass (440 – 580 HV), with a percent error of 3.6% relative to a mid -range reference value of 500 HV. The result confirms the expected hard and brittle character of glass and validates the suitability of the Vickers microhardness technique as the appropriate hardness method for this class of material. Future work should include a minimum of five indentatio ns at different surface locations to obtain statistically representative hardness data, and the specimen should be examined for indentation -induced cracking to ensure measurement validity."
+          "content": "The objective of this experiment was to determine the Vickers Hardness Number of a soda-lime glass specimen under a 1 kgf applied load using the Struers Duramin microhardness tester. The experiment successfully achieved this objective. Both indentation diameters were measured to be 61.99 μm, yielding an instrument -reported hardness of HV = 482 ± 8. Manual verification using Eq. (6) gave HV ≈ 473, in close agreement with the instrument value. The measured hardness falls within the published range for soda -li me glass (440– 580 HV), with a percent error of 3.6% relative to a mid -range reference value of 500 HV. The result confirms the expected hard and brittle character of glass and validates the suitability of the Vickers microhardness technique as the appropriate hardness method for this class of material. Future work should include a minimum of five indentations at different surface locations to obtain statistically representative hardness data, and the specimen should be examined for indentation -induced cracking to ensure measurement validity."
         },
         {
           "type": "heading2",
@@ -683,7 +722,7 @@ const DEFAULT_DATA = {
         {
           "type": "paragraph",
           "id": "qhape8ia4njmolg6hdr",
-          "content": "[1] W. D. Callister and D. G. Rethwisch, Materials Science and Engineering: An Introduction , 10th ed. Hoboken, NJ: Wiley, 2018. [2] ASTM International, “ASTM C1327 -15: Standard Test Method for Vickers Indentation Hardness of Advanced Ceramics,” ASTM International, West Conshohocken, PA, 2015. [3] ASTM International, “ASTM E92 -17: Standard Test Methods for Vickers Hardness and Knoop Hardness of Metallic Materials,” ASTM International, West Conshohocken, PA, 2017. [4] Struers, “Duramin Microhardness Tester User Manual,” Struers ApS, Ballerup, Denmark. [5] B. R. Lawn and T. R. Wilshaw, “Indentation fracture: principles and applications,” Journal of Materials Science , vol. 10, no. 6, pp. 1049 – 1081, 1975. [6] M. H. Manghnani, R. A. Fischer, and A. J. Campbell, “Mechanical properties of glasses,” in Handbook of Glass Properties , N. P. Bansal and R. H. Doremus, Eds. New York: Academic Press, 1986."
+          "content": "[1] W. D. Callister and D. G. Rethwisch, Materials Science and Engineering: An Introduction, 10th ed. Hoboken, NJ: Wiley, 2018. \n[2] ASTM International, “ASTM C1327 -15: Standard Test Method for Vickers Indentation Hardness of Advanced Ceramics,” ASTM International, West Conshohocken, PA, 2015. \n[3] ASTM International, “ASTM E92 -17: Standard Test Methods for Vickers Hardness and Knoop Hardness of Metallic Materials,” ASTM International, West Conshohocken, PA, 2017. \n[4] Struers, “Duramin Microhardness Tester User Manual,” Struers ApS, Ballerup, Denmark. \n[5] B. R. Lawn and T. R. Wilshaw, “Indentation fracture: principles and applications,” Journal of Materials Science, vol. 10, no. 6, pp. 1049 – 1081, 1975. [6] M. H. Manghnani, R. A. Fischer, and A. J. Campbell, “Mechanical properties of glasses,” in Handbook of Glass Properties, N. P. Bansal and R. H. Doremus, Eds. New York: Academic Press, 1986."
         }
       ]
     },
