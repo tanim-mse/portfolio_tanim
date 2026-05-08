@@ -3,14 +3,2562 @@
 const DEFAULT_DATA = {
   "name": "Tanim",
   "heroLabel": "Materials Science & Engineering",
-  "subtitle": "B.Sc. Student at RUET · Passionate about advanced materials, nanotechnology & sustainable engineering",
   "typewriterWords": [
     "Materials Engineer",
     "Problem Solver",
     "RUET Student"
   ],
+  "subtitle": "B.Sc. Student at RUET · Passionate about advanced materials, nanotechnology & sustainable engineering",
+  "cvLink": "#",
   "photoURL": "https://res.cloudinary.com/dr2b6pzux/image/upload/v1776824006/jwgta6utmxkamluc5piz.png",
-  "cvLink": "#"
+  "bio": "I am Tanim, a Materials Science and Engineering student at RUET with a deep passion for exploring the intersection of advanced materials, nanotechnology, and sustainable engineering solutions. I thrive at the boundary of science and innovation, driven by curiosity and a commitment to meaningful research.",
+  "university": "RUET",
+  "department": "Materials Science & Eng.",
+  "year": "Undergraduate",
+  "skills": [
+    {
+      "title": "Materials Science",
+      "items": [
+        "Crystallography",
+        "Phase Diagrams",
+        "Fracture"
+      ]
+    },
+    {
+      "title": "Research & Analysis",
+      "items": [
+        "Literature Review",
+        "Data Analysis",
+        "Lab Techniques"
+      ]
+    },
+    {
+      "title": "Software & Tools",
+      "items": [
+        "MATLAB",
+        "Origin Pro",
+        "AutoCAD",
+        "Davinci Resolve",
+        "MS Office"
+      ]
+    },
+    {
+      "title": "Engineering Skills",
+      "items": [
+        "Problem Solving",
+        "Technical Writing",
+        "Teamwork",
+        "Project Management",
+        "Critical Thinking"
+      ]
+    }
+  ],
+  "projects": [
+    {
+      "title": "Determination of True Density, Bulk Density, and Porosity of the Refractory Material",
+      "excerpt": "i. To determine the bulk density of the refractory material.ii. To determine the bulk density of the refractory material.iii.…",
+      "featuredImage": "",
+      "tags": "True Density, Bulk Density, Porosity, Refractory, Academic",
+      "link": "#",
+      "date": "Jan 2026",
+      "status": "Completed",
+      "orderNum": 7,
+      "blocks": [
+        {
+          "type": "heading1",
+          "id": "udslxg4t60q",
+          "content": "Objectives"
+        },
+        {
+          "type": "paragraph",
+          "id": "7vbtq4k95to",
+          "content": "i. To determine the bulk density of the refractory material.\nii. To determine the bulk density of the refractory material.\niii. To determine the porosity of the refractory material."
+        },
+        {
+          "type": "heading1",
+          "id": "ji5c0revif",
+          "content": "Introduction"
+        },
+        {
+          "type": "paragraph",
+          "id": "vp01l7kidhn",
+          "content": "In the study of refractory materials, understanding the relationship between mass and volume is critical for predicting thermal performance and structural integrity. This experiment focuses on three fundamental physical properties."
+        },
+        {
+          "type": "heading2",
+          "id": "xlc2qmkpwa",
+          "content": "True Density:"
+        },
+        {
+          "type": "paragraph",
+          "id": "3811g1wbysa",
+          "content": "True density represents the pure density of the material's solid matter. It is calculated by taking the ratio of the sample's dry mass to its true volume, which is the volume occupied by the solid alone, excluding all internal pores and external cavities. To measure this accurately, the material is typically ground into a fine powder to eliminate any trapped air pocket beofre use a pycnometer and a reference liquid for displacement."
+        },
+        {
+          "type": "heading2",
+          "id": "0pse8hlitdg",
+          "content": "Bulk Density:"
+        },
+        {
+          "type": "paragraph",
+          "id": "xj5msjivw9d",
+          "content": "Unlike true density, bulk density considers the materials in its entirely. It is the ratio of material mass to its total bulk volume. \nThese volumes include:\n--> The solid material itself,\n--> Internal closed pores, \n--> Open surface pores, \n--> Inter-particle void space. Bulk density is a key indicator of how packed or dense the refractory brick or shape is in its final form."
+        },
+        {
+          "type": "heading2",
+          "id": "kzvf28krwu8",
+          "content": "Porosity"
+        },
+        {
+          "type": "paragraph",
+          "id": "fv6lvsihf8n",
+          "content": "Porosity is a measure of the emptiness within a material. It is defined as the fraction of the total bulk volume that consists of void spaces. In engineering, this is usually expressed as a percentage. Higher porosity generally improves thermal insulation but may reduce the mechanical strength and resistance to chemical corrosion of the refractory. "
+        },
+        {
+          "type": "heading1",
+          "id": "jxdmmjmt9k8",
+          "content": "Working Procedure"
+        },
+        {
+          "type": "paragraph",
+          "id": "da3nzdwd5bs",
+          "content": "i. The bulk volume V_0 of the refractory material and the bulk mass W_0 were measured.\nii. The refractory material was crushed, and it was ground into fine powder.\niii. An empty pycnometer bottle with a stopper as W1 was weighted.\niv. 10-15g refractory powder whose density is to be determined in the pycnometer bottle, and the bottle containing powder with a stopper as W2 was weighed.\nv. The bottle was filled with distilled water to its capacity, and the bottle containing refractory powder and water with a stopper, as W3 was weighed.\nvi. The suspension from the bottle was removed, the bottle was filled with distilled water again, and the bottle was weighed with a stopper as W4."
+        },
+        {
+          "type": "divider",
+          "id": "5z2xtcyr3i8"
+        },
+        {
+          "type": "heading1",
+          "id": "qnplhzbh25",
+          "content": "Calculation"
+        },
+        {
+          "type": "heading2",
+          "id": "2hlkbu1gug2",
+          "content": "Chalk Measurements"
+        },
+        {
+          "type": "formula",
+          "id": "6gz3u64gu66",
+          "latex": "D_{1} = 10.68 \\text{ mm}, D_{2} = 10.24 \\text{ mm}",
+          "notes": ""
+        },
+        {
+          "type": "formula",
+          "id": "37u778tmauv",
+          "latex": "\\to  D = \\frac{ (10.68 + 10.24) } {2}  = 10.46 \\text{ mm}",
+          "notes": ""
+        },
+        {
+          "type": "formula",
+          "id": "eihik7aoq78",
+          "latex": "L_{1} = 29.85 \\text{ mm}, L_{2} = 29.80 \\text{ mm}",
+          "notes": ""
+        },
+        {
+          "type": "formula",
+          "id": "xoxo1ww1cg",
+          "latex": "--> L = \\frac{(29.85+ 29.80)}{2} = 29.825 \\text{ mm}",
+          "notes": ""
+        },
+        {
+          "type": "formula",
+          "id": "ssybdf999g",
+          "latex": "\\text{ Sample weight, } W_{0} = 1g",
+          "notes": ""
+        },
+        {
+          "type": "paragraph",
+          "id": "afdumctvp6i",
+          "content": "Bulk volume, "
+        },
+        {
+          "type": "formula",
+          "id": "v9scmbcbx5f",
+          "latex": "V_{0} = \\frac{( \\pi D^2 h)}{4} = \\frac{ \\pi (10.46)^2 * 29.825}{4} = 2562.918 mm^3 = 2.5629 cm^3",
+          "notes": ""
+        },
+        {
+          "type": "heading2",
+          "id": "9rx47ltrpob",
+          "content": "Readings of Pycnometer"
+        },
+        {
+          "type": "formula",
+          "id": "iqou63v591",
+          "latex": "\\text{ Only powder, } W_{0} =1g",
+          "notes": ""
+        },
+        {
+          "type": "formula",
+          "id": "kkkm66ol2ms",
+          "latex": "\\text{ Bottle, } W_{1} =25.185g",
+          "notes": ""
+        },
+        {
+          "type": "formula",
+          "id": "lrtuck7cir",
+          "latex": "\\text{ Bottle+ Powder, } W_{2} =26.797g",
+          "notes": ""
+        },
+        {
+          "type": "formula",
+          "id": "8ffbmc2c9q7",
+          "latex": "W_{2} + water, W_{3} =80.276g",
+          "notes": ""
+        },
+        {
+          "type": "formula",
+          "id": "l5oxag8lo8a",
+          "latex": "\\text{ Bottle + water only, } W_{4 }= 79.293g",
+          "notes": ""
+        },
+        {
+          "type": "formula",
+          "id": "tpn5v5p75m",
+          "latex": "T = 18^\\circ\\text{C} , \\rho_{f} = 0.998",
+          "notes": ""
+        },
+        {
+          "type": "formula",
+          "id": "qbe6lddvk4d",
+          "latex": "\\text{ Total volume, }V = \\frac{(W_{4} - W_{1})}{\\rho_{f}} = 54.216",
+          "notes": ""
+        },
+        {
+          "type": "formula",
+          "id": "hn14njxbaqb",
+          "latex": "\\text{ True density }= \\frac{(W_{2} - W_{1})* \\rho_{f}}{(W_{4}​−W_{1}​)*(W_{3}​−W_{2​})} =2.5371 g/cc",
+          "notes": ""
+        },
+        {
+          "type": "formula",
+          "id": "9dim1bxlae",
+          "latex": "\\text{ Bulk density} = \\frac{W_{0}}{V_{0}}= \\frac{1.6}{2562.918*10^{-3}}  = 0.624g/cc",
+          "notes": ""
+        },
+        {
+          "type": "formula",
+          "id": "piqemtgjh1k",
+          "latex": "\\text{ True Volume} = V- \\frac{(W_{3} - W_{2})}{\\rho _{f}} = 0.6298cc",
+          "notes": ""
+        },
+        {
+          "type": "formula",
+          "id": "txicvj84ro",
+          "latex": "\\text{ Percentages of the Porosity } = \\frac{(2.5629-0.6298)}{2.5629} * 100 =75.43",
+          "notes": ""
+        },
+        {
+          "type": "divider",
+          "id": "2f76rvtyji1"
+        },
+        {
+          "type": "heading1",
+          "id": "nu9qzz2x1z",
+          "content": "Result"
+        },
+        {
+          "type": "callout",
+          "id": "4huudc34l6g",
+          "icon": "📌",
+          "content": "True density = 2.5371 g/cc, \nBulk density = 0.624 g/cc, \nPercentages of porosity = 75.43"
+        },
+        {
+          "type": "heading1",
+          "id": "nhj72efhlw",
+          "content": "Discussion"
+        },
+        {
+          "type": "paragraph",
+          "id": "l9dc97q9y4",
+          "content": "True density is the density of the solid material itself, excluding all pores and voids. Bulk density, on the other hand, includes the volume of both solid material and the pores present in the refractory. Since proes add volume without adding mass, the bulk density becomes lower. Therefore, true density is always higher than the bulk density for refractory materials.\nPorosity is important because it strongly affects thermal insulation, thermal shock resistance, strength, and corrosion resistance of refractory materials. Controlled porosity reduces heat loss by lowering thermal conductivity and allows the refractory to accommodate thermal expansion at high temperatures. However, excessive porosity can reduce mechanical strength and chemical resistance, so an optimum level is essential for high-temperature applications.\nOpen pores are interconnected and allow gases or molten slag to penetrate the refractory, which can reduce chemical resistance and mechanical strength but improve insulation. Closed pores are isolated within the material and do not allow fluid penetration. They help reduce thermal conductivity while maintaining better strength and corrosion resistance. Thus, the balance between open and closed pores determines insulation efficiency, durability, and resistance to slag.\nAn increase in porosity generally decreases the mechanical strength of a refractory. This happens because pores act as stress concentrators and reduce the effective load-bearing area. As porosity increases, the material becomes weaker and more prone to cracking and fracture under mechanical & thermal stress. \nLower bulk density indicates higher porosity, which traps air inside the material. Since air is a poor conductor of heat, such refractories have lower thermal conductivity. This makes them highly effective as insulating materials, reducing heat loss and improving energy efficiency in the furnace and kilns."
+        },
+        {
+          "type": "heading1",
+          "id": "6gvahc91sb",
+          "content": "Conclusion"
+        },
+        {
+          "type": "paragraph",
+          "id": "3wmhw07cnbi",
+          "content": "The refractory shows a high true density and low bulk density, resulting in a high porosity. This indicates a highly porous structure that provides good thermal insulation but lower mechanical strength. Hence, the material is suitable for high-temperature insulation applications rather than load-bearing uses."
+        }
+      ]
+    },
+    {
+      "title": "Electrodeposition of Cu on a Metal Substrate",
+      "excerpt": "1. To understand the principles of electrodeposition.2. To coat a metal substrate with Cu using electroplating.3. To study th…",
+      "featuredImage": "",
+      "tags": "Cu, Metal substrate, Electrodepostion",
+      "link": "#",
+      "date": "Apr 2026",
+      "status": "Completed",
+      "orderNum": 6,
+      "blocks": [
+        {
+          "type": "heading1",
+          "id": "0stmdxlzm0dl",
+          "content": "Objectives"
+        },
+        {
+          "type": "list",
+          "id": "ywyepi9ugg8",
+          "style": "number",
+          "items": [
+            "To understand the principles of electrodeposition.",
+            "To coat a metal substrate with Cu using electroplating.",
+            "To study the effect of plating parameters on coating thickness.",
+            "To analyze surface properties after deposition."
+          ]
+        },
+        {
+          "type": "heading1",
+          "id": "989b3hxmsn",
+          "content": "Theory"
+        },
+        {
+          "type": "paragraph",
+          "id": "jgwmdjl91j",
+          "content": "Electrodeposition is a surface engineering process where metal is deposited from a solution onto a conductive surface using electric current. In Cu electroplating, Cu in the solution is reduced and deposited on the cathode. \nFrom the standard EMF series:"
+        },
+        {
+          "type": "image",
+          "id": "wmwguy8a1cc",
+          "src": "https://res.cloudinary.com/dr2b6pzux/image/upload/v1776850625/cxfqvbvi8nhyup5rullo.png",
+          "caption": "",
+          "size": "medium"
+        },
+        {
+          "type": "formula",
+          "id": "q2wdjxvs6g",
+          "latex": "\\Delta G = -EnF",
+          "notes": "If ∆G is negative, the reaction will be spontaneous."
+        },
+        {
+          "type": "formula",
+          "id": "dlg2fgxxbjj",
+          "latex": "\\text{ A mixture of  } CuSO_{4}. 5H_{2}O \\text{ 200g/L and }  H_{2}SO_{4} \\text{ 40-60 g/L were made, and the process was held at room temperature. }",
+          "notes": "",
+          "display": "block"
+        },
+        {
+          "type": "paragraph",
+          "id": "ib1p0osthir",
+          "content": "The thickness of the deposited Cu is calculated by this formula:"
+        },
+        {
+          "type": "formula",
+          "id": "qw99w105kve",
+          "latex": "t= \\frac{m}{\\rho A}",
+          "notes": "Where, \nm = Weight of the deposited Cu\nρ = Density of Cu\nA = Area of the deposition"
+        },
+        {
+          "type": "paragraph",
+          "id": "bz3c47s1wir",
+          "content": "Surface roughness represents high-frequency irregularities on a material surface post-manufacturing. It dictates mechanical properties, including friction, wear resistance, and lubrication retention. Raw data filtered from Roughness and waviness."
+        },
+        {
+          "type": "heading3",
+          "id": "bn3kwvc3nds",
+          "content": "Filters"
+        },
+        {
+          "type": "paragraph",
+          "id": "vhqi0g5c18e",
+          "content": "Gauss, RC, and PC-RC are used to establish the mean line."
+        },
+        {
+          "type": "heading3",
+          "id": "135imrf91jio",
+          "content": "Traversing length"
+        },
+        {
+          "type": "paragraph",
+          "id": "3xb5y5rrnww",
+          "content": "The total distance, the stylus moves, including the evaluation length and pre-travel stabilization segment."
+        },
+        {
+          "type": "heading3",
+          "id": "336hrjysjpl",
+          "content": "𝑅𝑎 ( Arithmetic Mean)"
+        },
+        {
+          "type": "paragraph",
+          "id": "ayeue56w9y",
+          "content": "Average of absolute profile deviations from the mean line."
+        },
+        {
+          "type": "image",
+          "id": "1ja8jqyr3tt",
+          "src": "https://res.cloudinary.com/dr2b6pzux/image/upload/v1776851390/duztsb7yybzgsrez2vab.png",
+          "caption": "",
+          "size": "medium"
+        },
+        {
+          "type": "heading3",
+          "id": "rlhcclx5dj",
+          "content": "𝑅𝑧 (Ten-Point Height)"
+        },
+        {
+          "type": "paragraph",
+          "id": "jqufgs8x37s",
+          "content": "Average of the 5 highest peaks and 5 deepest peak valleys. "
+        },
+        {
+          "type": "image",
+          "id": "rm12keks2kp",
+          "src": "https://res.cloudinary.com/dr2b6pzux/image/upload/v1776851423/fwcdaqtdyfruhbhtjfem.png",
+          "caption": "",
+          "size": "medium"
+        },
+        {
+          "type": "heading3",
+          "id": "j3yu1f1acy",
+          "content": "𝑅𝑞 ( RMS )"
+        },
+        {
+          "type": "paragraph",
+          "id": "p7pex5ccg2",
+          "content": "The root-mean square of the profile deviations, highly sensitive to exterme peak."
+        },
+        {
+          "type": "image",
+          "id": "1dahtnk5zgw",
+          "src": "https://res.cloudinary.com/dr2b6pzux/image/upload/v1776851438/xqmsoepqqpjusouy8u54.png",
+          "caption": "",
+          "size": "medium"
+        },
+        {
+          "type": "heading3",
+          "id": "yzwnjf7ewo",
+          "content": "𝑅𝑡 ( Total height )"
+        },
+        {
+          "type": "paragraph",
+          "id": "6mhdw881bws",
+          "content": "Maximum vertical distance from the highest peak to the lowest valley."
+        },
+        {
+          "type": "heading1",
+          "id": "ra65xd6i8an",
+          "content": "Required Apparatus"
+        },
+        {
+          "type": "paragraph",
+          "id": "14t76kpegsa",
+          "content": "1. Beaker\n2. CuSO4·5 H2O\n3. H2SO4\n4. Thermometer\n5. Roughness Test Machine\n6. Weight Machine\n7. Slide Calipers"
+        },
+        {
+          "type": "heading1",
+          "id": "mh1fdxyw5oo",
+          "content": "Working Procedure"
+        },
+        {
+          "type": "list",
+          "id": "93oopqxl7f7",
+          "style": "number",
+          "items": [
+            "The sample surface was prepared for electroplating by removing oxide and contaminants using emery paper. ",
+            "The electroplating solution made for our group was 0.1 M.",
+            "The experiment was done at room temperature.",
+            "The immersion was done with the help of a thin rope.",
+            "The immersion was about five minutes.",
+            " The sample was raised, and the final weight was measured after the air-drying process.",
+            "The surface roughness test was done by a roughness testing machine. "
+          ]
+        },
+        {
+          "type": "heading1",
+          "id": "bgzoeg75775",
+          "content": "Data Table"
+        },
+        {
+          "type": "heading3",
+          "id": "mabd2zptwe",
+          "content": "Table 1: Table for the Immersion of Cu on Steel (Time Dependent)"
+        },
+        {
+          "type": "table",
+          "id": "z3yabccx7yh",
+          "rows": 5,
+          "cols": 4,
+          "data": [
+            [
+              "Concentration (M)",
+              "Initial Weight Before Immersion (gm)",
+              "Time (min)",
+              "Weight After Immersion (gm)"
+            ],
+            [
+              "0.1",
+              "0.2021",
+              "1",
+              "0.2031"
+            ],
+            [
+              "",
+              "",
+              "2",
+              "0.2029"
+            ],
+            [
+              "",
+              "",
+              "3",
+              "0.2029"
+            ],
+            [
+              "",
+              "",
+              "4",
+              "0.2029"
+            ]
+          ],
+          "merges": [],
+          "headerRow": true,
+          "headerCol": false
+        },
+        {
+          "type": "heading3",
+          "id": "sbmeapobjf",
+          "content": "Table 2: Table for the Immersion of Copper on Al ( Time Dependent )"
+        },
+        {
+          "type": "table",
+          "id": "bxt3ma4kf65",
+          "rows": 5,
+          "cols": 4,
+          "data": [
+            [
+              "Concentration (M)",
+              "Initial Weight Before Immersion (gm)",
+              "Time (min)",
+              "Weight After Immersion (gm)"
+            ],
+            [
+              "0.1",
+              "0.0939",
+              "1",
+              "0.0941"
+            ],
+            [
+              "",
+              "",
+              "2",
+              "0.0940"
+            ],
+            [
+              "",
+              "",
+              "3",
+              "0.0938"
+            ],
+            [
+              "",
+              "",
+              "4",
+              "0.0938"
+            ]
+          ],
+          "merges": [],
+          "headerRow": true,
+          "headerCol": false
+        },
+        {
+          "type": "heading3",
+          "id": "3nxzxk85eou",
+          "content": "Table 3: Table for the Immersion of Cu on Steel ( Time Dependent )"
+        },
+        {
+          "type": "table",
+          "id": "hwwsjucj3hc",
+          "rows": 5,
+          "cols": 4,
+          "data": [
+            [
+              "Time (min)",
+              "Temperature ( Celcius)",
+              "Initial Weight (gm)",
+              "Final Weight (gm)"
+            ],
+            [
+              "3",
+              "25",
+              "5.419",
+              "5.428"
+            ],
+            [
+              "",
+              "40",
+              "3.498",
+              "3.503"
+            ],
+            [
+              "",
+              "50",
+              "5.711",
+              "5.723"
+            ],
+            [
+              "",
+              "60",
+              "5.088",
+              "5.120"
+            ]
+          ],
+          "merges": [],
+          "headerRow": true,
+          "headerCol": false
+        },
+        {
+          "type": "heading3",
+          "id": "2dwqhfh8h0p",
+          "content": "Table 4: Table for the Roughness Test"
+        },
+        {
+          "type": "table",
+          "id": "ctj2cyaa9sj",
+          "rows": 3,
+          "cols": 6,
+          "data": [
+            [
+              "Direction",
+              "𝑅𝑎 (𝜇m)",
+              "𝑅𝑧 (𝜇m)",
+              "𝑅𝑞 (𝜇m)",
+              "𝑅𝑡 (𝜇m)",
+              "Cut Off Length (mm)"
+            ],
+            [
+              "Longitudinal",
+              "1.463",
+              "4.139",
+              "2.077",
+              "4.179",
+              "0.8"
+            ],
+            [
+              "Transverse",
+              "0.789",
+              "2.232",
+              "0.826",
+              "2.254",
+              ""
+            ]
+          ],
+          "merges": [],
+          "headerRow": true,
+          "headerCol": false
+        },
+        {
+          "type": "paragraph",
+          "id": "rnhq1bu5lb",
+          "content": "Sample width = 26.82 mm\nSample length = 35.57 mm"
+        },
+        {
+          "type": "heading1",
+          "id": "b16h0ty6ahi",
+          "content": "Calculation"
+        },
+        {
+          "type": "heading2",
+          "id": "o6sq4vdo2y",
+          "content": "In the longitudinal direction,"
+        },
+        {
+          "type": "heading3",
+          "id": "xgzyil35ud",
+          "content": "Arithmetic Average Roughness in total length,"
+        },
+        {
+          "type": "paragraph",
+          "id": "p17c54fyfn",
+          "content": "𝑅𝑎 = (𝑅𝑎 𝑣𝑎𝑙𝑢𝑒 𝑖𝑛 𝑐𝑢𝑡 𝑜𝑓𝑓 𝑙𝑒𝑛𝑔𝑡ℎ ×𝑡𝑜𝑡𝑎𝑙 𝑙𝑒𝑛𝑔𝑡ℎ) / 𝑐𝑢𝑡 𝑜𝑓𝑓 𝑙𝑒𝑛𝑔𝑡ℎ\n𝑅𝑎 = 1.463×35.57 /0.8"
+        },
+        {
+          "type": "heading3",
+          "id": "l6xjvjrryx8",
+          "content": "Average Maximum Height in total length,"
+        },
+        {
+          "type": "paragraph",
+          "id": "3gfxq77jxf3",
+          "content": "𝑅𝑧 = (𝑅𝑧 𝑣𝑎𝑙𝑢𝑒 𝑖𝑛 𝑐𝑢𝑡 𝑜𝑓𝑓 𝑙𝑒𝑛𝑔𝑡ℎ ×𝑡𝑜𝑡𝑎𝑙 𝑙𝑒𝑛𝑔𝑡ℎ) / 𝑐𝑢𝑡 𝑜𝑓𝑓 𝑙𝑒𝑛𝑔𝑡ℎ\n     = 4.139×35.57 / 0.8\nRz = 184.03 μm"
+        },
+        {
+          "type": "heading3",
+          "id": "6i04ro00o8q",
+          "content": "Root Mean Square Roughness in total length,"
+        },
+        {
+          "type": "paragraph",
+          "id": "pk685vygmca",
+          "content": "\n𝑅𝑞 = (𝑅𝑞 𝑣𝑎𝑙𝑢𝑒 𝑖𝑛 𝑐𝑢𝑡 𝑜𝑓𝑓 𝑙𝑒𝑛𝑔𝑡ℎ ×𝑡𝑜𝑡𝑎𝑙 𝑙𝑒𝑛𝑔𝑡ℎ ) / 𝑐𝑢𝑡 𝑜𝑓𝑓 𝑙𝑒𝑛𝑔𝑡ℎ\n     = 2.077×35.57 / 0.8\nRq = 92.35 μm"
+        },
+        {
+          "type": "heading3",
+          "id": "i077xi5r5yp",
+          "content": "Total Height of Profile in total length,"
+        },
+        {
+          "type": "paragraph",
+          "id": "68yh255263c",
+          "content": "𝑅𝑡 = ( 𝑅𝑡 𝑣𝑎𝑙𝑢𝑒 𝑖𝑛 𝑐𝑢𝑡 𝑜𝑓𝑓 𝑙𝑒𝑛𝑔𝑡ℎ ×𝑡𝑜𝑡𝑎𝑙 𝑙𝑒𝑛𝑔𝑡ℎ ) / 𝑐𝑢𝑡 𝑜𝑓𝑓 𝑙𝑒𝑛𝑔𝑡ℎ\n     = 4.179×35.57 / 0.8\nRt = 185.81 μm"
+        },
+        {
+          "type": "heading2",
+          "id": "85k12d0gty6",
+          "content": "In transverse direction,"
+        },
+        {
+          "type": "heading3",
+          "id": "gfwgqmxd8q",
+          "content": "Arithmetic Average Roughness in total width,"
+        },
+        {
+          "type": "paragraph",
+          "id": "6b6svff902u",
+          "content": "\n𝑅𝑎 = (𝑅𝑎 𝑣𝑎𝑙𝑢𝑒 𝑖𝑛 𝑐𝑢𝑡 𝑜𝑓𝑓 𝑙𝑒𝑛𝑔𝑡ℎ ×𝑡𝑜𝑡𝑎𝑙 𝑤𝑖𝑑𝑡ℎ) / 𝑐𝑢𝑡 𝑜𝑓𝑓 𝑙𝑒𝑛𝑔𝑡ℎ\n     = 0.789×26.82 / 0.8\nRa = 26.45 μm\n"
+        },
+        {
+          "type": "heading3",
+          "id": "cdevxcv47oe",
+          "content": "Average Maximum Height in total width,"
+        },
+        {
+          "type": "paragraph",
+          "id": "0vxj016gtw8o",
+          "content": "\n𝑅𝑧 = (𝑅𝑧 𝑣𝑎𝑙𝑢𝑒 𝑖𝑛 𝑐𝑢𝑡 𝑜𝑓𝑓 𝑙𝑒𝑛𝑔𝑡ℎ ×𝑡𝑜𝑡𝑎𝑙 𝑤𝑖𝑑𝑡ℎ) / 𝑐𝑢𝑡 𝑜𝑓𝑓 𝑙𝑒𝑛𝑔𝑡ℎ\n     = 2.232×26.82 / 0.8\nRz = 74.83 μm"
+        },
+        {
+          "type": "heading3",
+          "id": "xro74q4gdte",
+          "content": "Root Mean Square Roughness in total width,"
+        },
+        {
+          "type": "paragraph",
+          "id": "jao6x4u4hk",
+          "content": "𝑅𝑞 = (𝑅𝑞 𝑣𝑎𝑙𝑢𝑒 𝑖𝑛 𝑐𝑢𝑡 𝑜𝑓𝑓 𝑙𝑒𝑛𝑔𝑡ℎ ×𝑡𝑜𝑡𝑎𝑙 𝑤𝑖𝑑𝑡ℎ) / 𝑐𝑢𝑡 𝑜𝑓𝑓 𝑙𝑒𝑛𝑔𝑡ℎ\n     = 0.826×26.82 / 0.8\nRq = 27.70 μm"
+        },
+        {
+          "type": "heading3",
+          "id": "ukxte8x5u8k",
+          "content": "Total Height of Profile in total width,"
+        },
+        {
+          "type": "paragraph",
+          "id": "lzztz9kmi8",
+          "content": "𝑅𝑡 = ( 𝑅𝑡 𝑣𝑎𝑙𝑢𝑒 𝑖𝑛 𝑐𝑢𝑡 𝑜𝑓𝑓 𝑙𝑒𝑛𝑔𝑡ℎ ×𝑡𝑜𝑡𝑎𝑙 𝑤𝑖𝑑𝑡ℎ ) / 𝑐𝑢𝑡 𝑜𝑓𝑓 𝑙𝑒𝑛𝑔𝑡ℎ\n     = 2.254×26.82 / 0.8\nRt = 75.57 μm"
+        },
+        {
+          "type": "heading1",
+          "id": "tfybp4b38qj",
+          "content": "Graphs"
+        },
+        {
+          "type": "image",
+          "id": "hr8dhhzd65",
+          "src": "https://res.cloudinary.com/dr2b6pzux/image/upload/v1776849503/ciejw6nymyh69dodori2.png",
+          "caption": "",
+          "size": "medium"
+        },
+        {
+          "type": "image",
+          "id": "15u4wl8o7af",
+          "src": "https://res.cloudinary.com/dr2b6pzux/image/upload/v1776849510/l5esxzdeaisnjld8nbpj.png",
+          "caption": "",
+          "size": "medium"
+        },
+        {
+          "type": "image",
+          "id": "15eu2z55hq6",
+          "src": "https://res.cloudinary.com/dr2b6pzux/image/upload/v1776849518/vujukobwxersdy3kmm2l.png",
+          "caption": "",
+          "size": "medium"
+        },
+        {
+          "type": "image",
+          "id": "9epqcpdnevs",
+          "src": "https://res.cloudinary.com/dr2b6pzux/image/upload/v1776849533/cb76wz48huvndvx0qoon.png",
+          "caption": "",
+          "size": "medium"
+        },
+        {
+          "type": "image",
+          "id": "zjzw1roja8c",
+          "src": "https://res.cloudinary.com/dr2b6pzux/image/upload/v1776849545/fibiyvhhwocqwfyvdzi1.png",
+          "caption": "",
+          "size": "medium"
+        },
+        {
+          "type": "image",
+          "id": "gdvf8pppumc",
+          "src": "https://res.cloudinary.com/dr2b6pzux/image/upload/v1776849554/dqcxcqz4zqs9wpggiynm.png",
+          "caption": "",
+          "size": "medium"
+        },
+        {
+          "type": "image",
+          "id": "8wilrds0yi5",
+          "src": "https://res.cloudinary.com/dr2b6pzux/image/upload/v1776849563/bk6raohx2whhqmfmkdsz.png",
+          "caption": "",
+          "size": "medium"
+        },
+        {
+          "type": "heading1",
+          "id": "qqo5t93u99",
+          "content": "Discussion"
+        },
+        {
+          "type": "paragraph",
+          "id": "q6ex22knla",
+          "content": "Cu was successfully deposited onto steel and aluminum substrates via the electrochemical reduction of Cu^2+ ions at the cathode. Deposition weight varied with concentration; lower concentrations showed steady increases over time, while higher concentrations produced inconsistent results, likely due to surface saturation or partial re-dissolution."
+        },
+        {
+          "type": "heading1",
+          "id": "83tq7cx7l8p",
+          "content": "Conclusion"
+        },
+        {
+          "type": "paragraph",
+          "id": "0av8zid5yb5q",
+          "content": "This experiment confirmed that Cu can be effectively deposited onto metal substrate through electrodeposition. Concentration, temperature, and time all significantly influence coating quality and thickness. Moderate temperature and lower concentrations yielded the most consistent deposition. Surface roughenss analysis revealed directional variation in the deposited coating, highlighting the importance of process controll for achieveing uniform, functional copper films."
+        }
+      ]
+    },
+    {
+      "title": "Study of the General Metallurgical Steps Involved in Metal Extraction",
+      "excerpt": "1. To understand the basic steps involved in the extraction of metals from their ores.2. To relate ore type and metal reactivi…",
+      "featuredImage": "https://res.cloudinary.com/dr2b6pzux/image/upload/v1776826470/lwxhetn7yh4x6vv31jnf.jpg",
+      "tags": "Study, Metallurgy, Metal Extraction",
+      "link": "#",
+      "date": "Jan 2026",
+      "status": "Completed",
+      "orderNum": 5,
+      "blocks": [
+        {
+          "type": "heading1",
+          "id": "h2yeghnragq",
+          "content": "Objectives"
+        },
+        {
+          "type": "paragraph",
+          "id": "fv1uncelc7e",
+          "content": "1. To understand the basic steps involved in the extraction of metals from their ores.\n2. To relate ore type and metal reactivity to the choice of extraction route.\n3. Explain the need for concentration, oxide formation, reduction, and refining in metal extraction."
+        },
+        {
+          "type": "heading1",
+          "id": "p8svbgn7eg",
+          "content": "Introduction"
+        },
+        {
+          "type": "paragraph",
+          "id": "moh9p39fuaa",
+          "content": "Most metals occur in nature as ores, which are minerals containing the metal chemically combined with other elements and mixed with impurities called gangue. Metallurgy is the branch of science and technology that deals with the extraction of metals from their ores and their subsequent refining. "
+        },
+        {
+          "type": "paragraph",
+          "id": "aioi2kzj6aa",
+          "content": "The overall extraction route usually follows a sequence: crushing and grinding, concentration, conversion to oxide, reduction, and refining. Concentration is necessary because it removes a large fraction of gangue, making later high-temperature and chemical steps more efficient and more economical. "
+        },
+        {
+          "type": "paragraph",
+          "id": "f4n4tsmbrg",
+          "content": "Ores are often converted to oxides by roasting or calcination, because metal oxides are generally easier to reduce than sulfides or carbonates. Reduction then produces an impure metal, which must be refined to achieve the purity needed for engineering applications, using methods such as electrolytic refining, distillation, or zone refining, depending on the metal and required purity."
+        },
+        {
+          "type": "heading1",
+          "id": "ns05e5dgig",
+          "content": "Discussion"
+        },
+        {
+          "type": "heading3",
+          "id": "ugifgzsqx2",
+          "content": "Why is the concentration of the ore necessary before metal extraction?"
+        },
+        {
+          "type": "paragraph",
+          "id": "rlt0khhh9iq",
+          "content": "Concentration removes a large fraction of gangue so that the charge fed to the furnace or electrolytic cell is richer in the desired mineral. This reduces energy and reagent consumption, increases metal yield, and makes subsequent roasting, reduction, and refining more efficient and economical. "
+        },
+        {
+          "type": "heading3",
+          "id": "jwd85j376h",
+          "content": "How do physical and chemical properties of ores determine the choice of concentration method?"
+        },
+        {
+          "type": "paragraph",
+          "id": "v33vo7g0j5d",
+          "content": "The separation method is chosen by exploiting differences between ore and gangue. For example, froth flotation uses surface chemistry to float hydrophobic sulfide particles, magnetic separation uses differences in magnetic behavior, hydraulic washing uses density differences, and leaching uses selective chemical solubility of the ore in a suitable reagent. "
+        },
+        {
+          "type": "heading3",
+          "id": "d6x30kginqp",
+          "content": "Why are metal oxides generally easier to reduce than sulfides or carbonates?"
+        },
+        {
+          "type": "paragraph",
+          "id": "z6emrxlafhd",
+          "content": "Metal oxides usually have lower thermodynamic stability against common reducing agents such as carbon and CO, so they can be reduced at practical temperatures. Sulfides and carbonates must first be converted to oxides by reasting or calcination to remove sulfur or carbon dioxide, making direct reduction of sulfies ore carbonates more difficult and less efficient."
+        },
+        {
+          "type": "heading3",
+          "id": "oelktmkgw4d",
+          "content": "Why is refining necessary even after the metal has been extracted?"
+        },
+        {
+          "type": "paragraph",
+          "id": "8zhfwrpjics",
+          "content": "The crude metal obtained after reduction still contains dissolved gases, slag particles, and other metallic and non-metallic impurities that deteriorate mechanical, electrical, and corrosion properties. Refining steps such as electrolytic refining, distillation, zone refining, or liquation are therefore needed to reach the purity level required for engineering and industrial applications. "
+        }
+      ]
+    },
+    {
+      "title": "Kinetics of Oxidation of Copper",
+      "excerpt": "To study the rate of oxidation of copper specimens at two elevated temperatures (550°C and 650°C) and to determine the effect o…",
+      "featuredImage": "",
+      "tags": "Cu, Kinetics, Oxidation, Graph",
+      "link": "#",
+      "date": "Apr 2026",
+      "status": "Completed",
+      "orderNum": 4,
+      "blocks": [
+        {
+          "type": "heading2",
+          "id": "nuakobspm6m",
+          "content": "Objective"
+        },
+        {
+          "type": "paragraph",
+          "id": "1ucgrmp1h9jmo4o5dsb",
+          "content": "To study the rate of oxidation of copper specimens at two elevated temperatures (550°C and 650°C) and to determine the effect of temperature on oxidation kinetics using the weight gain method."
+        },
+        {
+          "type": "heading2",
+          "id": "g2xwdboklxr",
+          "content": "Theory"
+        },
+        {
+          "type": "paragraph",
+          "id": "9gco5sxhircmo4o5dsb",
+          "content": "When metallic copper is heated in an oxidizing atmosphere (air), it reacts with oxygen to form copper oxides, predominantly cuprous oxide (Cu₂O). The oxidation process is conveniently studied through the weight gain method, where the increase in mass of th e specimen is measured as a function of time. As oxide film grows on the copper surface, it acts as a barrier through which oxygen or copper ions must diffuse for oxidation to continue. The increasing diffusion path length slows the rate, giving rise to parabolic kinetics. For a planar surface, the pa rabolic rate law is expressed as:"
+        },
+        {
+          "type": "formula",
+          "id": "652r7f7qk4lmo4o5dsb",
+          "latex": "(Δm / A)² = k × t",
+          "notes": "where, \nΔm is the mass gain (g), \nA is the exposed surface area (cm²), \nk is the parabolic rate constant (g²·cm⁻⁴·s⁻¹), \nand t is time (s)"
+        },
+        {
+          "type": "paragraph",
+          "id": "75vnj7wy6oemo4o5dsc",
+          "content": "The thickness x of the oxide film is given by:"
+        },
+        {
+          "type": "formula",
+          "id": "0dggyqpd6byemo4o5dsc",
+          "latex": "x = (Δm / A) / ρ",
+          "notes": "where,\n ρ is the density of Cu₂O, taken as 6 g/cm³. "
+        },
+        {
+          "type": "paragraph",
+          "id": "cl8cal9vi99mo4o5dsc",
+          "content": "At very short times, oxidation may show linear kinetics due to direct surface reaction before a protective oxide layer is established. Once the film is thick enough to act as a diffusion barrier, parabolic behaviour dominates."
+        },
+        {
+          "type": "heading2",
+          "id": "dv9o5wwba3",
+          "content": "Required Apparatus"
+        },
+        {
+          "type": "paragraph",
+          "id": "jp7jgc041kpmo4o5dsc",
+          "content": "1. Copper strip specimens, \n2. ceramic crucibles,\n3. high -temperature resistance furnace, \n4. precision analytical balance, \n5. stopwatch."
+        },
+        {
+          "type": "heading2",
+          "id": "x127d330qth",
+          "content": "Experimental Procedure"
+        },
+        {
+          "type": "paragraph",
+          "id": "tb6yi0f64vlmo4o5dsc",
+          "content": "• Three copper strip specimens were taken, and each was cleaned thoroughly to remove any existing oxide layer, grease, or surface contaminants.\n• An empty crucible was weighed, and its mass was recorded.\n• One of the copper strips was placed on the crucible and inserted into the pre -heated furnace. Readings were taken after 10, 20, and 30 minutes (600, 1200, and 1800 seconds).\n• Steps 2 and 3 were repeated at two different temperatures: 550°C and 650°C.\n• The weight gain at each interval was recorded and used to calculate the parabolic rate constant (k) and oxide film thickness.\n"
+        },
+        {
+          "type": "heading2",
+          "id": "x1gh47ft7xr",
+          "content": "Experimental Data"
+        },
+        {
+          "type": "paragraph",
+          "id": "dtl6dnswnav",
+          "content": "Density-of- Cu₂O (ρ) = 6 g/cm³  |  550°C: A = 4.59 cm²  |  650°C: A = 3.67 cm²"
+        },
+        {
+          "type": "paragraph",
+          "id": "biu616crurjmo4o5dss",
+          "content": "Table 1: Experimental Data and Calculated Parameters at 550°C and 650°C Initial Wt. of Wt. of Wt. Oxide"
+        },
+        {
+          "type": "table",
+          "id": "c6zmdsroted",
+          "rows": 11,
+          "cols": 11,
+          "data": [
+            [
+              "Time (min)",
+              "Time (S)",
+              "Wt. of Crucible (g)",
+              "Wt. of (C+S) (g)",
+              "Initial Wt. of Strip (g)",
+              "Wt. Gain (g)",
+              "Δm/A (g/cm²)",
+              "(Δm/A)² (g²/cm⁴)",
+              "Log (time)",
+              "K (g²cm⁻⁴s⁻¹)",
+              "Oxide Thickness (cm)"
+            ],
+            [
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              ""
+            ],
+            [
+              "0",
+              "0",
+              "73.484",
+              "75.325",
+              "1.841",
+              "0.000",
+              "0",
+              "0",
+              "-",
+              "-",
+              "0"
+            ],
+            [
+              "10",
+              "600",
+              "73.484",
+              "75.331",
+              "1.841",
+              "0.006",
+              "1.307×10⁻³",
+              "1.709×10⁻⁶",
+              "2.778",
+              "2.84×10⁻⁹",
+              "4.66×10⁻⁴"
+            ],
+            [
+              "20",
+              "1200",
+              "73.484",
+              "75.755",
+              "1.841",
+              "0.430",
+              "0.094",
+              "8.776×10⁻³ ",
+              "3.079",
+              "7.31×10⁻⁶",
+              "0.033"
+            ],
+            [
+              "30",
+              "1800",
+              "",
+              "75.846",
+              "",
+              "0.521",
+              "0.114",
+              "0.0129",
+              "3.255",
+              "7.167×10⁻⁶ ",
+              "0.04"
+            ],
+            [
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              ""
+            ],
+            [
+              "0",
+              "0",
+              "73.782",
+              "74.554",
+              "0.772",
+              "0.000",
+              "0",
+              "0",
+              "-",
+              "-",
+              "0"
+            ],
+            [
+              "10",
+              "600",
+              "",
+              "74.572",
+              "",
+              "0.018",
+              "4.904×10⁻³",
+              "2.405×10⁻⁵ ",
+              "2.778",
+              "4.01×10⁻⁸ ",
+              "1.56×10⁻³"
+            ],
+            [
+              "20",
+              "1200",
+              "",
+              "74.584",
+              "",
+              "0.030",
+              "8.174×10⁻³",
+              "6.682×10⁻⁵ ",
+              "3.079",
+              "7.31×10⁻⁶ ",
+              "0.03"
+            ],
+            [
+              "30",
+              "1800",
+              "",
+              "74.601",
+              "",
+              "0.047",
+              "0.0128",
+              "1.640×10⁻⁴ ",
+              "3.255",
+              "7.163×10⁻⁹ ",
+              "1.15×10⁻³"
+            ]
+          ],
+          "merges": [],
+          "headerRow": true,
+          "headerCol": false
+        },
+        {
+          "type": "heading2",
+          "id": "quvf2wg9gcf",
+          "content": "Calculations"
+        },
+        {
+          "type": "heading3",
+          "id": "wp40434mu18",
+          "content": "Surface Area Calculation"
+        },
+        {
+          "type": "heading3",
+          "id": "ix49j9b32l",
+          "content": "For 550°C:"
+        },
+        {
+          "type": "paragraph",
+          "id": "783yb20136m",
+          "content": "For Sample 1:\nLength, L₁ = 27.34 mm,   Width, W₁ = 16.87 mm\n∴ A₁ = 27.34 × 16.87 = 461.22 mm² = 4.61 cm²\n\nFor Sample 2:\nLength, L₂ = 26.57 mm,   Width, W₂ = 17.26 mm\n∴ A₂ = 26.57 × 17.26 = 458.60 mm² = 4.58 cm²\n\nAverage Area, A = (4.61 + 4.58) / 2 = 4.59 cm²"
+        },
+        {
+          "type": "heading3",
+          "id": "su0m1o0oohb",
+          "content": "For 650°C:"
+        },
+        {
+          "type": "paragraph",
+          "id": "2lqhi7a275h",
+          "content": "For Sample 1:\nLength, L₁ = 23.48 mm, Width, W₁ = 14.76 mm\n∴ A₁ = 23.48 × 14.76 = 346.56 mm² = 3.46 cm²\n\nFor Sample 2:\nLength, L₂ = 25.31 mm, Width, W₂ = 15.35 mm\n∴ A₂ = 25.31 × 15.35 = 388.51 mm² = 3.88 cm²\n\nAverage Area, A = (3.46 + 3.88) / 2 = 3.67 cm²"
+        },
+        {
+          "type": "heading3",
+          "id": "0iskj2gmo6vb",
+          "content": "Parabolic Rate Constant (k) at 550°C"
+        },
+        {
+          "type": "paragraph",
+          "id": "dlwykdw6fnj",
+          "content": "Using the parabolic rate law: (Δm/A)² = k × t\n\nAt t = 0 s: k = 0\n\nAt t = 600 s:\nk = (1.307×10⁻³)² / 600 = 2.84×10⁻⁹ g²/cm⁴\n\nAt t = 1200 s:\nk = (0.094)² / 1200 = 7.31×10⁻⁶ g²/cm⁴\n\nAt t = 1800 s:\nk = (0.114)² / 1800 = 7.167×10⁻⁶ g²/cm⁴"
+        },
+        {
+          "type": "heading3",
+          "id": "2kho9p49bbl",
+          "content": "Parabolic Rate Constant (k) at 650°C"
+        },
+        {
+          "type": "paragraph",
+          "id": "c1p6ll9hvn5",
+          "content": "Using the parabolic rate law: (Δm/A)² = k × t\n\nAt t = 0 s: k = 0\n\nAt t = 600 s:\nk = (4.904×10⁻³)² / 600 = 4.01×10⁻⁸ g²/cm⁴\n\nAt t = 1200 s:\nk = (8.174×10⁻³)² / 1200 = 7.31×10⁻⁶ g²/cm⁴\n\nAt t = 1800 s:\nk = (0.0128)² / 1800 = 7.163×10⁻⁹ g²/cm⁴"
+        },
+        {
+          "type": "heading3",
+          "id": "nm4f6nlcve",
+          "content": "Oxide Film Thickness at 550°C"
+        },
+        {
+          "type": "paragraph",
+          "id": "k6c1n3xo54f",
+          "content": "Given: density of Cu₂O, ρ = 6 g/cm³\nΔm = √(A × k × t), Thickness = Δm / ρ\n\nAt t = 0 s: Thickness = 0\n\nAt t = 600 s:\nΔm = √(4.59 × 2.84×10⁻⁹ × 600) = 2.796×10⁻³ g/cm²\nThickness = 2.796×10⁻³ / 6 = 4.66×10⁻⁴ cm\n\nAt t = 1200 s:\nΔm = √(4.59 × 7.31×10⁻⁶ × 1200) = 0.2 g/cm²\nThickness = 0.2 / 6 = 0.033 cm\n\nAt t = 1800 s:\nΔm = √(4.59 × 7.167×10⁻⁶ × 1800) = 0.24 g/cm²\nThickness = 0.24 / 6 = 0.04 cm"
+        },
+        {
+          "type": "heading3",
+          "id": "lcj9d3iqkm9",
+          "content": "Oxide Film Thickness at 650°C"
+        },
+        {
+          "type": "paragraph",
+          "id": "q1njk46dtc",
+          "content": "Given: density of Cu₂O, ρ = 6 g/cm³\nΔm = √(A × k × t), Thickness = Δm / ρ\n\nAt t = 0 s: Thickness = 0\n\nAt t = 600 s:\nΔm = √(3.67 × 4.01×10⁻⁸ × 600) = 9.4×10⁻³ g\nThickness = 9.4×10⁻³ / 6 = 1.56×10⁻³ cm\n\nAt t = 1200 s:\nΔm = √(3.67 × 7.31×10⁻⁶ × 1200) = 0.179 g\nThickness = 0.179 / 6 = 0.03 cm\n\nAt t = 1800 s:\nΔm = √(3.67 × 7.163×10⁻⁹ × 1800) = 6.88×10⁻³ g\nThickness = 6.88×10⁻³ / 6 = 1.15×10⁻³ cm"
+        },
+        {
+          "type": "heading2",
+          "id": "qrtb2m0oqe",
+          "content": "Graphs and Plots"
+        },
+        {
+          "type": "paragraph",
+          "id": "zxu0bw6veenmo4o5dt9",
+          "content": "The following plots were generated from the experimental data to visualize the oxidation behaviour at both temperatures and to verify the parabolic rate law."
+        },
+        {
+          "type": "heading3",
+          "id": "p40gxomfuoj",
+          "content": "Graph 1: Δm/A  vs. Time (550°C)"
+        },
+        {
+          "type": "image",
+          "id": "7iojnzyk9h4",
+          "src": "https://res.cloudinary.com/dr2b6pzux/image/upload/v1776821333/yqrcgerbyvgyq3viloby.png",
+          "caption": "Figure 1: Mass gain per unit area (Δm/A) as a function of oxidation time at 550°C. ",
+          "size": "medium"
+        },
+        {
+          "type": "paragraph",
+          "id": "y3h0gdoqw8imo4o5dt9",
+          "content": "This curve shows the increasing weight gain per unit area with time. The rate of increase gradually slows down, indicating the transition from faster surface -controlled reaction to diffusion -controlled parabolic oxidation as the oxide film builds up."
+        },
+        {
+          "type": "heading3",
+          "id": "88ljfrtwipp",
+          "content": "Graph 2: (Δm/A)² vs. Time (550°C)"
+        },
+        {
+          "type": "image",
+          "id": "2fwqew8uojr",
+          "src": "https://res.cloudinary.com/dr2b6pzux/image/upload/v1776822073/vmylv9umebgh1szuulji.png",
+          "caption": "Figure 2: Square of mass gain per unit area (Δm/A)² as a function of oxidation time at 550°C.",
+          "size": "medium"
+        },
+        {
+          "type": "paragraph",
+          "id": "rsrvt7y8wumo4o5dt9",
+          "content": "According to the parabolic rate law, (Δm/A)² = k × t, this plot should be linear if oxidation strictly follows parabolic kinetics. The slope of the linear region gives the parabolic rate constant k. The curve confirms predominantly parabolic behaviour at 5 50°C."
+        },
+        {
+          "type": "heading3",
+          "id": "9ja2fiubr4r",
+          "content": "Graph 3: Δm/A vs. Time (650°C)"
+        },
+        {
+          "type": "image",
+          "id": "mw5e9n95zh",
+          "src": "https://res.cloudinary.com/dr2b6pzux/image/upload/v1776821899/bneahdp2zrwbx6wpcmgs.png",
+          "caption": "Figure 3: Mass gain per unit area (Δm/A) as a function of oxidation time at 650°C.",
+          "size": "medium"
+        },
+        {
+          "type": "paragraph",
+          "id": "b052ewhavi4mo4o5dt9",
+          "content": "Similar to Figure 1, this plot shows the weight gain trend at 650°C. The overall magnitude of Δm/A is different from 550°C due to the different sample surface area (3.67 cm²) used for this temperature group."
+        },
+        {
+          "type": "heading3",
+          "id": "mdxui0ixxy8",
+          "content": "Graph 4: (Δm/A)² vs. Time (650°C)"
+        },
+        {
+          "type": "image",
+          "id": "2bievnyddfl",
+          "src": "https://res.cloudinary.com/dr2b6pzux/image/upload/v1776822180/n1haa4fdkt8ezlaoguwp.png",
+          "caption": "Figure 4: Square of mass gain per unit area (Δm/A)² as a function of oxidation time at 650°C. ",
+          "size": "medium"
+        },
+        {
+          "type": "paragraph",
+          "id": "5pk95rppm57mo4o5dt9",
+          "content": "This plot for 650°C confirms the parabolic behaviour. The slope, which represents the rate constant k, can be compared with that at 550°C to study the effect of temperature on oxidation kinetics."
+        },
+        {
+          "type": "heading3",
+          "id": "51xwpfjk4l8",
+          "content": "Graph 5: log(Δm/A) vs. 1/T (at fixed oxidation periods)"
+        },
+        {
+          "type": "image",
+          "id": "qqi77ic7dw",
+          "src": "https://res.cloudinary.com/dr2b6pzux/image/upload/v1776822585/wjmnfzuyuyp0aulhsygf.png",
+          "caption": "Figure 5: log(Δm/A) versus reciprocal temperature (1/T) for fixed oxidation periods. ",
+          "size": "medium"
+        },
+        {
+          "type": "paragraph",
+          "id": "dgrrg7ijipmo4o5dtl",
+          "content": "This Arrhenius -type plot reveals the temperature dependence of the oxidation rate. A linear relationship between log(Δm/A) and 1/T indicates that the oxidation process follows an Arrhenius rate law, and the slope can be used to estimate the activation energy for the diffusion-controlled oxidation of copper."
+        },
+        {
+          "type": "heading3",
+          "id": "tu22eiv4wa",
+          "content": "Graph 6: log(Δm/A) vs. 1/T"
+        },
+        {
+          "type": "image",
+          "id": "ih0e6exls3k",
+          "src": "https://res.cloudinary.com/dr2b6pzux/image/upload/v1776822731/szpzramw6fkwsd6hhm3n.png",
+          "caption": "Figure 6: Combined log(Δm/A) vs. 1/T plot for all oxidation time periods. ",
+          "size": "medium"
+        },
+        {
+          "type": "paragraph",
+          "id": "jt3dw6yhxyl",
+          "content": "This combined Arrhenius plot for all time intervals reinforces the temperature-dependent nature of copper oxidation. It enables a more comprehensive estimate of the apparent activation energy across the range of experimental conditions."
+        },
+        {
+          "type": "heading3",
+          "id": "lwbto8dobxm",
+          "content": "Graph 7: log(Δm/A) vs. log(t) (550°C)"
+        },
+        {
+          "type": "image",
+          "id": "n1iba7dhh8q",
+          "src": "https://res.cloudinary.com/dr2b6pzux/image/upload/v1776823047/h61a0kas2dixy5w41aux.png",
+          "caption": "Figure 6: log(Δm/A) versus log(time) at 550°C.",
+          "size": "medium"
+        },
+        {
+          "type": "paragraph",
+          "id": "mnxw4gsmfimo4o5dtl",
+          "content": "For a parabolic process, a plot of log(Δm/A) versus log(t) should yield a straight line with a slope of 0.5. This confirms that the exponent of time in the rate equation is ½, which is the mathematical signature of parabolic kinetics. Any deviation from 0. 5 would indicate mixed or non-parabolic oxidation behaviour."
+        },
+        {
+          "type": "heading3",
+          "id": "r9ybiejs1b8",
+          "content": "Graph 8: log(Δm/A) vs. log(t) (650°C)"
+        },
+        {
+          "type": "image",
+          "id": "s7encjj8ibb",
+          "src": "https://res.cloudinary.com/dr2b6pzux/image/upload/v1776823122/banhdprqzllxgfrhmcrj.png",
+          "caption": "Figure 7: log(Δm/A) versus log(time) at 650°C. ",
+          "size": "medium"
+        },
+        {
+          "type": "paragraph",
+          "id": "07pzo1unt9zgmo4o5dtl",
+          "content": "This plot at 650°C serves the same purpose as Figure 6. Comparing the slopes at both temperatures provides insight into whether the oxidation mechanism remains consistently parabolic across the temperature range studied."
+        },
+        {
+          "type": "heading2",
+          "id": "822qbctolj",
+          "content": "Discussion"
+        },
+        {
+          "type": "paragraph",
+          "id": "1oq3q22slh9mo4o5dtl",
+          "content": "The experimental results confirm that the oxidation of copper follows parabolic kinetics at both temperatures, consistent with a diffusion-controlled mechanism. As the Cu₂O film thickens with time, the diffusion path for copper cations or oxygen anions becomes progressively longer, reducing the net rate of oxidation, the defining feature of the parabolic rate law. The (Δm/A)² vs. time plots (Figures 2 and 4) yield approximately linear trends, confirming this behaviour. The log(Δm/A) vs. log(t) plots (Figures 6 and 7) produce lines with slopes close to 0.5, further verifying the parabolic nature of the oxidation process. The Arrhenius -type plots (Figures 5 and 8) demonstrate the temperature dependence of the oxidation rate, and their slopes can be used to estimate the apparent activation energy for diffusion through the Cu₂O layer. The data at 650°C shows a lower absolute weight gain than at 550°C, which is partly attributable to the smaller specimen surface area at 650°C (3.67 cm² versus 4.59 cm²). In general, higher temperatures accelerate ionic diffusion and are expected to produce faster oxide growth, consistent with Wagner’s theory of high -temperature oxidation."
+        },
+        {
+          "type": "heading2",
+          "id": "4sak91x8t2",
+          "content": "Conclusion"
+        },
+        {
+          "type": "paragraph",
+          "id": "dggkmotszrmo4o5dtq",
+          "content": "The experiment successfully demonstrated that the oxidation of copper at both 550°C and 650°C obeys the parabolic rate law, confirming a diffusion-controlled oxidation mechanism through the growing Cu₂O film. The parabolic rate constant and oxide film thickness were determined at each time interval, and the graphical analysis, including (Δm/A)² vs. time and log-log plots, provided consistent verification of the kinetics. These findings underscore the practical significance of understanding oxidation kinetics for predicting material degradation in high-temperature service environments and for guiding the development of oxidation-resistant materials and protective coatings."
+        },
+        {
+          "type": "heading2",
+          "id": "n8ob7fnvd2",
+          "content": "References"
+        },
+        {
+          "type": "paragraph",
+          "id": "g3vph2rc81cmo4o5dtq",
+          "content": "[1] N. Birks, G. H. Meier, and F. S. Pettit, Introduction to the High -Temperature Oxidation of Metals, 2nd ed. Cambridge University Press, 2006. \n[2] W. D. Callister Jr. and D. G. Rethwisch, Materials Science and Engineering: An Introduction, 10th ed. Wiley, 2018. \n[3] P. Kofstad, High Temperature Corrosion. Elsevier Applied Science, 1988."
+        }
+      ]
+    },
+    {
+      "title": "Electrodeposition of Nickel on a Metal Substrate",
+      "excerpt": "To deposit a uniform nickel (Ni) coating on a mild steel substrate using an aqueous nickel sulfate-based electrolyte (Watts bat…",
+      "featuredImage": "https://res.cloudinary.com/dr2b6pzux/image/upload/v1776159835/obgvoytrctaykbylaeel.jpg",
+      "tags": "Surface, Microstructure, Roughness, Pb, Mild Steel, Anode, Cathode",
+      "link": "#",
+      "date": "Apr 2026",
+      "status": "Completed",
+      "orderNum": 3,
+      "blocks": [
+        {
+          "type": "heading2",
+          "id": "gja6bzj97jimny8xp91",
+          "content": "1. Objective"
+        },
+        {
+          "type": "paragraph",
+          "id": "ptxgv7ebu8hmny8xp91",
+          "content": "To deposit a uniform nickel (Ni) coating on a mild steel substrate using an aqueous nickel sulfate-based electrolyte (Watts bath), and to study the effect of deposition parameters on coating thickness, surface morphology, and deposition efficiency."
+        },
+        {
+          "type": "heading2",
+          "id": "8llvvqb3kl9mny8xp91",
+          "content": "2. Theory"
+        },
+        {
+          "type": "paragraph",
+          "id": "pld43os9nlmny8xp91",
+          "content": "Nickel electrodeposition is an electrochemical reduction process in which Ni² ⁺ ions present in the electrolyte solution are reduced at the cathode (substrate) and deposited as solid metallic nickel. This process requires an external DC power source, an ele ctrolyte bath, a cathode (the substrate to be coated), and an anode."
+        },
+        {
+          "type": "heading3",
+          "id": "2q8mdatsl9w",
+          "content": "2.1 Electrochemical Reactions"
+        },
+        {
+          "type": "paragraph",
+          "id": "fxlt4nrlfd6mny8xp91",
+          "content": "The half-reactions occurring at each electrode are: "
+        },
+        {
+          "type": "formula",
+          "id": "l6zqge27kd",
+          "latex": "Cathode (Reduction): Ni² ⁺ + 2e ⁻ → Ni(s)",
+          "notes": ""
+        },
+        {
+          "type": "formula",
+          "id": "ssvf1i4wxnl",
+          "latex": "Anode (Oxidation): 2H ₂ O → O ₂ + 4H ⁺ + 4e ⁻ ",
+          "notes": ""
+        },
+        {
+          "type": "formula",
+          "id": "4rw60aa128f",
+          "latex": "Lead-Anode-Surface: Pb + SO ₄ ² ⁻ → PbSO ₄ (passive-layer)",
+          "notes": ""
+        },
+        {
+          "type": "paragraph",
+          "id": "9new1wrsx9mny8xp91",
+          "content": "At the cathode, Ni² ⁺ ions gain electrons from the power supply and are deposited as solid nickel metal onto the substrate surface. At the lead (Pb) anode, water is oxidized to produce oxygen gas (O ₂ ), protons (H ⁺ ), and electrons. The lead anode itself form s a thin, protective PbSO ₄ passive layer, which prevents it from dissolving into the electrolyte."
+        },
+        {
+          "type": "heading3",
+          "id": "jee08xy128",
+          "content": "2.2 The Watts Bath"
+        },
+        {
+          "type": "paragraph",
+          "id": "5qqqpqrnpebmny8xp9d",
+          "content": "The standard electrolyte used for nickel electrodeposition is called the Watts Bath. It consists of three key components:"
+        },
+        {
+          "type": "paragraph",
+          "id": "cz76d96jmlhmny8xp9d",
+          "content": "• Nickel Sulfate Hexahydrate (NiSO ₄ ·6H ₂ O): the primary source of Ni² ⁺ ions for deposition. Concentration: 240 – 300 g/L.\n• Nickel Chloride Hexahydrate (NiCl ₂ ·6H ₂ O): improves anode dissolution and enhances conductivity. Concentration: 30 – 60 g/L.\n• Boric Acid (H ₃ BO ₃ ): acts as a pH buffer near the cathode surface to maintain stable deposition conditions. Concentration: 30 – 40 g/L."
+        },
+        {
+          "type": "paragraph",
+          "id": "rmbopmwqvmsmny8xp9d",
+          "content": "The bath pH is maintained between 3.5 and 4.5 using HCl (to lower pH) or NH ₄ OH (to raise pH). Operating temperature is maintained at 45 – 60°C for optimal deposition kinetics."
+        },
+        {
+          "type": "heading3",
+          "id": "4ln3stm2js6",
+          "content": "2.3 Coating Thickness from Weight Gain "
+        },
+        {
+          "type": "paragraph",
+          "id": "f1oa7wx08hmny8xp9d",
+          "content": "Since the Positector instrument was unavailable during this experiment, the coating thickness was calculated analytically from the mass difference before and after deposition, using the known density of nickel: "
+        },
+        {
+          "type": "formula",
+          "id": "4durc4b1z0l",
+          "latex": "ρ (Ni) = m (deposited) / V (deposited)",
+          "notes": " Where,\nρ (Ni) = 8900 kg/m³ (density of nickel), m (deposited) = mass gained (g)"
+        },
+        {
+          "type": "formula",
+          "id": "vbsdqvt7re",
+          "latex": "Thickness (h) = V (deposited) / [2 × A (one-side)]",
+          "notes": "Where, \nA (one-side) = One-sided area of the substrate (m²)"
+        },
+        {
+          "type": "heading2",
+          "id": "d4dxlz8xk1bmny8xp9d",
+          "content": "3. Materials and Chemicals"
+        },
+        {
+          "type": "heading3",
+          "id": "rhna9s84k1p",
+          "content": "3.1 Substrate"
+        },
+        {
+          "type": "paragraph",
+          "id": "2jwhd9xp52smny8xp9d",
+          "content": "• Material: Mild Steel plate\n• Initial Weight: 3.860 g\n• Dimensions : Length: 28.83 mm, Width: 25.80 mm"
+        },
+        {
+          "type": "heading3",
+          "id": "9yxtxmch8zj",
+          "content": "3.2 Electrolyte Components (Watts Bath)"
+        },
+        {
+          "type": "paragraph",
+          "id": "18zjtfhvonpmny8xp9d",
+          "content": "• Nickel Sulfate Hexahydrate : NiSO ₄ ·6H ₂ O (3% solution)\n• Nickel Chloride Hexahydrate : NiCl ₂ ·6H ₂ O (3 g in 300 mL)\n• Boric Acid : H ₃ BO ₃ (10 g in 300 mL)\n• Distilled water"
+        },
+        {
+          "type": "heading3",
+          "id": "4i0hzzx9mha",
+          "content": "3.3 Other Materials and Equipment"
+        },
+        {
+          "type": "paragraph",
+          "id": "6na2rgc00yumny8xp9d",
+          "content": "• Anode: Lead (Pb) plate\n• Degreasing agent: Acetone\n• Abrasive: SiC emery paper (180 grit, up to 1200 grit)\n• Roughness Tester: SRT -6200S\n• Thickness Gauge: Posi T ector 6000, Model FN51 (machine problem encountered)\n• Thermometer (for temperature monitoring)\n• DC Power Supply\n• Analytical balance, beaker, oven (40°C)"
+        },
+        {
+          "type": "heading2",
+          "id": "cdyotijvnhmmny8xp9r",
+          "content": "4. Working Procedure"
+        },
+        {
+          "type": "heading3",
+          "id": "a70txe2esfb",
+          "content": "4.1 Substrate Preparation"
+        },
+        {
+          "type": "paragraph",
+          "id": "hsk2itwn4dumny8xp9r",
+          "content": "• The mild steel substrate surface was rubbed with SiC emery paper of 180 grit to remove surface oxide layers and produce a clean, roughened surface for better adhesion."
+        },
+        {
+          "type": "paragraph",
+          "id": "ora1p678w1mny8xp9r",
+          "content": "• The substrate was washed thoroughly with distilled water and detergent to remove loose abrasive particles and contaminants."
+        },
+        {
+          "type": "paragraph",
+          "id": "y11xqq1udimny8xp9r",
+          "content": "• The substrate surface was dried using acetone to ensure complete removal of surface moisture and organic residues."
+        },
+        {
+          "type": "paragraph",
+          "id": "8x8l0kh1983mny8xp9r",
+          "content": "• The substrate dimensions were measured and recorded: Length = 28.83 mm, Width = 25.80 mm, and initial weight = 3.860 g."
+        },
+        {
+          "type": "heading3",
+          "id": "6m2tkksrhtl",
+          "content": "4.2 Electrolyte (Watts Bath) Preparation"
+        },
+        {
+          "type": "paragraph",
+          "id": "nxf2seqeivamny8xp9r",
+          "content": "• The required quantity of NiSO ₄ ·6H ₂ O was dissolved in approximately 70% of the total distilled water volume.\n• NiCl ₂ ·6H ₂ O (3 g) was added and stirred until fully dissolved.\n• Boric acid (10 g) was added, and the solution was heated gently to ~50°C to aid dissolution.\n• The final volume was made up to 300 mL with distilled water and filtered if necessary."
+        },
+        {
+          "type": "heading3",
+          "id": "2jaxhlpxg41",
+          "content": "4.3 Electrodeposition"
+        },
+        {
+          "type": "paragraph",
+          "id": "5au5g6j6kqtmny8xp9r",
+          "content": "• The electrolyte bath was maintained at 45 – 50°C using a water bath with a thermometer for continuous monitoring.\n• The prepared mild steel substrate was connected as the cathode and the lead (Pb) plate as the anode to the DC power supply.\n• The area of the substrate (both sides = 0.14876 dm²) was calculated and set the current to 1 A/dm². Applied current = 1 × 0.14876 = 0.14876 A (with the machine, the current was applied 198 mA) at a voltage of 2.1 V.\n• Both electrodes were immersed in the Watts bath and the deposition for 10 minutes."
+        },
+        {
+          "type": "heading3",
+          "id": "u34e7zye0j",
+          "content": "4.4 Post -Deposition"
+        },
+        {
+          "type": "paragraph",
+          "id": "ggpvww5rovmny8xp9r",
+          "content": "• The substrate was removed from the bath and rinsed with distilled water immediately. \n• The sample was air-dried in an oven at 40°C for 5 minutes.\n• The final weight of the coated substrate was measured and recorded: 3.880 g.\n• Surface roughness measurement was performed using the SRT -6200S roughness tester in both longitudinal and transverse directions with a cut -off length of 0.8 mm.\n• Thickness measurement was attempted using the PosiTector 6000 (Model FN51), but a machine problem was encountered; thickness was therefore calculated analytically from weight gain data.\n• Microstructure images were captured to observe the deposited nickel layer morphology and cross-sectional area of the coating."
+        },
+        {
+          "type": "heading2",
+          "id": "ypscxfv43ccmny8xp9s",
+          "content": "5. Calculations"
+        },
+        {
+          "type": "heading3",
+          "id": "bsogtdtcavd",
+          "content": "5.1 Substrate Area Calculation Area of one face of the substrate:"
+        },
+        {
+          "type": "formula",
+          "id": "5ayqh9hfgbomny8xp9s",
+          "latex": "A (one-side)= L × W = 28.83 mm × 25.80 mm = 743.814 mm²",
+          "notes": ""
+        },
+        {
+          "type": "paragraph",
+          "id": "6ipwlgqcdx5mny8xp9s",
+          "content": "Total electrodeposited area (both sides):"
+        },
+        {
+          "type": "formula",
+          "id": "gwxh2vr0vspmny8xpa4",
+          "latex": "A (total) = 2 × 743.814 = 1487.628 mm² = 0.14876 dm²",
+          "notes": ""
+        },
+        {
+          "type": "heading3",
+          "id": "6jh3n1pmieg",
+          "content": "5.2 Applied Current Calculation"
+        },
+        {
+          "type": "paragraph",
+          "id": "sbszbfbg35imny8xpa4",
+          "content": " Given current density: j = 1 A/dm²"
+        },
+        {
+          "type": "formula",
+          "id": "aw3kbk8ml3smny8xpa4",
+          "latex": "Applied-Current, I = j × A (total) = 1 A/dm² × 0.14876 dm² = 0.14876 A",
+          "notes": ""
+        },
+        {
+          "type": "paragraph",
+          "id": "q85s9fxc9csmny8xpa4",
+          "content": "Applied voltage: V = 2.1 V"
+        },
+        {
+          "type": "heading3",
+          "id": "3w9oesszdm8",
+          "content": "5.3 Mass of Nickel Deposited"
+        },
+        {
+          "type": "formula",
+          "id": "hpf7y5hkdv5",
+          "latex": "m (deposited) = m (final) − m (initial) = 3.880 − 3.860 = 0.020 g",
+          "notes": ""
+        },
+        {
+          "type": "heading3",
+          "id": "iui6kln9jrj",
+          "content": "5.4 Coating Thickness Calculation (Density Method)"
+        },
+        {
+          "type": "paragraph",
+          "id": "wpculet4irnmny8xpa4",
+          "content": "Density of nickel: ρ (Ni) = 8900 kg/m³ = 8.9 g/cm³ \nVolume of deposited nickel:"
+        },
+        {
+          "type": "formula",
+          "id": "mfn9hank7comny8xpa4",
+          "latex": "V = m / ρ = 0.020 g / 8.9 g/cm³ = 2.247 × 10 ⁻ ³ cm³",
+          "notes": ""
+        },
+        {
+          "type": "paragraph",
+          "id": "w5hqrdtumemny8xpa4",
+          "content": "Converting substrate one-sided area: 743.814 mm² = 7.438 cm² \nThickness (assuming deposition on both faces):"
+        },
+        {
+          "type": "formula",
+          "id": "f51tfvsiokmny8xpa4",
+          "latex": "h = V /[2 × A (one)] = 2.247 × 10 ⁻ ³ / (2 × 7.438) = 1.51 × 10 ⁻⁴ cm",
+          "notes": ""
+        },
+        {
+          "type": "formula",
+          "id": "48f9weuazebmny8xpa4",
+          "latex": "h ≈ 1.51 × 10 ⁻ ³ mm ≈ 1.51 μm (per-face)",
+          "notes": ""
+        },
+        {
+          "type": "heading2",
+          "id": "oh8iwvflodpmny8xpa4",
+          "content": "6. Observations and Results"
+        },
+        {
+          "type": "heading3",
+          "id": "127ujcvvilga",
+          "content": "6.1 Weight Measurement Summary "
+        },
+        {
+          "type": "table",
+          "id": "lr87ro52ru8",
+          "rows": 8,
+          "cols": 3,
+          "data": [
+            [
+              "Parameter",
+              "Value",
+              "Unit"
+            ],
+            [
+              "Initial Weight (m_i)",
+              " 3.860 ",
+              "g "
+            ],
+            [
+              "Final Weight (m_f)",
+              "3.880",
+              "g"
+            ],
+            [
+              "Mass of Ni Deposited",
+              "0.020",
+              "g"
+            ],
+            [
+              "Coating Thickness (calculated)",
+              "1.51 × 10 ⁻ ³ ",
+              "mm (per face)"
+            ],
+            [
+              "  Voltage Applied",
+              " 2.1",
+              "v"
+            ],
+            [
+              "Current Applied",
+              "~198",
+              "mA"
+            ],
+            [
+              "Deposition Time",
+              "10",
+              "minutes"
+            ]
+          ],
+          "merges": [],
+          "headerRow": true,
+          "headerCol": false
+        },
+        {
+          "type": "heading3",
+          "id": "ywimbxclpya",
+          "content": "6.2 Surface Roughness Data (SRT -6200S)"
+        },
+        {
+          "type": "table",
+          "id": "vlac109gvf",
+          "rows": 3,
+          "cols": 6,
+          "data": [
+            [
+              "Direction",
+              " Ra (μm)",
+              " R z (μm)",
+              " R q ( μm)",
+              "R t (μm)",
+              "  Cut -off Length (mm)"
+            ],
+            [
+              "Longitudinal",
+              "3.376",
+              "9.549",
+              "3.838",
+              "9.644",
+              "0.8"
+            ],
+            [
+              "Transverse",
+              "3.097",
+              "8.758",
+              "3.862",
+              "8.845",
+              ""
+            ]
+          ],
+          "merges": [],
+          "headerRow": true,
+          "headerCol": false
+        },
+        {
+          "type": "paragraph",
+          "id": "hn98i82621mny8xpaa",
+          "content": "Where: \nRa = Arithmetic mean roughness, Rz = Mean peak-to-valley height, \nRq = Root mean square roughness, Rt = Maximum total height of profile."
+        },
+        {
+          "type": "heading3",
+          "id": "b0mjcjn0vk",
+          "content": "6.3 Microstructure Image "
+        },
+        {
+          "type": "paragraph",
+          "id": "e84mc22w3v5mny8xpaa",
+          "content": "The following microstructure image was captured after deposition to observe the surface morphology and estimate the cross -sectional area of the nickel coating layer:"
+        },
+        {
+          "type": "image",
+          "id": "ft7psn906td",
+          "src": "https://res.cloudinary.com/dr2b6pzux/image/upload/v1776159641/mdyekekiob61qblrzkne.jpg",
+          "caption": "Fig. 1: Microstructure of Ni-deposited mild steel substrate surface",
+          "size": "medium"
+        },
+        {
+          "type": "heading2",
+          "id": "edii5nc8b49mny8xpaa",
+          "content": "7. Discussion"
+        },
+        {
+          "type": "paragraph",
+          "id": "egg4c0ggnkwmny8xpaa",
+          "content": "The electrodeposition of nickel on the mild steel substrate was successfully carried out using the Watts bath electrolyte at a current density of 1 A/dm² for 10 minutes. A mass gain of 0.020 g was recorded, which corresponds to a calculated nickel coating thickness of approximately 1.51 μm per face."
+        },
+        {
+          "type": "paragraph",
+          "id": "ho8bnxebom7mny8xpaa",
+          "content": "During the experiment, oxygen gas (O ₂ ) was visibly evolved at the lead anode. This is consistent with the anodic half -reaction (2 H ₂ O → O ₂ + 4H ⁺ + 4e ⁻ ). The lead anode also formed a passive PbSO ₄ layer on its surface. The evolved O ₂ can theoretically be collected and utilized, though this was not performed in the present experiment."
+        },
+        {
+          "type": "paragraph",
+          "id": "3v0x2foarxkmny8xpaa",
+          "content": "The surface roughness measurements indicate that the deposited nickel coating has higher roughness values in the longitudinal direction (Ra = 3.376 μm) compared to the transverse direction (Ra = 3.097 μm). This directional anisotropy is likely due to the s urface scratches introduced during emery paper polishing, which was performed predominantly in one direction. The relatively higher roughness values suggest that using only 180 -grit emery paper for initial preparation (without progressing to finer grits su ch as 800 or 1200) resulted in a rougher substrate surface, which consequently led to a thinner and less uniform nickel deposition."
+        },
+        {
+          "type": "paragraph",
+          "id": "yr3ggvu2xxlmny8xpaa",
+          "content": "The Positector 6000 (Model FN51) thickness gauge could not be used due to a machine malfunction. The analytical thickness calculation based on the weight gain and nickel density (8900 kg/m³) gave a value of ~1.51 × 10 ⁻ ³ mm (1.51 μm), which is in reasonable agreement with the observed field value of 1.451 × 10 ⁻ ³ mm. The slight difference arises from the assumption of uniform deposition across both faces, whereas in practice, the deposition may be slightly non-uniform."
+        },
+        {
+          "type": "paragraph",
+          "id": "3qdu838hr0kmny8xpai",
+          "content": "The surface of the sample was noted to not be perfectly parallel in the bath, which can cause non uniform current distribution and consequently non -uniform nickel deposition across the substrate surface."
+        },
+        {
+          "type": "heading2",
+          "id": "sivvjiup4wmny8xpai",
+          "content": "8. Conclusion"
+        },
+        {
+          "type": "paragraph",
+          "id": "pe33siycaq9mny8xpai",
+          "content": "Nickel was successfully electrodeposited on a mild steel substrate using a Watts bath electrolyte. A total nickel mass of 0.020 g was deposited over 10 minutes at 1 A/dm² and 2.1 V. The calculated coating thickness is approximately 1.51 μm per face (1.51 × 10 ⁻ ³ mm), closely matching the recorded value of 1.451 × 10 ⁻ ³ mm. Surface roughness values (Ra ≈ 3.1 – 3.4 μm) indicate a moderately rough surface, attributable primarily to the initial surface preparation using 180 -grit emery paper. Oxygen gas was evolved at the lead anode, consistent with the water oxidation reaction. The non -parallel alignment of the substrate in the bath and the use of only coarse emery paper contributed to the relatively rough and slightly non -uniform nickel deposit."
+        },
+        {
+          "type": "paragraph",
+          "id": "q2m2eelf2limny8xpai",
+          "content": "The experiment demonstrates the fundamental principles of electrodeposition and highlights the critical roles of surface preparation, bath chemistry, current density control, and electrode alignment on the quality and uniformity of the deposited coating."
+        },
+        {
+          "type": "heading2",
+          "id": "7t3eo97ukkomny8xpai",
+          "content": "References"
+        },
+        {
+          "type": "paragraph",
+          "id": "ha6vomi26wsmny8xpai",
+          "content": "• Schlesinger, M., & Paunovic, M. Modern Electroplating, Wiley.\n• Lowenheim, F. A. Modern Electroplating Technology.\n• ASTM B689 – Standard Specification for Electroplated Engineering Nickel Coatings.\n• Course Manual: MSE3132 Surface Engineering Sessional, Dept. of MSE, RUET."
+        }
+      ]
+    },
+    {
+      "title": "Measurement of Chemical Resistivity of Glass Sample",
+      "excerpt": "To determine the chemical resistivity (chemical durability) of glass samples by measuring their weight change after immersion i…",
+      "featuredImage": "",
+      "tags": "Glass, Academic, Gravimetric Method",
+      "link": "#",
+      "date": "Apr 2026",
+      "status": "Completed",
+      "orderNum": 3,
+      "blocks": [
+        {
+          "type": "heading2",
+          "id": "kkg5hv399zlmnxbzepn",
+          "content": "1. Objective"
+        },
+        {
+          "type": "paragraph",
+          "id": "201azifx0e4mnxbzepn",
+          "content": "To determine the chemical resistivity (chemical durability) of glass samples by measuring their weight change after immersion in three different corrosive media: neutral, acidic, and basic, over a period of 24 hours, using the gravimetric method."
+        },
+        {
+          "type": "heading2",
+          "id": "tdeo8qofxv9mnxbzepn",
+          "content": "2. Introduction"
+        },
+        {
+          "type": "paragraph",
+          "id": "6z77tvflzrlmnxbzepn",
+          "content": "Chemical durability is one of the most critical engineering properties of glass. It refers to the ability of glass to resist attack or dissolution when exposed to water, acids, alkalis, and other chemical agents. In practical applications, such as pharmaceutical containers, laboratory glassware, architectural glass, and food packaging, glass must maintain structural and chemical integrity even when in contact with corrosive environments. The most commonly used glass, soda-lime silicate glass (Na ₂ O – CaO – SiO ₂ ), is known to be susceptible to both acid and alkaline attack, though through entirely different mechanisms. In water and acidic media, the primary attack mechanism is leaching: hydrogen ions (H ⁺ ) from the solution exchange with sodium ions (Na ⁺ ) within the glass network, selectively removing the modifier ions without completely destroying the silicate network. In alkaline media, the attack is more aggressive and proceeds by network dissolution, where hydroxyl ions (OH ⁻ ) break the Si – O – Si bonds of the glass network itself, leading to significantly higher weight loss. This experiment employs the gravimetric method, comparing the weight of a glass sample before and after chemical exposure, to quantify the degree of attack by three media: distilled water (neutral), 30% hydrochloric acid (HCl, acidic), and 30% sodium hydroxide (NaOH, basic). Results from all six experimental groups are compared to identify trends across different samples and media."
+        },
+        {
+          "type": "heading2",
+          "id": "djyrce4ywzvmnxbzepn",
+          "content": "3. Materials & Equipment"
+        },
+        {
+          "type": "paragraph",
+          "id": "ysrqk602b1mnxbzepn",
+          "content": "• Glass samples (soda-lime glass)\n• Three corrosive media: Distilled water (H ₂ O), 30% HCl solution (acidic medium), 30% NaOH solution (basic medium)\n• Analytical balance (for accurate mass measurement to ±0.01 g precision)\n• Immersion containers (beakers/trays) for each medium\n"
+        },
+        {
+          "type": "heading2",
+          "id": "386bw6wy7jdmnxbzepo",
+          "content": "4. Methodology"
+        },
+        {
+          "type": "paragraph",
+          "id": "pfkgo3gniumnxbzepo",
+          "content": "The experiment was conducted using the standard gravimetric procedure for chemical durability testing. Each glass sample was first weighed accurately on an analytical balance to record its initial weight (W ₁ ). The samples were then individually immersed in three separate corrosive media: distilled water (neutral), 30% HCl (acidic), and 30% NaOH (basic), and left undisturbed for a duration of 24 hours at ambient temperature. After 24 hours, the samples were carefully removed from the solutions, gently rinsed with distilled water, dried, and reweighed to obtain the final weight (W ₂ ). The weight change (ΔW = W ₂ − W ₁ ) was calculated for each medium to assess the degree of chemical attack. A positive ΔW indicates weight gain (possible surface deposition), while a negative ΔW indicates material dissolution (weight loss due to corrosion)."
+        },
+        {
+          "type": "heading2",
+          "id": "i29ushxysmimnxbzeq8",
+          "content": "5. Results"
+        },
+        {
+          "type": "heading3",
+          "id": "4rnerw77vpf",
+          "content": " 5.1 Group Data:"
+        },
+        {
+          "type": "paragraph",
+          "id": "kv0dfyit63cmnxbzeq8",
+          "content": "The following table presents the initial weight, final weight, and weight change for the three glass samples of Group 5 after 24 hours of immersion in each medium."
+        },
+        {
+          "type": "table",
+          "id": "5ulzloup4bk",
+          "rows": 4,
+          "cols": 4,
+          "data": [
+            [
+              "Medium",
+              " Initial Wt. W ₁ (g)",
+              " Final Wt. W ₂ (g)",
+              "ΔW (g)"
+            ],
+            [
+              "Neutral (H ₂ O)",
+              "2.49",
+              "2.55",
+              "0.06"
+            ],
+            [
+              "Acid (30% HCl)",
+              "4.99",
+              "5.00",
+              "0.01"
+            ],
+            [
+              "Base (30% NaOH)",
+              "3.49",
+              "3.61",
+              "0.12"
+            ]
+          ],
+          "merges": [],
+          "headerRow": true,
+          "headerCol": false
+        },
+        {
+          "type": "paragraph",
+          "id": "i8bwoldta58mnxbzeq8",
+          "content": "Table 1: Weight measurements for Group 5 samples (N = Neutral, A = Acid, B = Base)."
+        },
+        {
+          "type": "heading3",
+          "id": "muyf5htnuf",
+          "content": "5.2 Comparison Across All Groups"
+        },
+        {
+          "type": "paragraph",
+          "id": "ocucw04h59",
+          "content": "The table below compares the initial weight (W ₁ ), final weight (W ₂ ), and weight change (ΔW) across all six experimental groups for all three media. All weights are in grams. Column headers: N = Neutral, A = Acid, B = Base."
+        },
+        {
+          "type": "table",
+          "id": "z8qg7gt4yhd",
+          "rows": 7,
+          "cols": 10,
+          "data": [
+            [
+              "Group",
+              "N -W₁ (g)",
+              "N -W₂ (g)",
+              "N -ΔW (g)",
+              "A -W₁ (g)",
+              "A -W₂ (g)",
+              "A -ΔW (g)",
+              "B -W₁ (g)",
+              "B -W₂ (g)",
+              "B -ΔW (g)"
+            ],
+            [
+              "1",
+              "4.34",
+              "4.38",
+              "0.04",
+              "6.31",
+              "6.33",
+              "0.02",
+              "4.41",
+              "4.43",
+              "0.02"
+            ],
+            [
+              "2",
+              "2.61",
+              "2.63",
+              "0.02",
+              "5.47",
+              "5.48",
+              "0.01",
+              "4.85",
+              "4.90",
+              "0.05"
+            ],
+            [
+              "3",
+              "2.79",
+              "2.81",
+              "0.02",
+              "5.95",
+              "5.94",
+              "-0.01",
+              "4.10",
+              "4.09",
+              "-0.01"
+            ],
+            [
+              "4",
+              "3.54",
+              "3.56",
+              "0.02",
+              "4.79",
+              "4.83",
+              "0.04",
+              "2.89",
+              "2.90",
+              "0.01"
+            ],
+            [
+              "5 (Mine)",
+              "2.49",
+              "2.55",
+              "0.06",
+              "4.99",
+              "5.00",
+              "0.01",
+              "3.49",
+              "3.61",
+              "0.12"
+            ],
+            [
+              "6",
+              "2.33",
+              "2.74",
+              "0.41",
+              "2.93",
+              "3.26",
+              "0.33",
+              "3.43",
+              "3.83",
+              "0.40"
+            ]
+          ],
+          "merges": [],
+          "headerRow": true,
+          "headerCol": false
+        },
+        {
+          "type": "paragraph",
+          "id": "x5sz9evaozmnxbzeq8",
+          "content": "Table 2: All groups comparison: W ₁ (Initial), W ₂ (Final), ΔW (Change) in grams."
+        },
+        {
+          "type": "heading2",
+          "id": "7xul81spaosmnxbzeq8",
+          "content": "6. Discussion"
+        },
+        {
+          "type": "heading3",
+          "id": "ym0puye89yd",
+          "content": "Effect of Neutral Medium (Distilled Water):"
+        },
+        {
+          "type": "paragraph",
+          "id": "lyptv3mexrmnxbzeq8",
+          "content": "All groups showed very small but positive weight changes in neutral water, indicating minimal chemical attack. For Group 5, the neutral sample gained +0.06 g. This minor weight gain in water is attributed to the ion exchange process, where H ⁺ or H₃O ⁺ ions from water exchange with network modifier cations (primarily Na ⁺ ) near the glass surface. This forms a silica rich gel layer that may trap small amounts of water, slightly increasing the apparent weight. The overall effect is minimal, confirming that silicate g lass has good durability in neutral aqueous environments."
+        },
+        {
+          "type": "heading3",
+          "id": "6ylg78i6l4u",
+          "content": " Effect of Acidic Medium (30% HCl):"
+        },
+        {
+          "type": "paragraph",
+          "id": "gcbul4tqtyfmnxbzeqk",
+          "content": "The acidic medium produced consistently small weight changes across most groups, indicating a moderate level of attack. Group 5 showed only a +0.01 g change. In acid, the dominant mechanism is selective leaching: H ⁺ ions replace Na ⁺ ions in the glass network without breaking the Si – O – Si backbone. The resulting hydrated silica gel layer is relatively protective and slows further attack. HF is the only acid that attacks silica glass directly; HCl attacks the modifier phase but leaves the silica network largely intact. The small weight change aligns with this mechanism. "
+        },
+        {
+          "type": "heading3",
+          "id": "s0wvvqb2ji",
+          "content": "Effect of Basic Medium (30% NaOH):"
+        },
+        {
+          "type": "paragraph",
+          "id": "sfsb2ey1sq",
+          "content": "The basic medium produced the largest weight changes across most groups. Group 5 recorded a +0.12 g change. This is because OH ⁻ ions attack and break the Si – O – Si bonds of the glass network itself — a process known as network dissolution. Unlike the protective silica gel formed in acid, the alkali attack continuously erodes the glass network. Group 6 showed the highest weight gain in base (+0.40 g), suggesting either a more porous or less durable glass composition. The trend of base causing more damage than acid or water is consistent with the known chemistry of glass corrosion. "
+        },
+        {
+          "type": "heading3",
+          "id": "dstqm160x38",
+          "content": "Observations Across Groups:"
+        },
+        {
+          "type": "paragraph",
+          "id": "y7hvaf30i1p",
+          "content": "\n Groups 1–5 show relatively modest weight changes overall, while Group 6 shows notably larger changes, especially in acid and base, which may indicate a compositionally different or less durable glass sample. In most groups, the base medium caused the greatest weight change, followed by neutral water, then acid, a pattern that is consistent with the expected corrosion chemistry of soda-lime silicate glass."
+        },
+        {
+          "type": "heading2",
+          "id": "ldtw4t58xrmnxbzeqk",
+          "content": "7. Conclusion"
+        },
+        {
+          "type": "paragraph",
+          "id": "63gple3kzhmnxbzeqk",
+          "content": "This experiment successfully demonstrated the chemical durability of glass samples against three corrosive media using the gravimetric method. The results confirm the expected pattern: alkaline solutions (30% NaOH) cause the greatest material damage due to direct network dissolution, while acidic solutions (30% HCl) cause moderate attack through selective leaching, and neutral water causes the least damage. For Group 5 specifically, the weight change was smallest in the acid medium (+0.01 g), moderate in neutral water (+0.06 g), and highest in the basic medium (+0.12 g). These findings are consistent with the established understanding of glass corrosion mecha nisms and confirm that glass is most vulnerable to strongly alkaline environments. Comparisons across all six groups also reveal variation in glass durability, suggesting potential differences in composition or sample preparation."
+        }
+      ]
+    },
+    {
+      "title": "An Overview of the Raw Materials Used for Ceramic Bodies",
+      "excerpt": "This experiment presented a comprehensive study of the commonly used raw materials for ceramic body preparation. Various cerami…",
+      "featuredImage": "https://res.cloudinary.com/dr2b6pzux/image/upload/v1775414881/h98zhmsrjfhuir1c0unp.jpg",
+      "tags": "Raw Materials, Ceramics, Academics",
+      "link": "#",
+      "date": "Apr 2026",
+      "status": "Completed",
+      "blocks": [
+        {
+          "type": "heading1",
+          "id": "agn56z1sodv",
+          "content": "Abstract"
+        },
+        {
+          "type": "paragraph",
+          "id": "erats6v6ymu",
+          "content": "This experiment presented a comprehensive study of the commonly used raw materials for ceramic body preparation. Various ceramic raw materials such as ball clay, china clay, quartz, feldspar, dolomite, talc, bone ash, pyrophyllite, wollastonite, alumina, zirconia, and others were examined with respect to their physical, chemical, and thermal properties. The role of each raw material in influencing plasticity, strength, thermal resistance, vitrification, and dimensional stability of ceramic bodies was discussed. The study emphasized that the proper selection and exact proportion of raw materials are crucial for designing ceramic bodies with desired performance characteristics."
+        },
+        {
+          "type": "heading1",
+          "id": "uh4tgrds3i",
+          "content": "Objectives"
+        },
+        {
+          "type": "paragraph",
+          "id": "qm2j6c6pnnm",
+          "content": "•\tTo identify different types of raw materials used in ceramic bodies.\n•\tTo understand the physical, chemical, and thermal properties of ceramic raw materials. \n•\tTo study the role and application of each raw material in ceramic body formulation.\n•\tTo relate ceramic raw materials to their real-life and industrial applications.\n"
+        },
+        {
+          "type": "heading1",
+          "id": "a8tq7sgsuo",
+          "content": "Introduction"
+        },
+        {
+          "type": "paragraph",
+          "content": "Ceramics are inorganic, non-metallic materials whose properties are strongly governed by their raw material composition. The quality, performance, and durability of a ceramic body depend not only on the type of raw materials used but also on their proportions and interactions during processing and firing. Ceramic materials are widely applied in daily life, including household items, construction, electronics, biomedical devices and advanced engineering systems.\nThis experiment focused on familiarizing students with a wide range of ceramic raw materials, their characteristics and their functional contributions to ceramic body design.",
+          "id": "u2u58ukuifj"
+        },
+        {
+          "type": "heading1",
+          "id": "46dbid6zege",
+          "content": "Theory"
+        },
+        {
+          "type": "paragraph",
+          "id": "2zy04j8qxzt",
+          "content": "Description of Ceramic Raw Materials: "
+        },
+        {
+          "type": "heading2",
+          "id": "im92kxh9ci",
+          "content": "Ball Clay"
+        },
+        {
+          "type": "image",
+          "id": "rhr52ph0pvo",
+          "src": "https://res.cloudinary.com/dr2b6pzux/image/upload/v1775412867/humyhflx8sqhg7u06zsr.jpg",
+          "caption": "Fig. 2.1: Ball Clay.",
+          "size": "small"
+        },
+        {
+          "type": "paragraph",
+          "id": "tashj2p4jsq",
+          "content": "Ball clay is a sedimentary kaolinitic clay composed mainly of kaolinite, mica, and quartz. It provides high plasticity and green strength, making it essential for shaping ceramic bodies, especially in sanitary ware and whiteware applications."
+        },
+        {
+          "type": "heading2",
+          "id": "3oz17g5zqke",
+          "content": "China Clay (Kaolin)"
+        },
+        {
+          "type": "image",
+          "id": "dzkmokwgykf",
+          "src": "https://res.cloudinary.com/dr2b6pzux/image/upload/v1775412983/nojlnjloijuomv4a9wdw.jpg",
+          "caption": "Fig. 2.2: China Clay.",
+          "size": "small"
+        },
+        {
+          "type": "paragraph",
+          "id": "0lec5wz03ojs",
+          "content": "China clay is a soft, white clay primarily composed of kaolinite. It exhibits high refractoriness, low plasticity, and good chemical stability, making it suitable for high-temperature ceramics, porcelain, and industrial applications."
+        },
+        {
+          "type": "heading2",
+          "id": "oju66p4f9z",
+          "content": "Quartz"
+        },
+        {
+          "type": "image",
+          "id": "7y2bm5nehbb",
+          "src": "https://res.cloudinary.com/dr2b6pzux/image/upload/v1775413053/l5llpovvwfprd1ucgsgp.jpg",
+          "caption": "Fig. 2.3: Quartz.",
+          "size": "small"
+        },
+        {
+          "type": "paragraph",
+          "id": "bgrxcisnce9",
+          "content": "Quartz (SiO₂) is a chemically stable and hard material that improves dimensional stability and controls shrinkage. It also contributes thermal resistance and is widely used in ceramics, glass, and electronic applications."
+        },
+        {
+          "type": "heading2",
+          "id": "fl6k04rzy3t",
+          "content": "Dolomite"
+        },
+        {
+          "type": "image",
+          "id": "kpj5opi76op",
+          "src": "https://res.cloudinary.com/dr2b6pzux/image/upload/v1775413125/iywepdzmtlvgojobtnpq.jpg",
+          "caption": "Fig. 2.4: Dolomite.",
+          "size": "small"
+        },
+        {
+          "type": "paragraph",
+          "id": "ok7pi2yisl",
+          "content": "Dolomite is a calcium-magnesium carbonate mineral that acts as a flux and improves mechanical strength. It enhances densification and is commonly used in ceramics, glass, construction, and biomedical materials."
+        },
+        {
+          "type": "heading2",
+          "id": "8p5x2qdk7j9",
+          "content": "Feldspar"
+        },
+        {
+          "type": "image",
+          "id": "xtp15c469tm",
+          "src": "https://res.cloudinary.com/dr2b6pzux/image/upload/v1775413242/bdvqitwmody6lbgqvvue.jpg",
+          "caption": "Fig. 2.5: Feldspar",
+          "size": "small"
+        },
+        {
+          "type": "paragraph",
+          "id": "7x0x5coio8c",
+          "content": "Feldspars are aluminosilicate minerals containing potassium, sodium, or calcium. They function as fluxes in ceramic bodies, lowering the melting temperature and promoting vitrification."
+        },
+        {
+          "type": "heading2",
+          "id": "81rntvrp1iq",
+          "content": "Talc"
+        },
+        {
+          "type": "image",
+          "id": "ujm2h8vdn58",
+          "src": "https://res.cloudinary.com/dr2b6pzux/image/upload/v1775413313/fbz6ripfnrhubfwhgtez.jpg",
+          "caption": "Fig. 2.6: Talc",
+          "size": "small"
+        },
+        {
+          "type": "paragraph",
+          "id": "yw37k6cc2i",
+          "content": "Talc is a hydrated magnesium silicate known for its softness and lubricating properties. In ceramics, it improves thermal shock resistance and reduces firing defects."
+        },
+        {
+          "type": "heading2",
+          "id": "c52ze60r2d5",
+          "content": "Bone Ash"
+        },
+        {
+          "type": "image",
+          "id": "twpu49nc0rd",
+          "src": "https://res.cloudinary.com/dr2b6pzux/image/upload/v1775413402/vdm3scttqijxmiyk3aob.jpg",
+          "caption": "Fig. 2.7: Bone Ash.",
+          "size": "small"
+        },
+        {
+          "type": "paragraph",
+          "id": "yod79dz6sso",
+          "content": "Bone ash is derived from calcined animal bones and mainly consists of calcium phosphate. It enhances translucency and strength and is a key raw material in bone china production."
+        },
+        {
+          "type": "heading2",
+          "id": "vo9pxceemhr",
+          "content": "Berylite"
+        },
+        {
+          "type": "paragraph",
+          "id": "5lz7fby9867",
+          "content": "Berylite is a hydrated beryllium silicate with high thermal conductivity and refractoriness. It provides electrical insulation and thermal stability in advanced ceramic applications."
+        },
+        {
+          "type": "heading2",
+          "id": "d1vkf3i9fmk",
+          "content": "Pyrophyllite"
+        },
+        {
+          "type": "image",
+          "id": "892m5fkqax5",
+          "src": "https://res.cloudinary.com/dr2b6pzux/image/upload/v1775413467/kkpgig2yhilme8lk4jsh.jpg",
+          "caption": "Fig. 2.8: Pyrophyllite",
+          "size": "small"
+        },
+        {
+          "type": "paragraph",
+          "id": "1eyjbliihspj",
+          "content": "Pyrophyllite is a phyllosilicate mineral with excellent thermal and chemical stability. It is used in refractories, fillers, and industrial ceramics due to its low thermal expansion."
+        },
+        {
+          "type": "heading2",
+          "id": "mc2aju43799",
+          "content": "Wollastonite"
+        },
+        {
+          "type": "image",
+          "id": "mh2pxhhzat",
+          "src": "https://res.cloudinary.com/dr2b6pzux/image/upload/v1775413655/enlseomkhblq3mfgdhmr.jpg",
+          "caption": "Fig. 2.9: Wollastonite",
+          "size": "small"
+        },
+        {
+          "type": "paragraph",
+          "id": "3xhcriepk6y",
+          "content": "Wollastonite is a calcium silicate mineral that improves mechanical strength, reduces shrinkage, and enhances thermal resistance. It is widely used in ceramics, plastics, paints, and biomedical materials."
+        },
+        {
+          "type": "heading2",
+          "id": "urcrmwrboxr",
+          "content": "Nepheline Syenite"
+        },
+        {
+          "type": "image",
+          "id": "108qxs7brp4o",
+          "src": "https://res.cloudinary.com/dr2b6pzux/image/upload/v1775413790/ggc5dsg2iexyhlyktswo.jpg",
+          "caption": "Fig. 2.10: Nepheline Syenite",
+          "size": "small"
+        },
+        {
+          "type": "paragraph",
+          "id": "85jk0dzvzg",
+          "content": "Nepheline syenite is a sodium- and potassium-rich aluminosilicate mineral used as an alternative flux in ceramics and glass manufacturing."
+        },
+        {
+          "type": "image",
+          "id": "0scieehny2sj",
+          "src": "https://res.cloudinary.com/dr2b6pzux/image/upload/v1775413855/twevxzivktxxqabuat7q.jpg",
+          "caption": "Fig. 2.11: Bentonite",
+          "size": "small"
+        },
+        {
+          "type": "paragraph",
+          "id": "7gly1t03t65",
+          "content": "Bentonite is a clay mineral used in small amounts to enhance plasticity and binding strength. It is widely applied in ceramics, casting, and civil engineering."
+        },
+        {
+          "type": "heading2",
+          "id": "zztzc3zf0in",
+          "content": "Tungsten Carbide"
+        },
+        {
+          "type": "image",
+          "id": "q66lffy5o4g",
+          "src": "https://res.cloudinary.com/dr2b6pzux/image/upload/v1775413939/beovwjqem7h283vhfprv.jpg",
+          "caption": "Fig. 2.12: Tungsten Carbide",
+          "size": "small"
+        },
+        {
+          "type": "paragraph",
+          "id": "vrdu24jre5a",
+          "content": "Tungsten carbide is an extremely hard ceramic material used for wear-resistant applications. Its  exceptional hardness makes it suitable for cutting tools and industrial components."
+        },
+        {
+          "type": "heading2",
+          "id": "ccais0d28ct",
+          "content": "Alumina (Al₂O₃)"
+        },
+        {
+          "type": "image",
+          "id": "51m2f3qrhce",
+          "src": "https://res.cloudinary.com/dr2b6pzux/image/upload/v1775414000/j41d7gylitrbhpvkmxx2.jpg",
+          "caption": "Fig. 2.13: Alumina (Al₂O₃)",
+          "size": "small"
+        },
+        {
+          "type": "paragraph",
+          "id": "mod286wtdia",
+          "content": "Alumina is a highly stable ceramic material with excellent hardness, thermal resistance, and chemical inertness. It is extensively used in electronics, aerospace, medical, and energy sectors."
+        },
+        {
+          "type": "heading2",
+          "id": "8f3n05m56cj",
+          "content": "Zirconia (ZrO₂)"
+        },
+        {
+          "type": "image",
+          "id": "02c0fezox90h",
+          "src": "https://res.cloudinary.com/dr2b6pzux/image/upload/v1775414056/brdrvlhvwt8yy3rygb5g.jpg",
+          "caption": "Fig. 2.14: Zirconia (ZrO₂)",
+          "size": "small"
+        },
+        {
+          "type": "paragraph",
+          "id": "0bqn9cx31noc",
+          "content": "Zirconia is known for its high fracture toughness and strength. Due to its polymorphic nature, it is widely  used in biomedical implants, thermal barrier coatings, and refractories."
+        },
+        {
+          "type": "heading2",
+          "id": "x54mtiywxs",
+          "content": "Titania (TiO₂)"
+        },
+        {
+          "type": "image",
+          "id": "ebmk09colw",
+          "src": "https://res.cloudinary.com/dr2b6pzux/image/upload/v1775414108/yz40k4kyfzesgt81jsi2.jpg",
+          "caption": "Fig. 2.15: Titania (TiO₂)",
+          "size": "small"
+        },
+        {
+          "type": "paragraph",
+          "id": "gmhng8lgc7",
+          "content": "Titania is a transition metal oxide with high refractoriness and photocatalytic properties. It finds applications in ceramics, environmental technology, and biomedical fields."
+        },
+        {
+          "type": "heading2",
+          "id": "h5wttmhl3i6",
+          "content": "Whiting"
+        },
+        {
+          "type": "image",
+          "id": "v6dygcckfkp",
+          "src": "https://res.cloudinary.com/dr2b6pzux/image/upload/v1775414174/frz2zypjgm6kmkhex2pm.jpg",
+          "caption": "Fig. 2.16: Whiting",
+          "size": "small"
+        },
+        {
+          "type": "paragraph",
+          "id": "dd7jwo0qy8k",
+          "content": "Whiting or calcium carbonate acts as a flux and filler in ceramic bodies. It improves brightness and is widely used in ceramic and agricultural applications."
+        },
+        {
+          "type": "heading2",
+          "id": "m1aroqwt2uh",
+          "content": "Spodumene"
+        },
+        {
+          "type": "image",
+          "id": "wxy73ij4kg",
+          "src": "https://res.cloudinary.com/dr2b6pzux/image/upload/v1775414231/qxjwc8uh8xsboychosk0.jpg",
+          "caption": "Fig. 2.17: Spodumene",
+          "size": "small"
+        },
+        {
+          "type": "paragraph",
+          "id": "tb508zkafkm",
+          "content": "Spodumene is a lithium aluminosilicate mineral used as a flux in ceramics and glass. It enhances thermal shock resistance and reduces firing temperature."
+        },
+        {
+          "type": "heading2",
+          "id": "qi0szeqoqt",
+          "content": "Grog"
+        },
+        {
+          "type": "image",
+          "id": "je7yj3ob4rr",
+          "src": "https://res.cloudinary.com/dr2b6pzux/image/upload/v1775414286/m0yf6uis66bxqzez7tok.jpg",
+          "caption": "Fig. 2.18: Grog",
+          "size": "small"
+        },
+        {
+          "type": "paragraph",
+          "id": "he40egmnrh",
+          "content": "Grog is produced by crushing pre-fired ceramic materials. It reduces shrinkage, improves thermal shock resistance, and enhances structural strength in ceramic bodies."
+        },
+        {
+          "type": "heading2",
+          "id": "dby134l2tan",
+          "content": "Cornwall Stone"
+        },
+        {
+          "type": "image",
+          "id": "wtbbzgzr2q8",
+          "src": "https://res.cloudinary.com/dr2b6pzux/image/upload/v1775414342/tapkuigxdiepapoxsw7e.jpg",
+          "caption": "Fig. 2.19: Cornwall Stone",
+          "size": "small"
+        },
+        {
+          "type": "paragraph",
+          "id": "ue6ft50ob89",
+          "content": "Cornwall stone, also known as china stone, is a naturally occurring feldspathic material. It improves vitrification, reduces crazing, and is commonly used in clay bodies."
+        },
+        {
+          "type": "heading1",
+          "id": "staswmzqwab",
+          "content": "Conclusion"
+        },
+        {
+          "type": "paragraph",
+          "id": "v9g3hi0x7je",
+          "content": "This experiment vividly illuminated the pivotal role of raw materials in the captivating realm of ceramic engineering. It revealed that the performance of a ceramic body is intricately tied to its mineralogical and chemical composition, which acts as a foundational cornerstone of its capabilities. Achieving the desired mechanical, thermal, and physical properties requires an artful balancing act of plastic materials, fluxes, and fillers, like conducting a symphony where each element plays a vital role. Even the most subtle variations in raw material proportions can lead to strikingly different outcomes in ceramic behavior, akin to a delicate dance where precision is key. Therefore, cultivating a deep and nuanced understanding of ceramic raw materials is essential for crafting efficient, resilient, and high-performance ceramic systems that meet the demands of modern applications."
+        }
+      ]
+    }
+  ],
+  "researchInterests": [
+    "Nanomaterials and Nanotechnology",
+    "Sustainable and Green Materials",
+    "Energy Storage Materials"
+  ],
+  "publications": [],
+  "email": "tanim97@proton.me",
+  "github": "https://github.com/tanim-mse",
+  "linkedin": "https://linkedin.com/in/",
+  "researchgate": "https://researchgate.net/",
+  "contactMessage": "Have a research idea, collaboration opportunity, or just want to talk materials science? I'd love to hear from you.",
+  "appearance": {
+    "accentColor": "#7c3aed",
+    "fontSize": "17px"
+  },
+  "adminPassword": "275056c26a6b4fb1f5e49cd8a8e0f69f5c29b84055a6d3875be68edc820c6c75",
+  "orcid": "",
+  "scholar": "",
+  "twitter": "",
+  "website": "",
+  "formspreeID": "xlgowqby"
 };
 
 function getData() {
