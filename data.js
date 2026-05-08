@@ -3222,7 +3222,7 @@ const DEFAULT_DATA = {
   "researchgate": "https://researchgate.net/",
   "contactMessage": "Have a research idea, collaboration opportunity, or just want to talk materials science? I'd love to hear from you.",
   "appearance": {
-    "accentColor": "#7c3aed",
+    "accentColor": "#06b6d4",
     "fontSize": "17px"
   },
   "adminPassword": "275056c26a6b4fb1f5e49cd8a8e0f69f5c29b84055a6d3875be68edc820c6c75",
